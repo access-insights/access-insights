@@ -530,8 +530,9 @@
     .footer-line {
       margin-top:64px;padding-top:28px;
       border-top:1px solid rgba(255,255,255,0.08);
-      width:100%;display:flex;justify-content:space-between;
+      width:100%;display:flex;justify-content:center;
       align-items:center;flex-wrap:wrap;gap:12px;
+      text-align:center;
     }
     .footer-line p { font-size:0.875rem;color:var(--text-muted);letter-spacing:.04em;line-height:1.5; } /* WCAG fix: was 0.78rem (12.5px) → 14px */
 
