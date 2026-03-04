@@ -707,13 +707,12 @@
     ══════════════════════════════════════════ */
     @media (max-width: 767px) {
       :root {
-        --safe-top: max(env(safe-area-inset-top, 0px), 12px);
         --nav-h: 68px;
-        --nav-total-h: calc(var(--nav-h) + var(--safe-top));
+        --nav-total-h: calc(var(--nav-h) + env(safe-area-inset-top, 0px) + 12px);
       }
 
       /* Nav tighter on phones */
-      nav { padding: 0 16px; }
+      nav { padding: calc(env(safe-area-inset-top, 0px) + 12px) 16px 0; }
       .nav-logo-svg { width: 30px; }
       .nav-logo-text { font-size: 1.15rem; }
       nav ul a { padding: 14px 24px; font-size: 0.95rem; }
@@ -776,9 +775,8 @@
     ══════════════════════════════════════════ */
     @media (max-width: 479px) {
       :root {
-        --safe-top: max(env(safe-area-inset-top, 0px), 12px);
         --nav-h: 64px;
-        --nav-total-h: calc(var(--nav-h) + var(--safe-top));
+        --nav-total-h: calc(var(--nav-h) + env(safe-area-inset-top, 0px) + 12px);
       }
 
       /* Very compact nav */
