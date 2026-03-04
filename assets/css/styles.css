@@ -117,13 +117,13 @@
     ═══════════════════════════════════════════════════════ */
     nav {
       position: fixed;
-      top:0; left:0; right:0;
+      top: var(--safe-top); left:0; right:0;
       z-index: 100;
-      height: var(--nav-total-h);
+      height: var(--nav-h);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: var(--safe-top) 60px 0;
+      padding: 0 60px;
       background: rgba(10,6,18,0.72);
       backdrop-filter: blur(20px) saturate(1.4);
       -webkit-backdrop-filter: blur(20px) saturate(1.4);
@@ -708,11 +708,12 @@
     @media (max-width: 767px) {
       :root {
         --nav-h: 68px;
-        --nav-total-h: calc(var(--nav-h) + env(safe-area-inset-top, 0px) + 12px);
+        --safe-top: calc(env(safe-area-inset-top, 0px) + 8px);
+        --nav-total-h: calc(var(--nav-h) + var(--safe-top));
       }
 
       /* Nav tighter on phones */
-      nav { padding: calc(env(safe-area-inset-top, 0px) + 12px) 16px 0; }
+      nav { padding: 0 16px; }
       .nav-logo-svg { width: 30px; }
       .nav-logo-text { font-size: 1.15rem; }
       nav ul a { padding: 14px 24px; font-size: 0.95rem; }
@@ -776,7 +777,8 @@
     @media (max-width: 479px) {
       :root {
         --nav-h: 64px;
-        --nav-total-h: calc(var(--nav-h) + env(safe-area-inset-top, 0px) + 12px);
+        --safe-top: calc(env(safe-area-inset-top, 0px) + 8px);
+        --nav-total-h: calc(var(--nav-h) + var(--safe-top));
       }
 
       /* Very compact nav */
