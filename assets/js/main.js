@@ -101,6 +101,9 @@
 
     /* Form validation — WCAG 3.3.1, 3.3.3 */
     const form = $('#contact-form');
+    const submitBtn = $('.btn-submit', form);
+    const success = $('#form-success');
+    const submitError = $('#form-error');
 
     function validateField(input){
       const errId = input.getAttribute('aria-describedby');
@@ -122,6 +125,9 @@
 
     form.addEventListener('submit',e=>{
       e.preventDefault();
+      success.classList.remove('visible');
+      submitError.classList.remove('visible');
+
       const required = $$('[required]',form);
       let allValid = true;
       required.forEach(el=>{ if(!validateField(el)) allValid=false; });
@@ -130,8 +136,30 @@
         if(first) first.focus();
         return;
       }
-      form.style.display='none';
-      const success = $('#form-success');
-      success.classList.add('visible');
-      success.focus();
+
+      submitBtn.disabled = true;
+      submitBtn.setAttribute('aria-busy','true');
+
+      const formData = new FormData(form);
+      const payload = new URLSearchParams(formData).toString();
+
+      fetch('/',{
+        method:'POST',
+        headers:{'Content-Type':'application/x-www-form-urlencoded'},
+        body: payload
+      })
+      .then(response=>{
+        if(!response.ok) throw new Error(`Netlify form submission failed (${response.status})`);
+        form.style.display='none';
+        success.classList.add('visible');
+        success.focus();
+      })
+      .catch(()=>{
+        submitError.classList.add('visible');
+        submitError.focus();
+      })
+      .finally(()=>{
+        submitBtn.disabled = false;
+        submitBtn.removeAttribute('aria-busy');
+      });
     });

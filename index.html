@@ -241,7 +241,17 @@
           Fields marked <span style="color:var(--accent)" aria-hidden="true">*</span><span class="sr-only">with an asterisk</span> are required.
         </p>
 
-        <form class="contact-form fade-up" id="contact-form" novalidate aria-label="Send a message to Access Insights">
+        <form class="contact-form fade-up" id="contact-form"
+              name="contact-form"
+              method="POST"
+              data-netlify="true"
+              netlify-honeypot="bot-field"
+              novalidate
+              aria-label="Send a message to Access Insights">
+          <input type="hidden" name="form-name" value="contact-form" />
+          <p class="sr-only" aria-hidden="true">
+            <label>Don't fill this out if you're human: <input name="bot-field" tabindex="-1" autocomplete="off" /></label>
+          </p>
           <div class="form-row">
             <div class="form-field">
               <label for="fname">First Name <span class="req" aria-hidden="true">*</span></label>
@@ -308,6 +318,10 @@
         <div id="form-success" role="status" aria-live="polite" aria-atomic="true" tabindex="-1">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
           Message sent! We'll be in touch within one business day.
+        </div>
+        <div id="form-error" role="alert" aria-live="assertive" aria-atomic="true" tabindex="-1">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v6"/><circle cx="12" cy="16.5" r=".8"/></svg>
+          We could not send your message right now. Please try again or email hello@accessinsights.net.
         </div>
 
         <address class="contact-info fade-up" style="font-style:normal">
