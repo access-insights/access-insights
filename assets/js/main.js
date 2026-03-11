@@ -134,7 +134,6 @@
       }
       navMenu.classList.remove('open');
       hamburger.setAttribute('aria-expanded','false');
-      hamburger.setAttribute('aria-label','Open navigation menu');
       setMobileMenuAccessibilityState(false);
     }
 
@@ -142,7 +141,6 @@
       if(!isMobileNav()) return;
       navMenu.classList.add('open');
       hamburger.setAttribute('aria-expanded','true');
-      hamburger.setAttribute('aria-label','Close navigation menu');
       setMobileMenuAccessibilityState(true);
       const firstLink = navLinks[0];
       if(firstLink) firstLink.focus();
@@ -150,7 +148,6 @@
     function closeMobileMenu(restoreFocus = false){
       navMenu.classList.remove('open');
       hamburger.setAttribute('aria-expanded','false');
-      hamburger.setAttribute('aria-label','Open navigation menu');
       setMobileMenuAccessibilityState(false);
       if(restoreFocus && isMobileNav()) hamburger.focus();
     }
