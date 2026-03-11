@@ -426,6 +426,28 @@
     .team-card h2 { font-family:var(--font-display);font-size:1.2rem;font-weight:400;margin-bottom:6px;line-height:1.3; } /* WCAG fix: added line-height */
     .team-card .role { font-size:0.875rem;letter-spacing:.10em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;line-height:1.5; } /* WCAG fix: was 0.73rem (11.7px) → 14px */
     .team-card .bio { font-size:0.9rem;line-height:1.75;color:var(--text-muted); } /* WCAG fix: was 0.85rem (13.6px) → 14.4px */
+    .team-card.has-social { position: relative; padding-bottom: 56px; }
+    .team-card .social-link {
+      position: absolute;
+      left: 16px;
+      bottom: 16px;
+      width: 28px;
+      height: 28px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(126,207,179,0.45);
+      border-radius: 4px;
+      color: var(--accent2);
+      background: rgba(126,207,179,0.08);
+      text-decoration: none;
+      transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
+    }
+    .team-card .social-link:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: rgba(240,201,106,0.12);
+    }
 
     /* ─── CONTACT ────────────────────────────────────────── */
     #contact { text-align:left; }
