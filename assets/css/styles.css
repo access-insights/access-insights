@@ -273,9 +273,9 @@
     }
     .home-text h1 {
       font-family: var(--font-display);
-      font-size: clamp(2.8rem, 5.5vw, 6rem);
+      font-size: clamp(1.9rem, 4vw, 4.2rem);
       font-weight: 300;
-      line-height: 1.08;
+      line-height: 1.12;
       margin-bottom: 28px;
       color: #fff;
     }
@@ -339,12 +339,12 @@
 
     /* ─── SPECIALTIES ────────────────────────────────────── */
     .specialties-header { margin-bottom: 52px; }
-    .specialties-header h2 {
+    .specialties-header h1 {
       font-family: var(--font-display);
       font-size: clamp(1.9rem, 4vw, 4.2rem);
       font-weight: 300; line-height: 1.12; max-width: 560px;
     }
-    .specialties-header h2 em { font-style:italic; color:var(--accent2); }
+    .specialties-header h1 em { font-style:italic; color:var(--accent2); }
 
     .specialties-grid {
       display: grid;
@@ -370,7 +370,7 @@
     .specialty-card:hover::before { width: 56px; }
 
     .specialty-num { display: none; }
-    .specialty-card h3 {
+    .specialty-card h2 {
       font-family: var(--font-display);
       font-size: 1.35rem; font-weight: 400; margin-bottom: 12px;
       line-height: 1.3;
@@ -380,12 +380,12 @@
 
     /* ─── TEAM ───────────────────────────────────────────── */
     .team-header { text-align:center; margin-bottom:60px; }
-    .team-header h2 {
+    .team-header h1 {
       font-family: var(--font-display);
       font-size: clamp(1.9rem, 4vw, 4.2rem);
       font-weight: 300; line-height: 1.12;
     }
-    .team-header h2 em { font-style:italic; color:var(--accent); }
+    .team-header h1 em { font-style:italic; color:var(--accent); }
     .team-header p {
       margin-top:20px; font-size:1rem; color:var(--text-muted);
       max-width:480px; margin-left:auto; margin-right:auto; line-height:1.8;
@@ -423,20 +423,20 @@
       font-family:var(--font-display);font-size:1.7rem;font-weight:300;
       color:var(--accent);background:#0f1528;z-index:1;
     }
-    .team-card h3 { font-family:var(--font-display);font-size:1.2rem;font-weight:400;margin-bottom:6px;line-height:1.3; } /* WCAG fix: added line-height */
+    .team-card h2 { font-family:var(--font-display);font-size:1.2rem;font-weight:400;margin-bottom:6px;line-height:1.3; } /* WCAG fix: added line-height */
     .team-card .role { font-size:0.875rem;letter-spacing:.10em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;line-height:1.5; } /* WCAG fix: was 0.73rem (11.7px) → 14px */
     .team-card .bio { font-size:0.9rem;line-height:1.75;color:var(--text-muted); } /* WCAG fix: was 0.85rem (13.6px) → 14.4px */
 
     /* ─── CONTACT ────────────────────────────────────────── */
-    #contact { text-align:center; }
-    #contact .section-inner { display:flex;flex-direction:column;align-items:center; }
-    #contact h2 {
+    #contact { text-align:left; }
+    #contact .section-inner { display:flex;flex-direction:column;align-items:flex-start; }
+    #contact h1 {
       font-family: var(--font-display);
       font-size: clamp(2rem, 5vw, 5.5rem);
       font-weight: 300; line-height: 1.08;
       margin-bottom: 24px; max-width: 680px;
     }
-    #contact h2 em { font-style:italic; color:var(--accent2); }
+    #contact h1 em { font-style:italic; color:var(--accent2); }
     .contact-sub { font-size:1rem;color:var(--text-muted);max-width:440px;line-height:1.8;margin-bottom:48px; }
 
     /* Form */
@@ -561,13 +561,13 @@
       align-items: start;
     }
     .why-text .eyebrow { justify-content: flex-start; }
-    .why-text h2 {
+    .why-text h1 {
       font-family: var(--font-display);
       font-size: clamp(1.9rem, 3.5vw, 3.4rem);
       font-weight: 300; line-height: 1.12;
       margin-bottom: 28px;
     }
-    .why-text h2 em { font-style: italic; color: var(--accent2); }
+    .why-text h1 em { font-style: italic; color: var(--accent2); }
     .why-text p {
       font-size: 1rem; line-height: 1.85;
       color: var(--text-muted);
@@ -750,7 +750,7 @@
 
       /* Home text */
       .home-text { text-align: center; }
-      .home-text h1 { font-size: clamp(2.2rem, 8vw, 3.5rem); }
+      .home-text h1 { font-size: clamp(1.9rem, 7vw, 3rem); }
       .home-text p { font-size: 1rem; margin-bottom: 32px; }
 
       /* Eyebrow center on mobile */
@@ -773,7 +773,7 @@
       .team-header { margin-bottom: 40px; }
 
       /* Contact */
-      #contact h2 { font-size: clamp(2rem, 7vw, 3rem); }
+      #contact h1 { font-size: clamp(2rem, 7vw, 3rem); }
       .contact-form { max-width: 100%; }
       .form-row { grid-template-columns: 1fr; gap: 16px; }
       .contact-info { flex-direction: column; gap: 24px; align-items: flex-start; margin-top: 40px; }
@@ -808,10 +808,10 @@
       .team-card { padding: 28px 20px; }
 
       /* Headings scale tighter */
-      .home-text h1 { font-size: clamp(1.9rem, 9vw, 2.8rem); }
-      .specialties-header h2,
-      .team-header h2 { font-size: clamp(1.8rem, 7vw, 2.6rem); }
-      #contact h2 { font-size: clamp(1.8rem, 7.5vw, 2.6rem); }
+      .home-text h1 { font-size: clamp(1.8rem, 7vw, 2.6rem); }
+      .specialties-header h1,
+      .team-header h1 { font-size: clamp(1.8rem, 7vw, 2.6rem); }
+      #contact h1 { font-size: clamp(1.8rem, 7.5vw, 2.6rem); }
 
       /* Specialty cards tighter */
       .specialty-card { padding: 28px 20px; }
