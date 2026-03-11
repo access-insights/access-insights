@@ -3,3 +3,7 @@ Thumbs.db
 *.log
 node_modules/
 .env
+
+# Playwright artifacts
+test-results/
+playwright-report/

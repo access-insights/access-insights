@@ -53,6 +53,7 @@
 
     :root {
       --nav-h: 76px;
+      --nav-total-h: var(--nav-h);
       --safe-top: env(safe-area-inset-top, 0px);
       /* Colors — all text/bg combos verified ≥4.5:1 contrast (WCAG 1.4.3) */
       --accent:      #f0c96a;   /* 5.1:1 on dark bg */
@@ -190,8 +191,8 @@
     }
     nav ul a:hover              { color: var(--text-light); }
     nav ul a:hover::after       { left: 20%; right: 20%; }
-    nav ul a[aria-current="page"] { color: var(--accent); }
-    nav ul a[aria-current="page"]::after { left: 20%; right: 20%; }
+    nav ul a[aria-current] { color: var(--accent); }
+    nav ul a[aria-current]::after { left: 20%; right: 20%; }
 
     /* Hamburger — native <button> for full keyboard support */
     .hamburger {
@@ -230,6 +231,9 @@
       justify-content: center;
       padding: calc(var(--safe-top) + var(--nav-h) + 24px) clamp(20px, 5vw, 80px) 80px;
       position: relative;
+    }
+    main[id], section[id] {
+      scroll-margin-top: calc(var(--nav-total-h) + var(--safe-top) + 12px);
     }
     section + section::before {
       content: '';
@@ -419,7 +423,7 @@
       font-family:var(--font-display);font-size:1.7rem;font-weight:300;
       color:var(--accent);background:#0f1528;z-index:1;
     }
-    .team-card h4 { font-family:var(--font-display);font-size:1.2rem;font-weight:400;margin-bottom:6px;line-height:1.3; } /* WCAG fix: added line-height */
+    .team-card h3 { font-family:var(--font-display);font-size:1.2rem;font-weight:400;margin-bottom:6px;line-height:1.3; } /* WCAG fix: added line-height */
     .team-card .role { font-size:0.875rem;letter-spacing:.10em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;line-height:1.5; } /* WCAG fix: was 0.73rem (11.7px) → 14px */
     .team-card .bio { font-size:0.9rem;line-height:1.75;color:var(--text-muted); } /* WCAG fix: was 0.85rem (13.6px) → 14.4px */
 

@@ -5,21 +5,53 @@
     const $$ = (s,c=document)=>[...c.querySelectorAll(s)];
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+    function setCurrentNavLink(targetId){
+      $$('#nav-menu a').forEach(a=>{
+        const isCurrent = a.getAttribute('href') === `#${targetId}`;
+        if(isCurrent) a.setAttribute('aria-current','location');
+        else a.removeAttribute('aria-current');
+      });
+    }
+
+    function getHashTarget(hash){
+      if(!hash || hash === '#') return null;
+      let id = '';
+      try {
+        id = decodeURIComponent(hash.slice(1));
+      } catch {
+        return null;
+      }
+      if(!id) return null;
+      return document.getElementById(id);
+    }
+
     /* Smooth scroll + focus management — WCAG 2.4.3 */
     $$('a[href^="#"]').forEach(link => {
       link.addEventListener('click', e => {
-        const id = link.getAttribute('href');
-        const target = $(id);
+        if(e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+        const hash = link.getAttribute('href');
+        const target = getHashTarget(hash);
         if (!target) return;
+
         e.preventDefault();
         closeMobileMenu();
-        if (prefersReduced) { target.scrollIntoView(); }
+        if (prefersReduced) { target.scrollIntoView({block:'start'}); }
         else { target.scrollIntoView({behavior:'smooth',block:'start'}); }
+
         if (!target.hasAttribute('tabindex')) {
           target.setAttribute('tabindex','-1');
           target.addEventListener('blur', ()=>target.removeAttribute('tabindex'), {once:true});
         }
         target.focus({preventScroll:true});
+
+        if(window.location.hash !== hash){
+          history.pushState(null, '', hash);
+        }
+
+        if(target.id){
+          setCurrentNavLink(target.id);
+        }
       });
     });
 
@@ -52,13 +84,16 @@
     const sectionObserver = new IntersectionObserver(entries=>{
       entries.forEach(entry=>{
         if(entry.isIntersecting){
-          $$('#nav-menu a').forEach(a=>a.removeAttribute('aria-current'));
-          const a = $(`#nav-menu a[href="#${entry.target.id}"]`);
-          if(a) a.setAttribute('aria-current','page');
+          setCurrentNavLink(entry.target.id);
         }
       });
     },{threshold:0.45});
     $$('section[id]').forEach(s=>sectionObserver.observe(s));
+
+    const initialTarget = getHashTarget(window.location.hash) || $('#home');
+    if(initialTarget && initialTarget.id){
+      setCurrentNavLink(initialTarget.id);
+    }
 
     /* Fade-up */
     const fuObserver = new IntersectionObserver(entries=>{
@@ -74,23 +109,70 @@
     /* Mobile menu — WCAG 4.1.2, 2.1.2 */
     const hamburger = $('#hamburger');
     const navMenu   = $('#nav-menu');
+    const mobileNav = window.matchMedia('(max-width: 1023px)');
+    const navLinks = $$('a[href^="#"]', navMenu);
 
-    function openMobileMenu(){
-      navMenu.classList.add('open');
-      hamburger.setAttribute('aria-expanded','true');
-      hamburger.setAttribute('aria-label','Close navigation menu');
+    function isMobileNav(){
+      return mobileNav.matches;
     }
-    function closeMobileMenu(){
+
+    function setMobileMenuAccessibilityState(isOpen){
+      if(!isMobileNav()){
+        navMenu.removeAttribute('aria-hidden');
+        navMenu.removeAttribute('inert');
+        return;
+      }
+      navMenu.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+      if(isOpen) navMenu.removeAttribute('inert');
+      else navMenu.setAttribute('inert', '');
+    }
+
+    function syncMenuMode(){
+      if(isMobileNav()){
+        setMobileMenuAccessibilityState(navMenu.classList.contains('open'));
+        return;
+      }
       navMenu.classList.remove('open');
       hamburger.setAttribute('aria-expanded','false');
       hamburger.setAttribute('aria-label','Open navigation menu');
+      setMobileMenuAccessibilityState(false);
+    }
+
+    function openMobileMenu(){
+      if(!isMobileNav()) return;
+      navMenu.classList.add('open');
+      hamburger.setAttribute('aria-expanded','true');
+      hamburger.setAttribute('aria-label','Close navigation menu');
+      setMobileMenuAccessibilityState(true);
+      const firstLink = navLinks[0];
+      if(firstLink) firstLink.focus();
+    }
+    function closeMobileMenu(restoreFocus = false){
+      navMenu.classList.remove('open');
+      hamburger.setAttribute('aria-expanded','false');
+      hamburger.setAttribute('aria-label','Open navigation menu');
+      setMobileMenuAccessibilityState(false);
+      if(restoreFocus && isMobileNav()) hamburger.focus();
     }
     hamburger.addEventListener('click',()=>{
       hamburger.getAttribute('aria-expanded')==='true' ? closeMobileMenu() : openMobileMenu();
     });
     document.addEventListener('keydown',e=>{
       if(e.key==='Escape' && navMenu.classList.contains('open')){
-        closeMobileMenu(); hamburger.focus();
+        closeMobileMenu(true);
+      }
+      if(e.key==='Tab' && navMenu.classList.contains('open') && isMobileNav()){
+        const tabbable = navLinks.filter(link=>!link.hidden);
+        if(!tabbable.length) return;
+        const first = tabbable[0];
+        const last = tabbable[tabbable.length - 1];
+        if(e.shiftKey && document.activeElement === first){
+          e.preventDefault();
+          last.focus();
+        } else if(!e.shiftKey && document.activeElement === last){
+          e.preventDefault();
+          first.focus();
+        }
       }
     });
     document.addEventListener('click',e=>{
@@ -98,12 +180,40 @@
          !navMenu.contains(e.target) &&
          !hamburger.contains(e.target)) closeMobileMenu();
     });
+    if(mobileNav.addEventListener){
+      mobileNav.addEventListener('change', syncMenuMode);
+    } else if(mobileNav.addListener){
+      mobileNav.addListener(syncMenuMode);
+    }
+    syncMenuMode();
 
     /* Form validation — WCAG 3.3.1, 3.3.3 */
     const form = $('#contact-form');
     const submitBtn = $('.btn-submit', form);
+    const status = $('#form-status');
     const success = $('#form-success');
     const submitError = $('#form-error');
+    const formControls = $$('input, textarea, button', form).filter(el => el.name !== 'bot-field');
+    const submitDefaultText = submitBtn ? submitBtn.textContent : '';
+
+    function announceStatus(message){
+      if(!status) return;
+      status.textContent = '';
+      window.requestAnimationFrame(() => {
+        status.textContent = message;
+      });
+    }
+
+    function setSubmittingState(isSubmitting){
+      form.setAttribute('aria-busy', isSubmitting ? 'true' : 'false');
+      formControls.forEach(control => {
+        control.disabled = isSubmitting;
+      });
+      if(submitBtn){
+        submitBtn.setAttribute('aria-busy', isSubmitting ? 'true' : 'false');
+        submitBtn.textContent = isSubmitting ? 'Sending...' : submitDefaultText;
+      }
+    }
 
     function validateField(input){
       const errId = input.getAttribute('aria-describedby');
@@ -112,7 +222,10 @@
       if(input.required && !input.value.trim()) valid=false;
       else if(input.type==='email' && input.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value)) valid=false;
       input.setAttribute('aria-invalid', valid ? 'false' : 'true');
-      if(errEl) errEl.classList.toggle('visible',!valid);
+      if(errEl){
+        errEl.classList.toggle('visible',!valid);
+        errEl.hidden = valid;
+      }
       return valid;
     }
 
@@ -125,23 +238,26 @@
 
     form.addEventListener('submit',e=>{
       e.preventDefault();
+      announceStatus('');
+      success.hidden = true;
       success.classList.remove('visible');
+      submitError.hidden = true;
       submitError.classList.remove('visible');
 
       const required = $$('[required]',form);
       let allValid = true;
       required.forEach(el=>{ if(!validateField(el)) allValid=false; });
       if(!allValid){
+        announceStatus('Please fix the highlighted fields and try again.');
         const first = $('[aria-invalid="true"]',form);
         if(first) first.focus();
         return;
       }
 
-      submitBtn.disabled = true;
-      submitBtn.setAttribute('aria-busy','true');
-
       const formData = new FormData(form);
       const payload = new URLSearchParams(formData).toString();
+      setSubmittingState(true);
+      announceStatus('Sending your message.');
 
       fetch('/',{
         method:'POST',
@@ -150,16 +266,20 @@
       })
       .then(response=>{
         if(!response.ok) throw new Error(`Netlify form submission failed (${response.status})`);
-        form.style.display='none';
+        form.hidden = true;
+        form.setAttribute('aria-hidden', 'true');
+        success.hidden = false;
         success.classList.add('visible');
+        announceStatus('Message sent successfully.');
         success.focus();
       })
       .catch(()=>{
+        submitError.hidden = false;
         submitError.classList.add('visible');
+        announceStatus('Message failed to send. Please try again.');
         submitError.focus();
       })
       .finally(()=>{
-        submitBtn.disabled = false;
-        submitBtn.removeAttribute('aria-busy');
+        setSubmittingState(false);
       });
     });
