@@ -623,6 +623,59 @@
       color: var(--text-muted);
     }
 
+    /* ── Credentials Section (Team stats) ─────────────────── */
+    .credentials-section {
+      background: rgba(240,201,106,0.03);
+      border-top: 1px solid rgba(240,201,106,0.12);
+      border-bottom: 1px solid rgba(240,201,106,0.12);
+    }
+    .credentials-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .credentials-text .eyebrow { justify-content: flex-start; }
+    .credentials-text h1 {
+      font-family: var(--font-display);
+      font-size: clamp(1.9rem, 4vw, 4.2rem);
+      font-weight: 300; line-height: 1.12;
+      margin-bottom: 28px;
+    }
+    .credentials-text h1 em { font-style: italic; color: var(--accent2); }
+    .credentials-text p {
+      font-size: clamp(0.9rem, 1.4vw, 1rem); line-height: 1.85;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+    .credentials-text p:last-child { margin-bottom: 0; }
+    .credentials-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      list-style: none; padding: 0;
+      align-self: center;
+    }
+    .cred-card {
+      padding: 28px 24px;
+      border: 1px solid rgba(240,201,106,0.18);
+      background: rgba(240,201,106,0.04);
+      border-radius: 2px;
+    }
+    .cred-number {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 300;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+    .cred-description {
+      font-size: 0.875rem;
+      line-height: 1.6;
+      color: var(--text-muted);
+    }
+
     /* Specialties sub-header text */
     .specialties-sub {
       font-size: clamp(0.9rem, 1.4vw, 1rem); line-height: 1.8;
@@ -735,6 +788,8 @@
       /* Why section — stack on tablet */
       .why-inner { grid-template-columns: 1fr; gap: 48px; }
       .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .credentials-inner { grid-template-columns: 1fr; gap: 48px; }
+      .credentials-grid { grid-template-columns: repeat(2, 1fr); }
 
             /* Specialties — 2 col on tablet */
       .specialties-grid { grid-template-columns: repeat(2, 1fr); gap: 36px 40px; }
@@ -779,6 +834,8 @@
       /* Why / stats on phones */
       .stats-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
       .stat-card { padding: 20px 16px; }
+      .credentials-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+      .cred-card { padding: 20px 16px; }
 
             /* Specialties — 1 col on phone */
       .specialties-grid { grid-template-columns: 1fr; gap: 32px; }
