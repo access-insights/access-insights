@@ -296,7 +296,7 @@
       font-weight: 300;
       line-height: 1.12;
       margin-bottom: 28px;
-      color: #fff;
+      color: var(--text-light);
     }
     .home-text h1 em { font-style: italic; color: var(--accent); }
     .home-text p {
@@ -405,7 +405,7 @@
       font-size: clamp(1.9rem, 4vw, 4.2rem);
       font-weight: 300; line-height: 1.12;
     }
-    .team-header h1 em { font-style:italic; color:var(--accent); }
+    .team-header h1 em { font-style:italic; color:var(--accent2); }
     .team-header p {
       margin-top:20px; font-size: clamp(0.9rem, 1.4vw, 1rem); color:var(--text-muted);
       max-width:480px; margin-left:auto; margin-right:auto; line-height:1.8;
