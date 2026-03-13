@@ -278,6 +278,10 @@
       background: var(--accent);
     }
 
+    /* Eyebrow text lavender on specialties + contact; lines stay gold */
+    #specialties .eyebrow,
+    #contact .eyebrow { color: var(--text-light); }
+
     /* ─── HOME ──────────────────────────────────────────── */
     #home { min-height: 100vh; min-height: 100svh; padding-top: calc(var(--safe-top) + var(--nav-h) + 24px); }
     #home .section-inner {
