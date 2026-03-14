@@ -397,12 +397,13 @@
 
     /* ─── TEAM ───────────────────────────────────────────── */
     .team-header { text-align:center; margin-bottom:60px; }
-    .team-header h1 {
+    .team-header h2 {
       font-family: var(--font-display);
       font-size: clamp(1.9rem, 4vw, 4.2rem);
       font-weight: 300; line-height: 1.12;
+      color: var(--text-light);
     }
-    .team-header h1 em { font-style:italic; color:var(--accent2); }
+    .team-header h2 em { font-style:italic; color:var(--accent2); }
     .team-header p {
       margin-top:20px; font-size: clamp(0.9rem, 1.4vw, 1rem); color:var(--text-muted);
       max-width:480px; margin-left:auto; margin-right:auto; line-height:1.8;
@@ -644,6 +645,7 @@
       font-size: clamp(1.9rem, 4vw, 4.2rem);
       font-weight: 300; line-height: 1.12;
       margin-bottom: 28px;
+      color: var(--text-light);
     }
     .credentials-text h1 em { font-style: italic; color: var(--accent2); }
     .credentials-text p {
@@ -888,9 +890,9 @@
 
       /* Headings scale tighter */
       .home-text h1 { font-size: clamp(1.9rem, 9vw, 2.8rem); }
-      .specialties-header h2,
+      .specialties-header h1,
       .team-header h2,
-      .why-text h2,
+      .why-text h1,
       #contact h2 { font-size: clamp(1.8rem, 7vw, 2.6rem); }
 
       /* Specialty cards tighter */
