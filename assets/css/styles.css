@@ -296,11 +296,11 @@
     }
     .home-text h1 em { font-style: italic; color: var(--accent2); }
     .home-text p {
-      font-size: clamp(0.95rem, 1.5vw, 1.1rem);
-      line-height: 1.8;
+      font-size: clamp(0.9rem, 1.4vw, 1rem);
+      line-height: 1.85;
       color: var(--text-light);
       max-width: min(440px, 100%);
-      margin-bottom: 48px;
+      margin-bottom: 32px;
     }
     .btn-primary {
       display: inline-flex;
@@ -394,7 +394,7 @@
       line-height: 1.3;
       color: var(--text-light);
     }
-    .specialty-card p { font-size: clamp(0.85rem, 1.3vw, 0.95rem); line-height:1.8; color:var(--text-light); }
+    .specialty-card p { font-size: clamp(0.9rem, 1.4vw, 1rem); line-height:1.85; color:var(--text-light); }
 
     /* ─── TEAM ───────────────────────────────────────────── */
     .team-header { text-align:center; margin-bottom:60px; }
@@ -407,7 +407,7 @@
     .team-header h2 em { font-style:italic; color:var(--accent2); }
     .team-header p {
       margin-top:20px; font-size: clamp(0.9rem, 1.4vw, 1rem); color:var(--text-light);
-      max-width:480px; margin-left:auto; margin-right:auto; line-height:1.8;
+      max-width:480px; margin-left:auto; margin-right:auto; line-height:1.85;
     }
 
     .team-grid { display:flex;flex-wrap:wrap;justify-content:center;gap:24px;list-style:none;padding:0; }
@@ -463,7 +463,7 @@
       color: var(--text-light);
     }
     #contact h2 em { font-style:italic; color:var(--accent2); }
-    .contact-sub { font-size:clamp(0.9rem, 1.4vw, 1rem);color:var(--text-light);max-width:440px;line-height:1.8;margin-bottom:8px; }
+    .contact-sub { font-size:clamp(0.9rem, 1.4vw, 1rem);color:var(--text-light);max-width:440px;line-height:1.85;margin-bottom:20px; }
     .contact-sub:last-of-type { margin-bottom:32px; }
 
     /* Form */
@@ -687,7 +687,7 @@
 
     /* Specialties sub-header text */
     .specialties-sub {
-      font-size: clamp(0.9rem, 1.4vw, 1rem); line-height: 1.8;
+      font-size: clamp(0.9rem, 1.4vw, 1rem); line-height: 1.85;
       color: var(--text-light);
       max-width: 540px;
       margin-top: 16px;
