@@ -295,6 +295,7 @@
       color: var(--text-light);
     }
     .home-text h1 em { font-style: italic; color: var(--accent); }
+    .home-text p em { font-style: italic; color: var(--accent2); }
     .home-text p {
       font-size: clamp(0.95rem, 1.5vw, 1.1rem);
       line-height: 1.8;
