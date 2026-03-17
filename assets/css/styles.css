@@ -295,7 +295,6 @@
       color: var(--text-light);
     }
     .home-text h1 em { font-style: italic; color: var(--accent); }
-    .home-text p em { font-style: italic; color: var(--accent2); }
     .home-text p {
       font-size: clamp(0.95rem, 1.5vw, 1.1rem);
       line-height: 1.8;
@@ -595,6 +594,7 @@
       color: var(--text-light);
     }
     .why-text h1 em { font-style: italic; color: var(--accent2); }
+    .why-text p em { font-style: italic; color: var(--accent2); }
     .why-text p {
       font-size: clamp(0.9rem, 1.4vw, 1rem); line-height: 1.85;
       color: var(--text-light);
