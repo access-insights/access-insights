@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Access Insights Research Program Environments</title>
+  <meta name="description" content="Access Insights research program production and staging environment links for team use." />
+
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg?v=2" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <style>
+    .environment-page {
+      min-height: 100vh;
+      padding-top: calc(var(--safe-top) + var(--nav-total-h) + 48px);
+      align-items: flex-start;
+    }
+
+    .environment-layout {
+      display: grid;
+      gap: 40px;
+      max-width: 960px;
+    }
+
+    .environment-header h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 4.6rem);
+      font-weight: 300;
+      line-height: 1.08;
+      color: var(--text-light);
+      margin-bottom: 20px;
+    }
+
+    .environment-header h1 em {
+      color: var(--accent2);
+      font-style: italic;
+    }
+
+    .environment-header p,
+    .environment-section p {
+      color: var(--text-light);
+      font-size: 1rem;
+      line-height: 1.8;
+      max-width: 720px;
+    }
+
+    .environment-section {
+      border-top: 1px solid rgba(255,255,255,0.14);
+      padding-top: 28px;
+    }
+
+    .environment-section h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 300;
+      line-height: 1.15;
+      color: var(--text-light);
+      margin-bottom: 16px;
+    }
+
+    .environment-warning {
+      border: 1px solid rgba(247,223,140,0.36);
+      background: rgba(247,223,140,0.08);
+      padding: 20px 22px;
+      border-radius: 2px;
+    }
+
+    .environment-warning strong {
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .environment-list {
+      display: grid;
+      gap: 12px;
+      list-style: none;
+      padding: 0;
+    }
+
+    .environment-list li {
+      display: grid;
+      gap: 4px;
+      padding: 18px 20px;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.035);
+      border-radius: 2px;
+    }
+
+    .environment-list strong,
+    .environment-table th {
+      color: var(--accent);
+      font-size: 0.875rem;
+      letter-spacing: 0.08em;
+      line-height: 1.5;
+      text-transform: uppercase;
+    }
+
+    .environment-list a,
+    .environment-table a {
+      color: var(--text-light);
+      overflow-wrap: anywhere;
+      text-decoration: underline;
+      text-decoration-color: rgba(247,223,140,0.45);
+      text-underline-offset: 3px;
+    }
+
+    .environment-list a:hover,
+    .environment-table a:hover {
+      text-decoration-color: var(--accent);
+    }
+
+    .environment-table-wrap {
+      overflow-x: auto;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 2px;
+      background: rgba(255,255,255,0.035);
+    }
+
+    .environment-table {
+      width: 100%;
+      min-width: 720px;
+      border-collapse: collapse;
+      color: var(--text-light);
+    }
+
+    .environment-table th,
+    .environment-table td {
+      padding: 16px 18px;
+      text-align: left;
+      vertical-align: top;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      line-height: 1.6;
+    }
+
+    .environment-table tbody tr:last-child th,
+    .environment-table tbody tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .environment-table td {
+      color: var(--text-light);
+      font-size: 0.95rem;
+    }
+
+    .environment-table .password-note {
+      color: var(--accent2);
+      font-weight: 500;
+    }
+
+    .environment-footer {
+      justify-content: flex-start;
+      margin-top: 16px;
+    }
+
+    @media (max-width: 767px) {
+      .environment-page {
+        padding-top: calc(var(--safe-top) + var(--nav-total-h) + 32px);
+      }
+
+      .environment-list li {
+        padding: 16px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <div class="gradient-canvas" aria-hidden="true"></div>
+  <div class="glow glow-1" aria-hidden="true"></div>
+  <div class="glow glow-2" aria-hidden="true"></div>
+  <div class="glow glow-3" aria-hidden="true"></div>
+  <div class="glow glow-4" aria-hidden="true"></div>
+
+  <nav id="navbar" aria-label="Site navigation">
+    <a href="index.html" class="nav-logo" aria-label="Access Insights - home">
+      <img class="nav-logo-svg" src="assets/images/logo.svg" alt="" aria-hidden="true" />
+      <div class="nav-logo-text" aria-hidden="true">
+        <strong>Access</strong><span> Insights</span>
+      </div>
+    </a>
+  </nav>
+
+  <main id="main-content">
+    <section class="environment-page">
+      <div class="section-inner environment-layout">
+        <header class="environment-header">
+          <p class="eyebrow">Team Reference</p>
+          <h1>Research program <em>environments.</em></h1>
+          <p>Use this page to find the correct production and staging entry points for the Access Insights research program.</p>
+        </header>
+
+        <section class="environment-warning" aria-labelledby="testing-policy-heading">
+          <h2 id="testing-policy-heading">Important Testing Policy</h2>
+          <p><strong>Do not enter test data in production.</strong></p>
+          <p>All testing should be done locally or in staging. Production should be used only for real participant, partner, and team workflows.</p>
+        </section>
+
+        <section class="environment-section" aria-labelledby="production-sites-heading">
+          <h2 id="production-sites-heading">Production Login Sites</h2>
+          <ul class="environment-list">
+            <li>
+              <strong>Participant program</strong>
+              <a href="https://research.accessinsights.net">https://research.accessinsights.net</a>
+            </li>
+            <li>
+              <strong>Partner program</strong>
+              <a href="https://partner.accessinsights.net">https://partner.accessinsights.net</a>
+            </li>
+            <li>
+              <strong>Team workspace</strong>
+              <a href="https://research.accessinsights.net/team/sign-in">https://research.accessinsights.net/team/sign-in</a>
+            </li>
+          </ul>
+        </section>
+
+        <section class="environment-section" aria-labelledby="staging-sites-heading">
+          <h2 id="staging-sites-heading">Staging Login Sites</h2>
+          <ul class="environment-list">
+            <li>
+              <strong>Participant program</strong>
+              <a href="https://access-insights-research-staging.netlify.app">https://access-insights-research-staging.netlify.app</a>
+            </li>
+            <li>
+              <strong>Partner program</strong>
+              <a href="https://access-insights-research-staging.netlify.app/partner-register">https://access-insights-research-staging.netlify.app/partner-register</a>
+            </li>
+            <li>
+              <strong>Team workspace</strong>
+              <a href="https://access-insights-research-staging.netlify.app/team/sign-in">https://access-insights-research-staging.netlify.app/team/sign-in</a>
+            </li>
+          </ul>
+        </section>
+
+        <section class="environment-section" aria-labelledby="test-logins-heading">
+          <h2 id="test-logins-heading">Staging Test Logins</h2>
+          <p>Use these accounts only in staging. Do not use them in production.</p>
+
+          <div class="environment-table-wrap">
+            <table class="environment-table">
+              <thead>
+                <tr>
+                  <th scope="col">Role</th>
+                  <th scope="col">Login</th>
+                  <th scope="col">Password</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">Participant</th>
+                  <td><a href="mailto:staging+participant@accessinsights.net">staging+participant@accessinsights.net</a></td>
+                  <td class="password-note">Request from administrator.</td>
+                </tr>
+                <tr>
+                  <th scope="row">Research viewer</th>
+                  <td><a href="mailto:staging+research-viewer@accessinsights.net">staging+research-viewer@accessinsights.net</a></td>
+                  <td class="password-note">Request from administrator.</td>
+                </tr>
+                <tr>
+                  <th scope="row">Research coordinator</th>
+                  <td><a href="mailto:staging+research-coordinator@accessinsights.net">staging+research-coordinator@accessinsights.net</a></td>
+                  <td class="password-note">Request from administrator.</td>
+                </tr>
+                <tr>
+                  <th scope="row">Research lead</th>
+                  <td><a href="mailto:staging+research-lead@accessinsights.net">staging+research-lead@accessinsights.net</a></td>
+                  <td class="password-note">Request from administrator.</td>
+                </tr>
+                <tr>
+                  <th scope="row">Partner admin</th>
+                  <td><a href="mailto:staging+partner-admin@accessinsights.net">staging+partner-admin@accessinsights.net</a></td>
+                  <td class="password-note">Request from administrator.</td>
+                </tr>
+                <tr>
+                  <th scope="row">Admin</th>
+                  <td><a href="mailto:staging+admin@accessinsights.net">staging+admin@accessinsights.net</a></td>
+                  <td class="password-note">Request from administrator.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <footer class="footer-line environment-footer">
+          <p>© 2026 Access Insights. All rights reserved.</p>
+        </footer>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
