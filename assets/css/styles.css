@@ -154,13 +154,33 @@
     .nav-logo-text strong { color:var(--accent);font-weight:700; }
     .nav-logo-text span   { color: var(--text-light); font-weight: 300; }
 
-    /* Nav list */
+    /* Nav list — always hamburger */
     nav ul {
-      display: flex;
-      align-items: center;
-      gap: 4px;
+      position: absolute;
+      top: 100%; left: 0; right: 0;
+      background: rgba(8, 4, 16, 0.98);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+      padding: 16px 0 24px;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transform: translateY(-8px);
+      transition: transform 0.4s var(--ease-out-expo), opacity 0.25s ease;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      z-index: 99;
       list-style: none;
-      margin: 0; padding: 0;
+      margin: 0;
+      display: flex;
+    }
+    nav ul.open {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: translateY(0);
     }
     nav ul a {
       display: inline-flex;
@@ -193,7 +213,7 @@
 
     /* Hamburger — native <button> for full keyboard support */
     .hamburger {
-      display: none;
+      display: flex;
       flex-direction: column;
       justify-content: center;
       gap: 5px;
