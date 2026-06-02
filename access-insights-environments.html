@@ -65,6 +65,14 @@
       margin-bottom: 16px;
     }
 
+    .environment-section h3 {
+      color: var(--text-light);
+      font-size: 1rem;
+      font-weight: 500;
+      line-height: 1.4;
+      margin: 22px 0 12px;
+    }
+
     .environment-note {
       color: var(--text-light);
       font-size: 1rem;
@@ -84,8 +92,10 @@
     }
 
     .environment-list li {
-      display: grid;
-      gap: 4px;
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      min-width: 0;
     }
 
     .environment-list strong,
@@ -95,6 +105,10 @@
       letter-spacing: 0.08em;
       line-height: 1.5;
       text-transform: uppercase;
+    }
+
+    .environment-list strong {
+      flex: 0 0 180px;
     }
 
     .environment-list a,
@@ -120,7 +134,7 @@
 
     .environment-table {
       width: 100%;
-      min-width: 720px;
+      min-width: 520px;
       border-collapse: collapse;
       color: var(--text-light);
     }
@@ -144,11 +158,6 @@
       font-size: 0.95rem;
     }
 
-    .environment-table .password-note {
-      color: var(--accent2);
-      font-weight: 500;
-    }
-
     .environment-footer {
       justify-content: flex-start;
       margin-top: 16px;
@@ -157,6 +166,16 @@
     @media (max-width: 767px) {
       .environment-page {
         padding-top: calc(var(--safe-top) + var(--nav-total-h) + 32px);
+      }
+
+      .environment-list li {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      .environment-list strong {
+        flex-basis: auto;
       }
     }
   </style>
@@ -185,14 +204,30 @@
       <div class="section-inner environment-layout">
         <header class="environment-header">
           <p class="eyebrow">Team Reference</p>
-          <h1>Research program <em>environments.</em></h1>
-          <p>Use this page to find the correct production and staging entry points for the Access Insights research program.</p>
+          <h1>Access Insights <em>Environments.</em></h1>
+          <p>Use this page to find the correct production and staging entry points for the Access Insights website and the research program application.</p>
         </header>
 
         <p class="environment-note"><strong>Note:</strong> Please do not enter test data in the Production environment.</p>
 
-        <section class="environment-section" aria-labelledby="production-sites-heading">
-          <h2 id="production-sites-heading">Production Login Sites</h2>
+        <section class="environment-section" aria-labelledby="website-sites-heading">
+          <h2 id="website-sites-heading">Access Insights Website</h2>
+          <ul class="environment-list">
+            <li>
+              <strong>Production</strong>
+              <a href="https://accessinsights.net">https://accessinsights.net</a>
+            </li>
+            <li>
+              <strong>Staging</strong>
+              <a href="https://staging--access-insights.netlify.app/">https://staging--access-insights.netlify.app/</a>
+            </li>
+          </ul>
+        </section>
+
+        <section class="environment-section" aria-labelledby="research-platform-heading">
+          <h2 id="research-platform-heading">Research Platform Application</h2>
+
+          <h3 id="production-sites-heading">Production Login Sites</h3>
           <ul class="environment-list">
             <li>
               <strong>Participant program</strong>
@@ -207,10 +242,8 @@
               <a href="https://research.accessinsights.net/team/sign-in">https://research.accessinsights.net/team/sign-in</a>
             </li>
           </ul>
-        </section>
 
-        <section class="environment-section" aria-labelledby="staging-sites-heading">
-          <h2 id="staging-sites-heading">Staging Login Sites</h2>
+          <h3 id="staging-sites-heading">Staging Login Sites</h3>
           <ul class="environment-list">
             <li>
               <strong>Participant program</strong>
@@ -237,39 +270,32 @@
                 <tr>
                   <th scope="col">Role</th>
                   <th scope="col">Login</th>
-                  <th scope="col">Password</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <th scope="row">Participant</th>
                   <td><a href="mailto:participant@accessinsights.net">participant@accessinsights.net</a></td>
-                  <td class="password-note">Request from administrator.</td>
                 </tr>
                 <tr>
                   <th scope="row">Research viewer</th>
                   <td><a href="mailto:research-viewer@accessinsights.net">research-viewer@accessinsights.net</a></td>
-                  <td class="password-note">Request from administrator.</td>
                 </tr>
                 <tr>
                   <th scope="row">Research coordinator</th>
                   <td><a href="mailto:research-coordinator@accessinsights.net">research-coordinator@accessinsights.net</a></td>
-                  <td class="password-note">Request from administrator.</td>
                 </tr>
                 <tr>
                   <th scope="row">Research lead</th>
                   <td><a href="mailto:research-lead@accessinsights.net">research-lead@accessinsights.net</a></td>
-                  <td class="password-note">Request from administrator.</td>
                 </tr>
                 <tr>
                   <th scope="row">Partner admin</th>
                   <td><a href="mailto:partner-admin@accessinsights.net">partner-admin@accessinsights.net</a></td>
-                  <td class="password-note">Request from administrator.</td>
                 </tr>
                 <tr>
                   <th scope="row">Admin</th>
                   <td><a href="mailto:admin@accessinsights.net">admin@accessinsights.net</a></td>
-                  <td class="password-note">Request from administrator.</td>
                 </tr>
               </tbody>
             </table>
