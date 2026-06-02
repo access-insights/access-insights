@@ -116,36 +116,19 @@
     /* Mobile menu — WCAG 4.1.2, 2.1.2 */
     const hamburger = $('#hamburger');
     const navMenu   = $('#nav-menu');
-    const mobileNav = window.matchMedia('(max-width: 1023px)');
     const navLinks = $$('a[href^="#"]', navMenu);
 
-    function isMobileNav(){
-      return mobileNav.matches;
-    }
-
     function setMobileMenuAccessibilityState(isOpen){
-      if(!isMobileNav()){
-        navMenu.removeAttribute('aria-hidden');
-        navMenu.removeAttribute('inert');
-        return;
-      }
       navMenu.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
       if(isOpen) navMenu.removeAttribute('inert');
       else navMenu.setAttribute('inert', '');
     }
 
     function syncMenuMode(){
-      if(isMobileNav()){
-        setMobileMenuAccessibilityState(navMenu.classList.contains('open'));
-        return;
-      }
-      navMenu.classList.remove('open');
-      hamburger.setAttribute('aria-expanded','false');
-      setMobileMenuAccessibilityState(false);
+      setMobileMenuAccessibilityState(navMenu.classList.contains('open'));
     }
 
     function openMobileMenu(){
-      if(!isMobileNav()) return;
       navMenu.classList.add('open');
       hamburger.setAttribute('aria-expanded','true');
       setMobileMenuAccessibilityState(true);
@@ -156,7 +139,7 @@
       navMenu.classList.remove('open');
       hamburger.setAttribute('aria-expanded','false');
       setMobileMenuAccessibilityState(false);
-      if(restoreFocus && isMobileNav()) hamburger.focus();
+      if(restoreFocus) hamburger.focus();
     }
     hamburger.addEventListener('click',()=>{
       hamburger.getAttribute('aria-expanded')==='true' ? closeMobileMenu() : openMobileMenu();
@@ -184,11 +167,6 @@
          !navMenu.contains(e.target) &&
          !hamburger.contains(e.target)) closeMobileMenu();
     });
-    if(mobileNav.addEventListener){
-      mobileNav.addEventListener('change', syncMenuMode);
-    } else if(mobileNav.addListener){
-      mobileNav.addListener(syncMenuMode);
-    }
     syncMenuMode();
 
     /* Form validation — WCAG 3.3.1, 3.3.3 */
