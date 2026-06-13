@@ -1,293 +1,202 @@
-/* Access Insights — Main JavaScript */
+"use strict";
 
-'use strict';
-    const $ = (s,c=document)=>c.querySelector(s);
-    const $$ = (s,c=document)=>[...c.querySelectorAll(s)];
-    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const $ = (selector, context = document) => context.querySelector(selector);
+const $$ = (selector, context = document) => Array.from(context.querySelectorAll(selector));
 
-    function setCurrentNavLink(targetId){
-      $$('#nav-menu a').forEach(a=>{
-        const isCurrent = a.getAttribute('href') === `#${targetId}`;
-        if(isCurrent) a.setAttribute('aria-current','location');
-        else a.removeAttribute('aria-current');
-      });
-    }
+const menuButton = $("#menu-toggle");
+const siteNav = $("#site-nav");
+const navLinks = siteNav ? $$("a", siteNav) : [];
+const mobileQuery = window.matchMedia("(max-width: 1050px)");
 
-    function getHashTarget(hash){
-      if(!hash || hash === '#') return null;
-      let id = '';
-      try {
-        id = decodeURIComponent(hash.slice(1));
-      } catch {
-        return null;
-      }
-      if(!id) return null;
-      return document.getElementById(id);
-    }
+function isMobileMenu() {
+  return mobileQuery.matches;
+}
 
-    /* Smooth scroll + focus management — WCAG 2.4.3 */
-    $$('a[href^="#"]').forEach(link => {
-      link.addEventListener('click', e => {
-        if(e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+function setMenuState(isOpen, restoreFocus = false) {
+  if (!menuButton || !siteNav) return;
 
-        const hash = link.getAttribute('href');
-        const target = getHashTarget(hash);
-        if (!target) return;
+  menuButton.setAttribute("aria-expanded", String(isOpen));
+  siteNav.classList.toggle("open", isOpen);
 
-        e.preventDefault();
-        closeMobileMenu();
-        if (prefersReduced) { target.scrollIntoView({block:'start'}); }
-        else { target.scrollIntoView({behavior:'smooth',block:'start'}); }
+  if (isMobileMenu()) {
+    siteNav.setAttribute("aria-hidden", String(!isOpen));
+    if (isOpen) siteNav.removeAttribute("inert");
+    else siteNav.setAttribute("inert", "");
+  } else {
+    siteNav.removeAttribute("aria-hidden");
+    siteNav.removeAttribute("inert");
+  }
 
-        if (!target.hasAttribute('tabindex')) {
-          target.setAttribute('tabindex','-1');
-          target.addEventListener('blur', ()=>target.removeAttribute('tabindex'), {once:true});
-        }
-        target.focus({preventScroll:true});
+  if (restoreFocus) menuButton.focus();
+}
 
-        if(window.location.hash !== hash){
-          history.pushState(null, '', hash);
-        }
+function syncMenuMode() {
+  if (!menuButton || !siteNav) return;
+  if (isMobileMenu()) {
+    const isOpen = menuButton.getAttribute("aria-expanded") === "true";
+    setMenuState(isOpen);
+  } else {
+    setMenuState(false);
+    siteNav.classList.remove("open");
+  }
+}
 
-        if(target.id){
-          setCurrentNavLink(target.id);
-        }
-      });
+if (menuButton && siteNav) {
+  menuButton.addEventListener("click", () => {
+    const isOpen = menuButton.getAttribute("aria-expanded") === "true";
+    setMenuState(!isOpen);
+    if (!isOpen && navLinks[0]) navLinks[0].focus();
+  });
+
+  navLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      if (isMobileMenu()) setMenuState(false);
     });
+  });
 
-    /* Nav scroll tint */
-    const navbar = $('#navbar');
-    function syncNavHeight(){
-      const navHeight = Math.ceil(navbar.getBoundingClientRect().height);
-      document.documentElement.style.setProperty('--nav-total-h', `${navHeight}px`);
-    }
-    syncNavHeight();
+  document.addEventListener("keydown", (event) => {
+    const isOpen = menuButton.getAttribute("aria-expanded") === "true";
+    if (!isOpen || !isMobileMenu()) return;
 
-    window.addEventListener('resize', syncNavHeight, {passive:true});
-    window.addEventListener('orientationchange', syncNavHeight);
-    if(window.visualViewport){
-      window.visualViewport.addEventListener('resize', syncNavHeight);
-    }
-    if(document.fonts && document.fonts.ready){
-      document.fonts.ready.then(syncNavHeight);
-    }
-    if(window.ResizeObserver){
-      const navResizeObserver = new ResizeObserver(syncNavHeight);
-      navResizeObserver.observe(navbar);
+    if (event.key === "Escape") {
+      event.preventDefault();
+      setMenuState(false, true);
+      return;
     }
 
-    window.addEventListener('scroll',()=>{
-      navbar.classList.toggle('scrolled', window.scrollY > 40);
-    },{passive:true});
-
-    /* aria-current on scroll — WCAG 4.1.2
-       Uses scroll position rather than IntersectionObserver so tall sections
-       (which never reach a 45% threshold) still highlight correctly. */
-    const navSections = $$('section[id]');
-    function updateActiveNav(){
-      const navH = navbar.getBoundingClientRect().height;
-      const scrollMid = window.scrollY + navH + 40;
-      let active = navSections[0];
-      for(const sec of navSections){
-        if(sec.offsetTop <= scrollMid) active = sec;
-        else break;
+    if (event.key === "Tab" && navLinks.length) {
+      const first = navLinks[0];
+      const last = navLinks[navLinks.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
       }
-      if(active) setCurrentNavLink(active.id);
     }
-    window.addEventListener('scroll', updateActiveNav, {passive:true});
-    updateActiveNav();
+  });
 
-    const initialTarget = getHashTarget(window.location.hash) || $('#home');
-    if(initialTarget && initialTarget.id){
-      setCurrentNavLink(initialTarget.id);
-    }
+  document.addEventListener("click", (event) => {
+    const isOpen = menuButton.getAttribute("aria-expanded") === "true";
+    if (!isOpen || !isMobileMenu()) return;
+    if (siteNav.contains(event.target) || menuButton.contains(event.target)) return;
+    setMenuState(false);
+  });
 
-    /* Fade-up */
-    const fuObserver = new IntersectionObserver(entries=>{
-      entries.forEach(entry=>{
-        if(entry.isIntersecting){
-          entry.target.classList.add('visible');
-          fuObserver.unobserve(entry.target);
-        }
-      });
-    },{threshold:0.1});
-    $$('.fade-up:not(.visible)').forEach(el=>fuObserver.observe(el));
+  if (mobileQuery.addEventListener) mobileQuery.addEventListener("change", syncMenuMode);
+  else mobileQuery.addListener(syncMenuMode);
+  syncMenuMode();
+}
 
-    /* Mobile menu — WCAG 4.1.2, 2.1.2 */
-    const hamburger = $('#hamburger');
-    const navMenu   = $('#nav-menu');
-    const mobileNav = window.matchMedia('(max-width: 1023px)');
-    const navLinks = $$('a[href^="#"]', navMenu);
+const skipLink = $(".skip-link");
+const main = $("#main-content");
 
-    function isMobileNav(){
-      return mobileNav.matches;
-    }
+if (skipLink && main) {
+  skipLink.addEventListener("click", () => {
+    if (!main.hasAttribute("tabindex")) main.setAttribute("tabindex", "-1");
+    window.setTimeout(() => main.focus({ preventScroll: true }), 0);
+  });
+}
 
-    function setMobileMenuAccessibilityState(isOpen){
-      if(!isMobileNav()){
-        navMenu.removeAttribute('aria-hidden');
-        navMenu.removeAttribute('inert');
-        return;
-      }
-      navMenu.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
-      if(isOpen) navMenu.removeAttribute('inert');
-      else navMenu.setAttribute('inert', '');
-    }
+const form = $("#contact-form");
 
-    function syncMenuMode(){
-      if(isMobileNav()){
-        setMobileMenuAccessibilityState(navMenu.classList.contains('open'));
-        return;
-      }
-      navMenu.classList.remove('open');
-      hamburger.setAttribute('aria-expanded','false');
-      setMobileMenuAccessibilityState(false);
-    }
+if (form) {
+  const status = $("#form-status");
+  const success = $("#form-success");
+  const submitError = $("#form-error");
+  const submitButton = $(".btn-submit", form);
+  const controls = $$("input, select, textarea, button", form).filter((control) => control.name !== "bot-field");
+  const defaultButtonText = submitButton ? submitButton.textContent : "";
 
-    function openMobileMenu(){
-      if(!isMobileNav()) return;
-      navMenu.classList.add('open');
-      hamburger.setAttribute('aria-expanded','true');
-      setMobileMenuAccessibilityState(true);
-      const firstLink = navLinks[0];
-      if(firstLink) firstLink.focus();
-    }
-    function closeMobileMenu(restoreFocus = false){
-      navMenu.classList.remove('open');
-      hamburger.setAttribute('aria-expanded','false');
-      setMobileMenuAccessibilityState(false);
-      if(restoreFocus && isMobileNav()) hamburger.focus();
-    }
-    hamburger.addEventListener('click',()=>{
-      hamburger.getAttribute('aria-expanded')==='true' ? closeMobileMenu() : openMobileMenu();
+  function announce(message) {
+    if (!status) return;
+    status.textContent = "";
+    window.requestAnimationFrame(() => {
+      status.textContent = message;
     });
-    document.addEventListener('keydown',e=>{
-      if(e.key==='Escape' && navMenu.classList.contains('open')){
-        closeMobileMenu(true);
-      }
-      if(e.key==='Tab' && navMenu.classList.contains('open') && isMobileNav()){
-        const tabbable = navLinks.filter(link=>!link.hidden);
-        if(!tabbable.length) return;
-        const first = tabbable[0];
-        const last = tabbable[tabbable.length - 1];
-        if(e.shiftKey && document.activeElement === first){
-          e.preventDefault();
-          last.focus();
-        } else if(!e.shiftKey && document.activeElement === last){
-          e.preventDefault();
-          first.focus();
-        }
-      }
+  }
+
+  function errorElementFor(control) {
+    const describedBy = control.getAttribute("aria-describedby");
+    if (!describedBy) return null;
+    return document.getElementById(describedBy.split(/\s+/)[0]);
+  }
+
+  function validateControl(control) {
+    const value = control.value.trim();
+    let valid = true;
+
+    if (control.required && !value) valid = false;
+    if (valid && control.type === "email" && value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) valid = false;
+
+    const error = errorElementFor(control);
+    control.toggleAttribute("aria-invalid", !valid);
+    if (error) error.hidden = valid;
+    return valid;
+  }
+
+  function setSubmitting(isSubmitting) {
+    form.setAttribute("aria-busy", String(isSubmitting));
+    controls.forEach((control) => {
+      control.disabled = isSubmitting;
     });
-    document.addEventListener('click',e=>{
-      if(navMenu.classList.contains('open') &&
-         !navMenu.contains(e.target) &&
-         !hamburger.contains(e.target)) closeMobileMenu();
+    if (submitButton) {
+      submitButton.setAttribute("aria-busy", String(isSubmitting));
+      submitButton.textContent = isSubmitting ? "Sending..." : defaultButtonText;
+    }
+  }
+
+  $$("input, select, textarea", form).forEach((control) => {
+    control.addEventListener("blur", () => {
+      if (control.value.trim() || control.getAttribute("aria-invalid") === "true") validateControl(control);
     });
-    if(mobileNav.addEventListener){
-      mobileNav.addEventListener('change', syncMenuMode);
-    } else if(mobileNav.addListener){
-      mobileNav.addListener(syncMenuMode);
-    }
-    syncMenuMode();
-
-    /* Form validation — WCAG 3.3.1, 3.3.3 */
-    const form = $('#contact-form');
-    const submitBtn = $('.btn-submit', form);
-    const status = $('#form-status');
-    const success = $('#form-success');
-    const submitError = $('#form-error');
-    const formControls = $$('input, textarea, button', form).filter(el => el.name !== 'bot-field');
-    const submitDefaultText = submitBtn ? submitBtn.textContent : '';
-
-    function announceStatus(message){
-      if(!status) return;
-      status.textContent = '';
-      window.requestAnimationFrame(() => {
-        status.textContent = message;
-      });
-    }
-
-    function setSubmittingState(isSubmitting){
-      form.setAttribute('aria-busy', isSubmitting ? 'true' : 'false');
-      formControls.forEach(control => {
-        control.disabled = isSubmitting;
-      });
-      if(submitBtn){
-        submitBtn.setAttribute('aria-busy', isSubmitting ? 'true' : 'false');
-        submitBtn.textContent = isSubmitting ? 'Sending...' : submitDefaultText;
-      }
-    }
-
-    function validateField(input){
-      const errId = input.getAttribute('aria-describedby');
-      const errEl = errId ? $('#'+errId) : null;
-      let valid = true;
-      if(input.required && !input.value.trim()) valid=false;
-      else if(input.type==='email' && input.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value)) valid=false;
-      if(valid) input.removeAttribute('aria-invalid');
-      else input.setAttribute('aria-invalid', 'true');
-      if(errEl){
-        errEl.classList.toggle('visible',!valid);
-        errEl.hidden = valid;
-      }
-      return valid;
-    }
-
-    $$('#contact-form input, #contact-form textarea').forEach(input=>{
-      input.addEventListener('blur',()=>{
-        // Avoid announcing "invalid" as users first navigate through empty required fields.
-        if(input.value.trim() || input.getAttribute('aria-invalid')==='true') validateField(input);
-      });
-      input.addEventListener('input',()=>{
-        if(input.getAttribute('aria-invalid')==='true') validateField(input);
-      });
+    control.addEventListener("input", () => {
+      if (control.getAttribute("aria-invalid") === "true") validateControl(control);
     });
+  });
 
-    form.addEventListener('submit',e=>{
-      e.preventDefault();
-      announceStatus('');
-      success.hidden = true;
-      success.classList.remove('visible');
-      submitError.hidden = true;
-      submitError.classList.remove('visible');
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
 
-      const required = $$('[required]',form);
-      let allValid = true;
-      required.forEach(el=>{ if(!validateField(el)) allValid=false; });
-      if(!allValid){
-        announceStatus('Please fix the highlighted fields and try again.');
-        const first = $('[aria-invalid="true"]',form);
-        if(first) first.focus();
-        return;
-      }
+    if (success) success.hidden = true;
+    if (submitError) submitError.hidden = true;
+    announce("");
 
-      const formData = new FormData(form);
-      const payload = new URLSearchParams(formData).toString();
-      setSubmittingState(true);
-      announceStatus('Sending your message.');
+    const requiredControls = $$("[required]", form);
+    const firstInvalid = requiredControls.find((control) => !validateControl(control));
 
-      fetch('/',{
-        method:'POST',
-        headers:{'Content-Type':'application/x-www-form-urlencoded'},
-        body: payload
-      })
-      .then(response=>{
-        if(!response.ok) throw new Error(`Netlify form submission failed (${response.status})`);
+    if (firstInvalid) {
+      announce("Please fix the highlighted fields and try again.");
+      firstInvalid.focus();
+      return;
+    }
+
+    const payload = new URLSearchParams(new FormData(form)).toString();
+    setSubmitting(true);
+    announce("Sending your message.");
+
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: payload
+    })
+      .then((response) => {
+        if (!response.ok) throw new Error("Submission failed");
         form.hidden = true;
-        form.setAttribute('aria-hidden', 'true');
-        success.hidden = false;
-        success.classList.add('visible');
-        announceStatus('Message sent successfully.');
-        success.focus();
+        if (success) {
+          success.hidden = false;
+          success.focus();
+        }
+        announce("Message sent successfully.");
       })
-      .catch(()=>{
-        submitError.hidden = false;
-        submitError.classList.add('visible');
-        announceStatus('Message failed to send. Please try again.');
-        submitError.focus();
+      .catch(() => {
+        if (submitError) {
+          submitError.hidden = false;
+          submitError.focus();
+        }
+        announce("Message failed to send. Please try again.");
       })
-      .finally(()=>{
-        setSubmittingState(false);
-      });
-    });
+      .finally(() => setSubmitting(false));
+  });
+}
