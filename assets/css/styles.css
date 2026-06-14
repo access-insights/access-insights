@@ -342,6 +342,7 @@ h1 {
   font-size: clamp(2.35rem, 5.2vw, 4.9rem);
 }
 
+.hero h1,
 .hero--compact h1 {
   font-size: clamp(2.05rem, 4vw, 3.6rem);
 }
@@ -357,6 +358,10 @@ h3 {
 em {
   color: var(--accent);
   font-style: italic;
+}
+
+.hero-line {
+  display: block;
 }
 
 p {
@@ -480,6 +485,13 @@ p {
 .card p,
 .card li {
   color: var(--muted);
+}
+
+.card-list {
+  display: grid;
+  gap: 10px;
+  padding-left: 22px;
+  margin: 0;
 }
 
 .card-link {

@@ -46,7 +46,8 @@ test.describe('Accessibility smoke checks', () => {
       '/',
       'platform.html',
       'programs.html',
-      'lab-insights.html',
+      'proto-lab.html',
+      'insights.html',
       'about.html',
       'contact.html',
     ]);
