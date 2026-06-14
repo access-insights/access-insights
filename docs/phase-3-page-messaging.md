@@ -13,12 +13,12 @@ The site should not explicitly ask for funding. It should implicitly appeal to m
 Hero:
 
 - H1: Technology is moving faster than ever. Human experience is not.
-- Support: Access Insights builds research innovation infrastructure for identifying high-impact needs, validating solutions, and connecting them with the right partners for scaled impact.
+- Support: Access Insights builds research innovation infrastructure to identify high-impact needs, validate solutions, and accelerate the path from insight to impact.
 
 Key section messages:
 
 - Products fail when teams design for averages, chase the wrong problems, or stop at prototypes that never reach the people who need them.
-- Programs create two pathways to better research: participants surface lived experience and unmet needs; partners contribute reach, expertise, delivery capacity, sites, and collaboration.
+- Programs create two pathways to meaningful impact: user experience contributors surface lived experience and unmet needs; partners contribute expertise, capacity, and reach.
 - The pipeline model moves from unmet need to scaled impact by identifying the right problems, scoring needs, creating research opportunities, validating solution qualities, and activating partners.
 
 ## Platform
@@ -58,7 +58,7 @@ Message:
 
 Primary paths:
 
-- Participant Program: `research.accessinsights.net`
+- User Experience Program: `research.accessinsights.net`
 - Partner Network: `partner.accessinsights.net`
 
 ## Lab & Insights

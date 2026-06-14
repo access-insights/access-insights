@@ -18,7 +18,7 @@ Human variability is the core frame. Disability, accessibility, and aging remain
 - About
 - Contact
 
-`Programs` is a real page that explains the two pathways into better research: participant contribution and partner collaboration. `Lab & Insights` is the summary container for Current Projects, Articles & Insights, and Proto-Lab.
+`Programs` is a real page that explains the two pathways into meaningful impact: user experience contribution and partner collaboration. `Lab & Insights` is the summary container for Current Projects, Articles & Insights, and Proto-Lab.
 
 ## Sitemap
 
@@ -30,7 +30,7 @@ Core sections:
 
 - Hero: technology is moving fast, but human experience still needs to be understood directly.
 - The opportunity: real human variability and the risk of solving the wrong problems.
-- Programs: two pathways to better research.
+- Programs: two pathways to meaningful impact.
 - Pipeline model: from unmet need to scaled impact.
 - Contact band for strategic conversation.
 
@@ -54,11 +54,11 @@ Core sections:
 
 - Program overview.
 - Two pathways: broader human experience and stronger delivery networks.
-- Participant Program card.
+- User Experience Program card.
 - Partner Network card.
 - Program commitments.
 
-### Participant Program: `/participant-program.html`
+### User Experience Program: `/participant-program.html`
 
 Job: invite people to contribute lived experience through a respectful, accessible, consent-based program.
 
