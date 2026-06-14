@@ -6,7 +6,6 @@ const pages = [
   '/programs.html',
   '/participant-program.html',
   '/partner-network.html',
-  '/research-services.html',
   '/lab-insights.html',
   '/projects.html',
   '/proto-lab.html',
@@ -44,15 +43,22 @@ test.describe('Accessibility smoke checks', () => {
     );
 
     expect(navHrefs).toEqual([
+      '/',
       'platform.html',
       'programs.html',
-      'research-services.html',
       'lab-insights.html',
       'about.html',
       'contact.html',
     ]);
 
     await expect(page.locator('#site-nav a[aria-current="page"]')).toHaveText('Platform');
+  });
+
+  test('home news and events slot is hidden when no active items exist', async ({ page }) => {
+    await gotoPage(page);
+
+    await expect(page.locator('[data-news-events]')).toBeHidden();
+    await expect(page.locator('.hero-layout')).not.toHaveClass(/has-news/);
   });
 
   test('keyboard users can skip to main content', async ({ page }) => {

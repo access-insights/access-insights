@@ -266,6 +266,58 @@ main:focus {
   max-width: 850px;
 }
 
+.hero-layout {
+  display: block;
+}
+
+.hero-layout.has-news {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 360px);
+  gap: clamp(28px, 6vw, 80px);
+  align-items: start;
+}
+
+.hero-news {
+  padding: 24px;
+  background: rgba(10, 6, 18, 0.58);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.hero-news[hidden] {
+  display: none;
+}
+
+.hero-news h2 {
+  font-size: clamp(1.55rem, 2.5vw, 2.25rem);
+}
+
+.news-list {
+  display: grid;
+  gap: 18px;
+  margin-top: 20px;
+}
+
+.news-item {
+  display: grid;
+  gap: 8px;
+}
+
+.news-item + .news-item {
+  padding-top: 18px;
+  border-top: 1px solid var(--border-soft);
+}
+
+.news-item time,
+.news-item p {
+  color: var(--muted);
+}
+
+.news-item h3 {
+  font-size: clamp(1.2rem, 2vw, 1.55rem);
+}
+
 .eyebrow {
   display: inline-flex;
   margin: 0 0 14px;
@@ -287,11 +339,11 @@ h3 {
 
 h1 {
   max-width: 980px;
-  font-size: clamp(2.55rem, 6.2vw, 5.8rem);
+  font-size: clamp(2.35rem, 5.2vw, 4.9rem);
 }
 
 .hero--compact h1 {
-  font-size: clamp(2.3rem, 4.8vw, 4.4rem);
+  font-size: clamp(2.05rem, 4vw, 3.6rem);
 }
 
 h2 {
@@ -406,6 +458,10 @@ p {
 
 .grid--3 {
   grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.grid--4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
 .card {
@@ -658,8 +714,10 @@ p {
   }
 
   .split,
+  .hero-layout.has-news,
   .grid--2,
   .grid--3,
+  .grid--4,
   .form-row {
     grid-template-columns: 1fr;
   }
@@ -682,7 +740,7 @@ p {
 
   h1,
   .hero--compact h1 {
-    font-size: clamp(2.2rem, 11vw, 3.35rem);
+    font-size: clamp(2rem, 9.5vw, 3rem);
   }
 
   .surface {

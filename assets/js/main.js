@@ -3,6 +3,8 @@
 const $ = (selector, context = document) => context.querySelector(selector);
 const $$ = (selector, context = document) => Array.from(context.querySelectorAll(selector));
 
+const NEWS_EVENTS = [];
+
 const menuButton = $("#menu-toggle");
 const siteNav = $("#site-nav");
 const navLinks = siteNav ? $$("a", siteNav) : [];
@@ -98,6 +100,63 @@ if (skipLink && main) {
     window.setTimeout(() => main.focus({ preventScroll: true }), 0);
   });
 }
+
+function renderNewsEvents() {
+  const region = $("[data-news-events]");
+  const list = $("[data-news-events-list]", region || document);
+  if (!region || !list) return;
+
+  const activeItems = NEWS_EVENTS.filter((item) => item && item.active !== false);
+  const heroLayout = region.closest(".hero-layout");
+
+  if (!activeItems.length) {
+    region.hidden = true;
+    if (heroLayout) heroLayout.classList.remove("has-news");
+    list.replaceChildren();
+    return;
+  }
+
+  const wrapper = document.createElement("div");
+  wrapper.className = "news-list";
+
+  activeItems.forEach((item) => {
+    const article = document.createElement("article");
+    article.className = "news-item";
+
+    if (item.date) {
+      const time = document.createElement("time");
+      if (item.datetime) time.dateTime = item.datetime;
+      time.textContent = item.date;
+      article.append(time);
+    }
+
+    const heading = document.createElement("h3");
+    heading.textContent = item.title;
+    article.append(heading);
+
+    if (item.description) {
+      const description = document.createElement("p");
+      description.textContent = item.description;
+      article.append(description);
+    }
+
+    if (item.href && item.linkLabel) {
+      const link = document.createElement("a");
+      link.className = "card-link";
+      link.href = item.href;
+      link.textContent = item.linkLabel;
+      article.append(link);
+    }
+
+    wrapper.append(article);
+  });
+
+  list.replaceChildren(wrapper);
+  region.hidden = false;
+  if (heroLayout) heroLayout.classList.add("has-news");
+}
+
+renderNewsEvents();
 
 const form = $("#contact-form");
 
