@@ -567,6 +567,92 @@
     }
     .contact-info-item a:hover { text-decoration-color:var(--accent); }
 
+    .policy-page section {
+      min-height: auto;
+      align-items: flex-start;
+    }
+    .policy-page .content-box {
+      max-width: 920px;
+    }
+    .policy-page h1,
+    .policy-page h2 {
+      font-family: var(--font-display);
+      font-weight: 300;
+      line-height: 1.12;
+      color: var(--text-light);
+    }
+    .policy-page h1 {
+      font-size: clamp(2.1rem, 5vw, 4.2rem);
+      margin-bottom: 24px;
+    }
+    .policy-page h2 {
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      margin: 44px 0 16px;
+    }
+    .policy-page h1 em,
+    .policy-page h2 em {
+      color: var(--accent2);
+      font-style: italic;
+    }
+    .policy-page p,
+    .policy-page li {
+      color: var(--text-light);
+      font-size: 1rem;
+      line-height: 1.85;
+    }
+    .policy-page p + p {
+      margin-top: 18px;
+    }
+    .policy-page ul {
+      margin: 18px 0 0 1.25rem;
+    }
+    .policy-page li + li {
+      margin-top: 10px;
+    }
+    .policy-page a {
+      color: var(--accent);
+      text-decoration-color: rgba(247,223,140,0.45);
+      text-underline-offset: 3px;
+    }
+    .policy-page a:hover {
+      text-decoration-color: var(--accent);
+    }
+    .policy-note {
+      margin-top: 28px;
+      padding: 18px 20px;
+      border: 1px solid rgba(178,232,216,0.35);
+      background: rgba(178,232,216,0.08);
+      border-radius: 2px;
+    }
+    .sms-consent-form {
+      margin-top: 28px;
+      max-width: 760px;
+    }
+    .checkbox-field {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 14px;
+      align-items: start;
+      padding: 18px;
+      border: 1px solid rgba(247,223,140,0.28);
+      background: rgba(255,255,255,0.05);
+      border-radius: 2px;
+      text-align: left;
+    }
+    .checkbox-field input[type="checkbox"] {
+      width: 22px;
+      height: 22px;
+      margin-top: 4px;
+      accent-color: var(--accent);
+    }
+    .checkbox-field label {
+      color: var(--text-light);
+      font-size: 1rem;
+      line-height: 1.7;
+      text-transform: none;
+      letter-spacing: 0;
+    }
+
     /* Footer */
     .footer-line {
       margin-top:64px;padding-top:28px;
