@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Access Insights: Proto-Lab</title>
+<style>
+  :root{
+    --ink:#15201f; --ink-soft:#46585a; --paper:#f4f1e9; --card:#fbfaf5; --line:#e0dbcd;
+    --teal:#0e6b63; --teal-deep:#0a4a44; --amber:#c8741a; --amber-deep:#a85d12; --rule:#cdc6b4;
+    --serif:'Iowan Old Style','Palatino Linotype','Palatino','Georgia',serif;
+    --sans:'Segoe UI',system-ui,-apple-system,sans-serif;
+    --max:1080px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--sans);font-size:18px;color:var(--ink);background:var(--paper);line-height:1.7}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 32px}
+  a{color:var(--teal)}
+  .skip{position:absolute;left:-999px;top:0;background:var(--teal);color:#fff;padding:12px 18px;z-index:90}
+  .skip:focus{left:0;top:0}
+  :focus-visible{outline:3px solid var(--teal);outline-offset:3px}
+
+  header{border-bottom:1px solid var(--line);background:var(--paper);position:sticky;top:0;z-index:60}
+  .bar{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:14px 32px;max-width:var(--max);margin:0 auto}
+  .brand{font-family:var(--serif);font-weight:700;font-size:1.14rem;white-space:nowrap;text-decoration:none;color:inherit}
+  .brand small{display:block;font-family:var(--sans);font-weight:600;font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-soft);margin-top:2px}
+  .back{font-size:.9rem;font-weight:700;text-decoration:none;color:var(--ink-soft)}
+  .back:hover{color:var(--teal)}
+
+  .hero{padding:64px 0 44px;border-bottom:1px solid var(--line)}
+  .eyebrow{font-size:.78rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--teal);margin-bottom:16px}
+  .hero h1{font-family:var(--serif);font-weight:700;font-size:clamp(2.2rem,5vw,3.6rem);line-height:1.06;letter-spacing:-.015em}
+  .hero p{font-size:1.16rem;color:var(--ink-soft);max-width:62ch;margin-top:20px}
+
+  section{padding:56px 0}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  @media(max-width:760px){.grid{grid-template-columns:1fr}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
+  .card .img{height:190px;width:100%}
+  .card .pad{padding:26px 26px 28px}
+  .card .t{font-size:.74rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--amber-deep)}
+  .card h2{font-family:var(--serif);font-size:1.6rem;margin:8px 0 4px}
+  .card .tl{font-style:italic;color:var(--ink-soft);margin-bottom:12px}
+  .card p{font-size:.96rem;color:var(--ink)}
+  .card .links{margin-top:16px;font-size:.9rem;font-weight:700}
+  .card .links a{text-decoration:none;margin-right:18px}
+  .card .links a:hover{text-decoration:underline;text-underline-offset:3px}
+  .badge-soon{display:inline-block;font-size:.72rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);background:#ece6d6;border-radius:999px;padding:4px 12px;margin-top:6px}
+
+  .intro{max-width:62ch;color:var(--ink-soft)}
+  footer{padding:40px 0;background:var(--paper);border-top:1px solid var(--line)}
+  .fr{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;font-size:.9rem;color:var(--ink-soft)}
+  footer a{color:var(--ink-soft);text-decoration:none}footer a:hover{color:var(--teal)}
+  .note{background:#fff7ea;border:1px dashed var(--amber);color:#8a5212;padding:10px 16px;border-radius:10px;font-size:.8rem;max-width:var(--max);margin:18px auto 28px}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header>
+  <div class="bar">
+    <a class="brand" href="index.html">Access Insights<small>Research Innovation Infrastructure</small></a>
+    <a class="back" href="index.html">&lsaquo; Back to home</a>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero"><div class="wrap">
+    <p class="eyebrow">Proto-Lab</p>
+    <h1>Builds from the needs research reveals.</h1>
+    <p>Proto-Lab is a space for tools, projects, and resources worth finding: ones that address real human needs but sit outside our current pipeline work. Some emerged from our own research; others were built independently. We keep publishing them as we find them.</p>
+  </div></section>
+
+  <section><div class="wrap">
+    <div class="grid">
+
+      <article class="card">
+        <svg class="img" viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice" role="img" aria-label="UnisonOS placeholder">
+          <defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0e6b63"/><stop offset="1" stop-color="#0a4a44"/></linearGradient></defs>
+          <rect width="400" height="200" fill="url(#g1)"/><circle cx="320" cy="46" r="66" fill="#fff" opacity="0.08"/><circle cx="70" cy="172" r="42" fill="#fff" opacity="0.06"/>
+          <text x="26" y="42" fill="#fff" opacity="0.6" font-family="sans-serif" font-size="11" letter-spacing="3">PLACEHOLDER IMAGE</text>
+          <text x="26" y="180" fill="#fff" opacity="0.9" font-family="Georgia, serif" font-size="24" font-weight="700">UnisonOS</text>
+        </svg>
+        <div class="pad">
+          <span class="t">Open Source</span><h2>UnisonOS</h2>
+          <p class="tl">An operating surface for intention-centered computing.</p>
+          <p>Instead of asking people to navigate apps, files, and windows, UnisonOS treats intention as the primary interface and orchestrates services, agents, context, and modalities around the person. Voice, text, vision, touch, Braille, sign, and BCI are first-class channels; accessibility is the model, not a mode.</p>
+          <div class="links"><a href="https://unisonos.ai">unisonos.ai</a><a href="https://github.com/project-unisonOS/unison-workspace">GitHub</a></div>
+        </div>
+      </article>
+
+      <article class="card">
+        <svg class="img" viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Virtual Lex placeholder">
+          <defs><linearGradient id="g2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#c8741a"/><stop offset="1" stop-color="#a85d12"/></linearGradient></defs>
+          <rect width="400" height="200" fill="url(#g2)"/><circle cx="330" cy="152" r="58" fill="#fff" opacity="0.08"/><circle cx="92" cy="42" r="34" fill="#fff" opacity="0.06"/>
+          <text x="26" y="42" fill="#fff" opacity="0.65" font-family="sans-serif" font-size="11" letter-spacing="3">PLACEHOLDER IMAGE</text>
+          <text x="26" y="180" fill="#fff" opacity="0.95" font-family="Georgia, serif" font-size="24" font-weight="700">Virtual Lex</text>
+        </svg>
+        <div class="pad">
+          <span class="t">Presence</span><h2>Virtual Lex</h2>
+          <p class="tl">Establishing presence when you cannot be present.</p>
+          <p>A physical torso uses glasses-mounted cameras and binaural microphones positioned at the ears, and can turn toward people asking questions so the remote participant can hear, see, and engage. People in the room experience an animated, lip-synced avatar: a visible social presence, not a flat video feed.</p>
+          <div class="links"><a href="index.html#fund">Get in touch</a></div>
+        </div>
+      </article>
+
+      <article class="card">
+        <svg class="img" viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Future project placeholder">
+          <defs><linearGradient id="g3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5b6b6a"/><stop offset="1" stop-color="#3a4847"/></linearGradient></defs>
+          <rect width="400" height="200" fill="url(#g3)"/><circle cx="200" cy="100" r="56" fill="#fff" opacity="0.07"/>
+          <text x="26" y="42" fill="#fff" opacity="0.6" font-family="sans-serif" font-size="11" letter-spacing="3">PLACEHOLDER IMAGE</text>
+          <text x="26" y="180" fill="#fff" opacity="0.9" font-family="Georgia, serif" font-size="22" font-weight="700">Project in development</text>
+        </svg>
+        <div class="pad">
+          <span class="t">In development</span><h2>More on the way</h2>
+          <span class="badge-soon">Coming soon</span>
+          <p style="margin-top:12px">New Proto-Lab projects start from a specific human need that could serve a wider community. As work matures, it will be published here with details, demos, and source where applicable.</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <svg class="img" viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Future project placeholder">
+          <defs><linearGradient id="g4" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7a6a3f" /><stop offset="1" stop-color="#574a28"/></linearGradient></defs>
+          <rect width="400" height="200" fill="url(#g4)"/><circle cx="120" cy="150" r="48" fill="#fff" opacity="0.07"/>
+          <text x="26" y="42" fill="#fff" opacity="0.6" font-family="sans-serif" font-size="11" letter-spacing="3">PLACEHOLDER IMAGE</text>
+          <text x="26" y="180" fill="#fff" opacity="0.9" font-family="Georgia, serif" font-size="22" font-weight="700">Submit a resource</text>
+        </svg>
+        <div class="pad">
+          <span class="t">Open call</span><h2>Found something worth sharing?</h2>
+          <p style="margin-top:6px">Proto-Lab publishes useful work whether we created it or not. If you know a tool or project that addresses a real human need, tell us about it.</p>
+          <div class="links"><a href="index.html#fund">Suggest a project</a></div>
+        </div>
+      </article>
+
+    </div>
+  </div></section>
+</main>
+
+<footer><div class="wrap fr">
+  <div>© 2026 Access Insights · Portland, Oregon</div>
+  <div><a href="index.html">Home</a> &nbsp;·&nbsp; <a href="index.html#impact">Impact</a> &nbsp;·&nbsp; accessinsights.net</div>
+</div></footer>
+
+<div class="note"><strong>Proto-Lab page.</strong> Linked from the two project cards on the Version 5 home page. The two lead projects are real; the remaining cards are placeholders for future Proto-Lab work. Placeholder images stand in for real project visuals. Mockup only.</div>
+</body>
+</html>
