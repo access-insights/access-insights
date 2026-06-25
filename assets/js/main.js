@@ -1,4 +1,4 @@
-/* Access Insights — Main JavaScript */
+/* Access Insights , Main JavaScript */
 
 'use strict';
     const $ = (s,c=document)=>c.querySelector(s);
@@ -25,7 +25,7 @@
       return document.getElementById(id);
     }
 
-    /* Smooth scroll + focus management — WCAG 2.4.3 */
+    /* Smooth scroll + focus management , WCAG 2.4.3 */
     $$('a[href^="#"]').forEach(link => {
       link.addEventListener('click', e => {
         if(e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
@@ -80,7 +80,7 @@
       navbar.classList.toggle('scrolled', window.scrollY > 40);
     },{passive:true});
 
-    /* aria-current on scroll — WCAG 4.1.2
+    /* aria-current on scroll , WCAG 4.1.2
        Uses scroll position rather than IntersectionObserver so tall sections
        (which never reach a 45% threshold) still highlight correctly. */
     const navSections = $$('section[id]');
@@ -113,7 +113,7 @@
     },{threshold:0.1});
     $$('.fade-up:not(.visible)').forEach(el=>fuObserver.observe(el));
 
-    /* Mobile menu — WCAG 4.1.2, 2.1.2 */
+    /* Mobile menu , WCAG 4.1.2, 2.1.2 */
     const hamburger = $('#hamburger');
     const navMenu   = $('#nav-menu');
     const mobileNav = window.matchMedia('(max-width: 1023px)');
@@ -191,7 +191,7 @@
     }
     syncMenuMode();
 
-    /* Form validation — WCAG 3.3.1, 3.3.3 */
+    /* Form validation , WCAG 3.3.1, 3.3.3 */
     const form = $('#contact-form');
     const submitBtn = $('.btn-submit', form);
     const status = $('#form-status');

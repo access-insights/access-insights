@@ -1,7 +1,7 @@
 # Access Insights
 
 **Living Labs & Inclusive Innovation Research**  
-Website for Access Insights — a distributed network of Living Labs co-creating with people with disabilities and older adults.
+Website for Access Insights , a distributed network of Living Labs co-creating with people with disabilities and older adults.
 
 ---
 
@@ -47,7 +47,7 @@ After linking the repo, Netlify will auto-deploy on every push to `main`.
 
 ## Running Locally
 
-No build step required — it's plain HTML/CSS/JS.
+No build step required , it's plain HTML/CSS/JS.
 
 ```bash
 # Option 1: Python (built-in)
@@ -68,8 +68,8 @@ Then open `http://localhost:8080`.
 
 | Token | Value | Usage |
 |---|---|---|
-| `--accent` | `#f0c96a` | Gold — headings, highlights, CTAs |
-| `--accent2` | `#7ecfb3` | Teal — secondary emphasis, success |
+| `--accent` | `#f0c96a` | Gold , headings, highlights, CTAs |
+| `--accent2` | `#7ecfb3` | Teal , secondary emphasis, success |
 | `--text-light` | `#f0eefc` | Primary body text |
 | `--text-muted` | `#b8b4d4` | Secondary / descriptive text |
 | Background | `#0a0612` | Deep dark base |
@@ -94,8 +94,8 @@ All color pairs meet **WCAG 2.1 AAA** (7:1+ contrast ratio) for normal text.
 ## Fonts
 
 Loaded via Google Fonts (no local files needed):
-- **Cormorant Garamond** — display/headings
-- **DM Sans** — body/UI
+- **Cormorant Garamond** , display/headings
+- **DM Sans** , body/UI
 
 ---
 

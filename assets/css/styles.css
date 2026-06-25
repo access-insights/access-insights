@@ -1,10 +1,10 @@
-/* Access Insights — Main Stylesheet | WCAG 2.1 AAA */
+/* Access Insights , Main Stylesheet | WCAG 2.1 AAA */
 
 /* ═══════════════════════════════════════════════════════
        ACCESSIBILITY FIRST
     ═══════════════════════════════════════════════════════ */
 
-    /* Visually hidden — available to screen readers — WCAG 1.1, 1.3 */
+    /* Visually hidden , available to screen readers , WCAG 1.1, 1.3 */
     .sr-only {
       position: absolute;
       width: 1px; height: 1px;
@@ -15,7 +15,7 @@
       border: 0;
     }
 
-    /* Skip-to-main — WCAG 2.4.1 Bypass Blocks */
+    /* Skip-to-main , WCAG 2.4.1 Bypass Blocks */
     .skip-link {
       position: absolute;
       top: -100%;
@@ -33,7 +33,7 @@
     }
     .skip-link:focus { top: 0; outline: none; }
 
-    /* Reduced motion — WCAG 2.3.3 */
+    /* Reduced motion , WCAG 2.3.3 */
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after {
         animation-duration: 0.01ms !important;
@@ -55,12 +55,12 @@
       --nav-h: 76px;
       --nav-total-h: var(--nav-h);
       --safe-top: env(safe-area-inset-top, 0px);
-      /* Colors — all text/bg combos verified ≥4.5:1 contrast (WCAG 1.4.3) */
+      /* Colors , all text/bg combos verified ≥4.5:1 contrast (WCAG 1.4.3) */
       --accent:      #f7df8c;   /* 4.69:1 on dark bg */
       --accent2:     #b2e8d8;   /* 4.55:1 at 40% navy */
       --accent-blue: #0090d6;
       --text-light:  #f0eefc;   /* 14:1 on dark bg  */
-      --text-muted:  #c4c0e0;   /* lavender, 5.8:1 on dark bg — WCAG AA */
+      --text-muted:  #c4c0e0;   /* lavender, 5.8:1 on dark bg , WCAG AA */
       --focus-ring:  #f7df8c;
       --font-display: 'Cormorant Garamond', Georgia, serif;
       --font-body:    'DM Sans', sans-serif;
@@ -83,7 +83,7 @@
       line-height: 1.6;
     }
 
-    /* Global focus ring — WCAG 2.4.7, 2.4.11 */
+    /* Global focus ring , WCAG 2.4.7, 2.4.11 */
     :focus-visible {
       outline: 3px solid var(--focus-ring);
       outline-offset: 4px;
@@ -191,7 +191,7 @@
     nav ul a[aria-current] { color: var(--accent); }
     nav ul a[aria-current]::after { left: 20%; right: 20%; }
 
-    /* Hamburger — native <button> for full keyboard support */
+    /* Hamburger , native <button> for full keyboard support */
     .hamburger {
       display: none;
       flex-direction: column;
@@ -255,7 +255,7 @@
       gap: 12px;
       font-size: 0.875rem;      /* WCAG fix: was 0.75rem (12px) → 14px */
       font-weight: 500;
-      letter-spacing: 0.14em;   /* WCAG fix: was 0.2em — reduced for legibility */
+      letter-spacing: 0.14em;   /* WCAG fix: was 0.2em , reduced for legibility */
       text-transform: uppercase;
       color: var(--text-light);
       margin-bottom: 24px;
@@ -705,14 +705,14 @@
     .fade-up:nth-child(6){transition-delay:.48s}
 
     /* ═══════════════════════════════════════════════════════
-       RESPONSIVE — mobile-first, fluid, all devices
+       RESPONSIVE , mobile-first, fluid, all devices
        Breakpoints:
          xs:  0–479px    (small phones)
          sm:  480–767px  (large phones / small tablets portrait)
          md:  768–1023px (tablets landscape / small laptops)
          lg:  1024–1279px (laptops)
          xl:  1280–1439px (desktops)
-         2xl: 1440px+    (wide desktops — base design target)
+         2xl: 1440px+    (wide desktops , base design target)
     ═══════════════════════════════════════════════════════ */
 
     /* ── Fluid spacing tokens ────────────────────────────── */
@@ -731,12 +731,12 @@
     nav { padding: 12px clamp(20px, 5vw, 60px); }
 
     /* ══════════════════════════════════════════
-       2XL / XL — 1280px+ (wide desktops)
+       2XL / XL , 1280px+ (wide desktops)
     ══════════════════════════════════════════ */
-    /* Base styles ARE the wide-desktop layout — nothing extra needed */
+    /* Base styles ARE the wide-desktop layout , nothing extra needed */
 
     /* ══════════════════════════════════════════
-       LG — 1024px–1279px (laptops)
+       LG , 1024px–1279px (laptops)
     ══════════════════════════════════════════ */
     @media (max-width: 1279px) {
       #home .section-inner { gap: 56px; }
@@ -745,10 +745,10 @@
     }
 
     /* ══════════════════════════════════════════
-       MD — 768px–1023px (tablets landscape, small laptops)
+       MD , 768px–1023px (tablets landscape, small laptops)
     ══════════════════════════════════════════ */
     @media (max-width: 1023px) {
-      /* Nav — show hamburger */
+      /* Nav , show hamburger */
       .hamburger { display: flex; }
       nav ul {
         position: absolute;
@@ -783,7 +783,7 @@
       }
       nav ul a::after { display: none; }
 
-      /* Home — single column */
+      /* Home , single column */
       #home .section-inner {
         grid-template-columns: 1fr;
         gap: 40px;
@@ -793,23 +793,23 @@
       .btn-primary { margin: 0 auto; }
       .home-visual { display: none; }
 
-      /* Why section — stack on tablet */
+      /* Why section , stack on tablet */
       .why-inner { grid-template-columns: 1fr; gap: 48px; }
       .stats-grid { grid-template-columns: repeat(2, 1fr); }
       .credentials-inner { grid-template-columns: 1fr; gap: 48px; }
       .credentials-grid { grid-template-columns: repeat(2, 1fr); }
 
-            /* Specialties — 2 col on tablet */
+            /* Specialties , 2 col on tablet */
       .specialties-grid { grid-template-columns: repeat(2, 1fr); gap: 36px 40px; }
 
-      /* Team — 2 col */
+      /* Team , 2 col */
       .team-grid { gap: 20px; } .team-card { width: calc(50% - 10px); }
 
       /* Form row stays 2-col on tablet landscape */
     }
 
     /* ══════════════════════════════════════════
-       SM — 480px–767px (large phones, small tablets portrait)
+       SM , 480px–767px (large phones, small tablets portrait)
     ══════════════════════════════════════════ */
     @media (max-width: 767px) {
       :root {
@@ -845,12 +845,12 @@
       .credentials-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
       .cred-card { padding: 20px 16px; }
 
-            /* Specialties — 1 col on phone */
+            /* Specialties , 1 col on phone */
       .specialties-grid { grid-template-columns: 1fr; gap: 32px; }
       .specialty-card { padding: 32px; }
       .specialty-num { font-size: 2.2rem; }
 
-      /* Team — 2 col compact */
+      /* Team , 2 col compact */
       .team-grid { gap: 14px; } .team-card { width: calc(50% - 7px); }
 
     .team-card { padding: 28px 14px; }
@@ -876,7 +876,7 @@
     }
 
     /* ══════════════════════════════════════════
-       XS — 0–479px (small phones: SE, mini)
+       XS , 0–479px (small phones: SE, mini)
     ══════════════════════════════════════════ */
     @media (max-width: 479px) {
       :root {
@@ -922,7 +922,7 @@
     }
 
     /* ══════════════════════════════════════════
-       LANDSCAPE PHONES — prevent crushing
+       LANDSCAPE PHONES , prevent crushing
     ══════════════════════════════════════════ */
     @media (max-height: 500px) and (orientation: landscape) {
       section { min-height: auto; }
@@ -934,7 +934,7 @@
     }
 
     /* ══════════════════════════════════════════
-       TABLET PORTRAIT — 600–767px
+       TABLET PORTRAIT , 600–767px
     ══════════════════════════════════════════ */
     @media (min-width: 600px) and (max-width: 767px) {
       .team-grid { } .team-card { width: calc(50% - 12px); }
