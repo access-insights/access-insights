@@ -6,7 +6,7 @@
 <title>Access Insights · Research Innovation Infrastructure</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet">
 <style>
   :root {
     --ink: #2d344e;
@@ -14,6 +14,8 @@
     --card-border: #d9dee5;
     --img-placeholder: #e5e8ed;
     --white: #ffffff;
+    --accent-magenta: #D9388C;   /* nav hover underline accent */
+    --logo-magenta: #d9398c;     /* exact magenta from the logo */
     --maxw: 1080px;
     --gap-section: 60px;
 
@@ -101,8 +103,15 @@
     line-height: 1.2;
     text-decoration: none;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
   }
+  /* Logo sits beside the wordmark, ~3px taller than the 24px text on each side */
+  .brand-logo { height: 30px; width: auto; display: block; flex: none; }
+  /* Wordmark + tagline stack to the right of the logo, so the tagline only
+     sits under "Access Insights", never under the logo */
+  .brand-text { display: flex; flex-direction: column; }
   .brand small {
     font-weight: 400;
     font-size: 13px;
@@ -116,8 +125,18 @@
     padding: 0;
     font-size: var(--label);
   }
-  .nav-links a { text-decoration: none; }
-  .nav-links a:hover { text-decoration: underline; }
+  .nav-links a {
+    display: inline-flex; flex-direction: column; align-items: center;
+    text-decoration-line: none; text-decoration-color: var(--accent-magenta);
+    text-decoration-thickness: 2px; text-underline-offset: 4px; color: inherit;
+  }
+  /* Reserve the extra-bold width up front so hover never nudges neighbours */
+  .nav-links a::after {
+    content: attr(data-text); font-weight: 800; height: 0; overflow: hidden;
+    visibility: hidden; pointer-events: none; user-select: none;
+  }
+  /* On hover: magenta underline (text colour unchanged) + extra-bold weight */
+  .nav-links a:hover { text-decoration-line: underline; font-weight: 800; }
   .nav-toggle { display: none; }
 
   /* ---------- Layout primitives ---------- */
@@ -148,6 +167,8 @@
     margin: 0;
     max-width: 895px;
   }
+  /* Hero headline in Montserrat Black */
+  h1 { font-weight: 900; }
 
   .lead {
     font-weight: 400;
@@ -227,6 +248,38 @@
     line-height: var(--body-sm-lh);
     margin: 0;
   }
+
+  /* ---------- Trust boxes (same card style as the metrics boxes) ---------- */
+  .trust-boxes {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .trust-box {
+    background: var(--card-fill);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: 32px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    text-align: center;
+  }
+  .trust-box h3 {
+    font-weight: 700;
+    font-size: var(--h3-size);
+    line-height: var(--h3-lh);
+    margin: 0;
+  }
+  .trust-box .desc {
+    font-size: var(--body-sm);
+    line-height: var(--body-sm-lh);
+    margin: 0;
+  }
+  /* Centre box: outline in the logo magenta — same 1px border width */
+  .trust-box.is-center { border-color: var(--logo-magenta); }
 
   /* ---------- Team grid ---------- */
   .team {
@@ -356,6 +409,7 @@
     .metrics { grid-template-columns: repeat(2, 1fr); }
     .team { grid-template-columns: 1fr; }
     .cards { grid-template-columns: 1fr; }
+    .trust-boxes { grid-template-columns: 1fr; }
     .nav-links {
       position: absolute;
       top: 100%;
@@ -459,13 +513,13 @@
 
 <header class="site-header">
   <nav class="nav" aria-label="Primary">
-    <a class="brand" href="#top">Access Insights<small>Research Innovation Infrastructure</small></a>
+    <a class="brand" href="#top"><img class="brand-logo" src="images/logo.svg" alt="Access Insights logo"><span class="brand-text">Access Insights<small>Research Innovation Infrastructure</small></span></a>
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Open navigation menu">Menu</button>
     <ul class="nav-links" id="nav-links">
-      <li><a href="#pipeline">Pipeline</a></li>
-      <li><a href="#trust">Trust</a></li>
-      <li><a href="#impact">Impact</a></li>
-      <li><a href="#proto-lab">Proto-Lab</a></li>
+      <li><a href="#pipeline" data-text="Pipeline">Pipeline</a></li>
+      <li><a href="#trust" data-text="Trust">Trust</a></li>
+      <li><a href="#impact" data-text="Impact">Impact</a></li>
+      <li><a href="#proto-lab" data-text="Proto-Lab">Proto-Lab</a></li>
     </ul>
   </nav>
 </header>
@@ -478,7 +532,7 @@
     <p class="lead" data-edit="hero_lead"></p>
   </section>
 
-  <img class="image-band" src="images/hero.jpg" alt="Inside Your Rainbow Panorama at ARoS: a curving glass walkway shading from blue and violet through magenta to red, with the city of Aarhus visible through the tinted glass." loading="lazy" decoding="async" width="1600">
+  <img class="image-band" src="images/trusty.jpg" alt="A person using a power wheelchair on the orange glass walkway of Your Rainbow Panorama at ARoS at sunset, overlooking the Aarhus skyline, with a faint line illustration overlaid." loading="lazy" decoding="async" width="1600">
 
   <!-- Pipeline -->
   <section class="section" id="pipeline">
@@ -531,17 +585,19 @@
   <section class="section" id="trust">
     <h2 data-edit="trust_h2"></h2>
     <p class="lead" data-edit="trust_lead"></p>
-    <div class="feature">
-      <h3 data-edit="trust_f1_title"></h3>
-      <p class="desc" data-edit="trust_f1_desc"></p>
-    </div>
-    <div class="feature">
-      <h3 data-edit="trust_f2_title"></h3>
-      <p class="desc" data-edit="trust_f2_desc"></p>
-    </div>
-    <div class="feature">
-      <h3 data-edit="trust_f3_title"></h3>
-      <p class="desc" data-edit="trust_f3_desc"></p>
+    <div class="trust-boxes">
+      <div class="trust-box">
+        <h3 data-edit="trust_f1_title"></h3>
+        <p class="desc" data-edit="trust_f1_desc"></p>
+      </div>
+      <div class="trust-box is-center">
+        <h3 data-edit="trust_f2_title"></h3>
+        <p class="desc" data-edit="trust_f2_desc"></p>
+      </div>
+      <div class="trust-box">
+        <h3 data-edit="trust_f3_title"></h3>
+        <p class="desc" data-edit="trust_f3_desc"></p>
+      </div>
     </div>
     <p class="lead"><em data-edit="trust_lead2"></em></p>
   </section>
