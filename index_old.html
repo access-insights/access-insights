@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Access Insights · Research Innovation Infrastructure</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #2d344e;
+    --card-fill: #f5f7fa;
+    --card-border: #d9dee5;
+    --img-placeholder: #e5e8ed;
+    --white: #ffffff;
+    --accent-magenta: #D9388C;   /* nav hover underline accent */
+    --logo-magenta: #d9398c;     /* exact magenta from the logo */
+    --maxw: 1080px;
+    --gap-section: 60px;
+
+    /* Type scale (mirrors the Figma text styles) */
+    --h1-size: 64px;       --h1-lh: 1.2;
+    --stat-size: 48px;     --stat-lh: 1.1;
+    --h2-size: 32px;       --h2-lh: 1.25;
+    --h3-size: 24px;       --h3-lh: 1.3;
+    --body-lg: 32px;       --body-lg-lh: 1.5;
+    --body-md: 24px;       --body-md-lh: 1.4;
+    --body-sm: 16px;       --body-sm-lh: 1.5;
+    --label: 15px;         --label-lh: 1.5;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { animation: none !important; transition: none !important; }
+  }
+
+  body {
+    margin: 0;
+    font-family: 'Montserrat', system-ui, -apple-system, sans-serif;
+    color: var(--ink);
+    background: var(--white);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: inherit; }
+
+  /* Skip link */
+  .skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    background: var(--ink);
+    color: var(--white);
+    padding: 12px 20px;
+    border-radius: 0 0 8px 0;
+    z-index: 100;
+    font-weight: 700;
+  }
+  .skip-link:focus { left: 0; }
+
+  :focus-visible {
+    outline: 3px solid var(--ink);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+  /* Ensure focus ring is visible on dark backgrounds (e.g. the button) */
+  .btn:focus-visible {
+    outline: 3px solid #ffffff;
+    box-shadow: 0 0 0 6px var(--ink);
+  }
+  /* Honour forced-colors / Windows high contrast mode */
+  @media (forced-colors: active) {
+    .btn { border: 2px solid; }
+    :focus-visible { outline: 3px solid; }
+  }
+
+  /* ---------- Header / nav ---------- */
+  .site-header {
+    position: sticky;
+    top: 0;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--card-border);
+    z-index: 50;
+  }
+  .nav {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 18px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+  .brand {
+    font-weight: 700;
+    font-size: var(--h3-size);
+    line-height: 1.2;
+    text-decoration: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+  }
+  /* Logo sits beside the wordmark, ~3px taller than the 24px text on each side */
+  .brand-logo { height: 30px; width: auto; display: block; flex: none; }
+  /* Wordmark + tagline stack to the right of the logo, so the tagline only
+     sits under "Access Insights", never under the logo */
+  .brand-text { display: flex; flex-direction: column; }
+  .brand small {
+    font-weight: 400;
+    font-size: 13px;
+    color: #5b6275;
+  }
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: var(--label);
+  }
+  .nav-links a {
+    display: inline-flex; flex-direction: column; align-items: center;
+    text-decoration-line: none; text-decoration-color: var(--accent-magenta);
+    text-decoration-thickness: 2px; text-underline-offset: 4px; color: inherit;
+  }
+  /* Reserve the extra-bold width up front so hover never nudges neighbours */
+  .nav-links a::after {
+    content: attr(data-text); font-weight: 800; height: 0; overflow: hidden;
+    visibility: hidden; pointer-events: none; user-select: none;
+  }
+  /* On hover: magenta underline (text colour unchanged) + extra-bold weight */
+  .nav-links a:hover { text-decoration-line: underline; font-weight: 800; }
+  .nav-toggle { display: none; }
+
+  /* ---------- Layout primitives ---------- */
+  main { display: block; }
+
+  .section {
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: 100px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--gap-section);
+    text-align: center;
+  }
+
+  .eyebrow {
+    font-weight: 700;
+    font-size: var(--h3-size);
+    line-height: var(--h3-lh);
+    margin: 0;
+  }
+
+  h1, h2 {
+    font-weight: 700;
+    font-size: var(--h1-size);
+    line-height: var(--h1-lh);
+    margin: 0;
+    max-width: 895px;
+  }
+  /* Hero headline in Montserrat Black */
+  h1 { font-weight: 900; }
+
+  .lead {
+    font-weight: 400;
+    font-size: var(--body-lg);
+    line-height: var(--body-lg-lh);
+    margin: 0;
+    max-width: var(--maxw);
+  }
+
+  /* Full-bleed image band */
+  .image-band {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    aspect-ratio: 16 / 9;
+    background: var(--img-placeholder);
+    display: grid;
+    place-items: center;
+    color: #5b6275;
+    font-size: var(--body-sm);
+  }
+  img.image-band {
+    aspect-ratio: auto;
+    height: auto;
+    object-fit: contain;
+    display: block;
+  }
+  .image-band.short { aspect-ratio: 16 / 6; }
+  .ph-label { color: #5b6275; font-size: var(--body-sm); }
+
+  /* A stacked content block: bold title, subtitle, description */
+  .feature {
+    max-width: var(--maxw);
+  }
+  .feature h3 {
+    font-weight: 700;
+    font-size: var(--h2-size);
+    line-height: var(--h2-lh);
+    margin: 0 0 8px;
+  }
+  .feature .sub {
+    font-size: var(--body-md);
+    line-height: var(--body-md-lh);
+    margin: 0 0 8px;
+  }
+  .feature .desc {
+    font-size: var(--body-sm);
+    line-height: var(--body-sm-lh);
+    margin: 0;
+  }
+
+  /* ---------- Metrics ---------- */
+  .metrics {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+  .stat {
+    background: var(--card-fill);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: 32px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+  .stat .num {
+    font-weight: 700;
+    font-size: var(--stat-size);
+    line-height: var(--stat-lh);
+    margin: 0;
+  }
+  .stat .label {
+    font-size: var(--body-sm);
+    line-height: var(--body-sm-lh);
+    margin: 0;
+  }
+
+  /* ---------- Trust boxes (same card style as the metrics boxes) ---------- */
+  .trust-boxes {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .trust-box {
+    background: var(--card-fill);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: 32px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    text-align: center;
+  }
+  .trust-box h3 {
+    font-weight: 700;
+    font-size: var(--h3-size);
+    line-height: var(--h3-lh);
+    margin: 0;
+  }
+  .trust-box .desc {
+    font-size: var(--body-sm);
+    line-height: var(--body-sm-lh);
+    margin: 0;
+  }
+  /* Centre box: outline in the logo magenta — same 1px border width */
+  .trust-box.is-center { border-color: var(--logo-magenta); }
+
+  /* ---------- Team grid ---------- */
+  .team {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 40px;
+    row-gap: var(--gap-section);
+  }
+  .bio { }
+  .bio .name {
+    font-weight: 700;
+    font-size: var(--h2-size);
+    line-height: var(--h2-lh);
+    margin: 0 0 4px;
+  }
+  .bio .role {
+    font-size: var(--body-md);
+    line-height: var(--body-md-lh);
+    margin: 0 0 4px;
+  }
+  .bio .blurb {
+    font-size: var(--body-sm);
+    line-height: var(--body-sm-lh);
+    margin: 0;
+  }
+
+  /* ---------- Proto-Lab cards ---------- */
+  .cards {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+  .card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+  .card .thumb {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: var(--img-placeholder);
+    border-radius: 16px;
+    display: grid;
+    place-items: center;
+    color: #5b6275;
+    font-size: var(--body-sm);
+  }
+  .card .kicker {
+    font-size: var(--body-sm);
+    line-height: var(--body-sm-lh);
+    margin: 0;
+  }
+  .card h3 {
+    font-weight: 700;
+    font-size: var(--h2-size);
+    line-height: var(--h2-lh);
+    margin: 0;
+  }
+  .card .desc {
+    font-size: var(--body-md);
+    line-height: var(--body-md-lh);
+    margin: 0;
+  }
+
+  /* ---------- Buttons & links ---------- */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--ink);
+    color: var(--white);
+    font-weight: 700;
+    font-size: var(--h3-size);
+    line-height: 1.2;
+    padding: 20px 40px;
+    border-radius: 999px;
+    border: none;
+    text-decoration: none;
+    cursor: pointer;
+    transition: opacity 0.15s ease;
+  }
+  .btn:hover { opacity: 0.88; }
+
+  .link-bold {
+    font-weight: 700;
+    font-size: var(--h3-size);
+    line-height: var(--h3-lh);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+  .cta-link {
+    font-weight: 700;
+    font-size: var(--h3-size);
+    line-height: var(--h3-lh);
+    text-decoration: none;
+  }
+  .cta-link:hover { text-decoration: underline; }
+
+  /* ---------- Footer ---------- */
+  .site-footer {
+    border-top: 1px solid var(--card-border);
+    padding: 48px 24px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    font-size: var(--body-sm);
+    line-height: var(--body-sm-lh);
+  }
+  .site-footer a { text-decoration: none; }
+  .site-footer a:hover { text-decoration: underline; }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 900px) {
+    :root {
+      --h1-size: 40px;
+      --body-lg: 22px;
+      --h2-size: 26px;
+      --body-md: 20px;
+      --stat-size: 38px;
+    }
+    .section { padding: 64px 20px; gap: 40px; }
+    .metrics { grid-template-columns: repeat(2, 1fr); }
+    .team { grid-template-columns: 1fr; }
+    .cards { grid-template-columns: 1fr; }
+    .trust-boxes { grid-template-columns: 1fr; }
+    .nav-links {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      left: 0;
+      background: var(--white);
+      flex-direction: column;
+      gap: 0;
+      border-bottom: 1px solid var(--card-border);
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.25s ease;
+    }
+    .nav-links.open { max-height: 320px; }
+    .nav-links li { padding: 0 40px; }
+    .nav-links a { display: block; padding: 16px 0; border-top: 1px solid var(--card-border); }
+    .nav-toggle {
+      display: inline-flex;
+      background: none;
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 8px 12px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+  }
+  @media (max-width: 480px) {
+    .metrics { grid-template-columns: 1fr; }
+  }
+
+  /* ====================================================================
+     In-page content editor (floating controls + edit mode)
+     ==================================================================== */
+  .editor-bar {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 200;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+  .editor-btn {
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 1;
+    padding: 14px 20px;
+    border-radius: 999px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+    transition: opacity 0.15s ease, transform 0.1s ease;
+  }
+  .editor-btn:hover { opacity: 0.9; }
+  .editor-btn:active { transform: translateY(1px); }
+  .editor-btn--edit   { background: var(--ink); color: var(--white); }
+  .editor-btn--commit { background: #1f7a3d; color: #ffffff; }
+  .editor-btn--cancel { background: #ffffff; color: var(--ink); border: 1px solid var(--card-border); }
+
+  /* Highlight editable fields while in edit mode */
+  body.editing [data-edit] {
+    outline: 2px dashed #1f7a3d;
+    outline-offset: 3px;
+    border-radius: 4px;
+    cursor: text;
+    transition: background 0.12s ease;
+  }
+  body.editing [data-edit]:hover { background: rgba(31,122,61,0.06); }
+  body.editing [data-edit]:focus {
+    outline: 2px solid #1f7a3d;
+    background: rgba(31,122,61,0.08);
+  }
+  /* Small status pill shown after a commit / on info */
+  .editor-status {
+    position: fixed;
+    right: 20px;
+    bottom: 76px;
+    z-index: 200;
+    max-width: 320px;
+    background: var(--ink);
+    color: #fff;
+    font-size: 13px;
+    line-height: 1.45;
+    padding: 12px 14px;
+    border-radius: 10px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.22);
+    opacity: 0;
+    transform: translateY(8px);
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+  .editor-status.show { opacity: 1; transform: translateY(0); }
+
+  @media print { .editor-bar, .editor-status { display: none !important; } }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <nav class="nav" aria-label="Primary">
+    <a class="brand" href="#top"><img class="brand-logo" src="images/logo.svg" alt="Access Insights logo"><span class="brand-text">Access Insights<small>Research Innovation Infrastructure</small></span></a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Open navigation menu">Menu</button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#pipeline" data-text="Pipeline">Pipeline</a></li>
+      <li><a href="#trust" data-text="Trust">Trust</a></li>
+      <li><a href="#impact" data-text="Impact">Impact</a></li>
+      <li><a href="#proto-lab" data-text="Proto-Lab">Proto-Lab</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="main">
+
+  <!-- Hero -->
+  <section class="section" id="top">
+    <h1 data-edit="hero_h1"></h1>
+    <p class="lead" data-edit="hero_lead"></p>
+  </section>
+
+  <img class="image-band" src="images/trusty.jpg" alt="A person using a power wheelchair on the orange glass walkway of Your Rainbow Panorama at ARoS at sunset, overlooking the Aarhus skyline, with a faint line illustration overlaid." loading="lazy" decoding="async" width="1600">
+
+  <!-- Pipeline -->
+  <section class="section" id="pipeline">
+    <h2 data-edit="pipeline_h2"></h2>
+    <p class="lead" data-edit="pipeline_lead"></p>
+    <div class="feature">
+      <h3 data-edit="pipeline_f1_title"></h3>
+      <p class="sub" data-edit="pipeline_f1_sub"></p>
+      <p class="desc" data-edit="pipeline_f1_desc"></p>
+    </div>
+    <div class="feature">
+      <h3 data-edit="pipeline_f2_title"></h3>
+      <p class="sub" data-edit="pipeline_f2_sub"></p>
+      <p class="desc" data-edit="pipeline_f2_desc"></p>
+    </div>
+    <div class="feature">
+      <h3 data-edit="pipeline_f3_title"></h3>
+      <p class="sub" data-edit="pipeline_f3_sub"></p>
+      <p class="desc" data-edit="pipeline_f3_desc"></p>
+    </div>
+    <p class="lead" data-edit="pipeline_lead2"></p>
+  </section>
+
+  <img class="image-band" src="images/pipeline.jpg" alt="The orange and pink section of the circular glass walkway, looking along the curve toward the museum rooftop terrace where a few visitors stand." loading="lazy" decoding="async" width="1600">
+
+  <!-- Strategic rationale -->
+  <section class="section">
+    <h2 data-edit="rationale_h2"></h2>
+    <p class="lead" data-edit="rationale_lead"></p>
+    <div class="feature">
+      <h3 data-edit="rationale_f1_title"></h3>
+      <p class="sub" data-edit="rationale_f1_sub"></p>
+      <p class="desc" data-edit="rationale_f1_desc"></p>
+    </div>
+    <div class="feature">
+      <h3 data-edit="rationale_f2_title"></h3>
+      <p class="sub" data-edit="rationale_f2_sub"></p>
+      <p class="desc" data-edit="rationale_f2_desc"></p>
+    </div>
+    <div class="feature">
+      <h3 data-edit="rationale_f3_title"></h3>
+      <p class="sub" data-edit="rationale_f3_sub"></p>
+      <p class="desc" data-edit="rationale_f3_desc"></p>
+    </div>
+  </section>
+
+  <img class="image-band" src="images/rationale.jpg" alt="The low sun on the horizon seen through deep-red panels of the panoramic walkway, casting long rays across the city skyline." loading="lazy" decoding="async" width="1600">
+
+  <!-- Trust -->
+  <section class="section" id="trust">
+    <h2 data-edit="trust_h2"></h2>
+    <p class="lead" data-edit="trust_lead"></p>
+    <div class="trust-boxes">
+      <div class="trust-box">
+        <h3 data-edit="trust_f1_title"></h3>
+        <p class="desc" data-edit="trust_f1_desc"></p>
+      </div>
+      <div class="trust-box is-center">
+        <h3 data-edit="trust_f2_title"></h3>
+        <p class="desc" data-edit="trust_f2_desc"></p>
+      </div>
+      <div class="trust-box">
+        <h3 data-edit="trust_f3_title"></h3>
+        <p class="desc" data-edit="trust_f3_desc"></p>
+      </div>
+    </div>
+    <p class="lead"><em data-edit="trust_lead2"></em></p>
+  </section>
+
+  <img class="image-band" src="images/trust.jpg" alt="A person using a power wheelchair travels alone along the orange glass walkway, silhouetted against the city skyline, a Participatory Design Conference backpack on the chair." loading="lazy" decoding="async" width="1600">
+
+  <!-- Collective impact -->
+  <section class="section" id="impact">
+    <h2 data-edit="impact_h2"></h2>
+    <p class="lead" data-edit="impact_lead"></p>
+
+    <div class="metrics">
+      <div class="stat"><p class="num" data-edit="stat1_num"></p><p class="label" data-edit="stat1_label"></p></div>
+      <div class="stat"><p class="num" data-edit="stat2_num"></p><p class="label" data-edit="stat2_label"></p></div>
+      <div class="stat"><p class="num" data-edit="stat3_num"></p><p class="label" data-edit="stat3_label"></p></div>
+      <div class="stat"><p class="num" data-edit="stat4_num"></p><p class="label" data-edit="stat4_label"></p></div>
+    </div>
+
+    <div class="team">
+      <div class="bio">
+        <p class="name" data-edit="bio1_name"></p>
+        <p class="role" data-edit="bio1_role"></p>
+        <p class="blurb" data-edit="bio1_blurb"></p>
+      </div>
+      <div class="bio">
+        <p class="name" data-edit="bio2_name"></p>
+        <p class="role" data-edit="bio2_role"></p>
+        <p class="blurb" data-edit="bio2_blurb"></p>
+      </div>
+      <div class="bio">
+        <p class="name" data-edit="bio3_name"></p>
+        <p class="role" data-edit="bio3_role"></p>
+        <p class="blurb" data-edit="bio3_blurb"></p>
+      </div>
+      <div class="bio">
+        <p class="name" data-edit="bio4_name"></p>
+        <p class="role" data-edit="bio4_role"></p>
+        <p class="blurb" data-edit="bio4_blurb"></p>
+      </div>
+      <div class="bio">
+        <p class="name" data-edit="bio5_name"></p>
+        <p class="role" data-edit="bio5_role"></p>
+        <p class="blurb" data-edit="bio5_blurb"></p>
+      </div>
+      <div class="bio">
+        <p class="name" data-edit="bio6_name"></p>
+        <p class="role" data-edit="bio6_role"></p>
+        <p class="blurb" data-edit="bio6_blurb"></p>
+      </div>
+      <div class="bio">
+        <p class="name" data-edit="bio7_name"></p>
+        <p class="role" data-edit="bio7_role"></p>
+        <p class="blurb" data-edit="bio7_blurb"></p>
+      </div>
+    </div>
+  </section>
+
+  <img class="image-band" src="images/impact.jpg" alt="Exterior of the ARoS museum with the sun flaring over its rooftop rainbow ring" loading="lazy" decoding="async">
+
+  <!-- Proto-Lab -->
+  <section class="section" id="proto-lab">
+    <p class="eyebrow" data-edit="protolab_eyebrow"></p>
+    <h2 data-edit="protolab_h2"></h2>
+    <p class="lead" data-edit="protolab_lead"></p>
+    <div class="cards">
+      <article class="card">
+        <div class="thumb" aria-hidden="true"><span class="ph-label">Image coming soon</span></div>
+        <p class="kicker" data-edit="card1_kicker"></p>
+        <h3 data-edit="card1_title"></h3>
+        <p class="desc" data-edit="card1_desc"></p>
+        <a class="cta-link" href="#proto-lab" data-edit="card1_cta"></a>
+      </article>
+      <article class="card">
+        <div class="thumb" aria-hidden="true"><span class="ph-label">Image coming soon</span></div>
+        <p class="kicker" data-edit="card2_kicker"></p>
+        <h3 data-edit="card2_title"></h3>
+        <p class="desc" data-edit="card2_desc"></p>
+        <a class="cta-link" href="#proto-lab" data-edit="card2_cta"></a>
+      </article>
+    </div>
+  </section>
+
+  <!-- Building Momentum -->
+  <section class="section">
+    <p class="eyebrow" data-edit="momentum_eyebrow"></p>
+    <h2 data-edit="momentum_h2"></h2>
+    <p class="lead" data-edit="momentum_lead"></p>
+    <div class="image-band short" aria-hidden="true" style="border-radius:16px;"><span class="ph-label">Image coming soon</span></div>
+  </section>
+
+  <!-- Funding -->
+  <section class="section">
+    <p class="eyebrow" data-edit="funding_eyebrow"></p>
+    <h2 data-edit="funding_h2"></h2>
+    <p class="lead" data-edit="funding_lead"></p>
+    <a class="link-bold" href="mailto:hello@accessinsights.net" data-edit="funding_email"></a>
+  </section>
+
+  <!-- Join -->
+  <section class="section">
+    <p class="eyebrow" data-edit="join_eyebrow"></p>
+    <h2 data-edit="join_h2"></h2>
+    <p class="lead" data-edit="join_lead"></p>
+    <a class="btn" href="mailto:hello@accessinsights.net?subject=Join%20the%20Access%20Insights%20Research%20Community" data-edit="join_btn"></a>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <p data-edit="footer_copy"></p>
+  <p><a href="#pipeline">Pipeline</a> &middot; <a href="#impact">Impact</a> &middot; <a href="#join">Participants</a> &middot; accessinsights.net</p>
+</footer>
+
+<!-- Content lives here; loaded before the renderer below -->
+<script src="content.js"></script>
+
+<script>
+  /* ---------- Mobile nav toggle ---------- */
+  (function () {
+    var toggle = document.querySelector('.nav-toggle');
+    var links = document.getElementById('nav-links');
+    if (toggle && links) {
+      toggle.addEventListener('click', function () {
+        var open = links.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        toggle.setAttribute('aria-label', open ? 'Close navigation menu' : 'Open navigation menu');
+      });
+      links.addEventListener('click', function (e) {
+        if (e.target.tagName === 'A') {
+          links.classList.remove('open');
+          toggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+  })();
+
+  /* ====================================================================
+     Content rendering + in-page editor
+     ==================================================================== */
+  (function () {
+    var CONTENT = window.CONTENT || {};
+    var fileHandle = null;          // remembered File System Access handle
+    var editing = false;
+
+    /* ---- Render content into the page ---- */
+    function render() {
+      document.querySelectorAll('[data-edit]').forEach(function (el) {
+        var key = el.getAttribute('data-edit');
+        if (Object.prototype.hasOwnProperty.call(CONTENT, key)) {
+          el.textContent = CONTENT[key];
+        } else if (!el.textContent) {
+          el.textContent = '[' + key + ']';
+        }
+      });
+    }
+
+    /* ---- Build floating controls ---- */
+    var bar = document.createElement('div');
+    bar.className = 'editor-bar';
+
+    var editBtn = document.createElement('button');
+    editBtn.type = 'button';
+    editBtn.className = 'editor-btn editor-btn--edit';
+    editBtn.textContent = 'Edit content';
+
+    var commitBtn = document.createElement('button');
+    commitBtn.type = 'button';
+    commitBtn.className = 'editor-btn editor-btn--commit';
+    commitBtn.textContent = 'Commit changes';
+    commitBtn.style.display = 'none';
+
+    var cancelBtn = document.createElement('button');
+    cancelBtn.type = 'button';
+    cancelBtn.className = 'editor-btn editor-btn--cancel';
+    cancelBtn.textContent = 'Cancel';
+    cancelBtn.style.display = 'none';
+
+    bar.appendChild(cancelBtn);
+    bar.appendChild(commitBtn);
+    bar.appendChild(editBtn);
+    document.body.appendChild(bar);
+
+    var status = document.createElement('div');
+    status.className = 'editor-status';
+    status.setAttribute('role', 'status');
+    document.body.appendChild(status);
+    var statusTimer = null;
+    function flash(msg, ms) {
+      status.textContent = msg;
+      status.classList.add('show');
+      if (statusTimer) clearTimeout(statusTimer);
+      statusTimer = setTimeout(function () { status.classList.remove('show'); }, ms || 4500);
+    }
+
+    var fields = function () { return document.querySelectorAll('[data-edit]'); };
+
+    /* ---- Enter / exit edit mode ---- */
+    function enterEdit() {
+      editing = true;
+      document.body.classList.add('editing');
+      fields().forEach(function (el) {
+        el.setAttribute('contenteditable', 'true');
+        el.setAttribute('spellcheck', 'true');
+      });
+      editBtn.style.display = 'none';
+      commitBtn.style.display = '';
+      cancelBtn.style.display = '';
+      flash('Edit mode on. Click any text to change it, then Commit changes.', 6000);
+    }
+
+    function exitEdit() {
+      editing = false;
+      document.body.classList.remove('editing');
+      fields().forEach(function (el) {
+        el.removeAttribute('contenteditable');
+        el.removeAttribute('spellcheck');
+      });
+      editBtn.style.display = '';
+      commitBtn.style.display = 'none';
+      cancelBtn.style.display = 'none';
+    }
+
+    /* ---- Collect edited values back into a content object ---- */
+    function collect() {
+      var out = {};
+      // Preserve original key order from CONTENT, then add any new keys.
+      Object.keys(CONTENT).forEach(function (k) { out[k] = CONTENT[k]; });
+      fields().forEach(function (el) {
+        var key = el.getAttribute('data-edit');
+        // normalise non-breaking spaces / stray whitespace contenteditable adds
+        var val = el.textContent.replace(/ /g, ' ').replace(/[ \t]+\n/g, '\n').trim();
+        out[key] = val;
+      });
+      return out;
+    }
+
+    /* ---- Serialise to a content.js file body ---- */
+    function serialise(obj) {
+      var lines = [];
+      lines.push('/*');
+      lines.push(' * Access Insights — site content');
+      lines.push(' * --------------------------------');
+      lines.push(' * Edit text on the page (Edit content button), then Commit changes to save.');
+      lines.push(' * You can also edit the values below by hand. Keep the keys unchanged.');
+      lines.push(' *');
+      lines.push(' * Last committed: ' + new Date().toISOString());
+      lines.push(' */');
+      lines.push('window.CONTENT = {');
+      var keys = Object.keys(obj);
+      keys.forEach(function (k, i) {
+        var comma = (i < keys.length - 1) ? ',' : '';
+        lines.push('  ' + JSON.stringify(k) + ': ' + JSON.stringify(obj[k]) + comma);
+      });
+      lines.push('};');
+      lines.push('');
+      return lines.join('\n');
+    }
+
+    /* ---- Write back to content.js (File System Access API) or download ---- */
+    async function commit() {
+      var obj = collect();
+      var body = serialise(obj);
+
+      // Update in-memory + on-page immediately so the change is visible.
+      CONTENT = obj;
+      window.CONTENT = obj;
+      render();
+
+      var supportsFS = ('showSaveFilePicker' in window);
+      if (supportsFS) {
+        try {
+          if (!fileHandle) {
+            fileHandle = await window.showSaveFilePicker({
+              suggestedName: 'content.js',
+              types: [{ description: 'JavaScript', accept: { 'text/javascript': ['.js'] } }]
+            });
+          }
+          var writable = await fileHandle.createWritable();
+          await writable.write(body);
+          await writable.close();
+          exitEdit();
+          flash('Saved to ' + (fileHandle.name || 'content.js') + '. Changes are live.', 5000);
+          return;
+        } catch (err) {
+          if (err && err.name === 'AbortError') {
+            flash('Save cancelled — still in edit mode.', 3500);
+            return; // stay in edit mode so nothing is lost
+          }
+          // fall through to download fallback on any other error
+        }
+      }
+
+      // Fallback: download a fresh content.js to drop into the files/ folder.
+      var blob = new Blob([body], { type: 'text/javascript' });
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement('a');
+      a.href = url;
+      a.download = 'content.js';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
+      exitEdit();
+      flash('Downloaded content.js — replace files/content.js with it to publish.', 7000);
+    }
+
+    /* ---- Wire up buttons ---- */
+    editBtn.addEventListener('click', enterEdit);
+    cancelBtn.addEventListener('click', function () {
+      exitEdit();
+      render(); // discard unsaved edits
+      flash('Edits discarded.', 3000);
+    });
+    commitBtn.addEventListener('click', function () {
+      commit().catch(function (e) {
+        flash('Could not save: ' + (e && e.message ? e.message : e), 6000);
+      });
+    });
+
+    // Warn before leaving with unsaved edits.
+    window.addEventListener('beforeunload', function (e) {
+      if (editing) { e.preventDefault(); e.returnValue = ''; }
+    });
+
+    render();
+  })();
+</script>
+</body>
+</html>
