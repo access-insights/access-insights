@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Access Insights AI Assistance SMS Opt-In</title>
+  <meta name="description" content="Optional SMS opt-in for Access Insights AI-assisted internal operations messaging." />
+  <meta property="og:title" content="Access Insights AI Assistance SMS Opt-In" />
+  <meta property="og:description" content="Optional SMS opt-in for Access Insights AI-assisted internal operations messaging." />
+  <meta property="og:image" content="https://accessinsights.net/assets/images/hero-bg.jpeg" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://accessinsights.net/sms-opt-in" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Access Insights AI Assistance SMS Opt-In" />
+  <meta name="twitter:description" content="Optional SMS opt-in for Access Insights AI-assisted internal operations messaging." />
+  <meta name="twitter:image" content="https://accessinsights.net/assets/images/hero-bg.jpeg" />
+
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg?v=2" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+
+<body class="policy-page">
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <div class="gradient-canvas" aria-hidden="true"></div>
+  <div class="glow glow-1" aria-hidden="true"></div>
+  <div class="glow glow-2" aria-hidden="true"></div>
+  <div class="glow glow-3" aria-hidden="true"></div>
+  <div class="glow glow-4" aria-hidden="true"></div>
+
+  <nav id="navbar" aria-label="Site navigation">
+    <a href="index.html" class="nav-logo" aria-label="Access Insights home">
+      <img class="nav-logo-svg" src="assets/images/logo.svg" alt="" aria-hidden="true" />
+      <div class="nav-logo-text" aria-hidden="true">
+        <strong>Access</strong><span> Insights</span>
+      </div>
+    </a>
+    <button class="hamburger" id="hamburger" aria-expanded="false" aria-label="Menu">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </button>
+    <ul id="nav-menu" role="list">
+      <li><a href="index.html#our-purpose">Our Purpose</a></li>
+      <li><a href="index.html#how-we-work">How We Work</a></li>
+      <li><a href="index.html#what-we-deliver">What We Deliver</a></li>
+      <li><a href="privacy.html">Privacy</a></li>
+    </ul>
+  </nav>
+
+  <main id="main-content">
+    <section aria-labelledby="sms-opt-in-heading">
+      <div class="section-inner content-box">
+        <p class="eyebrow">SMS consent</p>
+        <h1 id="sms-opt-in-heading">Access Insights AI Assistance <em>SMS Opt-In.</em></h1>
+        <p>Access Insights uses AI agents and AI-assisted workflows to support authorized employees, contractors, advisors, and approved team members with internal business operations.</p>
+        <p>Users may choose to receive SMS/text messages from Access Insights AI assistance for project coordination, meeting support, task updates, status requests, workflow notifications, and administrative support.</p>
+        <p>SMS consent is optional and is not required as a condition of working with Access Insights, participating in Access Insights projects, or using non-SMS Access Insights services.</p>
+        <p>Message frequency varies. Message and data rates may apply. Reply STOP to opt out or HELP for help.</p>
+
+        <form class="contact-form sms-consent-form"
+              name="ai-assistance-sms-opt-in"
+              method="POST"
+              data-netlify="true"
+              netlify-honeypot="bot-field"
+              aria-label="Access Insights AI assistance SMS opt-in form">
+          <input type="hidden" name="form-name" value="ai-assistance-sms-opt-in" />
+          <p class="sr-only" aria-hidden="true">
+            <label>Do not fill this out if you are human: <input name="bot-field" tabindex="-1" autocomplete="off" /></label>
+          </p>
+          <div class="form-row">
+            <div class="form-field">
+              <label for="sms-name">Full name <span class="required-indicator" aria-hidden="true">*</span></label>
+              <input id="sms-name" name="name" type="text" autocomplete="name" required aria-required="true" />
+            </div>
+            <div class="form-field">
+              <label for="sms-email">Email address <span class="required-indicator" aria-hidden="true">*</span></label>
+              <input id="sms-email" name="email" type="email" autocomplete="email" required aria-required="true" />
+            </div>
+          </div>
+          <div class="form-field">
+            <label for="sms-phone">Mobile phone number <span class="required-indicator" aria-hidden="true">*</span></label>
+            <input id="sms-phone" name="mobile-phone" type="tel" autocomplete="tel" required aria-required="true" />
+          </div>
+          <div class="form-field">
+            <label for="sms-role">Access Insights role or relationship <span class="required-indicator" aria-hidden="true">*</span></label>
+            <input id="sms-role" name="role-or-relationship" type="text" required aria-required="true" />
+          </div>
+          <div class="checkbox-field">
+            <input id="sms-consent" name="sms-consent" type="checkbox" value="agreed" required aria-required="true" />
+            <label for="sms-consent">I agree to receive SMS/text messages from Access Insights AI assistance for internal operations, project coordination, meeting support, task updates, status requests, workflow notifications, and administrative support. Message frequency varies. Message and data rates may apply. Reply STOP to opt out or HELP for help. SMS consent is optional and is not required to work with Access Insights.</label>
+          </div>
+          <button type="submit" class="btn-submit">Submit SMS Opt-In</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <script src="assets/js/main.js" defer></script>
+</body>
+</html>

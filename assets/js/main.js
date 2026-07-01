@@ -117,7 +117,7 @@
     const hamburger = $('#hamburger');
     const navMenu   = $('#nav-menu');
     const mobileNav = window.matchMedia('(max-width: 1023px)');
-    const navLinks = $$('a[href^="#"]', navMenu);
+    const navLinks = $$('a', navMenu);
 
     function isMobileNav(){
       return mobileNav.matches;
@@ -193,101 +193,103 @@
 
     /* Form validation — WCAG 3.3.1, 3.3.3 */
     const form = $('#contact-form');
-    const submitBtn = $('.btn-submit', form);
-    const status = $('#form-status');
-    const success = $('#form-success');
-    const submitError = $('#form-error');
-    const formControls = $$('input, textarea, button', form).filter(el => el.name !== 'bot-field');
-    const submitDefaultText = submitBtn ? submitBtn.textContent : '';
+    if(form){
+      const submitBtn = $('.btn-submit', form);
+      const status = $('#form-status');
+      const success = $('#form-success');
+      const submitError = $('#form-error');
+      const formControls = $$('input, textarea, button', form).filter(el => el.name !== 'bot-field');
+      const submitDefaultText = submitBtn ? submitBtn.textContent : '';
 
-    function announceStatus(message){
-      if(!status) return;
-      status.textContent = '';
-      window.requestAnimationFrame(() => {
-        status.textContent = message;
-      });
-    }
-
-    function setSubmittingState(isSubmitting){
-      form.setAttribute('aria-busy', isSubmitting ? 'true' : 'false');
-      formControls.forEach(control => {
-        control.disabled = isSubmitting;
-      });
-      if(submitBtn){
-        submitBtn.setAttribute('aria-busy', isSubmitting ? 'true' : 'false');
-        submitBtn.textContent = isSubmitting ? 'Sending...' : submitDefaultText;
-      }
-    }
-
-    function validateField(input){
-      const errId = input.getAttribute('aria-describedby');
-      const errEl = errId ? $('#'+errId) : null;
-      let valid = true;
-      if(input.required && !input.value.trim()) valid=false;
-      else if(input.type==='email' && input.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value)) valid=false;
-      if(valid) input.removeAttribute('aria-invalid');
-      else input.setAttribute('aria-invalid', 'true');
-      if(errEl){
-        errEl.classList.toggle('visible',!valid);
-        errEl.hidden = valid;
-      }
-      return valid;
-    }
-
-    $$('#contact-form input, #contact-form textarea').forEach(input=>{
-      input.addEventListener('blur',()=>{
-        // Avoid announcing "invalid" as users first navigate through empty required fields.
-        if(input.value.trim() || input.getAttribute('aria-invalid')==='true') validateField(input);
-      });
-      input.addEventListener('input',()=>{
-        if(input.getAttribute('aria-invalid')==='true') validateField(input);
-      });
-    });
-
-    form.addEventListener('submit',e=>{
-      e.preventDefault();
-      announceStatus('');
-      success.hidden = true;
-      success.classList.remove('visible');
-      submitError.hidden = true;
-      submitError.classList.remove('visible');
-
-      const required = $$('[required]',form);
-      let allValid = true;
-      required.forEach(el=>{ if(!validateField(el)) allValid=false; });
-      if(!allValid){
-        announceStatus('Please fix the highlighted fields and try again.');
-        const first = $('[aria-invalid="true"]',form);
-        if(first) first.focus();
-        return;
+      function announceStatus(message){
+        if(!status) return;
+        status.textContent = '';
+        window.requestAnimationFrame(() => {
+          status.textContent = message;
+        });
       }
 
-      const formData = new FormData(form);
-      const payload = new URLSearchParams(formData).toString();
-      setSubmittingState(true);
-      announceStatus('Sending your message.');
+      function setSubmittingState(isSubmitting){
+        form.setAttribute('aria-busy', isSubmitting ? 'true' : 'false');
+        formControls.forEach(control => {
+          control.disabled = isSubmitting;
+        });
+        if(submitBtn){
+          submitBtn.setAttribute('aria-busy', isSubmitting ? 'true' : 'false');
+          submitBtn.textContent = isSubmitting ? 'Sending...' : submitDefaultText;
+        }
+      }
 
-      fetch('/',{
-        method:'POST',
-        headers:{'Content-Type':'application/x-www-form-urlencoded'},
-        body: payload
-      })
-      .then(response=>{
-        if(!response.ok) throw new Error(`Netlify form submission failed (${response.status})`);
-        form.hidden = true;
-        form.setAttribute('aria-hidden', 'true');
-        success.hidden = false;
-        success.classList.add('visible');
-        announceStatus('Message sent successfully.');
-        success.focus();
-      })
-      .catch(()=>{
-        submitError.hidden = false;
-        submitError.classList.add('visible');
-        announceStatus('Message failed to send. Please try again.');
-        submitError.focus();
-      })
-      .finally(()=>{
-        setSubmittingState(false);
+      function validateField(input){
+        const errId = input.getAttribute('aria-describedby');
+        const errEl = errId ? $('#'+errId) : null;
+        let valid = true;
+        if(input.required && !input.value.trim()) valid=false;
+        else if(input.type==='email' && input.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value)) valid=false;
+        if(valid) input.removeAttribute('aria-invalid');
+        else input.setAttribute('aria-invalid', 'true');
+        if(errEl){
+          errEl.classList.toggle('visible',!valid);
+          errEl.hidden = valid;
+        }
+        return valid;
+      }
+
+      $$('#contact-form input, #contact-form textarea').forEach(input=>{
+        input.addEventListener('blur',()=>{
+          // Avoid announcing "invalid" as users first navigate through empty required fields.
+          if(input.value.trim() || input.getAttribute('aria-invalid')==='true') validateField(input);
+        });
+        input.addEventListener('input',()=>{
+          if(input.getAttribute('aria-invalid')==='true') validateField(input);
+        });
       });
-    });
+
+      form.addEventListener('submit',e=>{
+        e.preventDefault();
+        announceStatus('');
+        success.hidden = true;
+        success.classList.remove('visible');
+        submitError.hidden = true;
+        submitError.classList.remove('visible');
+
+        const required = $$('[required]',form);
+        let allValid = true;
+        required.forEach(el=>{ if(!validateField(el)) allValid=false; });
+        if(!allValid){
+          announceStatus('Please fix the highlighted fields and try again.');
+          const first = $('[aria-invalid="true"]',form);
+          if(first) first.focus();
+          return;
+        }
+
+        const formData = new FormData(form);
+        const payload = new URLSearchParams(formData).toString();
+        setSubmittingState(true);
+        announceStatus('Sending your message.');
+
+        fetch('/',{
+          method:'POST',
+          headers:{'Content-Type':'application/x-www-form-urlencoded'},
+          body: payload
+        })
+        .then(response=>{
+          if(!response.ok) throw new Error(`Netlify form submission failed (${response.status})`);
+          form.hidden = true;
+          form.setAttribute('aria-hidden', 'true');
+          success.hidden = false;
+          success.classList.add('visible');
+          announceStatus('Message sent successfully.');
+          success.focus();
+        })
+        .catch(()=>{
+          submitError.hidden = false;
+          submitError.classList.add('visible');
+          announceStatus('Message failed to send. Please try again.');
+          submitError.focus();
+        })
+        .finally(()=>{
+          setSubmittingState(false);
+        });
+      });
+    }
