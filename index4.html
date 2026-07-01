@@ -33,9 +33,7 @@
     --fs-nav:0.9375rem; --lh-nav:1.5; /* Label & Nav        15px */
     --space:1.25rem; /* lead sits tighter under the heading */
   }
-  html{font-size:100%;scroll-behavior:smooth;scroll-padding-top:6rem;}
-  /* respect users who prefer no motion */
-  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto;}}                       /* 1rem = 16px, user-scalable */
+  html{font-size:100%;}                       /* 1rem = 16px, user-scalable */
   *{box-sizing:border-box;margin:0;padding:0;}
   body{font-family:'Montserrat',system-ui,-apple-system,sans-serif;color:#fff;background:#2d344e;
        -webkit-font-smoothing:antialiased;overflow-x:hidden;}
@@ -116,12 +114,11 @@
   .stat.in{transform:scale(1);opacity:1;}
   @media (prefers-reduced-motion:reduce){.stat{transition:none;transform:none;opacity:1;}}
   .stat .lbl{font-weight:var(--w-reg);font-size:var(--fs-bs);line-height:var(--lh-bs);}
-  .team{display:grid;grid-template-columns:1fr 1fr;gap:2.25rem 2.5rem;margin-top:3rem;text-align:center;}
+  .team{display:grid;grid-template-columns:1fr 1fr;gap:2.25rem 2.5rem;margin-top:3rem;text-align:left;}
   .bio .role{margin-top:0.15em;}
   .bio .blurb{margin-top:0.5em;}
-  .bio .headshot{width:100%;max-width:360px;aspect-ratio:4/5;object-fit:cover;object-position:center top;border-radius:10px;display:block;margin:0 auto 1rem;background:var(--card-fill);border:1px solid var(--card-border);}
   .cards{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;margin-top:2.5rem;}
-  .card{background:var(--card-fill);border:1px solid var(--card-border);border-radius:16px;padding:2rem 1.5rem;text-align:center;}
+  .card{background:var(--card-fill);border:1px solid var(--card-border);border-radius:20px;padding:1.5rem;text-align:center;}
   .card .thumb{height:200px;background:var(--card-border);border-radius:12px;}
   .card .kick{margin-top:1rem;} .card .ct{margin-top:0.25rem;} .card .cd{margin-top:0.5rem;}
   .card .cta{display:inline-block;margin-top:1rem;font-weight:var(--w-bold);font-size:var(--fs-h3);line-height:var(--lh-h3);text-decoration:none;}
@@ -154,10 +151,8 @@
     .split.gleft .gfx,.split.gright .gfx{grid-column:1;grid-row:2;min-height:40vh;}
     .lead,.feature .fd{margin-left:auto;margin-right:auto;}
     .team{grid-template-columns:1fr;text-align:center;}
-    .bio .headshot{margin-left:auto;margin-right:auto;}
     .metrics{grid-template-columns:1fr 1fr;}
     .cards{grid-template-columns:1fr;}
-    .on-photo{background:none;padding:0;backdrop-filter:none;}
     /* bottom sections: graphic below the content */
     #momentum,#funding,#join{display:flex;flex-direction:column;}
     #momentum .on-photo,#funding .on-photo,#join .on-photo{order:1;}
@@ -255,7 +250,7 @@
     </mask>
     <clipPath id="ovClip"><rect id="ovClipRect" x="0" y="0" width="100%" height="100%"/></clipPath>
   </defs>
-  <g clip-path="url(#ovClip)"><rect x="0" y="0" width="100%" height="100%" fill="#2d344e" fill-opacity="0.9" mask="url(#ovMask)"/></g>
+  <g clip-path="url(#ovClip)"><rect x="0" y="0" width="100%" height="100%" fill="#2d344e" mask="url(#ovMask)"/></g>
 </svg>
 
 <header class="site">
@@ -268,7 +263,7 @@
       <li><a href="#pipeline" data-text="Pipeline">Pipeline</a></li>
       <li><a href="#trust" data-text="Trust">Trust</a></li>
       <li><a href="#impact" data-text="Impact">Impact</a></li>
-      <li><a href="#team" data-text="Team">Team</a></li>
+      <li><a href="#proto" data-text="Proto-Lab">Proto-Lab</a></li>
     </ul>
   </nav>
 </header>
@@ -277,7 +272,7 @@
   <section class="split gleft" id="top">
     <div class="gfx" data-gfx="logo" data-mode="cut"></div>
     <div class="txt stack"><h1 class="h1">Shaping a Human-Centered Future.</h1>
-      <p class="bodyL lead">Technology is changing faster than society can adapt. Access Insights is building the research infrastructure that helps bridge the gap between innovation and adoption.</p></div>
+      <p class="bodyL lead">Technology is changing faster than society can adapt. Access Insights is building research infrastructure that helps identify the highest-value human needs, generate trusted evidence, and connect promising solutions with the partners who can bring them to scale.</p></div>
   </section>
 
   <div class="divider" data-divider></div>
@@ -331,14 +326,38 @@
       <div class="stat reveal"><div class="stat-n">167+</div><div class="lbl">peer-reviewed publications</div></div>
       <div class="stat reveal"><div class="stat-n">200+ yrs</div><div class="lbl">combined work shaping policy &amp; standards</div></div>
     </div>
-    <div class="team" id="team">
-      <div class="bio"><img class="headshot" src="images/team/lex.jpg" alt="Lex Frieden" loading="lazy"><div class="h2">Lex Frieden</div><div class="role bodyM">Senior Advisor</div><div class="blurb bodyS">Chief architect of the ADA and a founder of the independent living movement; five decades shaping U.S. and international disability policy.</div></div>
-      <div class="bio"><img class="headshot" src="images/team/darryl.jpg" alt="Darryl Adams" loading="lazy"><div class="h2">Darryl Adams</div><div class="role bodyM">Founder</div><div class="blurb bodyS">AI and accessibility strategist focused on inclusive innovation and real-world impact.</div></div>
-      <div class="bio"><img class="headshot" src="images/team/becky.jpg" alt="Becky Chierichetti" loading="lazy"><div class="h2">Becky Chierichetti</div><div class="role bodyM">Principal Design Researcher</div><div class="blurb bodyS">UX researcher exploring AI, mixed reality, and accessibility at the boundary of physical and digital worlds.</div></div>
-      <div class="bio"><img class="headshot" src="images/team/marco.jpg?v=2" alt="Marco Beltman, PhD" loading="lazy"><div class="h2">Marco Beltman, PhD</div><div class="role bodyM">Research Fellow, Sensory Technology</div><div class="blurb bodyS">Principal engineer with a PhD in acoustics, 39 patents, and a volunteer raft guide opening rivers to people of all abilities.</div></div>
-      <div class="bio"><img class="headshot" src="images/team/pete.jpg" alt="Pete Denman" loading="lazy"><div class="h2">Pete Denman</div><div class="role bodyM">Principal Design / Interaction</div><div class="blurb bodyS">Designed Stephen Hawking's communication system; over 30 years in visual and interaction design, bringing the perspective of a wheelchair user to every project.</div></div>
-      <div class="bio"><img class="headshot" src="images/team/richard.jpg" alt="Richard Beckwith, PhD" loading="lazy"><div class="h2">Richard Beckwith, PhD</div><div class="role bodyM">Research Fellow</div><div class="blurb bodyS">Long career doing research in support of design across disability, education, and aging. UX, AI, especially NLP, and sensing.</div></div>
-      <div class="bio"><img class="headshot" src="images/team/susan.jpg" alt="Susan Faulkner" loading="lazy"><div class="h2">Susan Faulkner</div><div class="role bodyM">Research Director</div><div class="blurb bodyS">User experience researcher and leader with over 30 years delivering high-impact results focused on accessibility.</div></div>
+    <div class="team">
+      <div class="bio"><div class="h2">Lex Frieden</div><div class="role bodyM">Senior Advisor</div><div class="blurb bodyS">Chief architect of the ADA and a founder of the independent living movement; five decades shaping U.S. and international disability policy.</div></div>
+      <div class="bio"><div class="h2">Darryl Adams</div><div class="role bodyM">Founder</div><div class="blurb bodyS">AI and accessibility strategist focused on inclusive innovation and real-world impact.</div></div>
+      <div class="bio"><div class="h2">Becky Chierichetti</div><div class="role bodyM">Principal Design Researcher</div><div class="blurb bodyS">UX researcher exploring AI, mixed reality, and accessibility at the boundary of physical and digital worlds.</div></div>
+      <div class="bio"><div class="h2">Marco Beltman, PhD</div><div class="role bodyM">Research Fellow, Sensory Technology</div><div class="blurb bodyS">Principal engineer with a PhD in acoustics, 39 patents, and a volunteer raft guide opening rivers to people of all abilities.</div></div>
+      <div class="bio"><div class="h2">Pete Denman</div><div class="role bodyM">Principal Design / Interaction</div><div class="blurb bodyS">Designed Stephen Hawking's communication system; over 30 years in visual and interaction design, bringing the perspective of a wheelchair user to every project.</div></div>
+      <div class="bio"><div class="h2">Richard Beckwith, PhD</div><div class="role bodyM">Research Fellow</div><div class="blurb bodyS">Long career doing research in support of design across disability, education, and aging. UX, AI, especially NLP, and sensing.</div></div>
+      <div class="bio"><div class="h2">Susan Faulkner</div><div class="role bodyM">Research Director</div><div class="blurb bodyS">User experience researcher and leader with over 30 years delivering high-impact results focused on accessibility.</div></div>
+    </div>
+  </section>
+
+  <!-- PROTO-LAB -->
+  <section class="center" id="proto">
+    <div class="on-photo stack">
+      <h2 class="h1">Exploring what comes next.</h2>
+      <p class="bodyL lead">Proto-Lab explores ideas that emerge from patterns we see across research, technology, and community partnerships. It is where we invest our own curiosity into tools and concepts intended to create shared benefit.</p>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="thumb"></div>
+        <div class="kick bodyS">Open Source</div>
+        <div class="ct h2">UnisonOS</div>
+        <div class="cd bodyM">An operating surface for intention-centered computing. Treats a person's intention as the primary interface, with voice, text, vision, touch, Braille, sign, and BCI as first-class channels. Accessibility is the model, not a mode.</div>
+        <a class="cta" href="#proto">Explore Proto-Lab ›</a>
+      </div>
+      <div class="card">
+        <div class="thumb"></div>
+        <div class="kick bodyS">Presence</div>
+        <div class="ct h2">Virtual Lex</div>
+        <div class="cd bodyM">Establishing presence when you cannot be present. Built so Lex Frieden could attend the 35th-anniversary ADA celebrations with a real sense of being in the room: binaural audio, spatial orientation, and an animated avatar that engages the room directly.</div>
+        <a class="cta" href="#proto">Explore Proto-Lab ›</a>
+      </div>
     </div>
   </section>
 
@@ -379,7 +398,7 @@ const ovClipRect=document.getElementById('ovClipRect');
 document.getElementById('brandlogo').src=BRAND_LOGO;
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-let W=innerWidth,H=innerHeight,scaleK=1,isMobile=false;
+let W=innerWidth,H=innerHeight,scaleK=1;
 function ease(t){return t<0?0:t>1?1:t*t*(3-2*t);}
 function vbDims(k){const a=VB[k].vb.split(/\s+/).map(Number);return[a[2],a[3]];}
 /* expansion begins as the element's area enters the viewport bottom, full by mid */
@@ -394,54 +413,51 @@ document.querySelectorAll('[data-pos]').forEach(el=>{
 /* white overlay: cut the graphics + divider lines; clip the cover so it ENDS
    at the bottom of the people section (below that the bg shows through). */
 function overlayBottomPage(){
-  // handheld: the cover (blue/white) spans the WHOLE page; bottom graphics
-  // become cutouts in it like the others, so no photo-on-narrow columns.
-  if(isMobile) return document.documentElement.scrollHeight;
   const people=document.querySelector('[data-people]');
   const r=people.getBoundingClientRect();
-  return r.bottom + scrollY;     // desktop: cover stops after the people section
-}
-function cutUse(el,key){
-  const r=el.getBoundingClientRect();
-  const o=expansion(r.top); if(o<=0.002) return '';
-  const [vw,vh]=vbDims(key);
-  const seed=CONFIG.seedPx*scaleK;
-  let dw=r.width, dh=r.width*(vh/vw);
-  if(dh>r.height){ dh=r.height; dw=r.height*(vw/vh); }
-  const full=Math.max(dw,dh);
-  const long=seed+(full-seed)*o;
-  const w=vw>=vh?long:long*(vw/vh), h=vw>=vh?long*(vh/vw):long;
-  const cx=r.left+r.width/2, cy=r.top+r.height/2;
-  return `<use href="#sym-${key}" x="${(cx-w/2).toFixed(1)}" y="${(cy-h/2).toFixed(1)}" width="${w.toFixed(1)}" height="${h.toFixed(1)}" opacity="${Math.min(1,o*4).toFixed(3)}"/>`;
+  return r.bottom + scrollY;     // page Y where the white cover stops
 }
 function frame(){
   const sY=scrollY, bottom=overlayBottomPage();
   const clipH=Math.max(0, Math.min(H, bottom - sY));
   ovClipRect.setAttribute('height', clipH.toFixed(1));
   let cuts='';
-  document.querySelectorAll('.gfx[data-mode="cut"]').forEach(el=>{ cuts+=cutUse(el, el.dataset.gfx); });
+  // graphic cutouts (above the people section)
+  document.querySelectorAll('.gfx[data-mode="cut"]').forEach(el=>{
+    const r=el.getBoundingClientRect();
+    const o=expansion(r.top); if(o<=0.002) return;
+    const [vw,vh]=vbDims(el.dataset.gfx);
+    const seed=CONFIG.seedPx*scaleK;
+    // contain the graphic's aspect inside its marker box so it never overflows
+    // up into the text (especially on narrow, stacked layouts)
+    let dw=r.width, dh=r.width*(vh/vw);
+    if(dh>r.height){ dh=r.height; dw=r.height*(vw/vh); }
+    const full=Math.max(dw,dh);
+    const long=seed+(full-seed)*o;
+    const w=vw>=vh?long:long*(vw/vh), h=vw>=vh?long*(vh/vw):long;
+    const cx=r.left+r.width/2, cy=r.top+r.height/2;
+    cuts+=`<use href="#sym-${el.dataset.gfx}" x="${(cx-w/2).toFixed(1)}" y="${(cy-h/2).toFixed(1)}" width="${w.toFixed(1)}" height="${h.toFixed(1)}" opacity="${Math.min(1,o*4).toFixed(3)}"/>`;
+  });
+  // divider lines: 2px-tall background reveals at each divider, while under cover
   document.querySelectorAll('[data-divider]').forEach(el=>{
     const r=el.getBoundingClientRect();
     if(r.top> -4 && r.top < clipH) cuts+=`<rect x="0" y="${r.top.toFixed(1)}" width="${W}" height="2" fill="#000"/>`;
   });
-  // bottom graphics: cutouts on handheld (cover everywhere), positive on desktop
+  ovCuts.innerHTML=cuts;
+  // bottom (positive) graphics: scale up from a small seed to full as they
+  // scroll into view, the same cadence as the cutouts; reversible.
   document.querySelectorAll('.posgfx').forEach(el=>{
     const svg=el.querySelector('svg'); if(!svg) return;
-    if(isMobile){ svg.style.opacity='0'; cuts+=cutUse(el, el.dataset.pos); }
-    else {
-      const o = reduce ? 1 : expansion(el.getBoundingClientRect().top);
-      const small=0.18;
-      svg.style.transform=`scale(${(small+(1-small)*o).toFixed(3)})`;
-      svg.style.opacity=Math.min(1,o*4).toFixed(3);
-    }
+    const o = reduce ? 1 : expansion(el.getBoundingClientRect().top);
+    const small=0.18;
+    svg.style.transform=`scale(${(small+(1-small)*o).toFixed(3)})`;
+    svg.style.opacity=Math.min(1,o*4).toFixed(3);
   });
-  ovCuts.innerHTML=cuts;
 }
 let ticking=false;
 function onScroll(){if(!ticking){ticking=true;requestAnimationFrame(()=>{frame();ticking=false;});}}
 function resize(){
   W=innerWidth;H=innerHeight;scaleK=Math.min(1,W/CONFIG.artboardW);
-  isMobile=matchMedia('(max-width:768px)').matches;
   overlay.setAttribute('viewBox',`0 0 ${W} ${H}`);
   bgEl.style.backgroundPosition=`${CONFIG.background.focal[0]}% ${CONFIG.background.focal[1]}%`;
   frame();
@@ -461,18 +477,10 @@ function setupReveals(){
 function setupNav(){
   const btn=document.getElementById('hamb'), menu=document.getElementById('navlinks');
   const items=()=>[...menu.querySelectorAll('a')];
-  function onDocPointer(e){ if(!menu.contains(e.target) && !btn.contains(e.target)) close(false); }
-  function onScrollClose(){ close(false); }
   function open(){menu.classList.add('open');btn.setAttribute('aria-expanded','true');
-    document.addEventListener('keydown',onKey);
-    document.addEventListener('pointerdown',onDocPointer,true);      // tap outside closes
-    window.addEventListener('scroll',onScrollClose,{passive:true});  // scrolling closes
-    items()[0]&&items()[0].focus();}
+    document.addEventListener('keydown',onKey);items()[0]&&items()[0].focus();}
   function close(ret){menu.classList.remove('open');btn.setAttribute('aria-expanded','false');
-    document.removeEventListener('keydown',onKey);
-    document.removeEventListener('pointerdown',onDocPointer,true);
-    window.removeEventListener('scroll',onScrollClose);
-    if(ret!==false)btn.focus();}
+    document.removeEventListener('keydown',onKey);if(ret!==false)btn.focus();}
   function onKey(e){
     if(e.key==='Escape'){close();return;}
     if(e.key==='Tab'){ // simple focus trap among menu items + button
