@@ -461,10 +461,18 @@ function setupReveals(){
 function setupNav(){
   const btn=document.getElementById('hamb'), menu=document.getElementById('navlinks');
   const items=()=>[...menu.querySelectorAll('a')];
+  function onDocPointer(e){ if(!menu.contains(e.target) && !btn.contains(e.target)) close(false); }
+  function onScrollClose(){ close(false); }
   function open(){menu.classList.add('open');btn.setAttribute('aria-expanded','true');
-    document.addEventListener('keydown',onKey);items()[0]&&items()[0].focus();}
+    document.addEventListener('keydown',onKey);
+    document.addEventListener('pointerdown',onDocPointer,true);      // tap outside closes
+    window.addEventListener('scroll',onScrollClose,{passive:true});  // scrolling closes
+    items()[0]&&items()[0].focus();}
   function close(ret){menu.classList.remove('open');btn.setAttribute('aria-expanded','false');
-    document.removeEventListener('keydown',onKey);if(ret!==false)btn.focus();}
+    document.removeEventListener('keydown',onKey);
+    document.removeEventListener('pointerdown',onDocPointer,true);
+    window.removeEventListener('scroll',onScrollClose);
+    if(ret!==false)btn.focus();}
   function onKey(e){
     if(e.key==='Escape'){close();return;}
     if(e.key==='Tab'){ // simple focus trap among menu items + button
