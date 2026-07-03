@@ -171,7 +171,7 @@
 <body>
 <a class="skip" href="#main">Skip to content</a>
 
-<div id="bg"></div>
+<div id="bg" role="img" aria-label="Inside Your Rainbow Panorama at ARoS: a person in a power wheelchair travels the tinted-glass walkway, overlooking the city at sunset."></div>
 <svg id="overlay" preserveAspectRatio="none" aria-hidden="true">
   <defs>
     <symbol id="sym-logo" viewBox="0 0 721.04 706.98"><g fill="#000" stroke="none"><g id="Layer_2-2" data-name="Layer 2">
@@ -283,7 +283,7 @@
 
 <main id="main">
   <section class="split gleft" id="top">
-    <div class="gfx" data-gfx="logo" data-mode="cut"></div>
+    <div class="gfx" data-gfx="logo" data-mode="cut" role="img" aria-label="Access Insights logo mark"></div>
     <div class="txt stack"><h1 class="h1">Shaping a human-centered future</h1>
       <p class="bodyL lead">Rapid advancements in technology force rapid societal adaptation. Access Insights is building the research infrastructure that helps bridge the gap between innovation and adoption.</p></div>
   </section>
@@ -298,13 +298,13 @@
       <div class="feature"><div class="ft">Validate</div><div class="fs">Build evidence people can trust</div><div class="fd">Select the research approach that fits the question, from focused studies to deeper Living Lab engagements.</div></div>
       <div class="feature"><div class="ft">Scale</div><div class="fs">Connect innovation with implementation</div><div class="fd">Link validated work to the partners, funders, and organizations positioned to carry it forward.</div></div>
     </div>
-    <div class="gfx" data-gfx="book" data-mode="cut"></div>
+    <div class="gfx" data-gfx="book" data-mode="cut" role="img" aria-label="A stack of books, representing research"></div>
   </section>
 
   <div class="divider" data-divider></div>
 
   <section class="split gleft" id="rationale">
-    <div class="gfx" data-gfx="arrow" data-mode="cut"></div>
+    <div class="gfx" data-gfx="arrow" data-mode="cut" role="img" aria-label="A three-way signpost, representing choosing a direction"></div>
     <div class="txt stack">
       <h2 class="h1">Better decisions create better innovation</h2>
       <p class="bodyL lead">Technology is advancing faster than the awareness of how people will use it, trust it, and adapt with it. Access Insights helps organizations focus on high-value opportunities before development begins, build trustworthy evidence, and move successful ideas toward lasting adoption.</p>
@@ -324,7 +324,7 @@
       <div class="feature"><div class="ft">Accessible</div><div class="fd">Accessibility is built into the research experience, not bolted on.</div></div>
       <div class="feature"><div class="ft">Accountable</div><div class="fd">Clear governance and audibility, so contributions and outcomes are understood.</div></div>
     </div>
-    <div class="gfx" data-gfx="ribbon" data-mode="cut"></div>
+    <div class="gfx" data-gfx="ribbon" data-mode="cut" role="img" aria-label="An award ribbon, representing trust and accountability"></div>
   </section>
 
   <div class="divider" data-divider></div>
@@ -396,7 +396,8 @@ function expansion(rectTop){return ease(Math.max(0,Math.min(1,(H-rectTop)/(0.5*H
 /* inject positive (below-overlay) graphics as inline SVG that scale on reveal */
 document.querySelectorAll('[data-pos]').forEach(el=>{
   const k=el.dataset.pos, sym=document.getElementById('sym-'+k);
-  el.innerHTML=`<svg viewBox="${VB[k].vb}" role="img" aria-label="${k} graphic">${sym.innerHTML}</svg>`;
+  const GFXDESC={figure:'A worker laying a brick foundation',shake:'A handshake, representing partnership',flag:'A checkered flag, marking the finish'};
+  el.innerHTML=`<svg viewBox="${VB[k].vb}" role="img" aria-label="${GFXDESC[k]||k}">${sym.innerHTML}</svg>`;
 });
 
 /* white overlay: cut the graphics + divider lines; clip the cover so it ENDS
