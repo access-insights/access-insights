@@ -179,13 +179,6 @@
   /* why stat band is 3-up; editing UI */
   .metrics.three{grid-template-columns:repeat(3,1fr);max-width:60rem;margin-left:auto;margin-right:auto;}
   @media (max-width:768px){.metrics.three{grid-template-columns:1fr;}}
-  .btn-sm{font-size:1.125rem;padding:0.875rem 2rem;}
-  .edit-fab{position:fixed;right:1.5rem;bottom:1.5rem;z-index:60;display:flex;flex-direction:column;align-items:flex-end;gap:0.75rem;pointer-events:none;}
-  .edit-fab .btn{margin:0;pointer-events:auto;box-shadow:0 4px 18px rgba(0,0,0,0.45);}
-  #editStatus{background:rgba(45,52,78,0.95);border:1px solid var(--card-border);border-radius:12px;padding:0.75rem 1rem;max-width:20rem;text-align:right;pointer-events:auto;}
-  #editStatus:empty{display:none;}
-  [data-editable][contenteditable="true"]{outline:2px dashed #d9398c;outline-offset:8px;border-radius:6px;background:rgba(255,255,255,0.06);cursor:text;}
-  [data-editable][contenteditable="true"]:focus-visible{outline:3px solid #fff;outline-offset:8px;}
 </style>
 </head>
 <body>
@@ -439,10 +432,6 @@
 
 <footer><p class="bodyS">{{footer.text}}</p></footer>
 
-<div class="edit-fab">
-  <p class="bodyS" id="editStatus" role="status" aria-live="polite"></p>
-  <button class="btn btn-sm" id="editToggle" type="button">Edit</button>
-</div>
 
 <script>
 const VB = {"logo": {"vb": "0 0 721.04 706.98"}, "book": {"vb": "0 0 766.53 654.07"}, "arrow": {"vb": "0 0 284.03 248.1"}, "ribbon": {"vb": "0 0 659.71 1025"}, "figure": {"vb": "0 0 179.54 200.94"}, "shake": {"vb": "0 0 509.16 338.29"}, "flag": {"vb": "0 0 501 440.3"}};
@@ -578,42 +567,6 @@ function init(){
   frame();
 }
 init();
-
-/* inline edit + publish for the market section */
-(function(){
-  const KEY='ai-content-edits';
-  const btn=document.getElementById('editToggle');
-  const status=document.getElementById('editStatus');
-  const SEL='main h1, main .h1, main p, main .feature, main .card, main .bio, main .stat .lbl, footer p';
-  const els=[...new Set(document.querySelectorAll(SEL))];
-  els.forEach((el,i)=>{ if(!el.dataset.editable) el.dataset.editable='e'+i; });
-  const VERSION=(document.querySelector('meta[name="content-version"]')||{}).content||'0';
-  try{
-    const stored=JSON.parse(localStorage.getItem(KEY)||'{}');
-    if(stored.v===VERSION && stored.edits){
-      els.forEach(el=>{ const k=el.dataset.editable; if(stored.edits[k]) el.innerHTML=stored.edits[k]; });
-    }else if(stored.v!==undefined || stored.edits!==undefined || Object.keys(stored).length){
-      localStorage.removeItem(KEY);
-    }
-  }catch(e){}
-  let editing=false;
-  btn.addEventListener('click',()=>{
-    editing=!editing;
-    els.forEach(el=>el.setAttribute('contenteditable',editing?'true':'false'));
-    if(editing){
-      btn.textContent='Publish';
-      status.textContent='Editing on. Click any highlighted text on the page to change it, then press Publish.';
-      els[0].focus();
-    }else{
-      const out={};
-      els.forEach(el=>{ out[el.dataset.editable]=el.innerHTML; });
-      try{ localStorage.setItem(KEY,JSON.stringify({v:VERSION,edits:out})); }catch(e){}
-      btn.textContent='Edit';
-      status.textContent='Changes published.';
-      setTimeout(()=>{ if(!editing) status.textContent=''; },4000);
-    }
-  });
-})();
 </script>
 </body>
 </html>

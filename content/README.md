@@ -29,9 +29,8 @@ Nobody edits HTML. The team discusses and edits in Word, then publishes in one s
 
 - Reads all 106 content fields from the document's tables
 - Fills `content/site-template.html` (the design: layout, images, styling, code)
-- Writes a fresh `index.html` stamped with a content version
-- The version stamp automatically clears any leftover in-browser edits people
-  made with the site's floating Edit button — the document always wins
+- Writes a fresh `index.html` stamped with a content version, so you can
+  always tell which revision of the document is live
 
 The script refuses to publish if a field row was deleted, a key was edited,
 or a Content cell was left empty, and tells you exactly which field to fix.
