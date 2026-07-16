@@ -131,7 +131,7 @@
 
   /* below the people section the white overlay is gone; text rides on a
      translucent panel so it stays AA-legible over the photo */
-  .on-photo{background:rgba(45,52,78,0.92);border-radius:20px;padding:2.5rem;backdrop-filter:blur(4px);}
+  .on-photo{background:rgba(45,52,78,0.92);border-radius:20px;padding:2.5rem 2.5rem 3rem;backdrop-filter:blur(4px);}
   .posgfx{display:flex;justify-content:center;margin:0 auto 2rem;width:min(70vw,360px);}
   /* white, and scaling up from a small seed to full as it scrolls into view
      (engine-driven on the inner svg, same as the cutout graphics, reversible) */
@@ -140,7 +140,7 @@
 
   .btn{display:inline-flex;align-items:center;justify-content:center;background:#fff;color:#2d344e;
     font-weight:var(--w-bold);font-size:var(--fs-h3);line-height:1.2;padding:1.25rem 2.5rem;border-radius:999px;
-    text-decoration:none;min-height:2.75rem;margin-top:1.5rem;}
+    text-decoration:none;min-height:2.75rem;margin:2.5rem 0 0.5rem;}
   .link-bold{font-weight:var(--w-bold);font-size:var(--fs-h3);text-decoration:underline;text-underline-offset:4px;
     display:inline-flex;min-height:2.75rem;align-items:center;margin-top:1.25rem;}
   .skip{position:absolute;left:-9999px;top:0;background:#fff;color:#2d344e;padding:0.75rem 1.25rem;z-index:100;}
@@ -174,6 +174,15 @@
   .cta-item .btn{margin-top:0;}
   .cta-item p{margin-top:0;}
   .stat .src{display:block;margin-top:0.35em;font-size:0.8125rem;opacity:0.75;}
+
+  /* why stat band is 3-up; editing UI */
+  .metrics.three{grid-template-columns:repeat(3,1fr);max-width:60rem;margin-left:auto;margin-right:auto;}
+  @media (max-width:768px){.metrics.three{grid-template-columns:1fr;}}
+  .btn-sm{font-size:1.125rem;padding:0.875rem 2rem;}
+  .edit-wrap{margin-top:3rem;display:flex;flex-direction:column;align-items:center;gap:0.75rem;}
+  .edit-wrap .btn{margin:0;}
+  [data-editable][contenteditable="true"]{outline:2px dashed #d9398c;outline-offset:8px;border-radius:6px;background:rgba(255,255,255,0.06);cursor:text;}
+  [data-editable][contenteditable="true"]:focus-visible{outline:3px solid #fff;outline-offset:8px;}
 </style>
 </head>
 <body>
@@ -300,15 +309,18 @@
   <div class="divider" data-divider></div>
 
   <section class="center" id="why">
-    <h2 class="h1">The largest overlooked market in the world</h2>
-    <p class="bodyL lead">1.6 billion people, nearly 20% of humanity, live with a significant disability, and as populations age that number is climbing toward 2 billion by 2050. Together with their families and friends they control an estimated $18 trillion in annual spending, with $2.6 trillion in disposable income directly in their hands. In the U.S. alone, the disability consumer market is now worth $675 billion. Yet most products are still designed as if these people don&rsquo;t exist.</p>
-    <div class="metrics">
+    <h2 class="h1" data-editable="why-h">The largest overlooked market in the world</h2>
+    <p class="bodyL lead" data-editable="why-p1">1.6 billion people, nearly 20% of humanity, live with a significant disability, and as populations age that number is climbing toward 2 billion by 2050. They directly control $2.6 trillion in disposable income. In the U.S. alone, the disability consumer market is now worth $675 billion. Yet most products are still designed as if these people don&rsquo;t exist.</p>
+    <div class="metrics three">
       <div class="stat reveal"><div class="stat-n">1.6B+</div><div class="lbl">people worldwide live with disabilities, the world&rsquo;s largest emerging market <span class="src">(Return on Disability, 2024)</span></div></div>
-      <div class="stat reveal"><div class="stat-n">$18T</div><div class="lbl">in annual spending power, controlled by people with disabilities together with friends and family <span class="src">(Return on Disability, 2024)</span></div></div>
       <div class="stat reveal"><div class="stat-n">$2.6T</div><div class="lbl">in disposable income directly controlled by people with disabilities <span class="src">(Return on Disability, 2024)</span></div></div>
       <div class="stat reveal"><div class="stat-n">$675B</div><div class="lbl">U.S. disability consumer market <span class="src">(Disability:IN / AIR, 2026)</span></div></div>
     </div>
-    <p class="bodyL lead" style="margin-top:3.5rem;">This is not a niche. Everyone moves in and out of disability across a lifetime: an injury, an aging parent, a loud room, a bright screen, arms full of groceries. Products designed for the edges work better at the center. Curb cuts, captions, voice interfaces, and audiobooks all began as accessibility solutions and became universal ones.</p>
+    <p class="bodyL lead" style="margin-top:3.5rem;" data-editable="why-p2">This is not a niche. Everyone moves in and out of disability across a lifetime: an injury, an aging parent, a loud room, a bright screen, arms full of groceries. Products designed for the edges work better at the center. Curb cuts, captions, voice interfaces, and audiobooks all began as accessibility solutions and became universal ones.</p>
+      <div class="edit-wrap">
+      <button class="btn btn-sm" id="editToggle" type="button">Edit</button>
+      <p class="bodyS" id="editStatus" role="status" aria-live="polite"></p>
+    </div>
   </section>
 
   <div class="divider" data-divider></div>
@@ -563,6 +575,35 @@ function init(){
   frame();
 }
 init();
+
+/* inline edit + publish for the market section */
+(function(){
+  const KEY='ai-content-edits';
+  const btn=document.getElementById('editToggle');
+  const status=document.getElementById('editStatus');
+  const els=[...document.querySelectorAll('[data-editable]')];
+  try{
+    const saved=JSON.parse(localStorage.getItem(KEY)||'{}');
+    els.forEach(el=>{ const k=el.dataset.editable; if(saved[k]) el.innerHTML=saved[k]; });
+  }catch(e){}
+  let editing=false;
+  btn.addEventListener('click',()=>{
+    editing=!editing;
+    els.forEach(el=>el.setAttribute('contenteditable',editing?'true':'false'));
+    if(editing){
+      btn.textContent='Publish';
+      status.textContent='Editing on. Click the highlighted text to change it, then press Publish.';
+      els[0].focus();
+    }else{
+      const out={};
+      els.forEach(el=>{ out[el.dataset.editable]=el.innerHTML; });
+      try{ localStorage.setItem(KEY,JSON.stringify(out)); }catch(e){}
+      btn.textContent='Edit';
+      status.textContent='Changes published.';
+      setTimeout(()=>{ if(!editing) status.textContent=''; },4000);
+    }
+  });
+})();
 </script>
 </body>
 </html>
