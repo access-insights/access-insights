@@ -6,7 +6,7 @@
 <link rel="icon" type="image/svg+xml" href="images/logo.svg">
 <link rel="apple-touch-icon" href="images/logo.svg">
 <title>Access Insights: Accessibility isn’t a feature, it’s the future</title>
-<meta name="content-version" content="2973848c16ce">
+<meta name="content-version" content="{{__version__}}">
 <meta name="description" content="Access Insights is a research and design agency built by the people who helped write the rules of accessibility, including the chief architect of the ADA.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -305,33 +305,33 @@
 <main id="main">
   <section class="split gleft" id="top">
     <div class="gfx" data-gfx="logo" data-mode="cut" role="img" aria-label="Access Insights logo mark"></div>
-    <div class="txt stack"><h1 class="h1">Accessibility isn’t a feature. It’s the future.</h1>
-      <p class="bodyL lead">Access Insights is a research and design agency built by the people who helped write the rules of accessibility, including the chief architect of the ADA. We find the human needs that matter most, prove what works in real communities, and design solutions that reach everyone. Your support makes that possible.</p></div>
+    <div class="txt stack"><h1 class="h1">{{hero.title}}</h1>
+      <p class="bodyL lead">{{hero.lead}}</p></div>
   </section>
 
   <div class="divider" data-divider></div>
 
   <section class="center" id="why">
-    <h2 class="h1">The largest overlooked market in the world</h2>
-    <p class="bodyL lead">1.6 billion people, nearly 20% of humanity, live with a significant disability, and as populations age that number is climbing toward 2 billion by 2050. They directly control $2.6 trillion in disposable income. In the U.S. alone, the disability consumer market is now worth $675 billion. Yet most products are still designed as if these people don’t exist.</p>
+    <h2 class="h1">{{why.heading}}</h2>
+    <p class="bodyL lead">{{why.p1}}</p>
     <div class="metrics three">
-      <div class="stat reveal"><div class="stat-n">1.6B+</div><div class="lbl">people worldwide live with disabilities, the world’s largest emerging market <span class="src">(Return on Disability, 2024)</span></div></div>
-      <div class="stat reveal"><div class="stat-n">$2.6T</div><div class="lbl">in disposable income directly controlled by people with disabilities <span class="src">(Return on Disability, 2024)</span></div></div>
-      <div class="stat reveal"><div class="stat-n">$675B</div><div class="lbl">U.S. disability consumer market <span class="src">(Disability:IN / AIR, 2026)</span></div></div>
+      <div class="stat reveal"><div class="stat-n">{{why.stat1.number}}</div><div class="lbl">{{why.stat1.label}} <span class="src">{{why.stat1.source}}</span></div></div>
+      <div class="stat reveal"><div class="stat-n">{{why.stat2.number}}</div><div class="lbl">{{why.stat2.label}} <span class="src">{{why.stat2.source}}</span></div></div>
+      <div class="stat reveal"><div class="stat-n">{{why.stat3.number}}</div><div class="lbl">{{why.stat3.label}} <span class="src">{{why.stat3.source}}</span></div></div>
     </div>
-    <p class="bodyL lead" style="margin-top:3.5rem;">This is not a niche. Everyone moves in and out of disability across a lifetime: an injury, an aging parent, a loud room, a bright screen, arms full of groceries. Products designed for the edges work better at the center. Curb cuts, captions, voice interfaces, and audiobooks all began as accessibility solutions and became universal ones.</p>
+    <p class="bodyL lead" style="margin-top:3.5rem;">{{why.p2}}</p>
     </section>
 
   <div class="divider" data-divider></div>
 
   <section class="split gright" id="approach">
     <div class="txt stack">
-      <h2 class="h1">Accessibility built in costs no more than accessibility left out</h2>
-      <p class="bodyL lead">Retrofitting accessibility is expensive. Designing for it from day one isn’t. When accessibility drives the earliest decisions about what to build, for whom, and how it should behave, the result costs no more than a traditional design process and produces a product more people can buy, use, and love.</p>
-      <p class="bodyS" style="max-width:60ch;">That is what we do. We take any product or service, whether yours, a startup’s, or a city’s, and run it through a process where ethnographic research, inclusive design, and engineering judgment work together. The output isn’t a compliance checklist. It’s a better product with a bigger market.</p>
-      <div class="feature"><div class="ft">Same budget</div><div class="fd">Accessibility is a design input, not a line item. Built in from the first sketch, it adds insight, not cost.</div></div>
-      <div class="feature"><div class="ft">Bigger market</div><div class="fd">Every barrier removed adds customers: people with disabilities, older adults, and everyone in a temporarily limiting situation.</div></div>
-      <div class="feature"><div class="ft">Better product</div><div class="fd">Constraints sharpen design. Solutions that work in the hardest cases work brilliantly in the easy ones.</div></div>
+      <h2 class="h1">{{approach.heading}}</h2>
+      <p class="bodyL lead">{{approach.p1}}</p>
+      <p class="bodyS" style="max-width:60ch;">{{approach.p2}}</p>
+      <div class="feature"><div class="ft">{{approach.card1.title}}</div><div class="fd">{{approach.card1.text}}</div></div>
+      <div class="feature"><div class="ft">{{approach.card2.title}}</div><div class="fd">{{approach.card2.text}}</div></div>
+      <div class="feature"><div class="ft">{{approach.card3.title}}</div><div class="fd">{{approach.card3.text}}</div></div>
     </div>
     <div class="gfx" data-gfx="arrow" data-mode="cut" role="img" aria-label="A three-way signpost, representing early design decisions"></div>
   </section>
@@ -341,12 +341,12 @@
   <section class="split gleft" id="pipeline">
     <div class="gfx" data-gfx="book" data-mode="cut" role="img" aria-label="A stack of books, representing research"></div>
     <div class="txt stack">
-      <h2 class="h1">From unmet need to scaled impact</h2>
-      <p class="bodyL lead">We find the strongest unmet needs among people with disabilities and older adults, test solutions where people actually live, and connect what works to the partners who can scale it.</p>
-      <div class="feature"><div class="ft">1. Find the needs</div><div class="fd">Ethnographic research surfaces lived barriers, workarounds, and trust signals. That is evidence of what actually matters, not what teams assume matters.</div></div>
-      <div class="feature"><div class="ft">2. Test where people live</div><div class="fd">Our Living Labs, collaborations with independent and assisted living communities, put prototypes into real daily life, with resident, staff, and leadership voices heard together.</div></div>
-      <div class="feature"><div class="ft">3. Activate partners</div><div class="fd">Validated solutions connect to organizations with the reach, sites, and capacity to deliver them to the people who need them.</div></div>
-      <p class="bodyS" style="max-width:60ch;">Living Labs are the distinctive middle of our pipeline, the place where promising ideas meet real lives before anyone bets on scaling them.</p>
+      <h2 class="h1">{{pipeline.heading}}</h2>
+      <p class="bodyL lead">{{pipeline.intro}}</p>
+      <div class="feature"><div class="ft">{{pipeline.step1.title}}</div><div class="fd">{{pipeline.step1.text}}</div></div>
+      <div class="feature"><div class="ft">{{pipeline.step2.title}}</div><div class="fd">{{pipeline.step2.text}}</div></div>
+      <div class="feature"><div class="ft">{{pipeline.step3.title}}</div><div class="fd">{{pipeline.step3.text}}</div></div>
+      <p class="bodyS" style="max-width:60ch;">{{pipeline.note}}</p>
     </div>
   </section>
 
@@ -354,13 +354,13 @@
 
   <section class="split gright" id="current">
     <div class="txt stack">
-      <h2 class="h1">Building durable accessibility infrastructure</h2>
-      <p class="bodyL lead">Access Insights is completing our first Living Lab pilot, advancing two open projects, and building research methods, community, and partnerships designed to last. We work alongside mission-aligned organizations and people who want this kind of infrastructure to exist.</p>
-      <p class="bodyS" style="max-width:60ch;">Our team spent decades inside one of the world’s largest technology companies learning how ideas become products. We now apply that experience exclusively to disability, aging, and human variability, combining policy authority at the level of the ADA, deep ethnographic research, and shipped product engineering in one room.</p>
-      <div class="feature"><div class="ft">First Living Lab pilot</div><div class="fd">Completing our first Living Lab pilot, with published findings.</div></div>
-      <div class="feature"><div class="ft">UnisonOS &amp; Virtual Lex</div><div class="fd">Continued development of our two open projects, moving from validated need toward real-world use.</div></div>
-      <div class="feature"><div class="ft">Durable infrastructure</div><div class="fd">Research methods, community, and partnerships that persist beyond any single grant.</div></div>
-      <div class="feature"><div class="ft">A repeatable model</div><div class="fd">A demonstration that accessible design is a repeatable process any organization can adopt.</div></div>
+      <h2 class="h1">{{current.heading}}</h2>
+      <p class="bodyL lead">{{current.p1}}</p>
+      <p class="bodyS" style="max-width:60ch;">{{current.p2}}</p>
+      <div class="feature"><div class="ft">{{current.item1.title}}</div><div class="fd">{{current.item1.text}}</div></div>
+      <div class="feature"><div class="ft">{{current.item2.title}}</div><div class="fd">{{current.item2.text}}</div></div>
+      <div class="feature"><div class="ft">{{current.item3.title}}</div><div class="fd">{{current.item3.text}}</div></div>
+      <div class="feature"><div class="ft">{{current.item4.title}}</div><div class="fd">{{current.item4.text}}</div></div>
     </div>
     <div class="gfx" data-gfx="figure" data-mode="cut" role="img" aria-label="A worker laying a brick foundation, representing building infrastructure"></div>
   </section>
@@ -368,15 +368,15 @@
   <div class="divider" data-divider></div>
 
   <section class="center" id="services">
-    <h2 class="h1">Bring us any product. We’ll make it work for more people.</h2>
-    <p class="bodyL lead">We take on client work across any industry: software, hardware, services, environments. Whatever you’re building, we add the research depth and design discipline that opens it to the widest possible audience, on a traditional timeline and budget.</p>
+    <h2 class="h1">{{services.heading}}</h2>
+    <p class="bodyL lead">{{services.intro}}</p>
     <div class="cards">
-      <div class="card"><div class="ct h2">Ethnographic and user research</div><div class="cd bodyS">Fieldwork with real users in real contexts, including populations most agencies never reach, to find the needs worth building for.</div></div>
-      <div class="card"><div class="ct h2">Inclusive interaction and visual design</div><div class="cd bodyS">Product and service design where accessibility drives the concept, not the compliance review. More than 30 years of shipped work, from communication systems to mixed reality.</div></div>
-      <div class="card"><div class="ct h2">Accessibility strategy and policy guidance</div><div class="cd bodyS">Standards, ADA, and international policy expertise from the people who helped write it, applied to your roadmap rather than recited at it.</div></div>
-      <div class="card"><div class="ct h2">Prototyping and validation</div><div class="cd bodyS">Prototypes informed by engineering judgment and tested in our Living Labs and with our research community before you invest in scale.</div></div>
+      <div class="card"><div class="ct h2">{{services.card1.title}}</div><div class="cd bodyS">{{services.card1.text}}</div></div>
+      <div class="card"><div class="ct h2">{{services.card2.title}}</div><div class="cd bodyS">{{services.card2.text}}</div></div>
+      <div class="card"><div class="ct h2">{{services.card3.title}}</div><div class="cd bodyS">{{services.card3.text}}</div></div>
+      <div class="card"><div class="ct h2">{{services.card4.title}}</div><div class="cd bodyS">{{services.card4.text}}</div></div>
     </div>
-    <a class="btn" href="mailto:hello@accessinsights.net?subject=Tell%20us%20what%20you%27re%20building">Tell us what you’re building</a>
+    <a class="btn" href="mailto:hello@accessinsights.net?subject=Tell%20us%20what%20you%27re%20building">{{services.cta}}</a>
   </section>
 
   <div class="divider" data-divider></div>
@@ -384,12 +384,12 @@
   <section class="split gleft" id="trust">
     <div class="gfx" data-gfx="ribbon" data-mode="cut" role="img" aria-label="An award ribbon, representing trust and accountability"></div>
     <div class="txt stack">
-      <h2 class="h1">Built around trust, participation, and impact</h2>
-      <p class="bodyL lead">Research with disabled and older communities carries real responsibility. We design programs that respect participants, protect information, and create value for everyone involved.</p>
-      <div class="feature"><div class="ft">Voluntary</div><div class="fd">Participation is always voluntary, with consent at every step.</div></div>
-      <div class="feature"><div class="ft">Private</div><div class="fd">Consent and privacy are top priorities, with retention and deletion built in. We do not sell participant data.</div></div>
-      <div class="feature"><div class="ft">Accessible</div><div class="fd">Accessibility is built into the research experience itself, not bolted on.</div></div>
-      <div class="feature"><div class="ft">Accountable</div><div class="fd">Clear governance and auditability, so contributions and outcomes are understood.</div></div>
+      <h2 class="h1">{{trust.heading}}</h2>
+      <p class="bodyL lead">{{trust.intro}}</p>
+      <div class="feature"><div class="ft">{{trust.item1.title}}</div><div class="fd">{{trust.item1.text}}</div></div>
+      <div class="feature"><div class="ft">{{trust.item2.title}}</div><div class="fd">{{trust.item2.text}}</div></div>
+      <div class="feature"><div class="ft">{{trust.item3.title}}</div><div class="fd">{{trust.item3.text}}</div></div>
+      <div class="feature"><div class="ft">{{trust.item4.title}}</div><div class="fd">{{trust.item4.text}}</div></div>
     </div>
   </section>
 
@@ -397,47 +397,47 @@
 
   <!-- PEOPLE - white overlay ends after this section -->
   <section class="center" id="team" data-people>
-    <h2 class="h1">Genuine expertise in accessibility is rare. Expertise at this depth is rarer still.</h2>
-    <p class="bodyL lead">We came together after decades at Intel Corporation: researchers, designers, engineers, and disability rights pioneers, including the chief architect of the ADA. We have shaped the laws millions rely on and the tools billions use. Several of us bring lived experience of disability to every project we touch.</p>
+    <h2 class="h1">{{team.heading}}</h2>
+    <p class="bodyL lead">{{team.intro}}</p>
     <div class="team">
-      <div class="bio"><img class="headshot" src="images/team/darryl.jpg" alt="Darryl Adams" loading="lazy"><div class="h2">Darryl Adams</div><div class="role bodyM">Founder</div><div class="blurb bodyS">AI and accessibility strategist focused on inclusive innovation and real-world impact.</div></div>
-      <div class="bio"><img class="headshot" src="images/team/lex.jpg" alt="Lex Frieden" loading="lazy"><div class="h2">Lex Frieden</div><div class="role bodyM">Senior Advisor</div><div class="blurb bodyS">Chief architect of the Americans with Disabilities Act and a founder of the independent living movement, with five decades shaping U.S. and international disability policy.</div></div>
-      <div class="bio"><img class="headshot" src="images/team/susan.jpg" alt="Susan Faulkner" loading="lazy"><div class="h2">Susan Faulkner</div><div class="role bodyM">Research Director</div><div class="blurb bodyS">User experience researcher and leader with over 30 years delivering high-impact results focused on accessibility.</div></div>
-      <div class="bio"><img class="headshot" src="images/team/richard.jpg" alt="Richard Beckwith, PhD" loading="lazy"><div class="h2">Richard Beckwith, PhD</div><div class="role bodyM">Research Fellow</div><div class="blurb bodyS">Long career in research supporting design across disability, education, and aging: UX, AI (especially NLP), and sensing.</div></div>
-      <div class="bio"><img class="headshot" src="images/team/marco.jpg?v=3" alt="Marco Beltman, PhD" loading="lazy"><div class="h2">Marco Beltman, PhD</div><div class="role bodyM">Research Fellow, Sensory Technology</div><div class="blurb bodyS">Principal engineer with a PhD in acoustics, 39 patents, and a volunteer raft guide opening rivers to people of all abilities.</div></div>
-      <div class="bio"><img class="headshot" src="images/team/becky.jpg" alt="Becky Chierichetti" loading="lazy"><div class="h2">Becky Chierichetti</div><div class="role bodyM">Principal Design Researcher</div><div class="blurb bodyS">UX researcher exploring AI, mixed reality, and accessibility at the boundary of physical and digital worlds.</div></div>
-      <div class="bio"><img class="headshot" src="images/team/pete.jpg" alt="Pete Denman" loading="lazy"><div class="h2">Pete Denman</div><div class="role bodyM">Principal Design and Interaction</div><div class="blurb bodyS">Designed Stephen Hawking’s communication system, with over 30 years in visual and interaction design, bringing the perspective of a wheelchair user to every project.</div></div>
+      <div class="bio"><img class="headshot" src="images/team/darryl.jpg" alt="Darryl Adams" loading="lazy"><div class="h2">{{team.m1.name}}</div><div class="role bodyM">{{team.m1.role}}</div><div class="blurb bodyS">{{team.m1.bio}}</div></div>
+      <div class="bio"><img class="headshot" src="images/team/lex.jpg" alt="Lex Frieden" loading="lazy"><div class="h2">{{team.m2.name}}</div><div class="role bodyM">{{team.m2.role}}</div><div class="blurb bodyS">{{team.m2.bio}}</div></div>
+      <div class="bio"><img class="headshot" src="images/team/susan.jpg" alt="Susan Faulkner" loading="lazy"><div class="h2">{{team.m3.name}}</div><div class="role bodyM">{{team.m3.role}}</div><div class="blurb bodyS">{{team.m3.bio}}</div></div>
+      <div class="bio"><img class="headshot" src="images/team/richard.jpg" alt="Richard Beckwith, PhD" loading="lazy"><div class="h2">{{team.m4.name}}</div><div class="role bodyM">{{team.m4.role}}</div><div class="blurb bodyS">{{team.m4.bio}}</div></div>
+      <div class="bio"><img class="headshot" src="images/team/marco.jpg?v=3" alt="Marco Beltman, PhD" loading="lazy"><div class="h2">{{team.m5.name}}</div><div class="role bodyM">{{team.m5.role}}</div><div class="blurb bodyS">{{team.m5.bio}}</div></div>
+      <div class="bio"><img class="headshot" src="images/team/becky.jpg" alt="Becky Chierichetti" loading="lazy"><div class="h2">{{team.m6.name}}</div><div class="role bodyM">{{team.m6.role}}</div><div class="blurb bodyS">{{team.m6.bio}}</div></div>
+      <div class="bio"><img class="headshot" src="images/team/pete.jpg" alt="Pete Denman" loading="lazy"><div class="h2">{{team.m7.name}}</div><div class="role bodyM">{{team.m7.role}}</div><div class="blurb bodyS">{{team.m7.bio}}</div></div>
     </div>
-    <h3 class="h2" style="margin-top:3.5rem;">By the numbers</h3>
+    <h3 class="h2" style="margin-top:3.5rem;">{{team.numbers.heading}}</h3>
     <div class="metrics">
-      <div class="stat reveal"><div class="stat-n">60+</div><div class="lbl">patents across acoustics, AR, and AI</div></div>
-      <div class="stat reveal"><div class="stat-n">1,200+</div><div class="lbl">lectures, from the White House to the UN</div></div>
-      <div class="stat reveal"><div class="stat-n">167+</div><div class="lbl">peer-reviewed publications</div></div>
-      <div class="stat reveal"><div class="stat-n">200+ yrs</div><div class="lbl">combined shaping policy &amp; standards</div></div>
+      <div class="stat reveal"><div class="stat-n">{{team.stat1.number}}</div><div class="lbl">{{team.stat1.label}}</div></div>
+      <div class="stat reveal"><div class="stat-n">{{team.stat2.number}}</div><div class="lbl">{{team.stat2.label}}</div></div>
+      <div class="stat reveal"><div class="stat-n">{{team.stat3.number}}</div><div class="lbl">{{team.stat3.label}}</div></div>
+      <div class="stat reveal"><div class="stat-n">{{team.stat4.number}}</div><div class="lbl">{{team.stat4.label}}</div></div>
     </div>
   </section>
 
   <!-- below here the overlay is gone; bg shows through, graphics are positive -->
   <section class="center" id="join">
     <div class="posgfx" data-pos="shake"></div>
-    <div class="on-photo stack"><h2 class="h1">Help shape what’s next</h2>
-      <p class="bodyL lead">Join the Access Insights research community and help ensure tomorrow’s technology reflects real human experience. Already a member? Log in for your studies, preferences, and support paths. Everyone is welcome.</p>
-      <a class="btn" href="mailto:hello@accessinsights.net?subject=Joining%20the%20research%20community">Join the Research Community</a></div>
+    <div class="on-photo stack"><h2 class="h1">{{join.heading}}</h2>
+      <p class="bodyL lead">{{join.text}}</p>
+      <a class="btn" href="mailto:hello@accessinsights.net?subject=Joining%20the%20research%20community">{{join.cta}}</a></div>
   </section>
 
   <section class="center" id="closing">
     <div class="posgfx" data-pos="flag"></div>
-    <div class="on-photo stack"><h2 class="h1">Build the future with us</h2>
-      <p class="bodyL lead">Whether you’re an organization that shares our mission, a team with a product to open to more people, or a person whose experience should shape what gets built, there is a place for you here.</p>
+    <div class="on-photo stack"><h2 class="h1">{{closing.heading}}</h2>
+      <p class="bodyL lead">{{closing.text}}</p>
       <div class="cta-row">
-        <div class="cta-item"><a class="btn" href="#services">Work with us</a><p class="bodyS">For organizations and product teams</p></div>
-        <div class="cta-item"><a class="btn" href="mailto:hello@accessinsights.net?subject=Joining%20the%20research%20community">Join the community</a><p class="bodyS">For research participants</p></div>
+        <div class="cta-item"><a class="btn" href="#services">{{closing.cta1.label}}</a><p class="bodyS">{{closing.cta1.desc}}</p></div>
+        <div class="cta-item"><a class="btn" href="mailto:hello@accessinsights.net?subject=Joining%20the%20research%20community">{{closing.cta2.label}}</a><p class="bodyS">{{closing.cta2.desc}}</p></div>
       </div>
       <a class="link-bold" href="mailto:hello@accessinsights.net">hello@accessinsights.net</a></div>
   </section>
 </main>
 
-<footer><p class="bodyS">© 2026 Access Insights · Portland, Oregon</p></footer>
+<footer><p class="bodyS">{{footer.text}}</p></footer>
 
 <div class="edit-fab">
   <p class="bodyS" id="editStatus" role="status" aria-live="polite"></p>
