@@ -179,8 +179,10 @@
   .metrics.three{grid-template-columns:repeat(3,1fr);max-width:60rem;margin-left:auto;margin-right:auto;}
   @media (max-width:768px){.metrics.three{grid-template-columns:1fr;}}
   .btn-sm{font-size:1.125rem;padding:0.875rem 2rem;}
-  .edit-wrap{margin-top:3rem;display:flex;flex-direction:column;align-items:center;gap:0.75rem;}
-  .edit-wrap .btn{margin:0;}
+  .edit-fab{position:fixed;right:1.5rem;bottom:1.5rem;z-index:60;display:flex;flex-direction:column;align-items:flex-end;gap:0.75rem;pointer-events:none;}
+  .edit-fab .btn{margin:0;pointer-events:auto;box-shadow:0 4px 18px rgba(0,0,0,0.45);}
+  #editStatus{background:rgba(45,52,78,0.95);border:1px solid var(--card-border);border-radius:12px;padding:0.75rem 1rem;max-width:20rem;text-align:right;pointer-events:auto;}
+  #editStatus:empty{display:none;}
   [data-editable][contenteditable="true"]{outline:2px dashed #d9398c;outline-offset:8px;border-radius:6px;background:rgba(255,255,255,0.06);cursor:text;}
   [data-editable][contenteditable="true"]:focus-visible{outline:3px solid #fff;outline-offset:8px;}
 </style>
@@ -309,19 +311,15 @@
   <div class="divider" data-divider></div>
 
   <section class="center" id="why">
-    <h2 class="h1" data-editable="why-h">The largest overlooked market in the world</h2>
-    <p class="bodyL lead" data-editable="why-p1">1.6 billion people, nearly 20% of humanity, live with a significant disability, and as populations age that number is climbing toward 2 billion by 2050. They directly control $2.6 trillion in disposable income. In the U.S. alone, the disability consumer market is now worth $675 billion. Yet most products are still designed as if these people don&rsquo;t exist.</p>
+    <h2 class="h1">The largest overlooked market in the world</h2>
+    <p class="bodyL lead">1.6 billion people, nearly 20% of humanity, live with a significant disability, and as populations age that number is climbing toward 2 billion by 2050. They directly control $2.6 trillion in disposable income. In the U.S. alone, the disability consumer market is now worth $675 billion. Yet most products are still designed as if these people don&rsquo;t exist.</p>
     <div class="metrics three">
       <div class="stat reveal"><div class="stat-n">1.6B+</div><div class="lbl">people worldwide live with disabilities, the world&rsquo;s largest emerging market <span class="src">(Return on Disability, 2024)</span></div></div>
       <div class="stat reveal"><div class="stat-n">$2.6T</div><div class="lbl">in disposable income directly controlled by people with disabilities <span class="src">(Return on Disability, 2024)</span></div></div>
       <div class="stat reveal"><div class="stat-n">$675B</div><div class="lbl">U.S. disability consumer market <span class="src">(Disability:IN / AIR, 2026)</span></div></div>
     </div>
-    <p class="bodyL lead" style="margin-top:3.5rem;" data-editable="why-p2">This is not a niche. Everyone moves in and out of disability across a lifetime: an injury, an aging parent, a loud room, a bright screen, arms full of groceries. Products designed for the edges work better at the center. Curb cuts, captions, voice interfaces, and audiobooks all began as accessibility solutions and became universal ones.</p>
-      <div class="edit-wrap">
-      <button class="btn btn-sm" id="editToggle" type="button">Edit</button>
-      <p class="bodyS" id="editStatus" role="status" aria-live="polite"></p>
-    </div>
-  </section>
+    <p class="bodyL lead" style="margin-top:3.5rem;">This is not a niche. Everyone moves in and out of disability across a lifetime: an injury, an aging parent, a loud room, a bright screen, arms full of groceries. Products designed for the edges work better at the center. Curb cuts, captions, voice interfaces, and audiobooks all began as accessibility solutions and became universal ones.</p>
+    </section>
 
   <div class="divider" data-divider></div>
 
@@ -431,7 +429,6 @@
     <div class="on-photo stack"><h2 class="h1">Build the future with us</h2>
       <p class="bodyL lead">Whether you&rsquo;re an organization that shares our mission, a team with a product to open to more people, or a person whose experience should shape what gets built, there is a place for you here.</p>
       <div class="cta-row">
-        <div class="cta-item"><a class="btn" href="mailto:hello@accessinsights.net?subject=Partnering%20with%20Access%20Insights">Partner with us</a><p class="bodyS">For organizations and people who share our mission</p></div>
         <div class="cta-item"><a class="btn" href="#services">Work with us</a><p class="bodyS">For organizations and product teams</p></div>
         <div class="cta-item"><a class="btn" href="mailto:hello@accessinsights.net?subject=Joining%20the%20research%20community">Join the community</a><p class="bodyS">For research participants</p></div>
       </div>
@@ -440,6 +437,11 @@
 </main>
 
 <footer><p class="bodyS">© 2026 Access Insights · Portland, Oregon</p></footer>
+
+<div class="edit-fab">
+  <p class="bodyS" id="editStatus" role="status" aria-live="polite"></p>
+  <button class="btn btn-sm" id="editToggle" type="button">Edit</button>
+</div>
 
 <script>
 const VB = {"logo": {"vb": "0 0 721.04 706.98"}, "book": {"vb": "0 0 766.53 654.07"}, "arrow": {"vb": "0 0 284.03 248.1"}, "ribbon": {"vb": "0 0 659.71 1025"}, "figure": {"vb": "0 0 179.54 200.94"}, "shake": {"vb": "0 0 509.16 338.29"}, "flag": {"vb": "0 0 501 440.3"}};
@@ -581,7 +583,9 @@ init();
   const KEY='ai-content-edits';
   const btn=document.getElementById('editToggle');
   const status=document.getElementById('editStatus');
-  const els=[...document.querySelectorAll('[data-editable]')];
+  const SEL='main h1, main .h1, main p, main .feature, main .card, main .bio, main .stat .lbl, footer p';
+  const els=[...new Set(document.querySelectorAll(SEL))];
+  els.forEach((el,i)=>{ if(!el.dataset.editable) el.dataset.editable='e'+i; });
   try{
     const saved=JSON.parse(localStorage.getItem(KEY)||'{}');
     els.forEach(el=>{ const k=el.dataset.editable; if(saved[k]) el.innerHTML=saved[k]; });
@@ -592,7 +596,7 @@ init();
     els.forEach(el=>el.setAttribute('contenteditable',editing?'true':'false'));
     if(editing){
       btn.textContent='Publish';
-      status.textContent='Editing on. Click the highlighted text to change it, then press Publish.';
+      status.textContent='Editing on. Click any highlighted text on the page to change it, then press Publish.';
       els[0].focus();
     }else{
       const out={};
