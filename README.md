@@ -1,85 +1,104 @@
 # Access Insights
 
-Static website for Access Insights, an accessibility research and design organization working with disabled people, older adults, product teams, and research partners.
+**Living Labs & Inclusive Innovation Research**  
+Website for Access Insights — a distributed network of Living Labs co-creating with people with disabilities and older adults.
 
-## Production architecture
+---
 
-The production homepage is generated from a Word content document and an HTML design template:
+## Project Structure
 
-```text
-content/website-content.docx  # Source of truth for site copy
-content/site-template.html    # Layout, styles, graphics, and behavior
-content/publish.py            # Validates content and generates the homepage
-index.html                    # Generated production homepage
-images/logo.svg               # Browser icon
-images/team/*.png             # Team portraits referenced by the homepage
-tests/                        # Playwright production accessibility checks
+```
+access-insights/
+├── index.html              # Main page
+├── assets/
+│   ├── css/styles.css      # All styles (WCAG 2.1 AAA verified)
+│   ├── js/main.js          # Navigation, scroll animations, form handling
+│   └── images/logo.svg     # Standalone logo
+├── .gitignore
+└── README.md
 ```
 
-The homepage is plain HTML, CSS, and JavaScript. Its styles and scripts are inline, its background artwork is embedded, and its only other runtime dependency is the externally hosted Montserrat font.
+---
 
-Historical prototypes and the older site implementation remain in the repository for reference, but are not included in the production build.
+## Deploying to Netlify
 
-## Editing and publishing content
+### First-time setup
 
-Edit copy in `content/website-content.docx`; do not edit generated copy directly in `index.html`. See `content/README.md` for the complete editorial workflow.
+1. Push this repo to GitHub
+2. In Netlify, select **Add new project → Import an existing project**
+3. Choose the `access-insights/access-insights` repository
+4. Use these settings:
+   - Build command: *(leave empty)*
+   - Publish directory: `.`
+5. Deploy site
 
-From the repository root:
+Because this is a plain HTML/CSS/JS site, no build step is required.
+
+After linking the repo, Netlify will auto-deploy on every push to `main`.
+
+### Custom domain (optional)
+
+1. In Netlify, open **Domain management**
+2. Add your custom domain (e.g. `accessinsights.co`)
+3. Update DNS records as instructed by Netlify
+4. Enable HTTPS (Netlify-managed certificate) once DNS propagates
+
+---
+
+## Running Locally
+
+No build step required — it's plain HTML/CSS/JS.
 
 ```bash
-python3 content/publish.py --check
-python3 content/publish.py
+# Option 1: Python (built-in)
+python3 -m http.server 8080
+
+# Option 2: Node (npx)
+npx serve .
+
+# Option 3: VS Code
+# Install "Live Server" extension → right-click index.html → Open with Live Server
 ```
 
-Edit `content/site-template.html` for layout, styling, behavior, images, or structural changes, then run the publisher to regenerate `index.html`.
+Then open `http://localhost:8080`.
 
-## Local development
+---
 
-Install dependencies and serve the repository:
+## Design Tokens
 
-```bash
-npm install
-npm run run
-```
+| Token | Value | Usage |
+|---|---|---|
+| `--accent` | `#f0c96a` | Gold — headings, highlights, CTAs |
+| `--accent2` | `#7ecfb3` | Teal — secondary emphasis, success |
+| `--text-light` | `#f0eefc` | Primary body text |
+| `--text-muted` | `#b8b4d4` | Secondary / descriptive text |
+| Background | `#0a0612` | Deep dark base |
 
-Open `http://localhost:8080`.
+All color pairs meet **WCAG 2.1 AAA** (7:1+ contrast ratio) for normal text.
 
-Useful validation commands:
-
-```bash
-npm test
-npm run test:a11y
-npm run test:smoke
-npm run build
-```
-
-## Production build
-
-`npm run build` creates `dist/` containing only the files required by the production homepage:
-
-```text
-dist/
-├── index.html
-└── images/
-    ├── logo.svg
-    └── team/*.png
-```
-
-The homepage's calls to action point to external Access Insights sites or email links, so no additional local HTML pages are currently required.
-
-For Netlify, use:
-
-- Build command: `npm run build`
-- Publish directory: `dist`
-
-Deployments from `main` should publish the production site.
+---
 
 ## Accessibility
 
-The production tests cover axe scanning, heading hierarchy, navigation anchors, skip-link behavior, mobile keyboard navigation, and local image loading. The page also includes visible focus styles, responsive reflow, reduced-motion support, high-contrast accommodations, semantic landmarks, and accessible descriptions for decorative storytelling graphics.
+- WCAG 2.1 AAA verified across all text/background combinations
+- Semantic HTML5 with full ARIA landmark and label coverage
+- Skip-to-main-content link
+- Keyboard navigable with visible focus rings
+- Respects `prefers-reduced-motion`
+- `forced-colors` (Windows High Contrast) support on interactive elements
+- All touch targets ≥ 44×44px (WCAG 2.5.5)
+- No reliance on color alone to convey meaning
 
-Automated checks support accessibility review but do not replace manual keyboard, screen-reader, zoom, contrast, and usability testing.
+---
+
+## Fonts
+
+Loaded via Google Fonts (no local files needed):
+- **Cormorant Garamond** — display/headings
+- **DM Sans** — body/UI
+
+---
 
 ## Contact
 
-Email `hello@accessinsights.net`, or use the partner and research-community links on the homepage.
+Contact is form-only via the website contact form (`#contact` section on the page).
