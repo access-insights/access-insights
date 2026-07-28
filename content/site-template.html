@@ -13,7 +13,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
   /* =====================================================================
-     Access Insights - scroll experience (STAGING / test build)
+     Access Insights - production scroll experience
      - Montserrat only (400/700/900), exact Figma type scale in rem.
      - Independent graphics revealed as cutouts in a white overlay that
        ends after the people section; below it the background shows through.
@@ -90,7 +90,7 @@
     .hamb{display:inline-flex;}
     .nav-links{position:fixed;top:5rem;right:0;left:0;z-index:45;background:#2d344e;border-bottom:1px solid var(--card-border);
       flex-direction:column;gap:0;align-items:stretch;padding:0.5rem 0;
-      opacity:0;visibility:hidden;transform:translateY(-0.5rem);transition:opacity .2s ease,transform .2s ease,visibility .2s;}
+      opacity:0;visibility:hidden;transform:translateY(-0.5rem);transition:opacity .2s ease,transform .2s ease;}
     .nav-links.open{opacity:1;visibility:visible;transform:translateY(0);}
     .nav-links a{padding:0.75rem 2.5rem;min-height:2.75rem;}
     @media (prefers-reduced-motion:reduce){.nav-links{transition:none;}}
@@ -146,6 +146,8 @@
     display:inline-flex;min-height:2.75rem;align-items:center;margin-top:1.25rem;}
   .skip{position:absolute;left:-9999px;top:0;background:#fff;color:#2d344e;padding:0.75rem 1.25rem;z-index:100;}
   .skip:focus{left:0;}
+  .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
+    clip:rect(0,0,0,0);white-space:nowrap;border:0;}
   footer{position:relative;z-index:2;text-align:center;padding:3rem 2.5rem;border-top:1px solid var(--card-border);background:#2d344e;}
 
   @media (max-width:768px){
@@ -184,7 +186,7 @@
 <body>
 <a class="skip" href="#main">Skip to content</a>
 
-<div id="bg" role="img" aria-label="Inside Your Rainbow Panorama at ARoS: a person in a power wheelchair travels the tinted-glass walkway, overlooking the city at sunset."></div>
+<div id="bg" aria-hidden="true"></div>
 <svg id="overlay" preserveAspectRatio="none" aria-hidden="true">
   <defs>
     <symbol id="sym-logo" viewBox="0 0 721.04 706.98"><g fill="#000" stroke="none"><g id="Layer_2-2" data-name="Layer 2">
@@ -295,7 +297,8 @@
   </nav>
 </header>
 
-<main id="main">
+<main id="main" tabindex="-1">
+  <p class="sr-only">Background image: Inside Your Rainbow Panorama at ARoS, where a person in a power wheelchair travels the tinted-glass walkway overlooking the city at sunset.</p>
   <section class="split gleft" id="top">
     <div class="gfx" data-gfx="logo" data-mode="cut" role="img" aria-label="Access Insights logo mark"></div>
     <div class="txt stack"><h1 class="h1">{{hero.title}}</h1>
@@ -393,13 +396,13 @@
     <h2 class="h1">{{team.heading}}</h2>
     <p class="bodyL lead">{{team.intro}}</p>
     <div class="team">
-      <div class="bio"><img class="headshot" src="images/team/darryl.jpg" alt="Darryl Adams" loading="lazy"><div class="h2">{{team.m1.name}}</div><div class="role bodyM">{{team.m1.role}}</div><div class="blurb bodyS">{{team.m1.bio}}</div></div>
-      <div class="bio"><img class="headshot" src="images/team/lex.jpg" alt="Lex Frieden" loading="lazy"><div class="h2">{{team.m2.name}}</div><div class="role bodyM">{{team.m2.role}}</div><div class="blurb bodyS">{{team.m2.bio}}</div></div>
-      <div class="bio"><img class="headshot" src="images/team/susan.jpg" alt="Susan Faulkner" loading="lazy"><div class="h2">{{team.m3.name}}</div><div class="role bodyM">{{team.m3.role}}</div><div class="blurb bodyS">{{team.m3.bio}}</div></div>
-      <div class="bio"><img class="headshot" src="images/team/richard.jpg" alt="Richard Beckwith, PhD" loading="lazy"><div class="h2">{{team.m4.name}}</div><div class="role bodyM">{{team.m4.role}}</div><div class="blurb bodyS">{{team.m4.bio}}</div></div>
-      <div class="bio"><img class="headshot" src="images/team/marco.jpg?v=3" alt="Marco Beltman, PhD" loading="lazy"><div class="h2">{{team.m5.name}}</div><div class="role bodyM">{{team.m5.role}}</div><div class="blurb bodyS">{{team.m5.bio}}</div></div>
-      <div class="bio"><img class="headshot" src="images/team/becky.jpg" alt="Becky Chierichetti" loading="lazy"><div class="h2">{{team.m6.name}}</div><div class="role bodyM">{{team.m6.role}}</div><div class="blurb bodyS">{{team.m6.bio}}</div></div>
-      <div class="bio"><img class="headshot" src="images/team/pete.jpg" alt="Pete Denman" loading="lazy"><div class="h2">{{team.m7.name}}</div><div class="role bodyM">{{team.m7.role}}</div><div class="blurb bodyS">{{team.m7.bio}}</div></div>
+      <div class="bio"><img class="headshot" src="images/team/darryl.png" alt="Darryl Adams" loading="lazy"><div class="h2">{{team.m1.name}}</div><div class="role bodyM">{{team.m1.role}}</div><div class="blurb bodyS">{{team.m1.bio}}</div></div>
+      <div class="bio"><img class="headshot" src="images/team/lex.png" alt="Lex Frieden" loading="lazy"><div class="h2">{{team.m2.name}}</div><div class="role bodyM">{{team.m2.role}}</div><div class="blurb bodyS">{{team.m2.bio}}</div></div>
+      <div class="bio"><img class="headshot" src="images/team/susan.png" alt="Susan Faulkner" loading="lazy"><div class="h2">{{team.m3.name}}</div><div class="role bodyM">{{team.m3.role}}</div><div class="blurb bodyS">{{team.m3.bio}}</div></div>
+      <div class="bio"><img class="headshot" src="images/team/richard.png" alt="Richard Beckwith, PhD" loading="lazy"><div class="h2">{{team.m4.name}}</div><div class="role bodyM">{{team.m4.role}}</div><div class="blurb bodyS">{{team.m4.bio}}</div></div>
+      <div class="bio"><img class="headshot" src="images/team/marco.png" alt="Marco Beltman, PhD" loading="lazy"><div class="h2">{{team.m5.name}}</div><div class="role bodyM">{{team.m5.role}}</div><div class="blurb bodyS">{{team.m5.bio}}</div></div>
+      <div class="bio"><img class="headshot" src="images/team/becky.png" alt="Becky Chierichetti" loading="lazy"><div class="h2">{{team.m6.name}}</div><div class="role bodyM">{{team.m6.role}}</div><div class="blurb bodyS">{{team.m6.bio}}</div></div>
+      <div class="bio"><img class="headshot" src="images/team/pete.png" alt="Pete Denman" loading="lazy"><div class="h2">{{team.m7.name}}</div><div class="role bodyM">{{team.m7.role}}</div><div class="blurb bodyS">{{team.m7.bio}}</div></div>
     </div>
     <h3 class="h2" style="margin-top:3.5rem;">{{team.numbers.heading}}</h3>
     <div class="metrics">
@@ -540,8 +543,11 @@ function setupNav(){
   function open(){menu.classList.add('open');btn.setAttribute('aria-expanded','true');
     document.addEventListener('keydown',onKey);
     document.addEventListener('pointerdown',onDocPointer,true);      // tap outside closes
-    window.addEventListener('scroll',onScrollClose,{passive:true});  // scrolling closes
-    items()[0]&&items()[0].focus();}
+    requestAnimationFrame(()=>{
+      if(!menu.classList.contains('open'))return;
+      items()[0]&&items()[0].focus();
+      window.addEventListener('scroll',onScrollClose,{passive:true}); // scrolling closes
+    });}
   function close(ret){menu.classList.remove('open');btn.setAttribute('aria-expanded','false');
     document.removeEventListener('keydown',onKey);
     document.removeEventListener('pointerdown',onDocPointer,true);
