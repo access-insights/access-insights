@@ -6,6 +6,15 @@ async function gotoIndex(page: Page): Promise<void> {
 }
 
 test.describe('Accessibility smoke checks', () => {
+  test('document title is concise and does not duplicate the hero heading', async ({ page }) => {
+    await gotoIndex(page);
+
+    const heroText = (await page.locator('#top h1').innerText()).trim();
+    await expect(page).toHaveTitle('Access Insights');
+    expect(heroText).toBe("Accessibility isn’t a feature. It’s the future.");
+    expect((await page.title()).toLocaleLowerCase()).not.toContain(heroText.toLocaleLowerCase());
+  });
+
   test('hero content is visually above the full-screen background', async ({ page }) => {
     await gotoIndex(page);
 

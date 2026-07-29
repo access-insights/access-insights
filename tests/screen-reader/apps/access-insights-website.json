@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "id": "access-insights-website",
+  "displayName": "Access Insights Public Website",
+  "baseUrls": {
+    "local": "http://127.0.0.1:4173"
+  },
+  "allowedReaders": ["nvda", "narrator"],
+  "defaultSuite": "critical",
+  "dataPolicy": "synthetic-only"
+}

@@ -80,6 +80,33 @@ The production tests cover axe scanning, heading hierarchy, navigation anchors, 
 
 Automated checks support accessibility review but do not replace manual keyboard, screen-reader, zoom, contrast, and usability testing.
 
+### Live screen-reader contract pack
+
+The repository adopts the central `@access-insights/screen-reader-harness` at reviewed revision `80df5f6fe1585d946844988b1e47120459de8179`. Product-owned contracts live under `tests/screen-reader`; generic patterns, reader adapters, evidence handling, and finding fingerprints remain in the central harness.
+
+The supported live-reader matrix is Windows-only:
+
+- NVDA
+- Narrator
+
+The current `critical` suite is local, public-route, and read-only. It does not type, submit, authenticate, or change website state. Node.js 22 or newer is required for harness commands.
+
+Validate the product contracts:
+
+```bash
+npm run screen-reader:validate
+npm run test:screen-reader:contracts
+```
+
+Prepare a future run without starting a reader:
+
+```bash
+npm run screen-reader:prepare:nvda
+npm run screen-reader:prepare:narrator
+```
+
+Prepared runs and evidence are written to ignored `screen-reader-results/`. Live execution must use the central `live-screen-reader-testing` workflow on an unlocked Windows test desktop with exactly one reader running. Do not treat axe or browser accessibility-tree output as live-reader evidence.
+
 ## Contact
 
 Email `hello@accessinsights.net`, or use the partner and research-community links on the homepage.
