@@ -102,6 +102,29 @@ test.describe('Accessibility smoke checks', () => {
     await expect(hamburger).toBeFocused();
   });
 
+  test('mobile menu stays open after pointer activation on a scrolled page', async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await gotoIndex(page);
+
+    await page.evaluate(() => window.scrollTo(0, 1200));
+    await expect.poll(() => page.evaluate(() => window.scrollY)).toBeGreaterThan(0);
+
+    const hamburger = page.locator('#hamb');
+    const menu = page.locator('#navlinks');
+    await hamburger.click();
+
+    // Catch the former focus/scroll race, which closed the menu just after it opened.
+    await page.waitForTimeout(150);
+    await expect(hamburger).toHaveAttribute('aria-expanded', 'true');
+    await expect(hamburger).toBeFocused();
+    await expect(menu).toBeVisible();
+
+    await page.locator('#navlinks a[href="#team"]').click();
+    await expect(page).toHaveURL(/#team$/);
+    await expect(hamburger).toHaveAttribute('aria-expanded', 'false');
+    await expect(menu).not.toBeVisible();
+  });
+
   test('all local image references resolve successfully', async ({ page }) => {
     await gotoIndex(page);
 
