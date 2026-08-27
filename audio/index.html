@@ -15,7 +15,7 @@
     --magenta:#d9398c; --pink:#f492c4;
     --card-fill:rgba(255,255,255,0.07); --card-border:rgba(255,255,255,0.22);
     --w-reg:400; --w-bold:700; --w-black:900;
-    --fs-h1:clamp(1.4rem, 7vw, 3rem);    --lh-h1:1.08;
+    --fs-h1:3rem;    --lh-h1:1.08;
     --fs-h2:1.625rem;--lh-h2:1.15;
     --fs-h3:1.5rem;  --lh-h3:1.3;
     --fs-bl:1.5rem;  --lh-bl:1.35;
@@ -28,7 +28,7 @@
   *{box-sizing:border-box;margin:0;padding:0;}
   body{font-family:'Montserrat',system-ui,-apple-system,sans-serif;color:#fff;background:#2d344e;
        -webkit-font-smoothing:antialiased;overflow-x:hidden;}
-  .h1{font-weight:var(--w-black);font-size:var(--fs-h1);line-height:var(--lh-h1);overflow-wrap:normal;}
+  .h1{font-weight:var(--w-black);font-size:var(--fs-h1);line-height:var(--lh-h1);overflow-wrap:break-word;}
   .h2{font-weight:var(--w-bold);font-size:var(--fs-h2);line-height:var(--lh-h2);}
   .bodyL{font-weight:var(--w-reg);font-size:var(--fs-bl);line-height:var(--lh-bl);}
   .bodyS{font-weight:var(--w-reg);font-size:var(--fs-bs);line-height:var(--lh-bs);}
@@ -112,6 +112,7 @@
     .link-bold{overflow-wrap:anywhere;}
     main{padding:0 1.25rem;}}
   .exp-img{width:100%;max-width:32rem;border-radius:12px;border:1px solid var(--card-border);display:block;margin:2rem auto 0;}
+  .exp-img.exp-art{border:none;max-width:20rem;}
   .step-img{width:100%;max-width:9rem;border-radius:8px;display:block;margin:0.875rem auto 0;}
   .wave{display:block;max-width:20rem;width:60%;margin:1.25rem auto 0;}
 
@@ -142,7 +143,7 @@
     font-weight:var(--w-bold);font-size:var(--fs-h3);line-height:1.2;padding:1.25rem 2.5rem;border-radius:999px;
     text-decoration:none;min-height:2.75rem;margin:2.5rem 0 0.5rem;}
   .btn:hover,.btn:focus-visible{background:var(--magenta);color:#fff;}
-  .link-bold{font-weight:var(--w-bold);font-size:clamp(1rem, 4.8vw, 1.5rem);text-decoration:underline;text-underline-offset:4px;}
+  .link-bold{font-weight:var(--w-bold);font-size:var(--fs-h3);text-decoration:underline;text-underline-offset:4px;}
 
   footer{position:relative;z-index:2;text-align:center;padding:3rem 2.5rem;border-top:1px solid var(--card-border);}
   footer a{text-decoration-thickness:2px;text-underline-offset:4px;}
@@ -250,6 +251,7 @@
       <div class="step"><div class="n">03</div><div class="st">DEFEND</div><div class="sd">Respond inside the game</div></div>
       <div class="step"><div class="n">04</div><div class="st">TRACK</div><div class="sd">Measure progress over time</div></div>
     </div>
+    <img class="exp-img exp-art" src="media/training-target.svg" alt="A listener identifying the direction of a sound, with the correct direction hitting a target.">
     <div class="status bodyS"><strong>Status and next steps:</strong> Prototype for the single-player defense game and 1:1 recordings are done. Next: measure performance over time with participants, quantify the localization benefits of game play, and deploy in schools and on phone and PC apps.</div>
   </section>
 
@@ -268,8 +270,10 @@
     <div class="steps" style="grid-template-columns:repeat(3,1fr);">
       <div class="step"><div class="n">01</div><div class="st">CAPTURE</div><div class="sd">Binaural recordings at key positions in real locations</div>
         <img class="step-img" src="media/hats.jpg" alt="A binaural Head And Torso Simulator (HATS) recording system."></div>
-      <div class="step"><div class="n">02</div><div class="st">COMPOSE</div><div class="sd">Place virtual sources spatially around the listener</div></div>
-      <div class="step"><div class="n">03</div><div class="st">EXPERIENCE</div><div class="sd">Headphone playback with real spatial presence</div></div>
+      <div class="step"><div class="n">02</div><div class="st">COMPOSE</div><div class="sd">Place virtual sources spatially around the listener</div>
+        <img class="step-img" src="media/compose-spatial.svg" alt="Diagram of a listener at the center with virtual sound sources placed around them."></div>
+      <div class="step"><div class="n">03</div><div class="st">EXPERIENCE</div><div class="sd">Headphone playback with real spatial presence</div>
+        <img class="step-img" src="media/experience-listener.svg" alt="A listener wearing headphones with sound arriving from both sides."></div>
     </div>
     <div class="details">
       <h3>Details</h3>
@@ -303,6 +307,7 @@
         <li>Explore hikes, urban soundscapes, building navigation, museums, and travel previews before arrival.</li>
       </ul>
     </div>
+    <img class="exp-img exp-art" src="media/soundscapes.svg" alt="A landscape of mountains and buildings with a location marker and sound waves above.">
   </section>
 
   <div class="divider"></div>
