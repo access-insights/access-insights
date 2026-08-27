@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="../images/logo.svg">
+<title>Access Insights — Audio Portfolio</title>
+<meta name="description" content="Spatial audio that opens the world. Binaural experiences for immersion, accessibility, and human-centered product design from Access Insights.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#2d344e;
+    --magenta:#d9398c; --pink:#f492c4;
+    --card-fill:rgba(255,255,255,0.07); --card-border:rgba(255,255,255,0.22);
+    --w-reg:400; --w-bold:700; --w-black:900;
+    --fs-h1:3rem;    --lh-h1:1.08;
+    --fs-h2:1.625rem;--lh-h2:1.15;
+    --fs-h3:1.5rem;  --lh-h3:1.3;
+    --fs-bl:1.5rem;  --lh-bl:1.35;
+    --fs-bs:1rem;    --lh-bs:1.4;
+    --fs-nav:0.9375rem; --lh-nav:1.5;
+    --space:1.25rem;
+  }
+  html{font-size:100%;scroll-behavior:smooth;scroll-padding-top:6rem;}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto;}}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Montserrat',system-ui,-apple-system,sans-serif;color:#fff;background:#2d344e;
+       -webkit-font-smoothing:antialiased;overflow-x:hidden;}
+  .h1{font-weight:var(--w-black);font-size:var(--fs-h1);line-height:var(--lh-h1);overflow-wrap:break-word;}
+  .h2{font-weight:var(--w-bold);font-size:var(--fs-h2);line-height:var(--lh-h2);}
+  .bodyL{font-weight:var(--w-reg);font-size:var(--fs-bl);line-height:var(--lh-bl);}
+  .bodyS{font-weight:var(--w-reg);font-size:var(--fs-bs);line-height:var(--lh-bs);}
+  .stack > * + *{margin-top:2em;}
+  .lead{margin-top:var(--space);max-width:42ch;}
+  a{color:inherit;}
+  :focus-visible{outline:3px solid #fff;outline-offset:3px;border-radius:4px;}
+  @media (forced-colors:active){:focus-visible{outline:3px solid;}}
+  .skip{position:absolute;left:-9999px;top:0;background:#fff;color:var(--ink);padding:0.75rem 1.25rem;z-index:100;border-radius:0 0 8px 0;font-weight:var(--w-bold);}
+  .skip:focus{left:0;}
+
+  header.site{position:sticky;top:0;z-index:50;background:rgba(45,52,78,0.92);backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--card-border);}
+  .nav{max-width:90rem;margin:0 auto;min-height:4rem;height:5rem;display:flex;align-items:center;
+    justify-content:space-between;gap:1.5rem;padding:0 2.5rem;overflow:hidden;}
+  .brand{display:flex;align-items:center;gap:0.625rem;text-decoration:none;color:#fff;
+    font-weight:var(--w-bold);font-size:var(--fs-h3);line-height:1.1;min-height:2.75rem;}
+  .brand img{height:2rem;width:auto;display:block;}
+  .nav-links{display:flex;gap:1.75rem;list-style:none;align-items:center;flex-wrap:wrap;}
+  .nav-links a{font-weight:var(--w-reg);font-size:var(--fs-nav);color:#fff;text-decoration:none;
+    display:inline-flex;align-items:center;min-height:2.75rem;padding:0 .25rem;}
+  .nav-links a:hover,.nav-links a:focus-visible{font-weight:var(--w-black);text-decoration:underline;
+    text-decoration-color:var(--magenta);text-decoration-thickness:3px;text-underline-offset:5px;}
+  @media (max-width:768px){ .nav{padding:0 1rem;} .nav-links{gap:1rem;} .nav-links .hide-m{display:none;} }
+
+  main{position:relative;z-index:2;max-width:75rem;margin:0 auto;padding:0 2.5rem;}
+  section{padding:7vh 0;}
+  .center{text-align:center;}
+  .center .lead{margin-left:auto;margin-right:auto;}
+
+  /* hero */
+  .hero{position:relative;text-align:center;padding:12vh 0 10vh;}
+  .hero .lead{margin-left:auto;margin-right:auto;}
+  #bg{position:fixed;inset:0;z-index:0;background:#2d344e url('../images/hero.jpg') center/cover no-repeat;}
+  #bg::after{content:"";position:absolute;inset:0;background:rgba(45,52,78,0.85);}
+  .tagline{font-weight:var(--w-bold);font-size:var(--fs-bs);letter-spacing:0.35em;text-transform:uppercase;
+    color:#fff;margin-top:2.5rem;}
+  .tagline span{color:var(--pink);padding:0 0.35em;}
+  .kicker{font-weight:var(--w-bold);font-size:var(--fs-bs);letter-spacing:0.2em;text-transform:uppercase;
+    opacity:0.85;margin-bottom:1.25rem;}
+
+  .divider{height:2px;margin:4vh 0;background:linear-gradient(90deg,transparent,var(--card-border),transparent);}
+
+  /* portfolio index */
+  .toc{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem;}
+  .toc a{display:block;background:var(--card-fill);border:1px solid var(--card-border);border-radius:16px;
+    padding:1.75rem 1.5rem;text-decoration:none;text-align:left;}
+  .toc a:hover{border-color:var(--magenta);}
+  .toc .num,.toc .t{display:block;}
+  .toc .num{font-weight:var(--w-black);font-size:2rem;color:var(--pink);}
+  .toc .t{font-weight:var(--w-bold);font-size:1.125rem;margin-top:0.5rem;line-height:1.3;}
+  @media (max-width:900px){.toc{grid-template-columns:1fr 1fr;}}
+  @media (max-width:560px){.toc{grid-template-columns:1fr;}}
+
+  /* experience sections */
+  .exp{max-width:60rem;margin:0 auto;}
+  .quote{font-style:italic;font-size:var(--fs-h2);line-height:1.3;color:#fff;opacity:0.9;margin-top:0.75rem;}
+  .quote::before{content:"\201C";} .quote::after{content:"\201D";}
+  .meta{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2rem;}
+  .meta .cell{background:var(--card-fill);border:1px solid var(--card-border);border-radius:12px;padding:1.25rem 1.5rem;}
+  .meta .k{font-weight:var(--w-bold);font-size:var(--fs-bs);text-transform:uppercase;letter-spacing:0.1em;color:var(--pink);}
+  .meta .v{margin-top:0.5rem;font-size:var(--fs-bs);line-height:var(--lh-bs);}
+  @media (max-width:700px){.meta{grid-template-columns:1fr;}}
+  .details{margin-top:2rem;}
+  .details h3{font-weight:var(--w-bold);font-size:1.125rem;margin-bottom:0.5rem;}
+  .details ul{list-style:none;}
+  .details li{font-size:var(--fs-bs);line-height:var(--lh-bs);padding-left:1.25rem;position:relative;margin-top:0.5rem;}
+  .details li::before{content:"";position:absolute;left:0;top:0.5em;width:0.5rem;height:0.5rem;border-radius:50%;background:var(--magenta);}
+  .status{margin-top:2rem;background:var(--card-fill);border:1px solid var(--card-border);border-radius:12px;padding:1.25rem 1.5rem;}
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem;margin-top:2.5rem;}
+  .step{background:var(--card-fill);border:1px solid var(--card-border);border-radius:12px;padding:1.25rem;text-align:center;}
+  .step .n{font-weight:var(--w-black);font-size:1.5rem;color:var(--pink);}
+  .step .st{font-weight:var(--w-bold);letter-spacing:0.15em;font-size:var(--fs-bs);margin-top:0.25rem;}
+  .step .sd{font-size:0.875rem;line-height:1.4;margin-top:0.5rem;opacity:0.9;}
+  @media (max-width:768px){.steps{grid-template-columns:1fr 1fr;}}
+  @media (max-width:480px){.steps{grid-template-columns:1fr;}
+    .steps[style]{grid-template-columns:1fr !important;}
+    .tagline{letter-spacing:0.1em;font-size:0.875rem;}
+    .tagline span{padding:0 0.2em;}
+    .btn{font-size:1.125rem;padding:1rem 1.5rem;max-width:100%;overflow-wrap:anywhere;}
+    .link-bold{overflow-wrap:anywhere;}
+    main{padding:0 1.25rem;}}
+  .exp-img{width:100%;max-width:32rem;border-radius:12px;border:1px solid var(--card-border);display:block;margin:2rem auto 0;}
+
+  /* audio demo */
+  .listen{background:var(--card-fill);border:1px solid var(--magenta);border-radius:16px;
+    padding:2rem 1.5rem;margin-top:2.5rem;text-align:center;}
+  .listen .h2{color:#fff;}
+  .listen p{margin-top:0.75rem;}
+  .listen audio{width:100%;max-width:32rem;margin-top:1.25rem;}
+  .phones{display:inline-block;background:#fff;color:var(--ink);font-weight:var(--w-bold);
+    font-size:0.875rem;letter-spacing:0.1em;text-transform:uppercase;border-radius:999px;padding:0.4rem 1rem;}
+
+  /* services + stats */
+  .cards{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;margin-top:2.5rem;}
+  .card{background:var(--card-fill);border:1px solid var(--card-border);border-radius:16px;padding:2rem 1.5rem;text-align:left;}
+  .card .ct{margin-top:0;}
+  .card .cd{margin-top:0.75rem;}
+  @media (max-width:768px){.cards{grid-template-columns:1fr;}}
+  .metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:3rem;}
+  .stat{background:var(--card-fill);border:1px solid var(--card-border);border-radius:16px;
+    padding:2rem 1.5rem;text-align:center;display:flex;flex-direction:column;gap:0.75rem;align-items:center;}
+  .stat-n{font-weight:var(--w-bold);font-size:3rem;line-height:1.1;}
+  .stat .lbl{font-size:var(--fs-bs);line-height:var(--lh-bs);}
+  @media (max-width:768px){.metrics{grid-template-columns:1fr 1fr;}}
+  @media (max-width:420px){.metrics{grid-template-columns:1fr;}}
+
+  .btn{display:inline-flex;align-items:center;justify-content:center;background:#fff;color:#2d344e;
+    font-weight:var(--w-bold);font-size:var(--fs-h3);line-height:1.2;padding:1.25rem 2.5rem;border-radius:999px;
+    text-decoration:none;min-height:2.75rem;margin:2.5rem 0 0.5rem;}
+  .btn:hover,.btn:focus-visible{background:var(--magenta);color:#fff;}
+  .link-bold{font-weight:var(--w-bold);font-size:var(--fs-h3);text-decoration:underline;text-underline-offset:4px;}
+
+  footer{position:relative;z-index:2;text-align:center;padding:3rem 2.5rem;border-top:1px solid var(--card-border);}
+  footer a{text-decoration-thickness:2px;text-underline-offset:4px;}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div id="bg" role="img" aria-label="Inside Your Rainbow Panorama at ARoS: a person in a power wheelchair travels the tinted-glass walkway, overlooking the city at sunset."></div>
+
+<header class="site">
+  <nav class="nav" aria-label="Primary">
+    <a class="brand" href="#top"><img src="../images/logo.svg" alt="">Audio Portfolio</a>
+    <ul class="nav-links">
+      <li><a href="../research/">R&amp;D capabilities</a></li>
+      <li class="hide-m"><a href="#portfolio">Portfolio</a></li>
+      <li class="hide-m"><a href="#services">Services</a></li>
+      <li class="hide-m"><a href="#contact">Contact</a></li>
+      <li><a href="https://accessinsights.net/">Access Insights &rarr;</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="main">
+  <section class="hero" id="top">
+    <p class="kicker">Access Insights &middot; Audio portfolio 2026</p>
+    <h1 class="h1">Spatial audio that opens the world</h1>
+    <p class="bodyL lead">Binaural experiences for immersion, accessibility, and human-centered product design.</p>
+    <p class="tagline">Play <span>&middot;</span> Train <span>&middot;</span> Experience <span>&middot;</span> Evaluate</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="center" id="portfolio">
+    <h2 class="h1">Access Insights audio portfolio</h2>
+    <div class="toc">
+      <a href="#goalball"><span class="num">01</span><span class="t">Virtual Goal Ball</span></a>
+      <a href="#training"><span class="num">02</span><span class="t">Sound source localization training</span></a>
+      <a href="#broadcast"><span class="num">03</span><span class="t">Immersive broadcasting</span></a>
+      <a href="#soundscapes"><span class="num">04</span><span class="t">Binaural soundscapes</span></a>
+      <a href="#service-benefits"><span class="num">05</span><span class="t">Service: user benefits of immersive audio</span></a>
+      <a href="#service-expert"><span class="num">06</span><span class="t">Service: expert evaluations, policy &amp; product guidance</span></a>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="exp" id="goalball">
+    <p class="kicker">01</p>
+    <h2 class="h1">Virtual Goal Ball</h2>
+    <p class="quote">The best sport you have never heard of</p>
+    <div class="listen">
+      <p class="phones">Headphones required</p>
+      <h3 class="h2">Sound clip of goal ball 3 on 3 team game play</h3>
+      <p class="bodyS">A binaural recording. Listen on headphones.</p>
+      <audio controls preload="metadata" src="media/goalball-binaural.mp3">
+        Your browser does not support the audio element.
+      </audio>
+    </div>
+    <div class="meta">
+      <div class="cell"><div class="k">Value</div><div class="v">Play a fun game with friends and family, and train goal ball skills.</div></div>
+      <div class="cell"><div class="k">Users</div><div class="v">Goal ball players, family, friends.</div></div>
+      <div class="cell"><div class="k">Deployment</div><div class="v">First browser-based app for phones and PCs. Listen on headphones.</div></div>
+      <div class="cell"><div class="k">Modes</div><div class="v">Single-player defense, 1:1 game, free lanes, multiplayer.</div></div>
+    </div>
+    <div class="details">
+      <h3>Details</h3>
+      <ul>
+        <li>Single player defense, 1:1 game, free lanes, multi player.</li>
+        <li>First prototype uses binaural recordings of throws.</li>
+        <li>Over 125 throws in different directions.</li>
+        <li>Various types of throws: rolling, bouncing, slow, fast.</li>
+        <li>Recording at the throw and defense positions.</li>
+        <li>Vary ball speed and defense width to create levels.</li>
+      </ul>
+    </div>
+    <div class="status bodyS"><strong>Status and next steps:</strong> Prototype for the single-player defense game and 1:1 recordings are done. Next: synthetic binaural rendering for free lanes and multiplayer, and research to quantify localization accuracy and time, calibration, experience and vision effects, and synthetic versus real recordings.</div>
+    <img class="exp-img" src="media/goalball-court.png" alt="A goal ball court with two teams of three players defending their goals.">
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="exp" id="training">
+    <p class="kicker">02</p>
+    <h2 class="h1">Sound source localization training</h2>
+    <p class="quote">A game loop can turn listening into measurable practice</p>
+    <div class="meta">
+      <div class="cell"><div class="k">Value</div><div class="v">Better localization of sound can support everyday confidence for children and adults with low vision.</div></div>
+      <div class="cell"><div class="k">Users</div><div class="v">Children and adults with low vision, goal ball players, gamers, mobility training.</div></div>
+      <div class="cell"><div class="k">Deployment</div><div class="v">Schools, phones, PCs. First browser-based app for phone and PC.</div></div>
+      <div class="cell"><div class="k">Approach</div><div class="v">Research suggests goal ball can help train sound source localization. Goal ball-inspired training with performance tracked over time.</div></div>
+    </div>
+    <div class="details">
+      <h3>Details</h3>
+      <ul>
+        <li>Research suggests goal ball can help train sound source localization.</li>
+        <li>Goal ball-inspired training for acoustic source localization.</li>
+        <li>Track performance over time.</li>
+      </ul>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="n">01</div><div class="st">LISTEN</div><div class="sd">Hear a binaural throw</div></div>
+      <div class="step"><div class="n">02</div><div class="st">LOCATE</div><div class="sd">Identify direction + speed</div></div>
+      <div class="step"><div class="n">03</div><div class="st">DEFEND</div><div class="sd">Respond inside the game</div></div>
+      <div class="step"><div class="n">04</div><div class="st">TRACK</div><div class="sd">Measure progress over time</div></div>
+    </div>
+    <div class="status bodyS"><strong>Status and next steps:</strong> Prototype for the single-player defense game and 1:1 recordings are done. Next: measure performance over time with participants, quantify the localization benefits of game play, and deploy in schools and on phone and PC apps.</div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="exp" id="broadcast">
+    <p class="kicker">03</p>
+    <h2 class="h1">Immersive broadcasting</h2>
+    <p class="quote">Experience it like you are there</p>
+    <div class="meta">
+      <div class="cell"><div class="k">Value</div><div class="v">Highly realistic sound for broadcasting sports games and events.</div></div>
+      <div class="cell"><div class="k">Users</div><div class="v">Children and adults with low vision, and everyone.</div></div>
+      <div class="cell"><div class="k">Deployment</div><div class="v">Sports games, events, and teleconferences.</div></div>
+      <div class="cell"><div class="k">Extension</div><div class="v">Optional coupling with haptics and other devices for low-vision listeners.</div></div>
+    </div>
+    <div class="steps" style="grid-template-columns:repeat(3,1fr);">
+      <div class="step"><div class="n">01</div><div class="st">CAPTURE</div><div class="sd">Binaural recordings at key positions in real locations</div></div>
+      <div class="step"><div class="n">02</div><div class="st">COMPOSE</div><div class="sd">Place virtual sources spatially around the listener</div></div>
+      <div class="step"><div class="n">03</div><div class="st">EXPERIENCE</div><div class="sd">Headphone playback with real spatial presence</div></div>
+    </div>
+    <div class="details">
+      <h3>Details</h3>
+      <ul>
+        <li>Use binaural recording and playback for immersive experience.</li>
+        <li>Place binaural recording systems at key locations.</li>
+        <li>Allow the listener to choose their location.</li>
+        <li>Create virtual sources and place them spatially around the listener in the scene using binaural rendering.</li>
+        <li>Optional extension for low vision listeners by coupling with haptics and other devices.</li>
+      </ul>
+    </div>
+    <div class="status bodyS"><strong>Status and next steps:</strong> Immersive binaural recordings are complete for goal ball games, and a draft architecture document exists for goal ball broadcast. Next: develop virtual source rendering, interfaces, and prototypes, and evaluate performance and listener experience.</div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="exp" id="soundscapes">
+    <p class="kicker">04</p>
+    <h2 class="h1">Binaural soundscapes</h2>
+    <p class="quote">Experience new surroundings and get familiar before arrival</p>
+    <div class="meta">
+      <div class="cell"><div class="k">Value</div><div class="v">Explore new places and improve accessibility through immersive binaural audio: hikes, urban soundscapes, building navigation, museums, travel previews.</div></div>
+      <div class="cell"><div class="k">Users</div><div class="v">Children and adults with low vision, and everyone.</div></div>
+      <div class="cell"><div class="k">Deployment</div><div class="v">YouTube channel, map exploration, wayfinding app integration.</div></div>
+      <div class="cell"><div class="k">Approach</div><div class="v">Binaural recording and playback for a natural sense of place.</div></div>
+    </div>
+    <div class="details">
+      <h3>Details</h3>
+      <ul>
+        <li>Use binaural recording and playback for immersive experience.</li>
+        <li>Explore hikes, urban soundscapes, building navigation, museums, and travel previews before arrival.</li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="center" id="services">
+    <h2 class="h1">Services</h2>
+    <div class="cards">
+      <div class="card" id="service-benefits">
+        <h3 class="h2 ct">Service: user benefits of immersive audio experiences</h3>
+        <p class="quote bodyS" style="font-size:1.125rem;">Immersion is only valuable when end users feel the benefit</p>
+        <p class="cd bodyS"><strong>Value:</strong> quantify the benefits of immersive audio experiences with real end user evaluations.</p>
+        <p class="cd bodyS"><strong>Users:</strong> companies, product design, quality control, marketing.</p>
+        <p class="cd bodyS"><strong>Deployment:</strong> offered as a service, tailored to company specific needs.</p>
+        <div class="details"><h3>Details</h3><ul>
+          <li>Team with extensive expertise in audio evaluations.</li>
+          <li>Subjective evaluations and correlation to objective metrics.</li>
+          <li>Study design, execution, and data analysis/statistics.</li>
+        </ul></div>
+        <div class="details"><h3>Technical capabilities</h3><ul>
+          <li>Calibrated binaural recording and playback system.</li>
+          <li>Measurement microphones, data acquisition and analysis software.</li>
+          <li>Time aligned audio and video recordings.</li>
+          <li>Statistical analysis tools.</li>
+        </ul></div>
+      </div>
+      <div class="card" id="service-expert">
+        <h3 class="h2 ct">Service: expert evaluations, policy &amp; product guidance</h3>
+        <p class="quote bodyS" style="font-size:1.125rem;">Use our experience and expertise to improve your products and policies</p>
+        <p class="cd bodyS"><strong>Value:</strong> improve products, user experience and policies with expert product guidance and end user evaluations.</p>
+        <p class="cd bodyS"><strong>Users:</strong> companies, product design, quality control, marketing.</p>
+        <p class="cd bodyS"><strong>Deployment:</strong> offered as a service, tailored to company specific needs.</p>
+        <div class="details"><h3>Details</h3><ul>
+          <li>Team with extensive expertise in ethnographic and user research, inclusive interaction and visual design, accessibility strategy and policy guidance, prototyping and validation.</li>
+          <li>Subjective evaluations and correlation to objective metrics.</li>
+          <li>Product evaluation and design guidance.</li>
+          <li>Study design, execution, and data analysis/statistics.</li>
+        </ul></div>
+      </div>
+    </div>
+    <div class="metrics">
+      <div class="stat"><div class="stat-n">60+</div><div class="lbl">patents across acoustics, AR, and AI</div></div>
+      <div class="stat"><div class="stat-n">1,200+</div><div class="lbl">lectures, from the White House to the UN</div></div>
+      <div class="stat"><div class="stat-n">167+</div><div class="lbl">peer-reviewed publications</div></div>
+      <div class="stat"><div class="stat-n">200+ yrs</div><div class="lbl">combined shaping policy &amp; standards</div></div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="center" id="contact">
+    <h2 class="h1">Thank you.</h2>
+    <p class="bodyL lead">Questions &amp; Discussion</p>
+    <a class="btn" href="mailto:hello@accessinsights.net?subject=Audio%20portfolio">hello@accessinsights.net</a>
+    <p class="bodyS" style="margin-top:1.5rem;"><a class="link-bold" href="https://accessinsights.net/">accessinsights.net</a></p>
+  </section>
+</main>
+
+<footer><p class="bodyS">&copy; 2026 Access Insights &middot; Portland, Oregon &middot; <a href="https://accessinsights.net/">Main site</a></p></footer>
+</body>
+</html>
