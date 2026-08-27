@@ -2,8 +2,12 @@
 Thumbs.db
 *.log
 node_modules/
+dist/
 .env
 
 # Playwright artifacts
 test-results/
 playwright-report/
+
+# Local live screen-reader evidence and prepared runs
+screen-reader-results/

@@ -1,0 +1,109 @@
+{
+  "version": 1,
+  "id": "homepage-critical",
+  "application": "access-insights-website",
+  "suite": "critical",
+  "environment": "local",
+  "risk": "read-only",
+  "start": {
+    "route": "/"
+  },
+  "tags": ["public-route", "landmarks", "headings", "read-only"],
+  "steps": [
+    {
+      "id": "reach-main",
+      "action": "navigate_to_main",
+      "expect": {
+        "role": "main"
+      }
+    },
+    {
+      "id": "find-hero-heading",
+      "action": "next_heading",
+      "expect": {
+        "role": "heading",
+        "nameContains": "Accessibility isn’t a feature"
+      }
+    },
+    {
+      "id": "find-market-heading",
+      "action": "next_heading",
+      "expect": {
+        "role": "heading",
+        "nameContains": "largest overlooked market"
+      }
+    },
+    {
+      "id": "find-built-in-heading",
+      "action": "next_heading",
+      "expect": {
+        "role": "heading",
+        "nameContains": "Accessibility built in"
+      }
+    },
+    {
+      "id": "find-impact-heading",
+      "action": "next_heading",
+      "expect": {
+        "role": "heading",
+        "nameContains": "From unmet need to scaled impact"
+      }
+    },
+    {
+      "id": "find-infrastructure-heading",
+      "action": "next_heading",
+      "expect": {
+        "role": "heading",
+        "nameContains": "Building durable accessibility infrastructure"
+      }
+    },
+    {
+      "id": "find-services-heading",
+      "action": "next_heading",
+      "expect": {
+        "role": "heading",
+        "nameContains": "Bring us any product"
+      }
+    },
+    {
+      "id": "find-trust-heading",
+      "action": "next_heading",
+      "expect": {
+        "role": "heading",
+        "nameContains": "Built around trust"
+      }
+    },
+    {
+      "id": "find-team-heading",
+      "action": "next_heading",
+      "expect": {
+        "role": "heading",
+        "nameContains": "Genuine expertise in accessibility"
+      }
+    },
+    {
+      "id": "find-numbers-heading",
+      "action": "next_heading",
+      "expect": {
+        "role": "heading",
+        "nameContains": "By the numbers"
+      }
+    },
+    {
+      "id": "find-community-heading",
+      "action": "next_heading",
+      "expect": {
+        "role": "heading",
+        "nameContains": "Help shape what’s next"
+      }
+    },
+    {
+      "id": "find-partner-heading",
+      "action": "next_heading",
+      "expect": {
+        "role": "heading",
+        "nameContains": "Build the future with us"
+      }
+    }
+  ]
+}
