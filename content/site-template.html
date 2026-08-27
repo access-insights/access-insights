@@ -27,7 +27,7 @@
     --card-fill:rgba(255,255,255,0.07); --card-border:rgba(255,255,255,0.22);
     /* exact named type styles, in rem so they scale with user text size */
     --w-reg:400; --w-bold:700; --w-black:900;
-    --fs-h1:3rem;    --lh-h1:1.08;    /* H1 / section heading - smaller, tighter leading */
+    --fs-h1:clamp(1.4rem, 7vw, 3rem);    --lh-h1:1.08;    /* H1 / section heading - smaller, tighter leading */
     --fs-h2:1.625rem;--lh-h2:1.15;    /* H2 Title & Name */
     --fs-h3:1.5rem;  --lh-h3:1.3;     /* H3 Link & Nav Bold 24px */
     --fs-bl:1.5rem;  --lh-bl:1.35;    /* Body Large         24px (tighter leading) */
@@ -46,8 +46,8 @@
 
   /* ---- type utilities (no px on type itself) ---- */
   .h1{font-weight:var(--w-black);font-size:var(--fs-h1);line-height:var(--lh-h1);letter-spacing:0;
-      overflow-wrap:break-word;hyphens:none;-webkit-hyphens:none;}
-  .h2{font-weight:var(--w-bold);font-size:var(--fs-h2);line-height:var(--lh-h2);letter-spacing:0;overflow-wrap:break-word;hyphens:none;-webkit-hyphens:none;}
+      overflow-wrap:normal;hyphens:none;-webkit-hyphens:none;}
+  .h2{font-weight:var(--w-bold);font-size:var(--fs-h2);line-height:var(--lh-h2);letter-spacing:0;overflow-wrap:normal;hyphens:none;-webkit-hyphens:none;}
   .h3{font-weight:var(--w-bold);font-size:var(--fs-h3);line-height:var(--lh-h3);letter-spacing:0;}
   .bodyL{font-weight:var(--w-reg);font-size:var(--fs-bl);line-height:var(--lh-bl);}
   .bodyM{font-weight:var(--w-reg);font-size:var(--fs-bm);line-height:var(--lh-bm);}
@@ -142,7 +142,7 @@
   .btn{display:inline-flex;align-items:center;justify-content:center;background:#fff;color:#2d344e;
     font-weight:var(--w-bold);font-size:var(--fs-h3);line-height:1.2;padding:1.25rem 2.5rem;border-radius:999px;
     text-decoration:none;min-height:2.75rem;margin:2.5rem 0 0.5rem;}
-  .link-bold{font-weight:var(--w-bold);font-size:var(--fs-h3);text-decoration:underline;text-underline-offset:4px;
+  .link-bold{font-weight:var(--w-bold);font-size:clamp(1rem, 4.8vw, 1.5rem);text-decoration:underline;text-underline-offset:4px;
     display:inline-flex;min-height:2.75rem;align-items:center;margin-top:1.25rem;}
   .skip{position:absolute;left:-9999px;top:0;background:#fff;color:#2d344e;padding:0.75rem 1.25rem;z-index:100;}
   .skip:focus{left:0;}
@@ -539,19 +539,15 @@ function setupNav(){
   const btn=document.getElementById('hamb'), menu=document.getElementById('navlinks');
   const items=()=>[...menu.querySelectorAll('a')];
   function onDocPointer(e){ if(!menu.contains(e.target) && !btn.contains(e.target)) close(false); }
-  function onScrollClose(){ close(false); }
-  function open(){menu.classList.add('open');btn.setAttribute('aria-expanded','true');
+  function open(moveFocus){menu.classList.add('open');btn.setAttribute('aria-expanded','true');
     document.addEventListener('keydown',onKey);
     document.addEventListener('pointerdown',onDocPointer,true);      // tap outside closes
-    requestAnimationFrame(()=>{
-      if(!menu.classList.contains('open'))return;
-      items()[0]&&items()[0].focus();
-      window.addEventListener('scroll',onScrollClose,{passive:true}); // scrolling closes
+    if(moveFocus)requestAnimationFrame(()=>{
+      if(menu.classList.contains('open'))items()[0]?.focus();
     });}
   function close(ret){menu.classList.remove('open');btn.setAttribute('aria-expanded','false');
     document.removeEventListener('keydown',onKey);
     document.removeEventListener('pointerdown',onDocPointer,true);
-    window.removeEventListener('scroll',onScrollClose);
     if(ret!==false)btn.focus();}
   function onKey(e){
     if(e.key==='Escape'){close();return;}
@@ -561,8 +557,10 @@ function setupNav(){
       else if(!e.shiftKey&&document.activeElement===f[f.length-1]){e.preventDefault();f[0].focus();}
     }
   }
-  btn.addEventListener('click',()=>{ btn.getAttribute('aria-expanded')==='true'?close():open(); });
-  menu.addEventListener('click',e=>{ if(e.target.tagName==='A' && matchMedia('(max-width:768px)').matches) close(false); });
+  btn.addEventListener('click',e=>{
+    btn.getAttribute('aria-expanded')==='true'?close():open(e.detail===0);
+  });
+  menu.addEventListener('click',e=>{ if(e.target.closest('a') && matchMedia('(max-width:768px)').matches) close(false); });
 }
 
 function init(){
