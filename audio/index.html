@@ -112,6 +112,8 @@
     .link-bold{overflow-wrap:anywhere;}
     main{padding:0 1.25rem;}}
   .exp-img{width:100%;max-width:32rem;border-radius:12px;border:1px solid var(--card-border);display:block;margin:2rem auto 0;}
+  .step-img{width:100%;max-width:9rem;border-radius:8px;display:block;margin:0.875rem auto 0;}
+  .wave{display:block;max-width:20rem;width:60%;margin:1.25rem auto 0;}
 
   /* audio demo */
   .listen{background:var(--card-fill);border:1px solid var(--magenta);border-radius:16px;
@@ -195,6 +197,7 @@
       <p class="phones">Headphones required</p>
       <h3 class="h2">Sound clip of goal ball 3 on 3 team game play</h3>
       <p class="bodyS">A binaural recording. Listen on headphones.</p>
+      <img class="wave" src="media/waveform.png" alt="" aria-hidden="true">
       <audio controls preload="metadata" src="media/goalball-binaural.mp3">
         Your browser does not support the audio element.
       </audio>
@@ -218,6 +221,7 @@
     </div>
     <div class="status bodyS"><strong>Status and next steps:</strong> Prototype for the single-player defense game and 1:1 recordings are done. Next: synthetic binaural rendering for free lanes and multiplayer, and research to quantify localization accuracy and time, calibration, experience and vision effects, and synthetic versus real recordings.</div>
     <img class="exp-img" src="media/goalball-court.png" alt="A goal ball court with two teams of three players defending their goals.">
+    <img class="exp-img" src="media/goalball-app.jpg" alt="The Virtual Goal Ball prototype running in a web browser: a screen-curtain game view reading 'Throw 1 of 5, listen for the ball' with controls to move left or right and choose a defensive position.">
   </section>
 
   <div class="divider"></div>
@@ -262,7 +266,8 @@
       <div class="cell"><div class="k">Extension</div><div class="v">Optional coupling with haptics and other devices for low-vision listeners.</div></div>
     </div>
     <div class="steps" style="grid-template-columns:repeat(3,1fr);">
-      <div class="step"><div class="n">01</div><div class="st">CAPTURE</div><div class="sd">Binaural recordings at key positions in real locations</div></div>
+      <div class="step"><div class="n">01</div><div class="st">CAPTURE</div><div class="sd">Binaural recordings at key positions in real locations</div>
+        <img class="step-img" src="media/hats.jpg" alt="A binaural Head And Torso Simulator (HATS) recording system."></div>
       <div class="step"><div class="n">02</div><div class="st">COMPOSE</div><div class="sd">Place virtual sources spatially around the listener</div></div>
       <div class="step"><div class="n">03</div><div class="st">EXPERIENCE</div><div class="sd">Headphone playback with real spatial presence</div></div>
     </div>
