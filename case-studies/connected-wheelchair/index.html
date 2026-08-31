@@ -117,6 +117,45 @@
   .more::after{content:"\203A";font-weight:var(--w-black);transform:rotate(90deg);transition:transform .2s ease;}
   .day li.open .more::after{transform:rotate(-90deg);}
   @media (prefers-reduced-motion:reduce){.more::after{transition:none;}}
+  /* system diagram: what the chair senses, what it interprets, who sees it.
+     Built in HTML so the type scales with the reader's text size and screen
+     readers get real headings and lists rather than a flat picture. */
+  .sysmap{margin-top:2rem;}
+  .sysmap-head{font-weight:var(--w-black);font-size:var(--fs-bs);letter-spacing:0.15em;
+    text-transform:uppercase;color:var(--gold);margin-bottom:1.25rem;}
+  .sysmap-grid{display:grid;grid-template-columns:1.15fr auto 0.85fr;gap:1.25rem;align-items:center;}
+  .sysmap-col{display:flex;flex-direction:column;gap:0.75rem;}
+
+  .sysgroup{background:var(--card-fill);border:1px solid var(--card-border);border-radius:16px;padding:1.125rem 1.25rem;}
+  .sysgroup h4{font-weight:var(--w-black);font-size:0.9375rem;letter-spacing:0.12em;text-transform:uppercase;
+    color:var(--pink);line-height:1.4;}
+  .sysgroup ul{list-style:none;margin-top:0.6rem;display:flex;flex-wrap:wrap;gap:0.35rem 0.5rem;}
+  .sysgroup li{font-size:0.9375rem;line-height:1.5;font-weight:var(--w-bold);
+    border:1px solid rgba(255,255,255,0.18);border-radius:999px;padding:0.15rem 0.7rem;}
+
+  /* the connector column */
+  .sysflow{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.35rem;color:var(--gold);}
+  .sysflow span{font-weight:var(--w-black);font-size:1.5rem;line-height:1;}
+  .sysflow small{font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;opacity:0.85;
+    writing-mode:vertical-rl;text-orientation:mixed;}
+
+  .sysout{background:rgba(0,0,0,0.25);border:1px solid var(--card-border);border-radius:16px;padding:1.25rem;}
+  .sysout h4{font-weight:var(--w-black);font-size:0.9375rem;letter-spacing:0.12em;text-transform:uppercase;
+    color:var(--gold);line-height:1.4;}
+  .sysout p{font-size:0.9375rem;line-height:1.55;margin-top:0.6rem;}
+  .sysout .rule{height:1px;background:linear-gradient(to right,var(--magenta),transparent);margin:1rem 0;}
+  .sysout ul{list-style:none;display:flex;flex-direction:column;gap:0.4rem;}
+  .sysout li{font-size:0.9375rem;line-height:1.5;font-weight:var(--w-bold);padding-left:1.1rem;position:relative;}
+  .sysout li::before{content:"";position:absolute;left:0;top:0.55em;width:6px;height:6px;border-radius:50%;
+    background:var(--pink);}
+  .sysmap-note{font-size:0.8125rem;line-height:1.5;opacity:0.85;margin-top:1rem;max-width:70ch;}
+
+  @media (max-width:900px){
+    .sysmap-grid{grid-template-columns:1fr;}
+    .sysflow{flex-direction:row;padding:0.25rem 0;}
+    .sysflow span{transform:rotate(90deg);}
+    .sysflow small{writing-mode:horizontal-tb;}
+  }
   .systems{margin-top:1.5rem;font-size:var(--fs-bs);line-height:1.6;max-width:75ch;}
   .systems strong{color:var(--gold);font-weight:var(--w-black);letter-spacing:0.1em;text-transform:uppercase;font-size:0.8125rem;}
   .systems b{color:var(--pink);font-weight:var(--w-black);padding:0 0.25em;}
@@ -270,7 +309,52 @@
         <p id="day-b9">The research called these non quantifiable, and the scenario is built to show each one: Marcus makes every decision himself, the chair is the witness his phone could not be, and the people who love him get peace of mind without surveillance.</p>
         <button class="more" type="button" aria-expanded="false" aria-controls="day-b9">Read more</button></li>
     </ul>
-    <p class="systems"><strong>Behind the day</strong> &nbsp; seating pressure <b>&bull;</b> orientation and impact <b>&bull;</b> leg bag monitoring <b>&bull;</b> dysreflexia watch <b>&bull;</b> contextual battery <b>&bull;</b> accessibility mapping <b>&bull;</b> proximity awareness <b>&bull;</b> predictive maintenance <b>&bull;</b> a quantified self for chair users, shared on the rider's terms.</p>
+    <div class="sysmap">
+      <p class="sysmap-head" id="sysmap-h">What the chair should know</p>
+      <div class="sysmap-grid">
+        <div class="sysmap-col">
+          <section class="sysgroup" aria-labelledby="sg-body">
+            <h4 id="sg-body">The body</h4>
+            <ul role="list">
+              <li>seating pressure</li><li>posture and recline</li><li>autonomic dysreflexia</li>
+              <li>spasm activity</li><li>leg bag</li>
+            </ul>
+          </section>
+          <section class="sysgroup" aria-labelledby="sg-chair">
+            <h4 id="sg-chair">The chair</h4>
+            <ul role="list">
+              <li>orientation and tilt</li><li>impact</li><li>battery and range</li><li>motor health</li>
+            </ul>
+          </section>
+          <section class="sysgroup" aria-labelledby="sg-world">
+            <h4 id="sg-world">The world</h4>
+            <ul role="list">
+              <li>accessibility mapping</li><li>curb and sidewalk hazards</li>
+              <li>proximity in crowds</li><li>the view behind</li>
+            </ul>
+          </section>
+        </div>
+
+        <div class="sysflow" aria-hidden="true">
+          <small>interpreted</small>
+          <span>&rarr;</span>
+        </div>
+
+        <section class="sysout" aria-labelledby="sg-out">
+          <h4 id="sg-out">Context, not raw data</h4>
+          <p>The phone turns readings into something a person can act on: check the cushion, take the parallel street, answer the chair before it calls for help.</p>
+          <div class="rule" aria-hidden="true"></div>
+          <p><strong>The rider decides who sees it.</strong></p>
+          <ul role="list">
+            <li>the rider, always</li>
+            <li>a caregiver, by choice</li>
+            <li>a clinician, by choice</li>
+            <li>no one, by choice</li>
+          </ul>
+        </section>
+      </div>
+      <p class="sysmap-note">Drawn from the 2014 research and the idea taxonomy that came out of it. Every system here was proposed before the prototype existed, and each one answers something a rider cannot see, reach, or judge for themselves.</p>
+    </div>
   </section>
 
   <section aria-labelledby="outcome-h">
