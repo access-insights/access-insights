@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "run": "python3 -m http.server 8080",
-    "build": "rm -rf dist && mkdir -p dist/images/team && cp index.html dist/ && cp images/logo.svg dist/images/ && cp images/team/*.png dist/images/team/ && cp images/hero.jpg dist/images/ && cp images/pete-denman-india-2014.jpg dist/images/ && cp -R audio dist/ && cp -R research dist/ && cp -R case-studies dist/",
+    "build": "rm -rf dist && mkdir -p dist/images/team && cp index.html dist/ && cp images/logo.svg dist/images/ && cp images/team/*.png dist/images/team/ && cp images/hero.jpg dist/images/ && cp images/pete-denman-india-2014.jpg dist/images/ && cp -R audio dist/ && cp -R research dist/ && cp -R case-studies dist/ && cp -R team dist/",
     "test": "playwright test",
     "test:a11y": "playwright test tests/axe-accessibility.spec.ts",
     "test:smoke": "playwright test tests/accessibility-smoke.spec.ts",
