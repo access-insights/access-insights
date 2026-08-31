@@ -111,8 +111,10 @@
   .day li.open p{display:block;}
   .more{display:inline-flex;align-items:center;gap:0.4rem;margin-top:0.75rem;min-height:2.75rem;
     background:none;border:0;padding:0;cursor:pointer;color:#fff;font-family:inherit;
-    font-weight:var(--w-bold);font-size:var(--fs-bs);text-decoration:underline;
-    text-decoration-color:var(--magenta);text-decoration-thickness:3px;text-underline-offset:5px;}
+    font-weight:var(--w-bold);font-size:var(--fs-bs);text-decoration:none;}
+  /* the underline sits on the label only: on the rotated chevron it would rotate too */
+  .more .lbl{text-decoration:underline;text-decoration-color:var(--magenta);
+    text-decoration-thickness:3px;text-underline-offset:5px;}
   .more:hover,.more:focus-visible{color:var(--pink);}
   .more::after{content:"\203A";font-weight:var(--w-black);transform:rotate(90deg);transition:transform .2s ease;}
   .day li.open .more::after{transform:rotate(-90deg);}
@@ -286,28 +288,28 @@
     <ul class="day">
       <li><span class="t">7:10 AM</span><h3>Transfer and seating</h3>
         <p>Tuesday's caregiver is not Monday's. A shirt bunched at the hip, a cushion a degree off, nothing anyone can see. Pressure sensors compare the morning against Marcus's baseline and send a quiet note: pressure high at the right hip, check clothing or cushion. A fifteen second fix instead of a wound that takes months to heal.</p>
-        <button class="more" type="button" aria-expanded="false" aria-controls="day-b2">Read more</button></li>
+        <button class="more" type="button" aria-expanded="false" aria-controls="day-b2"><span class="lbl">Read more</span></button></li>
       <li><span class="t">8:20 AM</span><h3>Leaving home</h3>
         <p id="day-b3">The app weighs today's route against the battery and shows where a charge or a transit backup lives along the way, before either becomes an emergency. The community accessibility map flags a buckled sidewalk another rider reported; Marcus takes the parallel street and reports a blocked curb cut back with two taps.</p>
-        <button class="more" type="button" aria-expanded="false" aria-controls="day-b3">Read more</button></li>
+        <button class="more" type="button" aria-expanded="false" aria-controls="day-b3"><span class="lbl">Read more</span></button></li>
       <li><span class="t">8:50 AM</span><h3>The elevator</h3>
         <p id="day-b4">Every elevator has to be backed into or out of; so does the van and the bus ramp. From the chair there is no seeing behind. A backup camera puts the view on his phone and proximity sensors mark the door edge. He rolls back clean: no scraped frame, no bystander's shin.</p>
-        <button class="more" type="button" aria-expanded="false" aria-controls="day-b4">Read more</button></li>
+        <button class="more" type="button" aria-expanded="false" aria-controls="day-b4"><span class="lbl">Read more</span></button></li>
       <li><span class="t">12:30 PM</span><h3>A discreet nudge</h3>
         <p id="day-b5">Before a long meeting, the leg bag sensor puts a quiet estimate on his phone: filling, about two hours of margin. He deals with it on his own schedule instead of guessing. The seat has been counting recline cycles and nudging him when he has sat static too long.</p>
-        <button class="more" type="button" aria-expanded="false" aria-controls="day-b5">Read more</button></li>
+        <button class="more" type="button" aria-expanded="false" aria-controls="day-b5"><span class="lbl">Read more</span></button></li>
       <li><span class="t">3:00 PM</span><h3>The crowded lobby</h3>
         <p id="day-b6">A chair in a crowd gives off none of the body language people steer by, and people back into it. Proximity sensing catches a man stepping backward toward the frame and warns him with a small puff of air at the ankle. He steps aside. Nobody trips.</p>
-        <button class="more" type="button" aria-expanded="false" aria-controls="day-b6">Read more</button></li>
+        <button class="more" type="button" aria-expanded="false" aria-controls="day-b6"><span class="lbl">Read more</span></button></li>
       <li><span class="t">4:45 PM</span><h3>The curb</h3>
         <p id="day-b7">A rain slick lip of asphalt, a caster off an unmarked edge, a hard jolt. Impact, tilt, and orientation sensors agree something happened, and the chair asks first: are you okay? Thirty seconds to cancel. Marcus taps it away. Had he not answered, his location and status would already be with his caregiver and his contacts.</p>
-        <button class="more" type="button" aria-expanded="false" aria-controls="day-b7">Read more</button></li>
+        <button class="more" type="button" aria-expanded="false" aria-controls="day-b7"><span class="lbl">Read more</span></button></li>
       <li><span class="t">6:30 PM</span><h3>What the evening knows</h3>
         <p id="day-b8">All day the health monitor watched for signs of autonomic dysreflexia, a blood pressure emergency chair users know well. Today: nothing, and that nothing is worth knowing. The evening caregiver gets a one screen summary. Marcus's mother, three states away, sees only what he chose to share: active today, home safe.</p>
-        <button class="more" type="button" aria-expanded="false" aria-controls="day-b8">Read more</button></li>
+        <button class="more" type="button" aria-expanded="false" aria-controls="day-b8"><span class="lbl">Read more</span></button></li>
       <li><span class="t">All day</span><h3>The needs no sensor reads</h3>
         <p id="day-b9">The research called these non quantifiable, and the scenario is built to show each one: Marcus makes every decision himself, the chair is the witness his phone could not be, and the people who love him get peace of mind without surveillance.</p>
-        <button class="more" type="button" aria-expanded="false" aria-controls="day-b9">Read more</button></li>
+        <button class="more" type="button" aria-expanded="false" aria-controls="day-b9"><span class="lbl">Read more</span></button></li>
     </ul>
     <div class="sysmap">
       <p class="sysmap-head" id="sysmap-h">What the chair should know</p>
@@ -405,7 +407,7 @@
     function toggle() {
       var open = card.classList.toggle('open');
       btn.setAttribute('aria-expanded', String(open));
-      btn.firstChild.nodeValue = open ? 'Read less' : 'Read more';
+      btn.querySelector('.lbl').textContent = open ? 'Read less' : 'Read more';
     }
     btn.addEventListener('click', function (e) { e.stopPropagation(); toggle(); });
     card.addEventListener('click', toggle);
