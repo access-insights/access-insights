@@ -224,6 +224,23 @@
     text-transform:uppercase;color:var(--ink);background:var(--gold);border-radius:6px;padding:0.2rem 0.6rem;}
   .tofill p{font-size:0.9375rem;line-height:1.55;margin-top:0.6rem;}
   .prose .tofill{margin:1.25rem 0;}
+
+  /* team editing (active only while the site's TEAM_EDIT_CODE is set) */
+  .draft-banner{position:relative;z-index:3;background:var(--gold);color:var(--ink);text-align:center;
+    font-weight:var(--w-bold);font-size:0.9375rem;padding:0.6rem 1rem;line-height:1.4;}
+  .ebar{display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;margin:1rem 0 0.5rem;position:relative;z-index:5;}
+  .ebtn{font-family:inherit;font-size:0.9375rem;font-weight:var(--w-black);min-height:2.75rem;cursor:pointer;
+    border-radius:999px;padding:0.4rem 1.25rem;}
+  .ebtn.edit{background:none;color:#fff;border:2px solid var(--pink);}
+  .ebtn.edit:hover,.ebtn.edit:focus-visible{border-color:var(--magenta);color:var(--pink);}
+  .ebtn.save{background:#bb2f78;color:#fff;border:2px solid #bb2f78;}
+  .ebtn.save:hover{background:#a52869;}
+  .ebtn.cancel,.ebtn.img{background:none;color:#fff;border:2px solid var(--card-border);font-weight:var(--w-bold);}
+  .ebtn.cancel:hover,.ebtn.img:hover{border-color:var(--magenta);}
+  .ebar .elabel{font-weight:var(--w-black);font-size:0.8125rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--pink);}
+  .ebar .estatus{font-size:0.8125rem;opacity:0.9;}
+  [data-esec].editing{outline:3px dashed var(--pink);outline-offset:10px;border-radius:4px;}
+  [data-esec].editing a{pointer-events:none;}
 </style>
 </head>
 <body>
@@ -243,8 +260,8 @@
   <section class="hero" id="top">
     <p class="kicker">Access Insights</p>
     <h1 class="h1">Case Study: Virtual Lex</h1>
-    <p class="bodyL lead"><strong>Every organization has an origin story. Ours is a case study.</strong> The people who became Access Insights spent decades honing their craft at one of the world's largest technology companies, and left it at different times, for different reasons. Many of us knew Lex Frieden, chief architect of the Americans with Disabilities Act. So in December 2024, when Lex asked for help being present in rooms he could not travel to, he found a team with the right skills, a shared passion for accessibility, and, for once, the time. Becky Chierichetti led a lip synced avatar. Pete Denman and Richard Beckwith built a robot head, with binaural audio by Marco Beltman. Lex was a codesigner from the first call.</p>
-    <div class="tofill">
+    <p class="bodyL lead" data-esec="lead" data-elabel="Opening"><strong>Every organization has an origin story. Ours is a case study.</strong> The people who became Access Insights spent decades honing their craft at one of the world's largest technology companies, and left it at different times, for different reasons. Many of us knew Lex Frieden, chief architect of the Americans with Disabilities Act. So in December 2024, when Lex asked for help being present in rooms he could not travel to, he found a team with the right skills, a shared passion for accessibility, and, for once, the time. Becky Chierichetti led a lip synced avatar. Pete Denman and Richard Beckwith built a robot head, with binaural audio by Marco Beltman. Lex was a codesigner from the first call.</p>
+    <div data-esec="hero-notes" data-elabel="Quote and hero notes"><div class="tofill">
       <span class="tofill-lbl">To fill</span>
       <p>Strongest media for the hero. Candidates: Becky's avatar screenshots (on the way), a short clip of the avatar speaking, or footage from a talk. Until one exists, the page opens without media.</p>
     </div>
@@ -262,7 +279,8 @@
       <span class="tofill-lbl">To decide</span>
       <p>The origin framing says "one of the world's largest technology companies" without naming it. The ACAT and Connected Wheelchair pages name Intel throughout, so readers can connect the dots. Decide whether to name Intel here or keep it unnamed.</p>
     </div>
-    <ul class="glance" aria-label="Case study at a glance">
+</div>
+    <ul class="glance" aria-label="Case study at a glance" data-esec="glance" data-elabel="At a glance cards">
       <li><span class="lbl">Role</span><p class="val">Team build, with Lex as codesigner throughout</p></li>
       <li><span class="lbl">Organization</span><p class="val">The group that became Access Insights</p></li>
       <li><span class="lbl">Timeline</span><p class="val">December 2024 to present</p></li>
@@ -273,7 +291,7 @@
   <section aria-labelledby="challenge-h">
     <p class="sec-lbl">The challenge</p>
     <h2 class="h2" id="challenge-h">The expertise could not stop. The travel had to.</h2>
-    <div class="prose">
+    <div data-esec="challenge" data-elabel="The challenge"><div class="prose">
       <p>Lex Frieden has spent five decades shaping disability policy, from architecting the Americans with Disabilities Act to advising governments and universities. The demand for that expertise keeps growing: lectures, conferences, testimony, classrooms. What stopped was his ability to be there in person.</p>
       <p>In December 2024 he put the problem to people he knew and trusted: designers, researchers, and engineers who had spent their careers inside a technology giant building for accessibility, and who had each, in their own way and their own time, walked away from that chapter. The question he brought was never whether he had something to say. It was whether a room could experience <strong>him</strong>, his face, his timing, his presence, when his body could not make the trip. A flat video call was the bar to clear, not the answer.</p>
     </div>
@@ -281,23 +299,24 @@
       <span class="tofill-lbl">To fill, with Lex's approval only</span>
       <p>Why Lex could not travel, in his own words. The origin as Becky and Lex tell it involves his health at the time; that appears here only as he states it and approves it. Until then the page says "could not make the trip" and nothing more.</p>
     </div>
+</div>
   </section>
 
   <section aria-labelledby="approach-h">
     <h2 class="sr-only" id="approach-h">Approach and build</h2>
     <div class="duo">
-      <div class="panel deep">
+      <div class="panel deep" data-esec="approach" data-elabel="The approach">
         <span class="lbl">The approach</span>
         <h3>The user set the brief and the bar</h3>
         <p>This project began as a request from the person who would live with the result, put to a team that had just stepped out of long corporate careers and into the freedom to choose what mattered. What mattered was this. Lex stayed a codesigner the whole way. The team considered robotics first, then chose to start with a 2D avatar and grow the embodiment from there. Three threads ran in parallel <b>&bull;</b> the avatar <b>&bull;</b> a robot head with real hearing <b>&bull;</b> a holographic display, shelved when budget ran out. Every decision came back to one test: does the room experience Lex, and does Lex experience the room?</p>
       </div>
-      <div class="panel">
+      <div class="panel" data-esec="build" data-elabel="The build">
         <span class="lbl">The build</span>
         <h3>An avatar, a head, and open tools</h3>
         <p>Becky Chierichetti led the avatar: a lip synced, animated likeness built with Character Creator 4, Blender, Unity, iFacialMocap, and VSeeFace. Everything in that pipeline except Character Creator is free or open source, so most of the recipe is copyable by anyone. Pete Denman and Richard Beckwith built the physical embodiment, a robot head based on the Kubi platform, and Marco Beltman, our acoustics researcher, was heavily involved in the binaural audio: microphones seated in realistic ears so Lex hears the room the way a person standing there would, while the head turns toward whoever is speaking.</p>
       </div>
     </div>
-    <figure class="photo-fig">
+    <div data-esec="build-extra" data-elabel="Prototype photo and build notes"><figure class="photo-fig">
       <img src="../../images/virtual-lex-prototype-front.jpg" alt="The Virtual Lex prototype in progress: a blue fiber shelled head and shoulders bust on a worktable, with a realistic silicone ear and a taped over eye socket where a camera mounts." width="1200" height="1600" loading="lazy" decoding="async">
       <figcaption><strong>The physical prototype, in progress.</strong> The blue shell is the working head and torso; the realistic ears seat the binaural microphones, and the covered socket is a camera mount. Presence you can point at a podium.</figcaption>
     </figure>
@@ -305,15 +324,16 @@
       <span class="tofill-lbl">To confirm</span>
       <p>One build question before this section ships: the site's Proto-Lab copy describes a torso with glasses mounted cameras while Becky describes a Kubi based robot head; these photos show a head and torso bust, so confirm how to describe the rig and whether it evolved.</p>
     </div>
+</div>
   </section>
 
   <section aria-labelledby="day-h">
     <p class="sec-lbl">The use case scenario</p>
     <h2 class="h2" id="day-h">One lecture, given from his bed. A room, experienced from inside it.</h2>
-    <div class="prose">
+    <div class="prose" data-esec="scenario-intro" data-elabel="Scenario introduction">
       <p>The people below other than Lex are composites; the workflow is the real one. This is what a session looks like when the system does its job.</p>
     </div>
-    <ul class="day">
+    <ul class="day" data-esec="scenario" data-elabel="Scenario cards">
       <li><span class="t">T minus 30</span><h3>Setup</h3>
         <p id="day-b1">A caregiver launches the pipeline: capture app, avatar engine, streaming layer, each in the right order. Today this takes coaching, and not every caregiver is tech savvy. The team's own verdict on this step is honest: it is the bottleneck, and the next thing to fix.</p>
         <button class="more" type="button" aria-expanded="false" aria-controls="day-b1"><span class="lbl">Read more</span></button></li>
@@ -390,7 +410,7 @@
   <section aria-labelledby="outcome-h">
     <p class="sec-lbl gold">The outcome</p>
     <h2 class="h2" id="outcome-h">It worked well enough that people forgot.</h2>
-    <div class="tofill">
+    <div data-esec="outcome" data-elabel="The outcome"><div class="tofill">
       <span class="tofill-lbl">To fill</span>
       <p>Project mark cutout reveal goes here if a Virtual Lex mark exists, matching the homepage treatment. None found yet.</p>
     </div>
@@ -417,13 +437,14 @@
         <p>In June 2026 Lex presented the work with Pete Denman and Darryl Adams at the AADMD One Voice session on inclusive technology, avatars, and the future of accessibility. His direction after: package the program so others can find it. The pipeline is already mostly free and open tools. What remains is making it effortless.</p>
       </div>
     </div>
+</div>
   </section>
 
   <section aria-labelledby="proves-h">
     <p class="sec-lbl">What this case proves</p>
     <h2 class="h2" id="proves-h">The end of one journey. The origin of this one.</h2>
     <div class="proves-row">
-      <div class="prose">
+      <div class="prose" data-esec="proves" data-elabel="What this case proves">
         <p>Virtual Lex is the hinge between two chapters. The skills came from decades inside a big technology company, the same years our other case studies document. The mission came from a friend who needed to be in rooms his body could not reach. When the two met, the arc Access Insights now runs deliberately ran itself: begin with lived experience, a disabled expert defining his own requirements, cocreate, build, and validate in real rooms with real audiences.</p>
         <p><strong>It kept a founding voice of the disability rights movement teaching, testifying, and advising, and it founded this organization along the way.</strong> The next step, one click setup, is already specified by the user it serves. That is what disabled led development looks like, and it is how we intend to keep working.</p>
       </div>
@@ -433,11 +454,12 @@
         <a href="mailto:hello@accessinsights.net?subject=Virtual%20Lex%20case%20study">hello@accessinsights.net</a></p>
       </div>
     </div>
-    <p class="foundation"><strong>Sources:</strong> the team's build accounts from Becky Chierichetti and Lex Frieden, the project email record, the site's Proto-Lab description, and the prototype photographs, with all personal accounts pending Lex's approval as marked.</p>
+    <div data-esec="sources" data-elabel="Sources and publish rules"><p class="foundation"><strong>Sources:</strong> the team's build accounts from Becky Chierichetti and Lex Frieden, the project email record, the site's Proto-Lab description, and the prototype photographs, with all personal accounts pending Lex's approval as marked.</p>
     <div class="tofill">
       <span class="tofill-lbl">Before publish, absolute</span>
       <p>Lex Frieden sees and approves this entire page before it publishes. Stronger than the courtesy rule on other pages: his voice and likeness are the subject. Also still open: whether Virtual Lex was used at the ADA 35th anniversary in July 2025, the purpose of the November 2025 Dallas trip, and whether the earlier AADMD robot attempt is the transit conference or a separate event.</p>
     </div>
+</div>
   </section>
 </main>
 
@@ -458,5 +480,176 @@
 </script>
 
 <footer><p class="bodyS">&copy; 2026 Access Insights &middot; Portland, Oregon &middot; <a href="https://accessinsights.net/">Main site</a></p></footer>
+
+<script>
+(function () {
+  var API = "/api/edits";
+  var editingNow = {};
+  var teamCode = null, editorName = null;
+  try { teamCode = localStorage.getItem("ai-team-code"); editorName = localStorage.getItem("ai-editor-name"); } catch (e) {}
+
+  function sanitize(html) {
+    var t = document.createElement("template");
+    t.innerHTML = html;
+    t.content.querySelectorAll("script,style,link,meta,iframe,object,embed").forEach(function (n) { n.remove(); });
+    t.content.querySelectorAll("*").forEach(function (n) {
+      Array.prototype.slice.call(n.attributes).forEach(function (a) {
+        if (/^on/i.test(a.name)) n.removeAttribute(a.name);
+        if ((a.name === "href" || a.name === "src") && /^\s*javascript:/i.test(a.value)) n.removeAttribute(a.name);
+      });
+    });
+    return t.innerHTML;
+  }
+
+  function apply(id, html) {
+    var el = document.querySelector('[data-esec="' + id + '"]');
+    if (el && !editingNow[id]) el.innerHTML = sanitize(html);
+  }
+
+  function applyAll(data) {
+    var s = data.sections || {};
+    Object.keys(s).forEach(function (id) { if (s[id] && typeof s[id].html === "string") apply(id, s[id].html); });
+  }
+
+  function refresh() {
+    fetch(API + "?op=all").then(function (r) { return r.json(); }).then(applyAll).catch(function () {});
+  }
+
+  function askName() {
+    if (editorName) return editorName;
+    var n = window.prompt("Your name, so the team knows who made this edit:");
+    if (n) { editorName = n.trim(); try { localStorage.setItem("ai-editor-name", editorName); } catch (e) {} }
+    return editorName || "unnamed";
+  }
+
+  function askCode() {
+    if (teamCode) return teamCode;
+    var c = window.prompt("Team edit code (Pete sent it with the review email):");
+    if (c) { teamCode = c.trim(); try { localStorage.setItem("ai-team-code", teamCode); } catch (e) {} }
+    return teamCode;
+  }
+
+  function serialize(el) {
+    var clone = el.cloneNode(true);
+    clone.querySelectorAll(".ebar").forEach(function (n) { n.remove(); });
+    return clone.innerHTML;
+  }
+
+  function shrinkImage(file, cb) {
+    var reader = new FileReader();
+    reader.onload = function () {
+      var img = new Image();
+      img.onload = function () {
+        var tries = [[1200, 0.8], [900, 0.72], [700, 0.65]];
+        for (var i = 0; i < tries.length; i++) {
+          var s = Math.min(1, tries[i][0] / img.width);
+          var c = document.createElement("canvas");
+          c.width = Math.round(img.width * s); c.height = Math.round(img.height * s);
+          c.getContext("2d").drawImage(img, 0, 0, c.width, c.height);
+          var d = c.toDataURL("image/jpeg", tries[i][1]);
+          if (d.length < 400000) return cb(d);
+        }
+        cb(null);
+      };
+      img.src = reader.result;
+    };
+    reader.readAsDataURL(file);
+  }
+
+  function buildUI() {
+    var banner = document.createElement("div");
+    banner.className = "draft-banner";
+    banner.textContent = "Team review copy. Hit Edit on any section, make your changes, add an image if you have one, then Save. Everyone sees the latest saved version.";
+    document.body.insertBefore(banner, document.body.firstChild);
+
+    document.querySelectorAll("[data-esec]").forEach(function (el) {
+      var id = el.getAttribute("data-esec");
+      var label = el.getAttribute("data-elabel") || id;
+      var bar = document.createElement("div");
+      bar.className = "ebar";
+      bar.innerHTML = '<span class="elabel">' + label + '</span>' +
+        '<button type="button" class="ebtn edit">Edit</button>' +
+        '<button type="button" class="ebtn save" hidden>Save</button>' +
+        '<button type="button" class="ebtn cancel" hidden>Cancel</button>' +
+        '<button type="button" class="ebtn img" hidden>Add image</button>' +
+        '<input type="file" accept="image/*" hidden>' +
+        '<span class="estatus" role="status"></span>';
+      el.parentNode.insertBefore(bar, el);
+      var btnE = bar.querySelector(".edit"), btnS = bar.querySelector(".save"),
+          btnC = bar.querySelector(".cancel"), btnI = bar.querySelector(".img"),
+          file = bar.querySelector("input"), status = bar.querySelector(".estatus");
+      var snapshot = null;
+
+      function setMode(editing) {
+        editingNow[id] = editing;
+        el.classList.toggle("editing", editing);
+        el.contentEditable = editing ? "true" : "false";
+        btnE.hidden = editing; btnS.hidden = !editing; btnC.hidden = !editing; btnI.hidden = !editing;
+        if (editing) { el.focus(); status.textContent = "Editing. Type directly in the section."; }
+      }
+
+      btnE.addEventListener("click", function () { snapshot = el.innerHTML; setMode(true); });
+      btnC.addEventListener("click", function () {
+        el.innerHTML = snapshot; setMode(false); status.textContent = "Changes discarded.";
+      });
+      btnI.addEventListener("click", function () { file.click(); });
+      file.addEventListener("change", function () {
+        if (!file.files[0]) return;
+        status.textContent = "Adding image...";
+        shrinkImage(file.files[0], function (d) {
+          if (!d) { status.textContent = "That image is too large even after shrinking."; return; }
+          var img = document.createElement("img");
+          img.src = d;
+          img.alt = "Team supplied image, description to come";
+          img.style.maxWidth = "100%"; img.style.borderRadius = "16px"; img.style.display = "block"; img.style.margin = "1rem 0";
+          el.appendChild(img);
+          status.textContent = "Image added. Hit Save to keep it.";
+        });
+        file.value = "";
+      });
+      btnS.addEventListener("click", function () {
+        var code = askCode();
+        if (!code) { status.textContent = "No code entered. Nothing saved."; return; }
+        var by = askName();
+        status.textContent = "Saving...";
+        fetch(API, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ code: code, section: id, html: serialize(el), by: by })
+        }).then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { return { s: r.status, j: j }; }); })
+          .then(function (res) {
+            if (res.s === 200 && res.j.ok) { setMode(false); status.textContent = "Saved by " + by + "."; return; }
+            if (res.j && res.j.error === "bad_code") {
+              teamCode = null; try { localStorage.removeItem("ai-team-code"); } catch (e) {}
+              status.textContent = "That edit code was not right. Hit Save and try again.";
+            } else if (res.j && res.j.error === "editing_off") {
+              status.textContent = "Team editing has been turned off.";
+            } else if (res.j && res.j.error === "too_large") {
+              status.textContent = "This section got too big to save. Remove an image and try again.";
+            } else {
+              status.textContent = "Save failed. Your text is still on screen; copy it to be safe and try again.";
+            }
+          })
+          .catch(function () { status.textContent = "Save failed, network problem. Your text is still on screen."; });
+      });
+    });
+
+    document.querySelectorAll(".day li").forEach(function (card) {
+      card.addEventListener("click", function (e) {
+        var region = card.closest("[data-esec]");
+        if (region && region.classList.contains("editing")) e.stopPropagation();
+      }, true);
+    });
+
+    setInterval(function () { if (!Object.values(editingNow).some(Boolean)) refresh(); }, 45000);
+  }
+
+  fetch(API + "?op=all")
+    .then(function (r) { return r.json(); })
+    .then(function (data) { applyAll(data); if (data.editing) buildUI(); })
+    .catch(function () { /* function absent or offline: page stays a normal static page */ });
+})();
+</script>
+
 </body>
 </html>
