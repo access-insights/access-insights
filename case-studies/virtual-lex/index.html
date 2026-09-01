@@ -485,8 +485,8 @@
 (function () {
   var API = "/api/edits";
   var editingNow = {};
-  var teamCode = null, editorName = null;
-  try { teamCode = localStorage.getItem("ai-team-code"); editorName = localStorage.getItem("ai-editor-name"); } catch (e) {}
+  var editorName = null;
+  try { editorName = localStorage.getItem("ai-editor-name"); } catch (e) {}
 
   function sanitize(html) {
     var t = document.createElement("template");
@@ -520,13 +520,6 @@
     var n = window.prompt("Your name, so the team knows who made this edit:");
     if (n) { editorName = n.trim(); try { localStorage.setItem("ai-editor-name", editorName); } catch (e) {} }
     return editorName || "unnamed";
-  }
-
-  function askCode() {
-    if (teamCode) return teamCode;
-    var c = window.prompt("Team edit code (Pete sent it with the review email):");
-    if (c) { teamCode = c.trim(); try { localStorage.setItem("ai-team-code", teamCode); } catch (e) {} }
-    return teamCode;
   }
 
   function serialize(el) {
@@ -608,21 +601,16 @@
         file.value = "";
       });
       btnS.addEventListener("click", function () {
-        var code = askCode();
-        if (!code) { status.textContent = "No code entered. Nothing saved."; return; }
         var by = askName();
         status.textContent = "Saving...";
         fetch(API, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ code: code, section: id, html: serialize(el), by: by })
+          body: JSON.stringify({ section: id, html: serialize(el), by: by })
         }).then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { return { s: r.status, j: j }; }); })
           .then(function (res) {
             if (res.s === 200 && res.j.ok) { setMode(false); status.textContent = "Saved by " + by + "."; return; }
-            if (res.j && res.j.error === "bad_code") {
-              teamCode = null; try { localStorage.removeItem("ai-team-code"); } catch (e) {}
-              status.textContent = "That edit code was not right. Hit Save and try again.";
-            } else if (res.j && res.j.error === "editing_off") {
+            if (res.j && res.j.error === "editing_off") {
               status.textContent = "Team editing has been turned off.";
             } else if (res.j && res.j.error === "too_large") {
               status.textContent = "This section got too big to save. Remove an image and try again.";
