@@ -116,6 +116,18 @@
 
   .foundation{margin-top:2rem;font-size:var(--fs-bs);line-height:var(--lh-bs);text-align:center;max-width:70ch;margin-left:auto;margin-right:auto;}
   .foundation strong{color:var(--gold);}
+  /* other profiles */
+  .others-sec{border-top:1px solid var(--card-border);}
+  .others{list-style:none;display:flex;flex-wrap:wrap;gap:1.25rem;margin-top:1.5rem;}
+  .others a,.others .soon{display:flex;flex-direction:column;align-items:center;gap:0.6rem;text-decoration:none;
+    font-weight:var(--w-bold);font-size:0.9375rem;line-height:1.3;min-width:6.5rem;padding:0.75rem;
+    border-radius:12px;text-align:center;}
+  .others img{width:5rem;height:5rem;border-radius:50%;object-fit:cover;border:2px solid var(--card-border);}
+  .others a:hover img,.others a:focus-visible img{border-color:var(--magenta);}
+  .others a:hover span,.others a:focus-visible span{text-decoration:underline;text-decoration-color:var(--magenta);
+    text-decoration-thickness:3px;text-underline-offset:4px;}
+  .others .soon{opacity:0.65;}
+  .others .soon .tag{font-weight:var(--w-reg);font-size:0.75rem;letter-spacing:0.08em;text-transform:uppercase;margin-top:-0.35rem;}
 
   footer{position:relative;z-index:2;text-align:center;padding:3rem 2.5rem;border-top:1px solid var(--card-border);margin-top:4vh;}
   footer a{text-decoration-thickness:2px;text-underline-offset:4px;}
@@ -215,6 +227,18 @@
       </div>
     </div>
     <p class="foundation"><strong>Why it matters here:</strong> Access Insights exists to make lived experience a formal research instrument. Pete has been doing exactly that for twenty years, inside one of the world's largest technology companies and out.</p>
+  </section>
+
+  <section class="others-sec" aria-labelledby="others-h">
+    <h2 class="sec-lbl" id="others-h">Other profiles</h2>
+    <ul class="others" role="list">
+      <li><a href="../darryl-adams/"><img src="../../images/team/darryl.png" alt="" width="80" height="80"><span>Darryl Adams</span></a></li>
+      <li><div class="soon"><img src="../../images/team/lex.png" alt="" width="80" height="80"><span>Lex Frieden</span><span class="tag">Coming soon</span></div></li>
+      <li><div class="soon"><img src="../../images/team/susan.png" alt="" width="80" height="80"><span>Susan Faulkner</span><span class="tag">Coming soon</span></div></li>
+      <li><div class="soon"><img src="../../images/team/richard.png" alt="" width="80" height="80"><span>Richard Beckwith</span><span class="tag">Coming soon</span></div></li>
+      <li><a href="../marco-beltman/"><img src="../../images/team/marco.png" alt="" width="80" height="80"><span>Marco Beltman</span></a></li>
+      <li><a href="../becky-chierichetti/"><img src="../../images/team/becky.png" alt="" width="80" height="80"><span>Becky Chierichetti</span></a></li>
+    </ul>
   </section>
 </main>
 
