@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyBpZD0iTGF5ZXJfMiIgZGF0YS1uYW1lPSJMYXllciAyIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDEuMTkgOTkuMjEiPgogIDxkZWZzPgogICAgPHN0eWxlPgogICAgICAuY2xzLTEgewogICAgICAgIGZpbGw6ICNkOTM5OGM7CiAgICAgIH0KCiAgICAgIC5jbHMtMiB7CiAgICAgICAgZmlsbDogIzhhM2VlMTsKICAgICAgfQogICAgPC9zdHlsZT4KICA8L2RlZnM+CiAgPGcgaWQ9IkxheWVyXzItMiIgZGF0YS1uYW1lPSJMYXllciAyIj4KICAgIDxnPgogICAgICA8cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik00Mi45MSw4N2MzLjE3LTQuNDYsOS4zMS0yNC4yLDE1LjcxLTMwLjIsNS40Ni01LjEyLDEyLjMzLTguMjEsMTkuODEtOC4yMSw0LjY0LDAsOS4xMSwxLjEyLDEzLjEsMy4yM2wtMjAuNjMtMzkuNmMtLjAzLS4wNy0uMDctLjEzLS4xLS4yLS4wNS0uMDktLjEtLjE5LS4xNS0uMjgtLjA0LS4wNy0uMDgtLjE1LS4xMi0uMjItLjA1LS4wOS0uMS0uMTgtLjE1LS4yNy0uMDQtLjA4LS4wOS0uMTUtLjE0LS4yM3MtLjEtLjE3LS4xNS0uMjUtLjEtLjE2LS4xNS0uMjNjLS4wNS0uMDgtLjEtLjE2LS4xNS0uMjRzLS4xMS0uMTYtLjE2LS4yNGMtLjA1LS4wNy0uMS0uMTUtLjE1LS4yMi0uMDYtLjA4LS4xMS0uMTYtLjE3LS4yNC0uMDUtLjA3LS4xLS4xNC0uMTUtLjIxLS4wNi0uMDgtLjEyLS4xNi0uMTgtLjI0LS4wNS0uMDctLjEtLjE0LS4xNS0uMjEtLjA2LS4wOC0uMTItLjE2LS4xOC0uMjQtLjA1LS4wNy0uMS0uMTMtLjE2LS4yLS4wNi0uMDgtLjEzLS4xNS0uMTktLjIzLS4wNS0uMDctLjExLS4xMy0uMTYtLjItLjA2LS4wOC0uMTMtLjE1LS4xOS0uMjItLjA2LS4wNy0uMTEtLjEzLS4xNy0uMi0uMDYtLjA3LS4xMy0uMTQtLjE5LS4yMS0uMDYtLjA3LS4xMi0uMTMtLjE4LS4yLS4wNi0uMDctLjEzLS4xNC0uMTktLjItLjA2LS4wNy0uMTMtLjEzLS4xOS0uMi0uMDYtLjA3LS4xMy0uMTMtLjE5LS4yLS4wNy0uMDctLjEzLS4xMy0uMi0uMi0uMDYtLjA2LS4xMy0uMTItLjE5LS4xOS0uMDctLjA3LS4xNC0uMTMtLjIxLS4yLS4wNi0uMDYtLjEzLS4xMi0uMTktLjE4LS4wNy0uMDctLjE1LS4xMy0uMjItLjItLjA2LS4wNi0uMTMtLjExLS4xOS0uMTctLjA4LS4wNy0uMTUtLjEzLS4yMy0uMi0uMDYtLjA1LS4xMy0uMTEtLjItLjE2LS4wOC0uMDYtLjE2LS4xMy0uMjMtLjE5LS4wNy0uMDUtLjEzLS4xMS0uMi0uMTYtLjA4LS4wNi0uMTYtLjEyLS4yNC0uMTgtLjA3LS4wNS0uMTQtLjEtLjIxLS4xNi0uMDgtLjA2LS4xNi0uMTItLjI0LS4xOC0uMDctLjA1LS4xNS0uMS0uMjItLjE2LS4wOC0uMDYtLjE2LS4xMS0uMjMtLjE2LS4wOC0uMDUtLjE2LS4xMS0uMjMtLjE2LS4wOC0uMDUtLjE1LS4xLS4yMy0uMTUtLjA4LS4wNS0uMTctLjExLS4yNS0uMTYtLjA3LS4wNS0uMTQtLjA5LS4yMi0uMTQtLjA5LS4wNi0uMTgtLjExLS4yOC0uMTctLjA3LS4wNC0uMTMtLjA4LS4yLS4xMi0uMS0uMDYtLjItLjEyLS4zLS4xNy0uMDYtLjAzLS4xMi0uMDctLjE4LS4xLS4xMS0uMDYtLjIyLS4xMi0uMzMtLjE4LS4wNS0uMDMtLjEtLjA1LS4xNS0uMDhoLS4wMWMtLjExLS4wNi0uMjMtLjEyLS4zNC0uMTctLjA1LS4wMy0uMTEtLjA1LS4xNi0uMDgtLjExLS4wNS0uMjItLjExLS4zNC0uMTYtLjA2LS4wMy0uMTEtLjA1LS4xNy0uMDgtLjEtLjA1LS4yMS0uMDktLjMyLS4xNC0uMDctLjAzLS4xMy0uMDYtLjItLjA5LS4wOS0uMDQtLjE5LS4wOC0uMjktLjEyLS4wOC0uMDMtLjE2LS4wNy0uMjMtLjEtLjA4LS4wMy0uMTctLjA3LS4yNS0uMS0uMDktLjAzLS4xOC0uMDctLjI3LS4xLS4wOC0uMDMtLjE1LS4wNS0uMjMtLjA4LS4xLS4wNC0uMi0uMDctLjMtLjExLS4wNy0uMDItLjE0LS4wNS0uMjEtLjA3LS4xMS0uMDQtLjIxLS4wNy0uMzItLjExaC0uMDJjLS4wNy0uMDItLjEzLS4wNC0uMi0uMDYtLjExLS4wMy0uMjEtLjA3LS4zMi0uMS0uMDgtLjAyLS4xNS0uMDQtLjIzLS4wNi0uMS0uMDMtLjItLjA2LS4zMS0uMDgtLjA4LS4wMi0uMTctLjA0LS4yNS0uMDYtLjEtLjAyLS4xOS0uMDUtLjI5LS4wNy0uMDktLjAyLS4xOC0uMDQtLjI3LS4wNnMtLjE4LS4wNC0uMjgtLjA2Yy0uMDktLjAyLS4xOS0uMDQtLjI4LS4wNnMtLjE4LS4wNC0uMjctLjA1Yy0uMS0uMDItLjE5LS4wMy0uMjktLjA1LS4wOSwwLS4xNy0uMDMtLjI2LS4wNC0uMS0uMDItLjItLjAzLS4zLS4wNC0uMDgtLjAxLS4xNy0uMDMtLjI1LS4wNC0uMS0uMDEtLjItLjAzLS4zLS4wNC0uMDgtLjAxLS4xNy0uMDItLjI1LS4wMy0uMSwwLS4yLS4wMi0uMy0uMDMtLjA4LDAtLjE3LS4wMi0uMjUtLjAyLS4xLDAtLjItLjAyLS4zLS4wMi0uMDksMC0uMTctLjAxLS4yNi0uMDItLjEsMC0uMiwwLS4yOSwwcy0uMTcsMC0uMjYsMGgtMS42OGMtLjA5LDAtLjE3LDAtLjI2LDAtLjEsMC0uMiwwLS4yOSwwLS4wOSwwLS4xNywwLS4yNi4wMi0uMSwwLS4yLjAxLS4zLjAyLS4wOCwwLS4xNy4wMi0uMjUuMDItLjEsMC0uMi4wMi0uMy4wMy0uMDgsMC0uMTcuMDItLjI1LjAzLS4xLjAxLS4yLjAyLS4zLjA0LS4wOC4wMS0uMTcuMDItLjI1LjA0LS4xLDAtLjIuMDMtLjMuMDQtLjA5LDAtLjE3LjAzLS4yNi4wNC0uMS4wMi0uMTkuMDMtLjI5LjA1LS4wOS4wMi0uMTguMDMtLjI3LjA1cy0uMTkuMDQtLjI4LjA2Yy0uMDkuMDItLjE5LjA0LS4yOC4wNnMtLjE4LjA0LS4yNi4wNmMtLjEuMDItLjIuMDUtLjI5LjA3LS4wOC4wMi0uMTYuMDQtLjI1LjA2LS4xLjAzLS4yMS4wNi0uMzEuMDktLjA4LjAyLS4xNS4wNC0uMjMuMDYtLjExLjAzLS4yMi4wNy0uMzMuMS0uMDYuMDItLjEzLjA0LS4xOS4wNmgtLjAyYy0uMTEuMDMtLjIyLjA3LS4zMy4xMS0uMDcuMDItLjE0LjA0LS4yLjA3LS4xLjA0LS4yMS4wNy0uMzEuMTEtLjA3LjAzLS4xNS4wNS0uMjIuMDgtLjA5LjA0LS4xOS4wNy0uMjguMTEtLjA4LjAzLS4xNi4wNi0uMjQuMDktLjA4LjAzLS4xNy4wNy0uMjUuMS0uMDkuMDQtLjE4LjA3LS4yNy4xMS0uMDcuMDMtLjE0LjA2LS4yMS4wOS0uMS4wNC0uMi4wOS0uMy4xMy0uMDYuMDMtLjEyLjA2LS4xOC4wOS0uMTEuMDUtLjIyLjEtLjMzLjE1LS4wNi4wMy0uMTEuMDYtLjE3LjA5LS4xMS4wNi0uMjIuMTEtLjMzLjE3aC0uMDJjLS4wNS4wMy0uMS4wNi0uMTYuMDgtLjExLjA2LS4yMS4xMS0uMzIuMTctLjA2LjAzLS4xMy4wNy0uMTkuMTEtLjEuMDYtLjIuMTEtLjMuMTctLjA3LjA0LS4xNC4wOC0uMi4xMi0uMDkuMDUtLjE4LjExLS4yNy4xNi0uMDcuMDUtLjE1LjA5LS4yMi4xNC0uMDguMDUtLjE3LjExLS4yNS4xNi0uMDguMDUtLjE1LjEtLjIzLjE1LS4wOC4wNS0uMTYuMS0uMjMuMTYtLjA4LjA1LS4xNi4xMS0uMjMuMTYtLjA3LjA1LS4xNS4xLS4yMi4xNi0uMDguMDYtLjE2LjEyLS4yNC4xOC0uMDcuMDUtLjE0LjEtLjIxLjE2LS4wOC4wNi0uMTYuMTItLjI0LjE4LS4wNy4wNS0uMTQuMTEtLjIuMTYtLjA4LjA2LS4xNS4xMy0uMjMuMTktLjA3LjA1LS4xMy4xMS0uMi4xNi0uMDguMDYtLjE1LjEzLS4yMi4xOXMtLjEzLjExLS4yLjE3LS4xNC4xMy0uMjIuMmMtLjA3LjA2LS4xMy4xMi0uMi4xOHMtLjE0LjEzLS4yMS4yYy0uMDcuMDYtLjEzLjEzLS4yLjE5cy0uMTMuMTMtLjIuMmMtLjA3LjA3LS4xMy4xMy0uMi4yLS4wNi4wNi0uMTIuMTMtLjE5LjItLjA3LjA3LS4xMy4xNC0uMi4yMS0uMDYuMDYtLjEyLjEzLS4xOC4xOS0uMDcuMDctLjEzLjE0LS4yLjIyLS4wNi4wNi0uMTEuMTMtLjE3LjE5LS4wNy4wOC0uMTMuMTUtLjE5LjIzLS4wNS4wNi0uMTEuMTMtLjE2LjItLjA2LjA4LS4xMy4xNi0uMTkuMjMtLjA1LjA3LS4xLjEzLS4xNi4yLS4wNi4wOC0uMTMuMTYtLjE5LjI0LS4wNS4wNy0uMS4xNC0uMTUuMi0uMDYuMDgtLjEyLjE2LS4xOC4yNC0uMDUuMDctLjEuMTQtLjE1LjIxLS4wNi4wOC0uMTEuMTYtLjE3LjI0LS4wNS4wNy0uMS4xNS0uMTUuMjItLjA1LjA4LS4xMS4xNi0uMTYuMjRzLS4xLjE2LS4xNS4yNC0uMS4xNi0uMTUuMjNjLS4wNS4wOC0uMS4xNy0uMTUuMjVzLS4wOS4xNS0uMTQuMjNjLS4wNS4wOS0uMS4xOC0uMTUuMjctLjA0LjA3LS4wOC4xNC0uMTIuMjItLjA1LjEtLjEuMTktLjE1LjI5LS4wMy4wNi0uMDcuMTMtLjEuMTlsLS4wMi4wNGgwTDIuNTgsNjUuOTRjLTIuNzksNS4zNS0zLjM0LDExLjYtMS41MiwxNy4zNSwxLjgxLDUuNzYsNS44NCwxMC41NiwxMS4xOSwxMy4zNSwzLjI4LDEuNzEsNi44OSwyLjU3LDEwLjUxLDIuNTcsMi4zLDAsNC42MS0uMzUsNi44NC0xLjA1LDUuNzYtMS44MSwxMC41Ni01Ljg0LDEzLjM1LTExLjE5Ii8+CiAgICAgIDxjaXJjbGUgY2xhc3M9ImNscy0yIiBjeD0iNzguNDMiIGN5PSI3Ni40MSIgcj0iMjIuNzYiLz4KICAgIDwvZz4KICA8L2c+Cjwvc3ZnPg==">
+<title>Access Insights — Case Study: Goalball</title>
+<meta name="description" content="Goalball, the best sport you have never heard of: how Access Insights recorded a binaural goalball data set with real players, built a browser-based game you play by ear, and is studying how people localize sound.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#2d344e;
+    --magenta:#d9398c; --pink:#f492c4; --gold:#f9d976;
+    --card-fill:rgba(255,255,255,0.07); --card-border:rgba(255,255,255,0.22);
+    --w-reg:400; --w-bold:700; --w-black:900;
+    --fs-h1:clamp(1.4rem, 7vw, 3rem); --lh-h1:1.08;
+    --fs-h2:1.625rem; --lh-h2:1.15;
+    --fs-h3:1.5rem; --lh-h3:1.3;
+    --fs-bl:1.5rem; --lh-bl:1.35;
+    --fs-bs:1rem; --lh-bs:1.4;
+    --fs-nav:0.9375rem;
+  }
+  html{font-size:100%;scroll-behavior:smooth;scroll-padding-top:6rem;}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto;}}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Montserrat',system-ui,-apple-system,sans-serif;color:#fff;background:#2d344e;
+       -webkit-font-smoothing:antialiased;overflow-x:hidden;}
+  .h1{font-weight:var(--w-black);font-size:var(--fs-h1);line-height:var(--lh-h1);overflow-wrap:normal;}
+  .h2{font-weight:var(--w-bold);font-size:var(--fs-h2);line-height:var(--lh-h2);}
+  .bodyL{font-weight:var(--w-reg);font-size:var(--fs-bl);line-height:var(--lh-bl);}
+  .bodyS{font-weight:var(--w-reg);font-size:var(--fs-bs);line-height:var(--lh-bs);}
+  .lead{margin-top:1.25rem;max-width:60ch;}
+  a{color:inherit;}
+  :focus-visible{outline:3px solid #fff;outline-offset:3px;border-radius:4px;}
+  @media (forced-colors:active){:focus-visible{outline:3px solid;}}
+  .skip{position:absolute;left:-9999px;top:0;background:#fff;color:var(--ink);padding:0.75rem 1.25rem;z-index:100;border-radius:0 0 8px 0;font-weight:var(--w-bold);}
+  .skip:focus{left:0;}
+  .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
+    clip:rect(0,0,0,0);white-space:nowrap;border:0;}
+
+  header.site{position:sticky;top:0;z-index:50;background:rgba(45,52,78,0.92);backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--card-border);}
+  .nav{max-width:90rem;margin:0 auto;height:5rem;display:flex;align-items:center;
+    justify-content:space-between;gap:1.5rem;padding:0 2.5rem;overflow:hidden;}
+  .brand{display:flex;align-items:center;gap:0.625rem;text-decoration:none;color:#fff;
+    font-weight:var(--w-bold);font-size:var(--fs-h3);line-height:1.1;min-height:2.75rem;}
+  .brand img{height:2rem;width:auto;display:block;}
+  .nav-links{display:flex;gap:1.75rem;list-style:none;align-items:center;flex-wrap:wrap;}
+  .nav-links a{font-weight:var(--w-reg);font-size:var(--fs-nav);color:#fff;text-decoration:none;
+    display:inline-flex;align-items:center;min-height:2.75rem;padding:0 .25rem;}
+  .nav-links a:hover,.nav-links a:focus-visible{font-weight:var(--w-black);text-decoration:underline;
+    text-decoration-color:var(--magenta);text-decoration-thickness:3px;text-underline-offset:5px;}
+  @media (max-width:768px){ .nav{padding:0 1rem;} }
+
+  main{position:relative;z-index:2;max-width:80rem;margin:0 auto;padding:0 2.5rem;}
+  section{padding:5vh 0;}
+  #bg{position:fixed;inset:0;z-index:0;background:#2d344e url('../../images/hero.jpg') center/cover no-repeat;}
+  #bg::after{content:"";position:absolute;inset:0;background:rgba(45,52,78,0.88);}
+
+  .kicker{font-weight:var(--w-bold);font-size:var(--fs-bs);letter-spacing:0.2em;text-transform:uppercase;
+    opacity:0.85;margin-bottom:1rem;}
+  .hero{padding:9vh 0 4vh;}
+  .hero .lead strong{font-weight:var(--w-bold);}
+
+  /* at-a-glance band */
+  .glance{display:grid;grid-template-columns:repeat(4,1fr);gap:0.75rem;margin-top:2.5rem;list-style:none;}
+  .glance li{background:var(--card-fill);border:1px solid var(--card-border);border-radius:10px;
+    padding:1rem 1.125rem;}
+  .glance .lbl{font-weight:var(--w-bold);font-size:0.8125rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--pink);}
+  .glance .val{font-weight:var(--w-bold);font-size:var(--fs-bs);line-height:1.4;margin-top:0.35rem;}
+  @media (max-width:820px){.glance{grid-template-columns:repeat(2,1fr);}}
+  @media (max-width:480px){.glance{grid-template-columns:1fr;}}
+
+  /* section label */
+  .sec-lbl{font-weight:var(--w-black);font-size:var(--fs-bs);letter-spacing:0.15em;text-transform:uppercase;color:var(--pink);margin-bottom:0.75rem;}
+  .sec-lbl.gold{color:var(--gold);}
+  .prose{max-width:70ch;}
+  .prose p{font-size:var(--fs-bs);line-height:1.6;margin-top:1rem;}
+  .prose p strong{font-weight:var(--w-bold);}
+
+  /* two-up panels (approach + build) */
+  .duo{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:1.5rem;}
+  @media (max-width:900px){.duo{grid-template-columns:1fr;}}
+  .panel{border-radius:16px;padding:1.75rem 1.5rem;border:1px solid var(--card-border);background:var(--card-fill);}
+  .panel.deep{background:rgba(0,0,0,0.25);}
+  .panel .lbl{font-weight:var(--w-black);font-size:var(--fs-bs);letter-spacing:0.15em;text-transform:uppercase;color:var(--pink);}
+  .panel.deep .lbl{color:var(--gold);}
+  .panel h3{font-weight:var(--w-black);font-size:1.25rem;line-height:1.25;margin-top:0.75rem;}
+  .panel p{font-size:var(--fs-bs);line-height:1.6;margin-top:0.875rem;}
+  .panel p b{color:var(--pink);font-weight:var(--w-black);padding:0 0.25em;}
+
+  /* prominent Hawking quote */
+  .big-quote{max-width:56rem;margin:3rem 0 0.5rem;border-left:6px solid var(--magenta);padding-left:clamp(1.25rem, 3vw, 2rem);}
+  .big-quote p{font-weight:var(--w-black);font-size:clamp(1.5rem, 4.5vw, 2.5rem);line-height:1.25;}
+  .big-quote p em{font-style:normal;color:var(--gold);}
+  .big-quote .who{font-weight:var(--w-bold);font-size:var(--fs-bs);letter-spacing:0.15em;text-transform:uppercase;color:var(--pink);margin-top:1.25rem;}
+
+  /* day scenario rows */
+  .day{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.5rem;list-style:none;}
+  @media (max-width:900px){.day{grid-template-columns:1fr;}}
+  .day li{background:var(--card-fill);border:1px solid var(--card-border);border-radius:16px;padding:1.5rem;}
+  .day .t{font-weight:var(--w-black);font-size:var(--fs-bs);letter-spacing:0.1em;color:var(--pink);}
+  .day h3{font-weight:var(--w-black);font-size:1.125rem;line-height:1.25;text-transform:uppercase;letter-spacing:0.02em;margin-top:0.35rem;}
+  .day p{font-size:var(--fs-bs);line-height:1.55;margin-top:0.75rem;}
+  /* collapsed: first two lines with an ellipsis; click the card to open it */
+  .day li{cursor:pointer;transition:border-color .2s ease;}
+  .day li:hover{border-color:var(--magenta);}
+  .day li p{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+  .day li.open p{display:block;}
+  .more{display:inline-flex;align-items:center;gap:0.4rem;margin-top:0.75rem;min-height:2.75rem;
+    background:none;border:0;padding:0;cursor:pointer;color:#fff;font-family:inherit;
+    font-weight:var(--w-bold);font-size:var(--fs-bs);text-decoration:none;}
+  /* the underline sits on the label only: on the rotated chevron it would rotate too */
+  .more .lbl{text-decoration:underline;text-decoration-color:var(--magenta);
+    text-decoration-thickness:3px;text-underline-offset:5px;}
+  .more:hover,.more:focus-visible{color:var(--pink);}
+  .more::after{content:"\203A";font-weight:var(--w-black);transform:rotate(90deg);transition:transform .2s ease;}
+  .day li.open .more::after{transform:rotate(-90deg);}
+  @media (prefers-reduced-motion:reduce){.more::after{transition:none;}}
+  /* system diagram: what the chair senses, what it interprets, who sees it.
+     Built in HTML so the type scales with the reader's text size and screen
+     readers get real headings and lists rather than a flat picture. */
+  .sysmap{margin-top:2rem;}
+  .sysmap-head{font-weight:var(--w-black);font-size:var(--fs-bs);letter-spacing:0.15em;
+    text-transform:uppercase;color:var(--gold);margin-bottom:1.25rem;}
+  .sysmap-grid{display:grid;grid-template-columns:1.15fr auto 0.85fr;gap:1.25rem;align-items:center;}
+  .sysmap-col{display:flex;flex-direction:column;gap:0.75rem;}
+
+  .sysgroup{background:var(--card-fill);border:1px solid var(--card-border);border-radius:16px;padding:1.125rem 1.25rem;}
+  .sysgroup h4{font-weight:var(--w-black);font-size:0.9375rem;letter-spacing:0.12em;text-transform:uppercase;
+    color:var(--pink);line-height:1.4;}
+  .sysgroup ul{list-style:none;margin-top:0.6rem;display:flex;flex-wrap:wrap;gap:0.35rem 0.5rem;}
+  .sysgroup li{font-size:0.9375rem;line-height:1.5;font-weight:var(--w-bold);
+    border:1px solid rgba(255,255,255,0.18);border-radius:999px;padding:0.15rem 0.7rem;}
+
+  /* the connector column */
+  .sysflow{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.35rem;color:var(--gold);}
+  .sysflow span{font-weight:var(--w-black);font-size:1.5rem;line-height:1;}
+  .sysflow small{font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;opacity:0.85;
+    writing-mode:vertical-rl;text-orientation:mixed;}
+
+  .sysout{background:rgba(0,0,0,0.25);border:1px solid var(--card-border);border-radius:16px;padding:1.25rem;}
+  .sysout h4{font-weight:var(--w-black);font-size:0.9375rem;letter-spacing:0.12em;text-transform:uppercase;
+    color:var(--gold);line-height:1.4;}
+  .sysout p{font-size:0.9375rem;line-height:1.55;margin-top:0.6rem;}
+  .sysout .rule{height:1px;background:linear-gradient(to right,var(--magenta),transparent);margin:1rem 0;}
+  .sysout ul{list-style:none;display:flex;flex-direction:column;gap:0.4rem;}
+  .sysout li{font-size:0.9375rem;line-height:1.5;font-weight:var(--w-bold);padding-left:1.1rem;position:relative;}
+  .sysout li::before{content:"";position:absolute;left:0;top:0.55em;width:6px;height:6px;border-radius:50%;
+    background:var(--pink);}
+  .sysmap-note{font-size:0.8125rem;line-height:1.5;opacity:0.85;margin-top:1rem;max-width:70ch;}
+
+  @media (max-width:900px){
+    .sysmap-grid{grid-template-columns:1fr;}
+    .sysflow{flex-direction:row;padding:0.25rem 0;}
+    .sysflow span{transform:rotate(90deg);}
+    .sysflow small{writing-mode:horizontal-tb;}
+  }
+  .systems{margin-top:1.5rem;font-size:var(--fs-bs);line-height:1.6;max-width:75ch;}
+  .systems strong{color:var(--gold);font-weight:var(--w-black);letter-spacing:0.1em;text-transform:uppercase;font-size:0.8125rem;}
+  .systems b{color:var(--pink);font-weight:var(--w-black);padding:0 0.25em;}
+
+  /* outcome: video + chain */
+  .outcome-row{max-width:70ch;margin:0 auto;}
+  .video{position:relative;width:100%;aspect-ratio:16/9;border-radius:16px;overflow:hidden;
+    border:1px solid var(--card-border);background:#000;}
+  .video iframe{position:absolute;inset:0;width:100%;height:100%;border:0;}
+  .vid-cap{font-size:0.8125rem;line-height:1.5;opacity:0.85;margin-top:0.75rem;}
+  .photo-fig{margin:1.75rem 0 0;}
+  .photo-fig img{width:100%;height:auto;display:block;border-radius:16px;border:1px solid var(--card-border);}
+  .photo-fig figcaption{font-size:0.8125rem;line-height:1.5;opacity:0.85;margin-top:0.75rem;}
+  .vid-link{font-weight:var(--w-bold);text-decoration:underline;text-decoration-color:var(--magenta);
+    text-decoration-thickness:2px;text-underline-offset:3px;white-space:nowrap;}
+  .vid-link:hover,.vid-link:focus-visible{color:var(--pink);}
+  .hero-video{max-width:56rem;margin-top:2.5rem;}
+
+
+  .chain{list-style:none;display:flex;flex-wrap:wrap;gap:0.4rem 0;margin-top:1rem;align-items:center;}
+  .chain li{font-weight:var(--w-bold);font-size:var(--fs-bs);display:flex;align-items:center;}
+  .chain li + li::before{content:"\2192";margin:0 0.75rem;color:var(--gold);font-weight:var(--w-black);}
+  @media (max-width:480px){
+    .chain{flex-direction:column;align-items:flex-start;}
+    .chain li{flex-wrap:wrap;}
+    .chain li + li::before{content:"\2193";margin:0 0.75rem 0 0.25rem;}
+    main{padding:0 1.25rem;}
+  }
+
+  /* proves + partner */
+  .proves-row{display:grid;grid-template-columns:1.6fr 1fr;gap:1.5rem;margin-top:1.5rem;}
+  @media (max-width:900px){.proves-row{grid-template-columns:1fr;}}
+  .partner{border-radius:16px;padding:1.75rem 1.5rem;border:1px solid var(--card-border);background:var(--card-fill);}
+  .partner .lbl{font-weight:var(--w-black);font-size:var(--fs-bs);letter-spacing:0.15em;text-transform:uppercase;color:var(--pink);}
+  .partner p{margin-top:1rem;font-size:var(--fs-bs);line-height:var(--lh-bs);}
+  .partner a{font-weight:var(--w-bold);text-decoration:underline;text-decoration-color:var(--magenta);
+    text-decoration-thickness:3px;text-underline-offset:4px;}
+
+  .foundation{margin-top:2rem;font-size:var(--fs-bs);line-height:var(--lh-bs);text-align:center;max-width:70ch;margin-left:auto;margin-right:auto;}
+  .foundation strong{color:var(--gold);}
+
+  footer{position:relative;z-index:2;text-align:center;padding:3rem 2.5rem;border-top:1px solid var(--card-border);margin-top:4vh;}
+  footer a{text-decoration-thickness:2px;text-underline-offset:4px;}
+
+  /* goalball: binaural listening blocks */
+  .listen{max-width:56rem;margin:2.5rem 0 0;border-radius:16px;padding:1.75rem 1.5rem;
+    border:1px solid var(--card-border);background:rgba(0,0,0,0.25);}
+  .listen .lbl{font-weight:var(--w-black);font-size:var(--fs-bs);letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);}
+  .listen figcaption p{font-size:var(--fs-bs);line-height:1.6;margin-top:0.875rem;max-width:60ch;}
+  .listen audio{display:block;width:100%;max-width:32rem;margin-top:1.25rem;}
+  .phones-note{font-size:0.8125rem;line-height:1.5;opacity:0.85;margin-top:1rem;max-width:60ch;}
+
+  .court-fig{margin-top:0;}
+  .court-fig img{image-rendering:auto;}
+
+  .stats{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:0.75rem;margin-top:1.5rem;}
+  .stats li{background:var(--card-fill);border:1px solid var(--card-border);border-radius:10px;padding:1rem 1.125rem;}
+  .stats .n{display:block;font-weight:var(--w-black);font-size:clamp(2rem,5vw,2.75rem);line-height:1;color:var(--gold);}
+  .stats .d{display:block;font-weight:var(--w-bold);font-size:var(--fs-bs);line-height:1.4;margin-top:0.5rem;}
+  @media (max-width:700px){.stats{grid-template-columns:1fr;}}
+
+  .clips{margin-top:2rem;}
+  .clips-head{font-weight:var(--w-black);font-size:var(--fs-bs);letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);}
+  .clips-note{font-size:0.9375rem;line-height:1.55;opacity:0.9;margin-top:0.5rem;max-width:70ch;}
+  .clip-grid{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.25rem;}
+  @media (max-width:900px){.clip-grid{grid-template-columns:1fr;}}
+  .clip-grid li{background:var(--card-fill);border:1px solid var(--card-border);border-radius:16px;padding:1.25rem 1.5rem;}
+  .clip-grid .t{font-weight:var(--w-black);font-size:var(--fs-bs);letter-spacing:0.1em;color:var(--pink);}
+  .clip-grid h3{font-weight:var(--w-black);font-size:1.125rem;line-height:1.25;margin-top:0.35rem;}
+  .clip-grid audio{display:block;width:100%;margin-top:0.875rem;}
+
+  /* applications: same cards as the scenario rows, but always open and not clickable */
+  .day.apps li{cursor:default;}
+  .day.apps li:hover{border-color:var(--card-border);}
+  .day.apps li p{display:block;}
+
+  .ref{font-weight:var(--w-bold);text-decoration:underline;text-decoration-color:var(--magenta);
+    text-decoration-thickness:2px;text-underline-offset:3px;white-space:nowrap;}
+  .ref:hover,.ref:focus-visible{color:var(--pink);}
+  .refs{margin-top:2.5rem;max-width:75ch;}
+  .refs-head{font-weight:var(--w-black);font-size:var(--fs-bs);letter-spacing:0.15em;text-transform:uppercase;color:var(--pink);}
+  .refs-list{margin-top:0.75rem;padding-left:1.5rem;display:flex;flex-direction:column;gap:0.4rem;}
+  .refs-list li{font-size:0.875rem;line-height:1.5;opacity:0.9;padding-left:0.25rem;}
+  .refs-list li::marker{color:var(--gold);font-weight:var(--w-black);}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div id="bg" role="img" aria-label="Inside Your Rainbow Panorama at ARoS: the tinted-glass walkway overlooking the city."></div>
+
+<header class="site">
+  <nav class="nav" aria-label="Primary">
+    <a class="brand" href="https://accessinsights.net/"><img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyBpZD0iTGF5ZXJfMiIgZGF0YS1uYW1lPSJMYXllciAyIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDEuMTkgOTkuMjEiPgogIDxkZWZzPgogICAgPHN0eWxlPgogICAgICAuY2xzLTEgewogICAgICAgIGZpbGw6ICNkOTM5OGM7CiAgICAgIH0KCiAgICAgIC5jbHMtMiB7CiAgICAgICAgZmlsbDogIzhhM2VlMTsKICAgICAgfQogICAgPC9zdHlsZT4KICA8L2RlZnM+CiAgPGcgaWQ9IkxheWVyXzItMiIgZGF0YS1uYW1lPSJMYXllciAyIj4KICAgIDxnPgogICAgICA8cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik00Mi45MSw4N2MzLjE3LTQuNDYsOS4zMS0yNC4yLDE1LjcxLTMwLjIsNS40Ni01LjEyLDEyLjMzLTguMjEsMTkuODEtOC4yMSw0LjY0LDAsOS4xMSwxLjEyLDEzLjEsMy4yM2wtMjAuNjMtMzkuNmMtLjAzLS4wNy0uMDctLjEzLS4xLS4yLS4wNS0uMDktLjEtLjE5LS4xNS0uMjgtLjA0LS4wNy0uMDgtLjE1LS4xMi0uMjItLjA1LS4wOS0uMS0uMTgtLjE1LS4yNy0uMDQtLjA4LS4wOS0uMTUtLjE0LS4yM3MtLjEtLjE3LS4xNS0uMjUtLjEtLjE2LS4xNS0uMjNjLS4wNS0uMDgtLjEtLjE2LS4xNS0uMjRzLS4xMS0uMTYtLjE2LS4yNGMtLjA1LS4wNy0uMS0uMTUtLjE1LS4yMi0uMDYtLjA4LS4xMS0uMTYtLjE3LS4yNC0uMDUtLjA3LS4xLS4xNC0uMTUtLjIxLS4wNi0uMDgtLjEyLS4xNi0uMTgtLjI0LS4wNS0uMDctLjEtLjE0LS4xNS0uMjEtLjA2LS4wOC0uMTItLjE2LS4xOC0uMjQtLjA1LS4wNy0uMS0uMTMtLjE2LS4yLS4wNi0uMDgtLjEzLS4xNS0uMTktLjIzLS4wNS0uMDctLjExLS4xMy0uMTYtLjItLjA2LS4wOC0uMTMtLjE1LS4xOS0uMjItLjA2LS4wNy0uMTEtLjEzLS4xNy0uMi0uMDYtLjA3LS4xMy0uMTQtLjE5LS4yMS0uMDYtLjA3LS4xMi0uMTMtLjE4LS4yLS4wNi0uMDctLjEzLS4xNC0uMTktLjItLjA2LS4wNy0uMTMtLjEzLS4xOS0uMi0uMDYtLjA3LS4xMy0uMTMtLjE5LS4yLS4wNy0uMDctLjEzLS4xMy0uMi0uMi0uMDYtLjA2LS4xMy0uMTItLjE5LS4xOS0uMDctLjA3LS4xNC0uMTMtLjIxLS4yLS4wNi0uMDYtLjEzLS4xMi0uMTktLjE4LS4wNy0uMDctLjE1LS4xMy0uMjItLjItLjA2LS4wNi0uMTMtLjExLS4xOS0uMTctLjA4LS4wNy0uMTUtLjEzLS4yMy0uMi0uMDYtLjA1LS4xMy0uMTEtLjItLjE2LS4wOC0uMDYtLjE2LS4xMy0uMjMtLjE5LS4wNy0uMDUtLjEzLS4xMS0uMi0uMTYtLjA4LS4wNi0uMTYtLjEyLS4yNC0uMTgtLjA3LS4wNS0uMTQtLjEtLjIxLS4xNi0uMDgtLjA2LS4xNi0uMTItLjI0LS4xOC0uMDctLjA1LS4xNS0uMS0uMjItLjE2LS4wOC0uMDYtLjE2LS4xMS0uMjMtLjE2LS4wOC0uMDUtLjE2LS4xMS0uMjMtLjE2LS4wOC0uMDUtLjE1LS4xLS4yMy0uMTUtLjA4LS4wNS0uMTctLjExLS4yNS0uMTYtLjA3LS4wNS0uMTQtLjA5LS4yMi0uMTQtLjA5LS4wNi0uMTgtLjExLS4yOC0uMTctLjA3LS4wNC0uMTMtLjA4LS4yLS4xMi0uMS0uMDYtLjItLjEyLS4zLS4xNy0uMDYtLjAzLS4xMi0uMDctLjE4LS4xLS4xMS0uMDYtLjIyLS4xMi0uMzMtLjE4LS4wNS0uMDMtLjEtLjA1LS4xNS0uMDhoLS4wMWMtLjExLS4wNi0uMjMtLjEyLS4zNC0uMTctLjA1LS4wMy0uMTEtLjA1LS4xNi0uMDgtLjExLS4wNS0uMjItLjExLS4zNC0uMTYtLjA2LS4wMy0uMTEtLjA1LS4xNy0uMDgtLjEtLjA1LS4yMS0uMDktLjMyLS4xNC0uMDctLjAzLS4xMy0uMDYtLjItLjA5LS4wOS0uMDQtLjE5LS4wOC0uMjktLjEyLS4wOC0uMDMtLjE2LS4wNy0uMjMtLjEtLjA4LS4wMy0uMTctLjA3LS4yNS0uMS0uMDktLjAzLS4xOC0uMDctLjI3LS4xLS4wOC0uMDMtLjE1LS4wNS0uMjMtLjA4LS4xLS4wNC0uMi0uMDctLjMtLjExLS4wNy0uMDItLjE0LS4wNS0uMjEtLjA3LS4xMS0uMDQtLjIxLS4wNy0uMzItLjExaC0uMDJjLS4wNy0uMDItLjEzLS4wNC0uMi0uMDYtLjExLS4wMy0uMjEtLjA3LS4zMi0uMS0uMDgtLjAyLS4xNS0uMDQtLjIzLS4wNi0uMS0uMDMtLjItLjA2LS4zMS0uMDgtLjA4LS4wMi0uMTctLjA0LS4yNS0uMDYtLjEtLjAyLS4xOS0uMDUtLjI5LS4wNy0uMDktLjAyLS4xOC0uMDQtLjI3LS4wNnMtLjE4LS4wNC0uMjgtLjA2Yy0uMDktLjAyLS4xOS0uMDQtLjI4LS4wNnMtLjE4LS4wNC0uMjctLjA1Yy0uMS0uMDItLjE5LS4wMy0uMjktLjA1LS4wOSwwLS4xNy0uMDMtLjI2LS4wNC0uMS0uMDItLjItLjAzLS4zLS4wNC0uMDgtLjAxLS4xNy0uMDMtLjI1LS4wNC0uMS0uMDEtLjItLjAzLS4zLS4wNC0uMDgtLjAxLS4xNy0uMDItLjI1LS4wMy0uMSwwLS4yLS4wMi0uMy0uMDMtLjA4LDAtLjE3LS4wMi0uMjUtLjAyLS4xLDAtLjItLjAyLS4zLS4wMi0uMDksMC0uMTctLjAxLS4yNi0uMDItLjEsMC0uMiwwLS4yOSwwcy0uMTcsMC0uMjYsMGgtMS42OGMtLjA5LDAtLjE3LDAtLjI2LDAtLjEsMC0uMiwwLS4yOSwwLS4wOSwwLS4xNywwLS4yNi4wMi0uMSwwLS4yLjAxLS4zLjAyLS4wOCwwLS4xNy4wMi0uMjUuMDItLjEsMC0uMi4wMi0uMy4wMy0uMDgsMC0uMTcuMDItLjI1LjAzLS4xLjAxLS4yLjAyLS4zLjA0LS4wOC4wMS0uMTcuMDItLjI1LjA0LS4xLDAtLjIuMDMtLjMuMDQtLjA5LDAtLjE3LjAzLS4yNi4wNC0uMS4wMi0uMTkuMDMtLjI5LjA1LS4wOS4wMi0uMTguMDMtLjI3LjA1cy0uMTkuMDQtLjI4LjA2Yy0uMDkuMDItLjE5LjA0LS4yOC4wNnMtLjE4LjA0LS4yNi4wNmMtLjEuMDItLjIuMDUtLjI5LjA3LS4wOC4wMi0uMTYuMDQtLjI1LjA2LS4xLjAzLS4yMS4wNi0uMzEuMDktLjA4LjAyLS4xNS4wNC0uMjMuMDYtLjExLjAzLS4yMi4wNy0uMzMuMS0uMDYuMDItLjEzLjA0LS4xOS4wNmgtLjAyYy0uMTEuMDMtLjIyLjA3LS4zMy4xMS0uMDcuMDItLjE0LjA0LS4yLjA3LS4xLjA0LS4yMS4wNy0uMzEuMTEtLjA3LjAzLS4xNS4wNS0uMjIuMDgtLjA5LjA0LS4xOS4wNy0uMjguMTEtLjA4LjAzLS4xNi4wNi0uMjQuMDktLjA4LjAzLS4xNy4wNy0uMjUuMS0uMDkuMDQtLjE4LjA3LS4yNy4xMS0uMDcuMDMtLjE0LjA2LS4yMS4wOS0uMS4wNC0uMi4wOS0uMy4xMy0uMDYuMDMtLjEyLjA2LS4xOC4wOS0uMTEuMDUtLjIyLjEtLjMzLjE1LS4wNi4wMy0uMTEuMDYtLjE3LjA5LS4xMS4wNi0uMjIuMTEtLjMzLjE3aC0uMDJjLS4wNS4wMy0uMS4wNi0uMTYuMDgtLjExLjA2LS4yMS4xMS0uMzIuMTctLjA2LjAzLS4xMy4wNy0uMTkuMTEtLjEuMDYtLjIuMTEtLjMuMTctLjA3LjA0LS4xNC4wOC0uMi4xMi0uMDkuMDUtLjE4LjExLS4yNy4xNi0uMDcuMDUtLjE1LjA5LS4yMi4xNC0uMDguMDUtLjE3LjExLS4yNS4xNi0uMDguMDUtLjE1LjEtLjIzLjE1LS4wOC4wNS0uMTYuMS0uMjMuMTYtLjA4LjA1LS4xNi4xMS0uMjMuMTYtLjA3LjA1LS4xNS4xLS4yMi4xNi0uMDguMDYtLjE2LjEyLS4yNC4xOC0uMDcuMDUtLjE0LjEtLjIxLjE2LS4wOC4wNi0uMTYuMTItLjI0LjE4LS4wNy4wNS0uMTQuMTEtLjIuMTYtLjA4LjA2LS4xNS4xMy0uMjMuMTktLjA3LjA1LS4xMy4xMS0uMi4xNi0uMDguMDYtLjE1LjEzLS4yMi4xOXMtLjEzLjExLS4yLjE3LS4xNC4xMy0uMjIuMmMtLjA3LjA2LS4xMy4xMi0uMi4xOHMtLjE0LjEzLS4yMS4yYy0uMDcuMDYtLjEzLjEzLS4yLjE5cy0uMTMuMTMtLjIuMmMtLjA3LjA3LS4xMy4xMy0uMi4yLS4wNi4wNi0uMTIuMTMtLjE5LjItLjA3LjA3LS4xMy4xNC0uMi4yMS0uMDYuMDYtLjEyLjEzLS4xOC4xOS0uMDcuMDctLjEzLjE0LS4yLjIyLS4wNi4wNi0uMTEuMTMtLjE3LjE5LS4wNy4wOC0uMTMuMTUtLjE5LjIzLS4wNS4wNi0uMTEuMTMtLjE2LjItLjA2LjA4LS4xMy4xNi0uMTkuMjMtLjA1LjA3LS4xLjEzLS4xNi4yLS4wNi4wOC0uMTMuMTYtLjE5LjI0LS4wNS4wNy0uMS4xNC0uMTUuMi0uMDYuMDgtLjEyLjE2LS4xOC4yNC0uMDUuMDctLjEuMTQtLjE1LjIxLS4wNi4wOC0uMTEuMTYtLjE3LjI0LS4wNS4wNy0uMS4xNS0uMTUuMjItLjA1LjA4LS4xMS4xNi0uMTYuMjRzLS4xLjE2LS4xNS4yNC0uMS4xNi0uMTUuMjNjLS4wNS4wOC0uMS4xNy0uMTUuMjVzLS4wOS4xNS0uMTQuMjNjLS4wNS4wOS0uMS4xOC0uMTUuMjctLjA0LjA3LS4wOC4xNC0uMTIuMjItLjA1LjEtLjEuMTktLjE1LjI5LS4wMy4wNi0uMDcuMTMtLjEuMTlsLS4wMi4wNGgwTDIuNTgsNjUuOTRjLTIuNzksNS4zNS0zLjM0LDExLjYtMS41MiwxNy4zNSwxLjgxLDUuNzYsNS44NCwxMC41NiwxMS4xOSwxMy4zNSwzLjI4LDEuNzEsNi44OSwyLjU3LDEwLjUxLDIuNTcsMi4zLDAsNC42MS0uMzUsNi44NC0xLjA1LDUuNzYtMS44MSwxMC41Ni01Ljg0LDEzLjM1LTExLjE5Ii8+CiAgICAgIDxjaXJjbGUgY2xhc3M9ImNscy0yIiBjeD0iNzguNDMiIGN5PSI3Ni40MSIgcj0iMjIuNzYiLz4KICAgIDwvZz4KICA8L2c+Cjwvc3ZnPg==" alt="">Access Insights</a>
+    <ul class="nav-links">
+      <li><a href="https://accessinsights.net/">Main site &rarr;</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="main">
+  <section class="hero" id="top">
+    <p class="kicker">Access Insights &middot; Case Study</p>
+    <h1 class="h1">Goalball</h1>
+    <p class="bodyL lead"><strong>The best sport you have never heard of.</strong> Goalball is a Paralympic team sport played entirely by ear: three players a side, a ball with bells inside it, and eyeshades so nobody can see. The Goalball project is an illustration of the multidisciplinary capabilities of the Access Insights team. It brings together immersive binaural audio, game design, education and training, subjective evaluation, and experience evaluations, in one piece of work.</p>
+
+    <figure class="listen hero-listen">
+      <figcaption>
+        <span class="lbl">Listen &middot; headphones required</span>
+        <p>Goalball three on three team game play, recorded binaurally at a team practice. Put on headphones and the court is around you: the bells travel from one side to the other, and the defenders slide across the floor to meet them.</p>
+      </figcaption>
+      <audio controls preload="metadata" src="audio/game-play.mp3">Your browser does not support the audio element.</audio>
+      <p class="phones-note">The sound files on this page are binaural recordings. What you hear depends on the headset and settings used for playback. The full immersive experience uses a fully calibrated binaural playback system.</p>
+    </figure>
+
+    <ul class="glance" aria-label="Case study at a glance">
+      <li><span class="lbl">The sport</span><p class="val">Goalball, a Paralympic team sport for blind and visually impaired athletes</p></li>
+      <li><span class="lbl">Partners</span><p class="val">Adaptive Sports Northwest goalball team and the Washington School for the Blind</p></li>
+      <li><span class="lbl">The data set</span><p class="val">Over 130 binaurally recorded throws, plus referee calls and a full game</p></li>
+      <li><span class="lbl">Disciplines</span><p class="val">Binaural audio, game design, education and training, subjective and experience evaluation</p></li>
+    </ul>
+    <ol class="chain" aria-label="The arc of the project">
+      <li>Record the sport</li><li>Build the data set</li><li>Study how people localize sound</li><li>Prototype the game</li><li>Broadcast, train, deploy</li>
+    </ol>
+  </section>
+
+  <section aria-labelledby="sport-h">
+    <p class="sec-lbl">The sport</p>
+    <h2 class="h2" id="sport-h">A game you play with your ears.</h2>
+    <div class="duo">
+      <div class="prose">
+        <p>Goalball is a specialized Paralympic team sport for blind and visually impaired athletes. Teams field three players per side. The goal is to throw a 1.25&nbsp;kg ball with bells inside it into the opponent's net, which stretches the full width of the court, while the other side dives to block it. The game is played on an indoor court with taped lines that players read by touch for orientation.</p>
+        <p>Every player wears black-out eyeshades, so competition is equal regardless of how much sight anyone has. <strong>Everything that matters in goalball arrives as sound:</strong> the bells in the ball, the thud of a throw, the slide of a defender, the referee's calls. That is exactly what makes it the right sport for this work.</p>
+      </div>
+      <figure class="photo-fig court-fig">
+        <img src="../../images/goalball-court.jpg" alt="A goalball match in progress at Lima 2019: three defenders in red lie across the width of the near goal while a player in blue on the far side prepares to throw." width="322" height="157" loading="lazy" decoding="async">
+        <figcaption><strong>Three across the goal.</strong> Defenders stretch to cover the full width of the net, guided only by the bells.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section aria-labelledby="objectives-h">
+    <p class="sec-lbl gold">The objectives</p>
+    <h2 class="h2" id="objectives-h">Bring the court to the audience, and the audience onto the court.</h2>
+    <div class="duo">
+      <div class="panel deep">
+        <span class="lbl">Broadcast</span>
+        <h3>Immersive recording for live and recorded games</h3>
+        <p>Create immersive recording setups to broadcast live games and record games for local and remote audiences, so that a listener at home hears the match the way a player on the court hears it.</p>
+      </div>
+      <div class="panel">
+        <span class="lbl">Play</span>
+        <h3>An interactive goalball game</h3>
+        <p>Develop an interactive game where people can play goalball using immersive binaural sound, with friends, family members, or online, and no sight required.</p>
+      </div>
+    </div>
+    <div class="duo">
+      <div class="panel">
+        <span class="lbl">Train</span>
+        <h3>Sound localization practice</h3>
+        <p>Use the interactive game to train sound localization: the same skill goalball athletes build on the court, made practicable anywhere with a pair of headphones.</p>
+      </div>
+      <div class="panel deep">
+        <span class="lbl">Extend</span>
+        <h3>Haptics and tactile systems</h3>
+        <p>An interesting extension of this proposal could explore a combination with haptics and tactile systems, adding touch to the sound so the ball can be felt as well as heard.</p>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="sound-h">
+    <p class="sec-lbl">The key</p>
+    <h2 class="h2" id="sound-h">Realistic sound is the whole game.</h2>
+    <div class="prose">
+      <p>Realistic sound is key. For play, it is what allows a listener to locate the source: which lane the ball is in and how fast it is coming. For the audience, it is what makes the match immersive rather than a flat recording of bells. Spatial audio techniques offer two complementary routes. <strong>Binaural recording and playback</strong>, with a fully calibrated system, allows unmatched realism from real throws on a real court. <strong>Binaural rendering engines</strong> can then synthesize virtual sound for lanes, players, and situations that were never recorded.</p>
+    </div>
+    <div class="duo">
+      <div class="panel">
+        <span class="lbl">Previous work</span>
+        <h3>Good steps by other teams</h3>
+        <p>NTT built immersive multi-speaker setups for "watching goalball by ear" <a class="ref" href="#refs">[1, 2]</a>. Drexel University turned goalball into a virtual video game <a class="ref" href="#refs">[3]</a>. Dentsu Lab Tokyo designed recording setups for inclusive broadcasting <a class="ref" href="#refs">[4]</a>. The scientific literature on sound source localization is deep <a class="ref" href="#refs">[5&ndash;13]</a>, and there is evidence that sound localization may be improved by playing goalball <a class="ref" href="#refs">[14]</a>.</p>
+      </div>
+      <div class="panel deep">
+        <span class="lbl">The opportunity</span>
+        <h3>More realistic recordings and renderings</h3>
+        <p>Some good steps have been made, but there are valuable opportunities with more realistic sound recordings and renderings: calibrated binaural capture at the positions where players actually stand, and rendering engines validated against those recordings by the people who play the sport.</p>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="dataset-h">
+    <p class="sec-lbl gold">The research plan &middot; the data set</p>
+    <h2 class="h2" id="dataset-h">First, record the real thing.</h2>
+    <div class="prose">
+      <p>Access Insights created a large binaural goalball data set at an <strong>Adaptive Sports Northwest</strong> goalball team practice at the <strong>Washington School for the Blind</strong>, with experienced goalball players and referees. Calibrated binaural headsets recorded each play from both the throw and the defense locations. Over 130 throws with different paths were recorded, segmented, and labeled, along with referee calls and the actual play of a full game.</p>
+    </div>
+    <ul class="stats" aria-label="The data set in numbers">
+      <li><span class="n">130+</span><span class="d">throws recorded, segmented, and labeled</span></li>
+      <li><span class="n">2</span><span class="d">calibrated binaural headsets, at the throw and defense positions</span></li>
+      <li><span class="n">1</span><span class="d">full game, with referee calls, recorded as it was played</span></li>
+    </ul>
+
+    <div class="clips">
+      <p class="clips-head" id="clips-h">Listen to the data set &middot; headphones required</p>
+      <p class="clips-note">Each throw was captured from both ends of the court at the same moment. Compare the pair: the same ball, heard by the thrower and by the defender.</p>
+      <ul class="clip-grid" aria-labelledby="clips-h">
+        <li><span class="t">Throw 1&ndash;5, goal 1</span><h3>Heard from the throw</h3>
+          <audio controls preload="none" src="audio/throw-1-5-goal-1-throw.mp3">Your browser does not support the audio element.</audio></li>
+        <li><span class="t">Throw 1&ndash;5, goal 1</span><h3>Heard from the defense</h3>
+          <audio controls preload="none" src="audio/throw-1-5-goal-1-defend.mp3">Your browser does not support the audio element.</audio></li>
+        <li><span class="t">Throw 4&ndash;2, goal 2</span><h3>Heard from the throw</h3>
+          <audio controls preload="none" src="audio/throw-4-2-goal-2-throw.mp3">Your browser does not support the audio element.</audio></li>
+        <li><span class="t">Throw 4&ndash;2, goal 2</span><h3>Heard from the defense</h3>
+          <audio controls preload="none" src="audio/throw-4-2-goal-2-defend.mp3">Your browser does not support the audio element.</audio></li>
+        <li><span class="t">Referee</span><h3>"Quiet please. Play."</h3>
+          <audio controls preload="none" src="audio/referee-quiet-please-play.mp3">Your browser does not support the audio element.</audio></li>
+        <li><span class="t">Full game</span><h3>Three on three game play</h3>
+          <audio controls preload="none" src="audio/game-play.mp3">Your browser does not support the audio element.</audio></li>
+      </ul>
+    </div>
+  </section>
+
+  <section aria-labelledby="studies-h">
+    <p class="sec-lbl">The research plan &middot; the studies</p>
+    <h2 class="h2" id="studies-h">Then find out what people can actually hear.</h2>
+    <div class="prose">
+      <p>The recorded data set is the material for a series of subjective studies with three groups of participants: <strong>experienced goalball players</strong>, <strong>low-vision non-goalball players</strong>, and <strong>sighted non-goalball players</strong>. Putting all three in front of the same recordings is what separates the effect of the sport from the effect of vision.</p>
+    </div>
+    <div class="sysmap">
+      <p class="sysmap-head" id="studies-map-h">What the studies will investigate</p>
+      <div class="sysmap-grid">
+        <div class="sysmap-col">
+          <section class="sysgroup" aria-labelledby="sg-people">
+            <h4 id="sg-people">Who listens</h4>
+            <ul role="list">
+              <li>experienced goalball players</li><li>low-vision non-players</li><li>sighted non-players</li>
+            </ul>
+          </section>
+          <section class="sysgroup" aria-labelledby="sg-questions">
+            <h4 id="sg-questions">What is measured</h4>
+            <ul role="list">
+              <li>ability to identify recorded ball paths</li>
+              <li>efficacy of calibration, recording, and playback setups</li>
+              <li>how much time localization takes</li>
+              <li>influence of goalball experience on accuracy</li>
+              <li>influence of recording elevation on localization</li>
+              <li>ability to identify synthetic binaural sounds</li>
+            </ul>
+          </section>
+        </div>
+        <div class="sysflow" aria-hidden="true">
+          <small>informs</small>
+          <span>&rarr;</span>
+        </div>
+        <section class="sysout" aria-labelledby="sg-out">
+          <h4 id="sg-out">What the answers are for</h4>
+          <p>Every study feeds a design decision: which recording setup to broadcast with, how realistic a rendering engine has to be before players accept it, and how the game should be tuned to teach localization rather than just test it.</p>
+          <div class="rule" aria-hidden="true"></div>
+          <p><strong>Real players judge the realism. Always.</strong></p>
+          <ul role="list">
+            <li>recorded paths, then synthetic ones</li>
+            <li>calibrated playback, then everyday headsets</li>
+            <li>players first, then everyone else</li>
+          </ul>
+        </section>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="proto-h">
+    <p class="sec-lbl gold">The research plan &middot; prototypes and evaluations</p>
+    <h2 class="h2" id="proto-h">A game you can already play.</h2>
+    <div class="prose">
+      <p>Three prototypes come out of the plan: an immersive recording and broadcast architecture and setup; interactive virtual goalball games, from single-player defense to a one-on-one game to multiplayer; and training of sound source localization using the virtual game. <strong>The first is built.</strong> The prototype for the single-player defense game is complete, as a browser-based implementation for phone and PC, and the recordings for the one-on-one game are done.</p>
+    </div>
+    <div class="duo">
+      <figure class="photo-fig">
+        <img src="../../images/goalball-sound-court-home.jpg" alt="The Goalball Sound Court web app in a browser: the heading 'Listen. Locate. Defend.', an explanation that headphones are required for spatial play, a 'Play the game' button, and a drawing of the court with a bell ball in the center lane." width="1559" height="958" loading="lazy" decoding="async">
+        <figcaption><strong>Goalball Sound Court.</strong> Follow the approaching bell across five lanes and defend the goal, in the browser, on a phone or a PC. <a class="vid-link" href="https://goalball.accessinsights.net/" target="_blank" rel="noopener">Play it at goalball.accessinsights.net</a></figcaption>
+      </figure>
+      <figure class="photo-fig">
+        <img src="../../images/goalball-sound-court-defend.jpg" alt="The game in play: a black 'screen curtain on' panel reads 'Throw 1 of 5, listen for the ball', and a side panel offers Move left, Move right, and four defensive positions: Left, Center left, Center right, Right." width="2333" height="1434" loading="lazy" decoding="async">
+        <figcaption><strong>Screen curtain on.</strong> The screen goes dark, the ball starts, and the player has to hear which way to move. Five practice throws, ten scored throws, then the leaderboard.</figcaption>
+      </figure>
+    </div>
+    <div class="duo">
+      <div class="panel deep">
+        <span class="lbl">Status</span>
+        <h3>Done</h3>
+        <p>Single-player defense game prototype, browser based for phone and PC <b>&bull;</b> binaural recordings for the one-on-one game <b>&bull;</b> the labeled data set of over 130 throws, referee calls, and a full game.</p>
+      </div>
+      <div class="panel">
+        <span class="lbl">Next steps</span>
+        <h3>From recordings to any court</h3>
+        <p>Develop synthetic binaural rendering for free lanes and multiplayer <b>&bull;</b> research to quantify localization accuracy and time, calibration, experience and vision effects, and synthetic versus real recordings <b>&bull;</b> deploy to users, schools, and goalball players.</p>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="beyond-h">
+    <p class="sec-lbl">Beyond the court</p>
+    <h2 class="h2" id="beyond-h">Other applications of binaural sound.</h2>
+    <div class="prose">
+      <p>The same capability reaches well past sport. Binaural sound can help separate overlapping speech: subjective studies demonstrated clear benefits of separating speakers and sources spatially, with <strong>increased intelligibility and accuracy</strong> and <strong>reduced cognitive effort</strong>. Once a listener can tell where a sound is, a whole set of practical applications opens up.</p>
+    </div>
+    <ul class="day apps">
+      <li><span class="t">Coaching</span><h3>Covert coaching for IDD</h3>
+        <p>Binaural audio as scaffolding for people with intellectual and developmental disabilities: a coach's voice placed quietly beside the listener, distinct from the room, so support is present without being public.</p></li>
+      <li><span class="t">Presence</span><h3>Virtual remote interaction</h3>
+        <p>Immersive binaural sound recording and playback for virtual remote interaction, so a person who cannot be in the room still hears it as a room.</p></li>
+      <li><span class="t">Meetings</span><h3>Spatially placed participants</h3>
+        <p>Spatially place meeting participants using binaural rendering in virtual and online meetings, so overlapping voices separate the way they do around a table.</p></li>
+      <li><span class="t">Navigation</span><h3>Auditory waypoints</h3>
+        <p>Navigation and spatial auditory placement of waypoints: a destination you can hear, in the direction you need to walk.</p></li>
+      <li><span class="t">Exploration</span><h3>Binaural soundscapes</h3>
+        <p>Binaural soundscapes for immersive explorations and virtual environments, from a hike to a museum to a building you are about to visit for the first time.</p></li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="proves-h">
+    <p class="sec-lbl">What this case proves</p>
+    <h2 class="h2" id="proves-h">One project, every discipline on the team.</h2>
+    <div class="prose">
+      <p><strong>Goalball is a small sport with a big lesson in it.</strong> To do this work at all, a team has to record sound with laboratory calibration, design a game that is playable without sight, teach a perceptual skill, and measure, with real players and real listeners, whether any of it is true. Access Insights has all of those capabilities in one room, and the community that plays the sport is a partner from the first practice session onward. That is the arc our <a class="vid-link" href="../acat/">ACAT</a>, <a class="vid-link" href="../virtual-lex/">Virtual Lex</a>, and <a class="vid-link" href="../connected-wheelchair/">Connected Wheelchair</a> case studies follow too: begin with lived experience, turn it into evidence and working prototypes, and validate it with the people it is for.</p>
+    </div>
+    <div class="proves-row">
+      <div class="prose">
+        <p><strong>The result so far is a labeled binaural data set nobody else has, and a game anyone can play today.</strong> The next result is the research that tells us how well people hear it, and a rendering engine good enough that they cannot tell the difference.</p>
+      </div>
+      <div class="partner">
+        <span class="lbl">Partner with us</span>
+        <p>Fund a study, co-develop a prototype, or bring immersive audio to your sport, school, or product.<br>
+        <a href="mailto:hello@accessinsights.net?subject=Goalball%20case%20study">hello@accessinsights.net</a></p>
+      </div>
+    </div>
+
+    <div class="refs" id="refs">
+      <h3 class="refs-head">References</h3>
+      <ol class="refs-list">
+        <li>NTT, Inclusive sports experience "Watching goalball by ear" by reproducing the sound field as if the sound source were there.</li>
+        <li>NTT, Goalball &times; Ultra-realistic Communication Technology Kirari!</li>
+        <li>Drexel University, Turning Paralympic Sport of Goalball Into a Video Game.</li>
+        <li>Dentsu Lab Tokyo, GOALBALL PROJECT: Inclusive Sports Viewing Experiences for Visually Impaired and All.</li>
+        <li>A. Carlini, C. Bordeau, M. Ambard, "Auditory localization: a comprehensive practical review", <em>Frontiers in Psychology</em>, July 2024.</li>
+        <li>P. Voss, "Auditory spatial perception without vision", <em>Frontiers in Psychology</em>, December 2016.</li>
+        <li>W. Pang, H. Xing, L. Zhang, H. Shu, Y. Zhang, "Superiority of blind over sighted listeners in voice recognition", <em>Journal of the Acoustical Society of America</em>, Volume 148, 2020.</li>
+        <li>M.E. Nilsson, B.N. Schenkman, "Blind people are more sensitive than sighted people to binaural sound-location cues, particularly inter-aural level differences", <em>Hearing Research</em>, Volume 332, 2016.</li>
+        <li>S. Goicke, F. Denk, T. J&uuml;rgens, "Auditory Spatial Bisection of Blind and Normally Sighted Individuals in Free Field and Virtual Acoustics", <em>Trends in Hearing</em>, Volume 28, 2024.</li>
+        <li>A.J. Kolarik, S. Pardhan, S. Cirstea, B.C.J. Moore, "Auditory spatial representations of the world are compressed in blind humans", <em>Experimental Brain Research</em>, Volume 235, 2017.</li>
+        <li>S. Pardhan, R. Raman, B.C.J. Moore, S. Cirstea, S. Velu, A.J. Kolarik, "Effect of early versus late onset of partial visual loss on judgments of auditory distance", <em>Optometry and Vision Science</em>, Volume 101, Number 6, June 2024.</li>
+        <li>Y. Xiong, D.A. Addleman, N.A. Nguyen, P. Nelson, G.E. Legge, "Dual Sensory Impairment: Impact of Central Vision Loss and Hearing Loss on Visual and Auditory Localization", <em>Investigative Ophthalmology &amp; Visual Science</em>, Volume 64, 2023.</li>
+        <li>S. Finocchietti, D. Esposito, M. Gori, "Monaural auditory spatial abilities in early blind individuals", <em>i-Perception</em>, Volume 14, 2023.</li>
+        <li>S. Yousefi, S. Hassanzadeh, K.T. Zebehazy, T.N. Fard, K. Murfitt, A.S. Taromi, M.G.A. Lavasani, "The sound localization ability of students with visual impairment in goalball players, non-goalball players, and their peers with typical vision", <em>British Journal of Visual Impairment</em>, Volume 43, 2025.</li>
+      </ol>
+    </div>
+    <p class="foundation"><strong>Sources:</strong> the Access Insights Goalball project presentation (June 2026), the project's binaural recordings made with the Adaptive Sports Northwest goalball team at the Washington School for the Blind, and the Goalball Sound Court prototype at goalball.accessinsights.net.</p>
+  </section>
+</main>
+
+<footer><p class="bodyS">&copy; 2026 Access Insights &middot; Portland, Oregon &middot; <a href="https://accessinsights.net/">Main site</a></p></footer>
+</body>
+</html>
