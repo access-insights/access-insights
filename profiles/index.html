@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyBpZD0iTGF5ZXJfMiIgZGF0YS1uYW1lPSJMYXllciAyIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDEuMTkgOTkuMjEiPgogIDxkZWZzPgogICAgPHN0eWxlPgogICAgICAuY2xzLTEgewogICAgICAgIGZpbGw6ICNkOTM5OGM7CiAgICAgIH0KCiAgICAgIC5jbHMtMiB7CiAgICAgICAgZmlsbDogIzhhM2VlMTsKICAgICAgfQogICAgPC9zdHlsZT4KICA8L2RlZnM+CiAgPGcgaWQ9IkxheWVyXzItMiIgZGF0YS1uYW1lPSJMYXllciAyIj4KICAgIDxnPgogICAgICA8cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik00Mi45MSw4N2MzLjE3LTQuNDYsOS4zMS0yNC4yLDE1LjcxLTMwLjIsNS40Ni01LjEyLDEyLjMzLTguMjEsMTkuODEtOC4yMSw0LjY0LDAsOS4xMSwxLjEyLDEzLjEsMy4yM2wtMjAuNjMtMzkuNmMtLjAzLS4wNy0uMDctLjEzLS4xLS4yLS4wNS0uMDktLjEtLjE5LS4xNS0uMjgtLjA0LS4wNy0uMDgtLjE1LS4xMi0uMjItLjA1LS4wOS0uMS0uMTgtLjE1LS4yNy0uMDQtLjA4LS4wOS0uMTUtLjE0LS4yM3MtLjEtLjE3LS4xNS0uMjUtLjEtLjE2LS4xNS0uMjNjLS4wNS0uMDgtLjEtLjE2LS4xNS0uMjRzLS4xMS0uMTYtLjE2LS4yNGMtLjA1LS4wNy0uMS0uMTUtLjE1LS4yMi0uMDYtLjA4LS4xMS0uMTYtLjE3LS4yNC0uMDUtLjA3LS4xLS4xNC0uMTUtLjIxLS4wNi0uMDgtLjEyLS4xNi0uMTgtLjI0LS4wNS0uMDctLjEtLjE0LS4xNS0uMjEtLjA2LS4wOC0uMTItLjE2LS4xOC0uMjQtLjA1LS4wNy0uMS0uMTMtLjE2LS4yLS4wNi0uMDgtLjEzLS4xNS0uMTktLjIzLS4wNS0uMDctLjExLS4xMy0uMTYtLjItLjA2LS4wOC0uMTMtLjE1LS4xOS0uMjItLjA2LS4wNy0uMTEtLjEzLS4xNy0uMi0uMDYtLjA3LS4xMy0uMTQtLjE5LS4yMS0uMDYtLjA3LS4xMi0uMTMtLjE4LS4yLS4wNi0uMDctLjEzLS4xNC0uMTktLjItLjA2LS4wNy0uMTMtLjEzLS4xOS0uMi0uMDYtLjA3LS4xMy0uMTMtLjE5LS4yLS4wNy0uMDctLjEzLS4xMy0uMi0uMi0uMDYtLjA2LS4xMy0uMTItLjE5LS4xOS0uMDctLjA3LS4xNC0uMTMtLjIxLS4yLS4wNi0uMDYtLjEzLS4xMi0uMTktLjE4LS4wNy0uMDctLjE1LS4xMy0uMjItLjItLjA2LS4wNi0uMTMtLjExLS4xOS0uMTctLjA4LS4wNy0uMTUtLjEzLS4yMy0uMi0uMDYtLjA1LS4xMy0uMTEtLjItLjE2LS4wOC0uMDYtLjE2LS4xMy0uMjMtLjE5LS4wNy0uMDUtLjEzLS4xMS0uMi0uMTYtLjA4LS4wNi0uMTYtLjEyLS4yNC0uMTgtLjA3LS4wNS0uMTQtLjEtLjIxLS4xNi0uMDgtLjA2LS4xNi0uMTItLjI0LS4xOC0uMDctLjA1LS4xNS0uMS0uMjItLjE2LS4wOC0uMDYtLjE2LS4xMS0uMjMtLjE2LS4wOC0uMDUtLjE2LS4xMS0uMjMtLjE2LS4wOC0uMDUtLjE1LS4xLS4yMy0uMTUtLjA4LS4wNS0uMTctLjExLS4yNS0uMTYtLjA3LS4wNS0uMTQtLjA5LS4yMi0uMTQtLjA5LS4wNi0uMTgtLjExLS4yOC0uMTctLjA3LS4wNC0uMTMtLjA4LS4yLS4xMi0uMS0uMDYtLjItLjEyLS4zLS4xNy0uMDYtLjAzLS4xMi0uMDctLjE4LS4xLS4xMS0uMDYtLjIyLS4xMi0uMzMtLjE4LS4wNS0uMDMtLjEtLjA1LS4xNS0uMDhoLS4wMWMtLjExLS4wNi0uMjMtLjEyLS4zNC0uMTctLjA1LS4wMy0uMTEtLjA1LS4xNi0uMDgtLjExLS4wNS0uMjItLjExLS4zNC0uMTYtLjA2LS4wMy0uMTEtLjA1LS4xNy0uMDgtLjEtLjA1LS4yMS0uMDktLjMyLS4xNC0uMDctLjAzLS4xMy0uMDYtLjItLjA5LS4wOS0uMDQtLjE5LS4wOC0uMjktLjEyLS4wOC0uMDMtLjE2LS4wNy0uMjMtLjEtLjA4LS4wMy0uMTctLjA3LS4yNS0uMS0uMDktLjAzLS4xOC0uMDctLjI3LS4xLS4wOC0uMDMtLjE1LS4wNS0uMjMtLjA4LS4xLS4wNC0uMi0uMDctLjMtLjExLS4wNy0uMDItLjE0LS4wNS0uMjEtLjA3LS4xMS0uMDQtLjIxLS4wNy0uMzItLjExaC0uMDJjLS4wNy0uMDItLjEzLS4wNC0uMi0uMDYtLjExLS4wMy0uMjEtLjA3LS4zMi0uMS0uMDgtLjAyLS4xNS0uMDQtLjIzLS4wNi0uMS0uMDMtLjItLjA2LS4zMS0uMDgtLjA4LS4wMi0uMTctLjA0LS4yNS0uMDYtLjEtLjAyLS4xOS0uMDUtLjI5LS4wNy0uMDktLjAyLS4xOC0uMDQtLjI3LS4wNnMtLjE4LS4wNC0uMjgtLjA2Yy0uMDktLjAyLS4xOS0uMDQtLjI4LS4wNnMtLjE4LS4wNC0uMjctLjA1Yy0uMS0uMDItLjE5LS4wMy0uMjktLjA1LS4wOSwwLS4xNy0uMDMtLjI2LS4wNC0uMS0uMDItLjItLjAzLS4zLS4wNC0uMDgtLjAxLS4xNy0uMDMtLjI1LS4wNC0uMS0uMDEtLjItLjAzLS4zLS4wNC0uMDgtLjAxLS4xNy0uMDItLjI1LS4wMy0uMSwwLS4yLS4wMi0uMy0uMDMtLjA4LDAtLjE3LS4wMi0uMjUtLjAyLS4xLDAtLjItLjAyLS4zLS4wMi0uMDksMC0uMTctLjAxLS4yNi0uMDItLjEsMC0uMiwwLS4yOSwwcy0uMTcsMC0uMjYsMGgtMS42OGMtLjA5LDAtLjE3LDAtLjI2LDAtLjEsMC0uMiwwLS4yOSwwLS4wOSwwLS4xNywwLS4yNi4wMi0uMSwwLS4yLjAxLS4zLjAyLS4wOCwwLS4xNy4wMi0uMjUuMDItLjEsMC0uMi4wMi0uMy4wMy0uMDgsMC0uMTcuMDItLjI1LjAzLS4xLjAxLS4yLjAyLS4zLjA0LS4wOC4wMS0uMTcuMDItLjI1LjA0LS4xLDAtLjIuMDMtLjMuMDQtLjA5LDAtLjE3LjAzLS4yNi4wNC0uMS4wMi0uMTkuMDMtLjI5LjA1LS4wOS4wMi0uMTguMDMtLjI3LjA1cy0uMTkuMDQtLjI4LjA2Yy0uMDkuMDItLjE5LjA0LS4yOC4wNnMtLjE4LjA0LS4yNi4wNmMtLjEuMDItLjIuMDUtLjI5LjA3LS4wOC4wMi0uMTYuMDQtLjI1LjA2LS4xLjAzLS4yMS4wNi0uMzEuMDktLjA4LjAyLS4xNS4wNC0uMjMuMDYtLjExLjAzLS4yMi4wNy0uMzMuMS0uMDYuMDItLjEzLjA0LS4xOS4wNmgtLjAyYy0uMTEuMDMtLjIyLjA3LS4zMy4xMS0uMDcuMDItLjE0LjA0LS4yLjA3LS4xLjA0LS4yMS4wNy0uMzEuMTEtLjA3LjAzLS4xNS4wNS0uMjIuMDgtLjA5LjA0LS4xOS4wNy0uMjguMTEtLjA4LjAzLS4xNi4wNi0uMjQuMDktLjA4LjAzLS4xNy4wNy0uMjUuMS0uMDkuMDQtLjE4LjA3LS4yNy4xMS0uMDcuMDMtLjE0LjA2LS4yMS4wOS0uMS4wNC0uMi4wOS0uMy4xMy0uMDYuMDMtLjEyLjA2LS4xOC4wOS0uMTEuMDUtLjIyLjEtLjMzLjE1LS4wNi4wMy0uMTEuMDYtLjE3LjA5LS4xMS4wNi0uMjIuMTEtLjMzLjE3aC0uMDJjLS4wNS4wMy0uMS4wNi0uMTYuMDgtLjExLjA2LS4yMS4xMS0uMzIuMTctLjA2LjAzLS4xMy4wNy0uMTkuMTEtLjEuMDYtLjIuMTEtLjMuMTctLjA3LjA0LS4xNC4wOC0uMi4xMi0uMDkuMDUtLjE4LjExLS4yNy4xNi0uMDcuMDUtLjE1LjA5LS4yMi4xNC0uMDguMDUtLjE3LjExLS4yNS4xNi0uMDguMDUtLjE1LjEtLjIzLjE1LS4wOC4wNS0uMTYuMS0uMjMuMTYtLjA4LjA1LS4xNi4xMS0uMjMuMTYtLjA3LjA1LS4xNS4xLS4yMi4xNi0uMDguMDYtLjE2LjEyLS4yNC4xOC0uMDcuMDUtLjE0LjEtLjIxLjE2LS4wOC4wNi0uMTYuMTItLjI0LjE4LS4wNy4wNS0uMTQuMTEtLjIuMTYtLjA4LjA2LS4xNS4xMy0uMjMuMTktLjA3LjA1LS4xMy4xMS0uMi4xNi0uMDguMDYtLjE1LjEzLS4yMi4xOXMtLjEzLjExLS4yLjE3LS4xNC4xMy0uMjIuMmMtLjA3LjA2LS4xMy4xMi0uMi4xOHMtLjE0LjEzLS4yMS4yYy0uMDcuMDYtLjEzLjEzLS4yLjE5cy0uMTMuMTMtLjIuMmMtLjA3LjA3LS4xMy4xMy0uMi4yLS4wNi4wNi0uMTIuMTMtLjE5LjItLjA3LjA3LS4xMy4xNC0uMi4yMS0uMDYuMDYtLjEyLjEzLS4xOC4xOS0uMDcuMDctLjEzLjE0LS4yLjIyLS4wNi4wNi0uMTEuMTMtLjE3LjE5LS4wNy4wOC0uMTMuMTUtLjE5LjIzLS4wNS4wNi0uMTEuMTMtLjE2LjItLjA2LjA4LS4xMy4xNi0uMTkuMjMtLjA1LjA3LS4xLjEzLS4xNi4yLS4wNi4wOC0uMTMuMTYtLjE5LjI0LS4wNS4wNy0uMS4xNC0uMTUuMi0uMDYuMDgtLjEyLjE2LS4xOC4yNC0uMDUuMDctLjEuMTQtLjE1LjIxLS4wNi4wOC0uMTEuMTYtLjE3LjI0LS4wNS4wNy0uMS4xNS0uMTUuMjItLjA1LjA4LS4xMS4xNi0uMTYuMjRzLS4xLjE2LS4xNS4yNC0uMS4xNi0uMTUuMjNjLS4wNS4wOC0uMS4xNy0uMTUuMjVzLS4wOS4xNS0uMTQuMjNjLS4wNS4wOS0uMS4xOC0uMTUuMjctLjA0LjA3LS4wOC4xNC0uMTIuMjItLjA1LjEtLjEuMTktLjE1LjI5LS4wMy4wNi0uMDcuMTMtLjEuMTlsLS4wMi4wNGgwTDIuNTgsNjUuOTRjLTIuNzksNS4zNS0zLjM0LDExLjYtMS41MiwxNy4zNSwxLjgxLDUuNzYsNS44NCwxMC41NiwxMS4xOSwxMy4zNSwzLjI4LDEuNzEsNi44OSwyLjU3LDEwLjUxLDIuNTcsMi4zLDAsNC42MS0uMzUsNi44NC0xLjA1LDUuNzYtMS44MSwxMC41Ni01Ljg0LDEzLjM1LTExLjE5Ii8+CiAgICAgIDxjaXJjbGUgY2xhc3M9ImNscy0yIiBjeD0iNzguNDMiIGN5PSI3Ni40MSIgcj0iMjIuNzYiLz4KICAgIDwvZz4KICA8L2c+Cjwvc3ZnPg==">
+<title>Access Insights — Team</title>
+<meta name="description" content="The people behind Access Insights: researchers, designers, engineers, and disability rights pioneers, including the chief architect of the ADA.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#2d344e;
+    --magenta:#d9398c; --pink:#f492c4; --gold:#f9d976;
+    --card-fill:rgba(255,255,255,0.07); --card-border:rgba(255,255,255,0.22);
+    --w-reg:400; --w-bold:700; --w-black:900;
+    --fs-h1:clamp(1.4rem, 7vw, 3rem); --lh-h1:1.08;
+    --fs-h2:1.625rem; --lh-h2:1.15;
+    --fs-h3:1.5rem; --lh-h3:1.3;
+    --fs-bl:1.5rem; --lh-bl:1.35;
+    --fs-bs:1rem; --lh-bs:1.4;
+    --fs-nav:0.9375rem;
+  }
+  html{font-size:100%;scroll-behavior:smooth;scroll-padding-top:6rem;}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto;}}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Montserrat',system-ui,-apple-system,sans-serif;color:#fff;background:#2d344e;
+       -webkit-font-smoothing:antialiased;overflow-x:hidden;}
+  .h1{font-weight:var(--w-black);font-size:var(--fs-h1);line-height:var(--lh-h1);overflow-wrap:normal;}
+  .h2{font-weight:var(--w-bold);font-size:var(--fs-h2);line-height:var(--lh-h2);}
+  .bodyL{font-weight:var(--w-reg);font-size:var(--fs-bl);line-height:var(--lh-bl);}
+  .bodyS{font-weight:var(--w-reg);font-size:var(--fs-bs);line-height:var(--lh-bs);}
+  .lead{margin-top:1.25rem;max-width:60ch;}
+  a{color:inherit;}
+  :focus-visible{outline:3px solid #fff;outline-offset:3px;border-radius:4px;}
+  @media (forced-colors:active){:focus-visible{outline:3px solid;}}
+  .skip{position:absolute;left:-9999px;top:0;background:#fff;color:var(--ink);padding:0.75rem 1.25rem;z-index:100;border-radius:0 0 8px 0;font-weight:var(--w-bold);}
+  .skip:focus{left:0;}
+  .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
+    clip:rect(0,0,0,0);white-space:nowrap;border:0;}
+
+  header.site{position:sticky;top:0;z-index:50;background:rgba(45,52,78,0.92);backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--card-border);}
+  .nav{max-width:90rem;margin:0 auto;height:5rem;display:flex;align-items:center;
+    justify-content:space-between;gap:1.5rem;padding:0 2.5rem;overflow:hidden;}
+  .brand{display:flex;align-items:center;gap:0.625rem;text-decoration:none;color:#fff;
+    font-weight:var(--w-bold);font-size:var(--fs-h3);line-height:1.1;min-height:2.75rem;}
+  .brand img{height:2rem;width:auto;display:block;}
+  .nav-links{display:flex;gap:1.75rem;list-style:none;align-items:center;flex-wrap:wrap;}
+  .nav-links a{font-weight:var(--w-reg);font-size:var(--fs-nav);color:#fff;text-decoration:none;
+    display:inline-flex;align-items:center;min-height:2.75rem;padding:0 .25rem;}
+  .nav-links a:hover,.nav-links a:focus-visible{font-weight:var(--w-black);text-decoration:underline;
+    text-decoration-color:var(--magenta);text-decoration-thickness:3px;text-underline-offset:5px;}
+  @media (max-width:768px){ .nav{padding:0 1rem;} }
+
+  main{position:relative;z-index:2;max-width:80rem;margin:0 auto;padding:0 2.5rem;}
+  section{padding:5vh 0;}
+  #bg{position:fixed;inset:0;z-index:0;background:#2d344e url('../../images/hero.jpg') center/cover no-repeat;}
+  #bg::after{content:"";position:absolute;inset:0;background:rgba(45,52,78,0.88);}
+
+  .kicker{font-weight:var(--w-bold);font-size:var(--fs-bs);letter-spacing:0.2em;text-transform:uppercase;
+    opacity:0.85;margin-bottom:1rem;}
+  .hero{padding:9vh 0 4vh;}
+  .hero .lead strong{font-weight:var(--w-bold);}
+
+  /* at-a-glance band */
+  .glance{display:grid;grid-template-columns:repeat(4,1fr);gap:0.75rem;margin-top:2.5rem;list-style:none;}
+  .glance li{background:var(--card-fill);border:1px solid var(--card-border);border-radius:10px;
+    padding:1rem 1.125rem;}
+  .glance .lbl{font-weight:var(--w-bold);font-size:0.8125rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--pink);}
+  .glance .val{font-weight:var(--w-bold);font-size:var(--fs-bs);line-height:1.4;margin-top:0.35rem;}
+  @media (max-width:820px){.glance{grid-template-columns:repeat(2,1fr);}}
+  @media (max-width:480px){.glance{grid-template-columns:1fr;}}
+
+  /* section label */
+  .sec-lbl{font-weight:var(--w-black);font-size:var(--fs-bs);letter-spacing:0.15em;text-transform:uppercase;color:var(--pink);margin-bottom:0.75rem;}
+  .sec-lbl.gold{color:var(--gold);}
+  .prose{max-width:70ch;}
+  .prose p{font-size:var(--fs-bs);line-height:1.6;margin-top:1rem;}
+  .prose p strong{font-weight:var(--w-bold);}
+
+  /* two-up panels (approach + build) */
+  .duo{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:1.5rem;}
+  @media (max-width:900px){.duo{grid-template-columns:1fr;}}
+  .panel{border-radius:16px;padding:1.75rem 1.5rem;border:1px solid var(--card-border);background:var(--card-fill);}
+  .panel.deep{background:rgba(0,0,0,0.25);}
+  .panel .lbl{font-weight:var(--w-black);font-size:var(--fs-bs);letter-spacing:0.15em;text-transform:uppercase;color:var(--pink);}
+  .panel.deep .lbl{color:var(--gold);}
+  .panel h3{font-weight:var(--w-black);font-size:1.25rem;line-height:1.25;margin-top:0.75rem;}
+  .panel p{font-size:var(--fs-bs);line-height:1.6;margin-top:0.875rem;}
+  .panel p b{color:var(--pink);font-weight:var(--w-black);padding:0 0.25em;}
+
+  /* prominent Hawking quote */
+  .big-quote{max-width:56rem;margin:3rem 0 0.5rem;border-left:6px solid var(--magenta);padding-left:clamp(1.25rem, 3vw, 2rem);}
+  .big-quote p{font-weight:var(--w-black);font-size:clamp(1.5rem, 4.5vw, 2.5rem);line-height:1.25;}
+  .big-quote p em{font-style:normal;color:var(--gold);}
+  .big-quote .who{font-weight:var(--w-bold);font-size:var(--fs-bs);letter-spacing:0.15em;text-transform:uppercase;color:var(--pink);margin-top:1.25rem;}
+
+  /* day scenario rows */
+  .day{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.5rem;list-style:none;}
+  @media (max-width:900px){.day{grid-template-columns:1fr;}}
+  .day li{background:var(--card-fill);border:1px solid var(--card-border);border-radius:16px;padding:1.5rem;}
+  .day .t{font-weight:var(--w-black);font-size:var(--fs-bs);letter-spacing:0.1em;color:var(--pink);}
+  .day h3{font-weight:var(--w-black);font-size:1.125rem;line-height:1.25;text-transform:uppercase;letter-spacing:0.02em;margin-top:0.35rem;}
+  .day p{font-size:var(--fs-bs);line-height:1.55;margin-top:0.75rem;}
+  /* collapsed: first two lines with an ellipsis; click the card to open it */
+  .day li{cursor:pointer;transition:border-color .2s ease;}
+  .day li:hover{border-color:var(--magenta);}
+  .day li p{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+  .day li.open p{display:block;}
+  .more{display:inline-flex;align-items:center;gap:0.4rem;margin-top:0.75rem;min-height:2.75rem;
+    background:none;border:0;padding:0;cursor:pointer;color:#fff;font-family:inherit;
+    font-weight:var(--w-bold);font-size:var(--fs-bs);text-decoration:none;}
+  /* the underline sits on the label only: on the rotated chevron it would rotate too */
+  .more .lbl{text-decoration:underline;text-decoration-color:var(--magenta);
+    text-decoration-thickness:3px;text-underline-offset:5px;}
+  .more:hover,.more:focus-visible{color:var(--pink);}
+  .more::after{content:"\203A";font-weight:var(--w-black);transform:rotate(90deg);transition:transform .2s ease;}
+  .day li.open .more::after{transform:rotate(-90deg);}
+  @media (prefers-reduced-motion:reduce){.more::after{transition:none;}}
+  /* system diagram: what the chair senses, what it interprets, who sees it.
+     Built in HTML so the type scales with the reader's text size and screen
+     readers get real headings and lists rather than a flat picture. */
+  .sysmap{margin-top:2rem;}
+  .sysmap-head{font-weight:var(--w-black);font-size:var(--fs-bs);letter-spacing:0.15em;
+    text-transform:uppercase;color:var(--gold);margin-bottom:1.25rem;}
+  .sysmap-grid{display:grid;grid-template-columns:1.15fr auto 0.85fr;gap:1.25rem;align-items:center;}
+  .sysmap-col{display:flex;flex-direction:column;gap:0.75rem;}
+
+  .sysgroup{background:var(--card-fill);border:1px solid var(--card-border);border-radius:16px;padding:1.125rem 1.25rem;}
+  .sysgroup h4{font-weight:var(--w-black);font-size:0.9375rem;letter-spacing:0.12em;text-transform:uppercase;
+    color:var(--pink);line-height:1.4;}
+  .sysgroup ul{list-style:none;margin-top:0.6rem;display:flex;flex-wrap:wrap;gap:0.35rem 0.5rem;}
+  .sysgroup li{font-size:0.9375rem;line-height:1.5;font-weight:var(--w-bold);
+    border:1px solid rgba(255,255,255,0.18);border-radius:999px;padding:0.15rem 0.7rem;}
+
+  /* the connector column */
+  .sysflow{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.35rem;color:var(--gold);}
+  .sysflow span{font-weight:var(--w-black);font-size:1.5rem;line-height:1;}
+  .sysflow small{font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;opacity:0.85;
+    writing-mode:vertical-rl;text-orientation:mixed;}
+
+  .sysout{background:rgba(0,0,0,0.25);border:1px solid var(--card-border);border-radius:16px;padding:1.25rem;}
+  .sysout h4{font-weight:var(--w-black);font-size:0.9375rem;letter-spacing:0.12em;text-transform:uppercase;
+    color:var(--gold);line-height:1.4;}
+  .sysout p{font-size:0.9375rem;line-height:1.55;margin-top:0.6rem;}
+  .sysout .rule{height:1px;background:linear-gradient(to right,var(--magenta),transparent);margin:1rem 0;}
+  .sysout ul{list-style:none;display:flex;flex-direction:column;gap:0.4rem;}
+  .sysout li{font-size:0.9375rem;line-height:1.5;font-weight:var(--w-bold);padding-left:1.1rem;position:relative;}
+  .sysout li::before{content:"";position:absolute;left:0;top:0.55em;width:6px;height:6px;border-radius:50%;
+    background:var(--pink);}
+  .sysmap-note{font-size:0.8125rem;line-height:1.5;opacity:0.85;margin-top:1rem;max-width:70ch;}
+
+  @media (max-width:900px){
+    .sysmap-grid{grid-template-columns:1fr;}
+    .sysflow{flex-direction:row;padding:0.25rem 0;}
+    .sysflow span{transform:rotate(90deg);}
+    .sysflow small{writing-mode:horizontal-tb;}
+  }
+  .systems{margin-top:1.5rem;font-size:var(--fs-bs);line-height:1.6;max-width:75ch;}
+  .systems strong{color:var(--gold);font-weight:var(--w-black);letter-spacing:0.1em;text-transform:uppercase;font-size:0.8125rem;}
+  .systems b{color:var(--pink);font-weight:var(--w-black);padding:0 0.25em;}
+
+  /* outcome: video + chain */
+  .outcome-row{max-width:70ch;margin:0 auto;}
+  .video{position:relative;width:100%;aspect-ratio:16/9;border-radius:16px;overflow:hidden;
+    border:1px solid var(--card-border);background:#000;}
+  .video iframe{position:absolute;inset:0;width:100%;height:100%;border:0;}
+  .vid-cap{font-size:0.8125rem;line-height:1.5;opacity:0.85;margin-top:0.75rem;}
+  .photo-fig{margin:1.75rem 0 0;}
+  .photo-fig img{width:100%;height:auto;display:block;border-radius:16px;border:1px solid var(--card-border);}
+  .photo-fig figcaption{font-size:0.8125rem;line-height:1.5;opacity:0.85;margin-top:0.75rem;}
+  .vid-link{font-weight:var(--w-bold);text-decoration:underline;text-decoration-color:var(--magenta);
+    text-decoration-thickness:2px;text-underline-offset:3px;white-space:nowrap;}
+  .vid-link:hover,.vid-link:focus-visible{color:var(--pink);}
+  .hero-video{max-width:56rem;margin-top:2.5rem;}
+
+
+  .chain{list-style:none;display:flex;flex-wrap:wrap;gap:0.4rem 0;margin-top:1rem;align-items:center;}
+  .chain li{font-weight:var(--w-bold);font-size:var(--fs-bs);display:flex;align-items:center;}
+  .chain li + li::before{content:"\2192";margin:0 0.75rem;color:var(--gold);font-weight:var(--w-black);}
+  @media (max-width:480px){
+    .chain{flex-direction:column;align-items:flex-start;}
+    .chain li{flex-wrap:wrap;}
+    .chain li + li::before{content:"\2193";margin:0 0.75rem 0 0.25rem;}
+    main{padding:0 1.25rem;}
+  }
+
+  /* proves + partner */
+  .proves-row{display:grid;grid-template-columns:1.6fr 1fr;gap:1.5rem;margin-top:1.5rem;}
+  @media (max-width:900px){.proves-row{grid-template-columns:1fr;}}
+  .partner{border-radius:16px;padding:1.75rem 1.5rem;border:1px solid var(--card-border);background:var(--card-fill);}
+  .partner .lbl{font-weight:var(--w-black);font-size:var(--fs-bs);letter-spacing:0.15em;text-transform:uppercase;color:var(--pink);}
+  .partner p{margin-top:1rem;font-size:var(--fs-bs);line-height:var(--lh-bs);}
+  .partner a{font-weight:var(--w-bold);text-decoration:underline;text-decoration-color:var(--magenta);
+    text-decoration-thickness:3px;text-underline-offset:4px;}
+
+  .foundation{margin-top:2rem;font-size:var(--fs-bs);line-height:var(--lh-bs);text-align:center;max-width:70ch;margin-left:auto;margin-right:auto;}
+  .foundation strong{color:var(--gold);}
+
+  footer{position:relative;z-index:2;text-align:center;padding:3rem 2.5rem;border-top:1px solid var(--card-border);margin-top:4vh;}
+  footer a{text-decoration-thickness:2px;text-underline-offset:4px;}
+
+  /* landing pages: team and case studies */
+  .hero{padding:9vh 0 2vh;}
+  .back{display:inline-flex;align-items:center;gap:0.4rem;margin-top:1.5rem;min-height:2.75rem;
+    font-weight:var(--w-bold);font-size:var(--fs-bs);text-decoration:underline;text-decoration-color:var(--magenta);
+    text-decoration-thickness:3px;text-underline-offset:5px;}
+  .back:hover,.back:focus-visible{color:var(--pink);}
+  .xlink{margin-top:0.75rem;font-size:var(--fs-bs);line-height:1.5;opacity:0.9;}
+  .xlink a{font-weight:var(--w-bold);text-decoration:underline;text-decoration-color:var(--magenta);
+    text-decoration-thickness:2px;text-underline-offset:4px;}
+  .xlink a:hover,.xlink a:focus-visible{color:var(--pink);}
+
+  .team{display:grid;grid-template-columns:1fr 1fr;gap:2.25rem 2.5rem;margin-top:1rem;text-align:center;list-style:none;}
+  @media (max-width:640px){.team{grid-template-columns:1fr;}}
+  .bio{border-radius:16px;padding:1.5rem 1.25rem 1.75rem;border:1px solid var(--card-border);background:var(--card-fill);
+    display:flex;flex-direction:column;align-items:center;transition:border-color .2s ease;}
+  .bio.linked:hover,.bio.linked:focus-within{border-color:var(--magenta);}
+  .bio .headshot{width:100%;max-width:360px;aspect-ratio:4/5;object-fit:cover;object-position:center top;border-radius:10px;
+    display:block;margin:0 auto 1rem;background:var(--card-fill);border:1px solid var(--card-border);}
+  .bio .name{font-weight:var(--w-bold);font-size:var(--fs-h2);line-height:var(--lh-h2);}
+  .bio .name a{text-decoration:none;}
+  .bio .name a::after{content:"";position:absolute;inset:0;}
+  .bio.linked{position:relative;}
+  .bio .role{font-weight:var(--w-bold);font-size:1.125rem;line-height:1.3;margin-top:0.15em;color:var(--pink);}
+  .bio .blurb{font-size:var(--fs-bs);line-height:var(--lh-bs);margin-top:0.5em;max-width:40ch;}
+  .bio .cta{margin-top:auto;padding-top:1rem;font-weight:var(--w-bold);font-size:var(--fs-bs);
+    text-decoration:underline;text-decoration-color:var(--magenta);text-decoration-thickness:3px;text-underline-offset:5px;}
+  .bio.linked:hover .cta,.bio.linked:focus-within .cta{color:var(--pink);}
+  .bio .soon{margin-top:auto;padding-top:1rem;font-weight:var(--w-bold);font-size:0.8125rem;letter-spacing:0.15em;
+    text-transform:uppercase;color:var(--gold);}
+
+  .cases{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:1rem;list-style:none;}
+  @media (max-width:820px){.cases{grid-template-columns:1fr;}}
+  .case{position:relative;border-radius:16px;border:1px solid var(--card-border);background:var(--card-fill);overflow:hidden;
+    display:flex;flex-direction:column;transition:border-color .2s ease;}
+  .case:hover,.case:focus-within{border-color:var(--magenta);}
+  .case img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;border-bottom:1px solid var(--card-border);background:#000;}
+  .case .body{padding:1.5rem 1.5rem 1.75rem;display:flex;flex-direction:column;flex:1;}
+  .case .lbl{font-weight:var(--w-black);font-size:0.8125rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--pink);}
+  .case h2{font-weight:var(--w-bold);font-size:var(--fs-h2);line-height:var(--lh-h2);margin-top:0.5rem;}
+  .case h2 a{text-decoration:none;}
+  .case h2 a::after{content:"";position:absolute;inset:0;}
+  .case p{font-size:var(--fs-bs);line-height:1.55;margin-top:0.75rem;}
+  .case .cta{margin-top:auto;padding-top:1.25rem;font-weight:var(--w-bold);font-size:var(--fs-bs);
+    text-decoration:underline;text-decoration-color:var(--magenta);text-decoration-thickness:3px;text-underline-offset:5px;}
+  .case:hover .cta,.case:focus-within .cta{color:var(--pink);}
+  .case .tag{position:absolute;top:0.75rem;left:0.75rem;font-weight:var(--w-black);font-size:0.75rem;letter-spacing:0.15em;
+    text-transform:uppercase;color:var(--ink);background:var(--gold);border-radius:6px;padding:0.25rem 0.6rem;}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div id="bg" role="img" aria-label="Inside Your Rainbow Panorama at ARoS: the tinted-glass walkway overlooking the city."></div>
+
+<header class="site">
+  <nav class="nav" aria-label="Primary">
+    <a class="brand" href="https://accessinsights.net/"><img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyBpZD0iTGF5ZXJfMiIgZGF0YS1uYW1lPSJMYXllciAyIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDEuMTkgOTkuMjEiPgogIDxkZWZzPgogICAgPHN0eWxlPgogICAgICAuY2xzLTEgewogICAgICAgIGZpbGw6ICNkOTM5OGM7CiAgICAgIH0KCiAgICAgIC5jbHMtMiB7CiAgICAgICAgZmlsbDogIzhhM2VlMTsKICAgICAgfQogICAgPC9zdHlsZT4KICA8L2RlZnM+CiAgPGcgaWQ9IkxheWVyXzItMiIgZGF0YS1uYW1lPSJMYXllciAyIj4KICAgIDxnPgogICAgICA8cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik00Mi45MSw4N2MzLjE3LTQuNDYsOS4zMS0yNC4yLDE1LjcxLTMwLjIsNS40Ni01LjEyLDEyLjMzLTguMjEsMTkuODEtOC4yMSw0LjY0LDAsOS4xMSwxLjEyLDEzLjEsMy4yM2wtMjAuNjMtMzkuNmMtLjAzLS4wNy0uMDctLjEzLS4xLS4yLS4wNS0uMDktLjEtLjE5LS4xNS0uMjgtLjA0LS4wNy0uMDgtLjE1LS4xMi0uMjItLjA1LS4wOS0uMS0uMTgtLjE1LS4yNy0uMDQtLjA4LS4wOS0uMTUtLjE0LS4yM3MtLjEtLjE3LS4xNS0uMjUtLjEtLjE2LS4xNS0uMjNjLS4wNS0uMDgtLjEtLjE2LS4xNS0uMjRzLS4xMS0uMTYtLjE2LS4yNGMtLjA1LS4wNy0uMS0uMTUtLjE1LS4yMi0uMDYtLjA4LS4xMS0uMTYtLjE3LS4yNC0uMDUtLjA3LS4xLS4xNC0uMTUtLjIxLS4wNi0uMDgtLjEyLS4xNi0uMTgtLjI0LS4wNS0uMDctLjEtLjE0LS4xNS0uMjEtLjA2LS4wOC0uMTItLjE2LS4xOC0uMjQtLjA1LS4wNy0uMS0uMTMtLjE2LS4yLS4wNi0uMDgtLjEzLS4xNS0uMTktLjIzLS4wNS0uMDctLjExLS4xMy0uMTYtLjItLjA2LS4wOC0uMTMtLjE1LS4xOS0uMjItLjA2LS4wNy0uMTEtLjEzLS4xNy0uMi0uMDYtLjA3LS4xMy0uMTQtLjE5LS4yMS0uMDYtLjA3LS4xMi0uMTMtLjE4LS4yLS4wNi0uMDctLjEzLS4xNC0uMTktLjItLjA2LS4wNy0uMTMtLjEzLS4xOS0uMi0uMDYtLjA3LS4xMy0uMTMtLjE5LS4yLS4wNy0uMDctLjEzLS4xMy0uMi0uMi0uMDYtLjA2LS4xMy0uMTItLjE5LS4xOS0uMDctLjA3LS4xNC0uMTMtLjIxLS4yLS4wNi0uMDYtLjEzLS4xMi0uMTktLjE4LS4wNy0uMDctLjE1LS4xMy0uMjItLjItLjA2LS4wNi0uMTMtLjExLS4xOS0uMTctLjA4LS4wNy0uMTUtLjEzLS4yMy0uMi0uMDYtLjA1LS4xMy0uMTEtLjItLjE2LS4wOC0uMDYtLjE2LS4xMy0uMjMtLjE5LS4wNy0uMDUtLjEzLS4xMS0uMi0uMTYtLjA4LS4wNi0uMTYtLjEyLS4yNC0uMTgtLjA3LS4wNS0uMTQtLjEtLjIxLS4xNi0uMDgtLjA2LS4xNi0uMTItLjI0LS4xOC0uMDctLjA1LS4xNS0uMS0uMjItLjE2LS4wOC0uMDYtLjE2LS4xMS0uMjMtLjE2LS4wOC0uMDUtLjE2LS4xMS0uMjMtLjE2LS4wOC0uMDUtLjE1LS4xLS4yMy0uMTUtLjA4LS4wNS0uMTctLjExLS4yNS0uMTYtLjA3LS4wNS0uMTQtLjA5LS4yMi0uMTQtLjA5LS4wNi0uMTgtLjExLS4yOC0uMTctLjA3LS4wNC0uMTMtLjA4LS4yLS4xMi0uMS0uMDYtLjItLjEyLS4zLS4xNy0uMDYtLjAzLS4xMi0uMDctLjE4LS4xLS4xMS0uMDYtLjIyLS4xMi0uMzMtLjE4LS4wNS0uMDMtLjEtLjA1LS4xNS0uMDhoLS4wMWMtLjExLS4wNi0uMjMtLjEyLS4zNC0uMTctLjA1LS4wMy0uMTEtLjA1LS4xNi0uMDgtLjExLS4wNS0uMjItLjExLS4zNC0uMTYtLjA2LS4wMy0uMTEtLjA1LS4xNy0uMDgtLjEtLjA1LS4yMS0uMDktLjMyLS4xNC0uMDctLjAzLS4xMy0uMDYtLjItLjA5LS4wOS0uMDQtLjE5LS4wOC0uMjktLjEyLS4wOC0uMDMtLjE2LS4wNy0uMjMtLjEtLjA4LS4wMy0uMTctLjA3LS4yNS0uMS0uMDktLjAzLS4xOC0uMDctLjI3LS4xLS4wOC0uMDMtLjE1LS4wNS0uMjMtLjA4LS4xLS4wNC0uMi0uMDctLjMtLjExLS4wNy0uMDItLjE0LS4wNS0uMjEtLjA3LS4xMS0uMDQtLjIxLS4wNy0uMzItLjExaC0uMDJjLS4wNy0uMDItLjEzLS4wNC0uMi0uMDYtLjExLS4wMy0uMjEtLjA3LS4zMi0uMS0uMDgtLjAyLS4xNS0uMDQtLjIzLS4wNi0uMS0uMDMtLjItLjA2LS4zMS0uMDgtLjA4LS4wMi0uMTctLjA0LS4yNS0uMDYtLjEtLjAyLS4xOS0uMDUtLjI5LS4wNy0uMDktLjAyLS4xOC0uMDQtLjI3LS4wNnMtLjE4LS4wNC0uMjgtLjA2Yy0uMDktLjAyLS4xOS0uMDQtLjI4LS4wNnMtLjE4LS4wNC0uMjctLjA1Yy0uMS0uMDItLjE5LS4wMy0uMjktLjA1LS4wOSwwLS4xNy0uMDMtLjI2LS4wNC0uMS0uMDItLjItLjAzLS4zLS4wNC0uMDgtLjAxLS4xNy0uMDMtLjI1LS4wNC0uMS0uMDEtLjItLjAzLS4zLS4wNC0uMDgtLjAxLS4xNy0uMDItLjI1LS4wMy0uMSwwLS4yLS4wMi0uMy0uMDMtLjA4LDAtLjE3LS4wMi0uMjUtLjAyLS4xLDAtLjItLjAyLS4zLS4wMi0uMDksMC0uMTctLjAxLS4yNi0uMDItLjEsMC0uMiwwLS4yOSwwcy0uMTcsMC0uMjYsMGgtMS42OGMtLjA5LDAtLjE3LDAtLjI2LDAtLjEsMC0uMiwwLS4yOSwwLS4wOSwwLS4xNywwLS4yNi4wMi0uMSwwLS4yLjAxLS4zLjAyLS4wOCwwLS4xNy4wMi0uMjUuMDItLjEsMC0uMi4wMi0uMy4wMy0uMDgsMC0uMTcuMDItLjI1LjAzLS4xLjAxLS4yLjAyLS4zLjA0LS4wOC4wMS0uMTcuMDItLjI1LjA0LS4xLDAtLjIuMDMtLjMuMDQtLjA5LDAtLjE3LjAzLS4yNi4wNC0uMS4wMi0uMTkuMDMtLjI5LjA1LS4wOS4wMi0uMTguMDMtLjI3LjA1cy0uMTkuMDQtLjI4LjA2Yy0uMDkuMDItLjE5LjA0LS4yOC4wNnMtLjE4LjA0LS4yNi4wNmMtLjEuMDItLjIuMDUtLjI5LjA3LS4wOC4wMi0uMTYuMDQtLjI1LjA2LS4xLjAzLS4yMS4wNi0uMzEuMDktLjA4LjAyLS4xNS4wNC0uMjMuMDYtLjExLjAzLS4yMi4wNy0uMzMuMS0uMDYuMDItLjEzLjA0LS4xOS4wNmgtLjAyYy0uMTEuMDMtLjIyLjA3LS4zMy4xMS0uMDcuMDItLjE0LjA0LS4yLjA3LS4xLjA0LS4yMS4wNy0uMzEuMTEtLjA3LjAzLS4xNS4wNS0uMjIuMDgtLjA5LjA0LS4xOS4wNy0uMjguMTEtLjA4LjAzLS4xNi4wNi0uMjQuMDktLjA4LjAzLS4xNy4wNy0uMjUuMS0uMDkuMDQtLjE4LjA3LS4yNy4xMS0uMDcuMDMtLjE0LjA2LS4yMS4wOS0uMS4wNC0uMi4wOS0uMy4xMy0uMDYuMDMtLjEyLjA2LS4xOC4wOS0uMTEuMDUtLjIyLjEtLjMzLjE1LS4wNi4wMy0uMTEuMDYtLjE3LjA5LS4xMS4wNi0uMjIuMTEtLjMzLjE3aC0uMDJjLS4wNS4wMy0uMS4wNi0uMTYuMDgtLjExLjA2LS4yMS4xMS0uMzIuMTctLjA2LjAzLS4xMy4wNy0uMTkuMTEtLjEuMDYtLjIuMTEtLjMuMTctLjA3LjA0LS4xNC4wOC0uMi4xMi0uMDkuMDUtLjE4LjExLS4yNy4xNi0uMDcuMDUtLjE1LjA5LS4yMi4xNC0uMDguMDUtLjE3LjExLS4yNS4xNi0uMDguMDUtLjE1LjEtLjIzLjE1LS4wOC4wNS0uMTYuMS0uMjMuMTYtLjA4LjA1LS4xNi4xMS0uMjMuMTYtLjA3LjA1LS4xNS4xLS4yMi4xNi0uMDguMDYtLjE2LjEyLS4yNC4xOC0uMDcuMDUtLjE0LjEtLjIxLjE2LS4wOC4wNi0uMTYuMTItLjI0LjE4LS4wNy4wNS0uMTQuMTEtLjIuMTYtLjA4LjA2LS4xNS4xMy0uMjMuMTktLjA3LjA1LS4xMy4xMS0uMi4xNi0uMDguMDYtLjE1LjEzLS4yMi4xOXMtLjEzLjExLS4yLjE3LS4xNC4xMy0uMjIuMmMtLjA3LjA2LS4xMy4xMi0uMi4xOHMtLjE0LjEzLS4yMS4yYy0uMDcuMDYtLjEzLjEzLS4yLjE5cy0uMTMuMTMtLjIuMmMtLjA3LjA3LS4xMy4xMy0uMi4yLS4wNi4wNi0uMTIuMTMtLjE5LjItLjA3LjA3LS4xMy4xNC0uMi4yMS0uMDYuMDYtLjEyLjEzLS4xOC4xOS0uMDcuMDctLjEzLjE0LS4yLjIyLS4wNi4wNi0uMTEuMTMtLjE3LjE5LS4wNy4wOC0uMTMuMTUtLjE5LjIzLS4wNS4wNi0uMTEuMTMtLjE2LjItLjA2LjA4LS4xMy4xNi0uMTkuMjMtLjA1LjA3LS4xLjEzLS4xNi4yLS4wNi4wOC0uMTMuMTYtLjE5LjI0LS4wNS4wNy0uMS4xNC0uMTUuMi0uMDYuMDgtLjEyLjE2LS4xOC4yNC0uMDUuMDctLjEuMTQtLjE1LjIxLS4wNi4wOC0uMTEuMTYtLjE3LjI0LS4wNS4wNy0uMS4xNS0uMTUuMjItLjA1LjA4LS4xMS4xNi0uMTYuMjRzLS4xLjE2LS4xNS4yNC0uMS4xNi0uMTUuMjNjLS4wNS4wOC0uMS4xNy0uMTUuMjVzLS4wOS4xNS0uMTQuMjNjLS4wNS4wOS0uMS4xOC0uMTUuMjctLjA0LjA3LS4wOC4xNC0uMTIuMjItLjA1LjEtLjEuMTktLjE1LjI5LS4wMy4wNi0uMDcuMTMtLjEuMTlsLS4wMi4wNGgwTDIuNTgsNjUuOTRjLTIuNzksNS4zNS0zLjM0LDExLjYtMS41MiwxNy4zNSwxLjgxLDUuNzYsNS44NCwxMC41NiwxMS4xOSwxMy4zNSwzLjI4LDEuNzEsNi44OSwyLjU3LDEwLjUxLDIuNTcsMi4zLDAsNC42MS0uMzUsNi44NC0xLjA1LDUuNzYtMS44MSwxMC41Ni01Ljg0LDEzLjM1LTExLjE5Ii8+CiAgICAgIDxjaXJjbGUgY2xhc3M9ImNscy0yIiBjeD0iNzguNDMiIGN5PSI3Ni40MSIgcj0iMjIuNzYiLz4KICAgIDwvZz4KICA8L2c+Cjwvc3ZnPg==" alt="">Access Insights</a>
+    <ul class="nav-links">
+      <li><a href="https://accessinsights.net/">Main site &rarr;</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="main">
+  <section class="hero" id="top">
+    <p class="kicker">Access Insights &middot; Team</p>
+    <h1 class="h1">The people behind Access Insights</h1>
+    <p class="bodyL lead">Access Insights is a research and design agency built by the people who helped write the rules of accessibility. We came together after decades at Intel Corporation: researchers, designers, engineers, and disability rights pioneers, including the chief architect of the ADA. We have shaped the laws millions rely on and the tools billions use, and several of us bring lived experience of disability to every project we touch.</p>
+    <a class="back" href="https://accessinsights.net/">Visit the full Access Insights site &rarr;</a>
+    <p class="xlink">Looking for our work? See the <a href="../case-studies/">case studies</a>.</p>
+  </section>
+
+  <section aria-labelledby="team-h">
+    <h2 class="sr-only" id="team-h">Team profiles</h2>
+    <ul class="team" role="list">
+      <li class="bio linked">
+        <img class="headshot" src="../images/team/darryl.png" alt="Darryl Adams" width="360" height="450" loading="lazy" decoding="async">
+        <h2 class="name"><a href="darryl-adams/">Darryl Adams</a></h2>
+        <p class="role">Founder</p>
+        <p class="blurb">AI &amp; accessibility innovator focused on inclusive access and real-world impact.</p>
+        <span class="cta" aria-hidden="true">Read the profile &rarr;</span>
+      </li>
+      <li class="bio linked">
+        <img class="headshot" src="../images/team/lex.png" alt="Lex Frieden" width="360" height="450" loading="lazy" decoding="async">
+        <h2 class="name"><a href="lex-frieden/">Lex Frieden</a></h2>
+        <p class="role">Senior Advisor</p>
+        <p class="blurb">Chief architect of the Americans with Disabilities Act and a founder of the independent living movement, with five decades shaping U.S. and international disability policy.</p>
+        <span class="cta" aria-hidden="true">Read the profile &rarr;</span>
+      </li>
+      <li class="bio">
+        <img class="headshot" src="../images/team/susan.png" alt="Susan Faulkner" width="360" height="450" loading="lazy" decoding="async">
+        <h2 class="name">Susan Faulkner</h2>
+        <p class="role">Research Director</p>
+        <p class="blurb">User experience researcher and leader with over 30 years delivering high-impact results focused on accessibility.</p>
+        <span class="soon">Profile coming soon</span>
+      </li>
+      <li class="bio">
+        <img class="headshot" src="../images/team/richard.png" alt="Richard Beckwith, PhD" width="360" height="450" loading="lazy" decoding="async">
+        <h2 class="name">Richard Beckwith, PhD</h2>
+        <p class="role">Research Fellow</p>
+        <p class="blurb">Long career in research supporting design across disability, education, and aging: UX, AI (especially NLP), and sensing.</p>
+        <span class="soon">Profile coming soon</span>
+      </li>
+      <li class="bio linked">
+        <img class="headshot" src="../images/team/marco.png" alt="Marco Beltman, PhD" width="360" height="450" loading="lazy" decoding="async">
+        <h2 class="name"><a href="marco-beltman/">Marco Beltman, PhD</a></h2>
+        <p class="role">Research Fellow, Sensory Technology</p>
+        <p class="blurb">Principal engineer with a PhD in acoustics, 39 patents, and a volunteer raft guide opening rivers to people of all abilities.</p>
+        <span class="cta" aria-hidden="true">Read the profile &rarr;</span>
+      </li>
+      <li class="bio linked">
+        <img class="headshot" src="../images/team/becky.png" alt="Becky Chierichetti" width="360" height="450" loading="lazy" decoding="async">
+        <h2 class="name"><a href="becky-chierichetti/">Becky Chierichetti</a></h2>
+        <p class="role">Principal Design Researcher</p>
+        <p class="blurb">UX researcher exploring AI, mixed reality, and accessibility at the boundary of physical and digital worlds.</p>
+        <span class="cta" aria-hidden="true">Read the profile &rarr;</span>
+      </li>
+      <li class="bio linked">
+        <img class="headshot" src="../images/team/pete.png" alt="Pete Denman" width="360" height="450" loading="lazy" decoding="async">
+        <h2 class="name"><a href="pete-denman/">Pete Denman</a></h2>
+        <p class="role">Principal Design and Interaction</p>
+        <p class="blurb">Designed Stephen Hawking&rsquo;s communication system, with over 30 years in visual and interaction design, bringing the perspective of a wheelchair user to every project.</p>
+        <span class="cta" aria-hidden="true">Read the profile &rarr;</span>
+      </li>
+    </ul>
+  </section>
+</main>
+
+<footer><p class="bodyS">&copy; 2026 Access Insights &middot; Portland, Oregon &middot; <a href="https://accessinsights.net/">Main site</a></p></footer>
+</body>
+</html>
