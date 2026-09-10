@@ -22,8 +22,5 @@
   },
   "overrides": {
     "playwright-core": "1.61.1"
-  },
-  "dependencies": {
-    "@netlify/blobs": "^8.1.0"
   }
 }
